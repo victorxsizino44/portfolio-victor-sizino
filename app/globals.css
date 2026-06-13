@@ -91,6 +91,47 @@ a {
   background: #ffffff;
 }
 
+.about-title {
+  max-width: 520px;
+  margin: 20px 0 0;
+  color: #0d0d0f;
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 32px;
+}
+
+.about-copy {
+  max-width: 610px;
+  margin: 16px 0 0;
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.about-highlights {
+  display: grid;
+  gap: 22px;
+  align-content: start;
+  padding-top: 2px;
+  font-size: 12px;
+}
+
+.about-highlight {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.about-highlight p {
+  margin: 0;
+  line-height: 18px;
+}
+
+.about-highlight strong {
+  color: #0d0d0f;
+  font-weight: 800;
+}
+
 .case-card {
   position: relative;
   height: 344px;
@@ -309,6 +350,201 @@ a {
   }
 }
 
+.contact-panel {
+  position: relative;
+  display: flex;
+  min-height: 250px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  border-color: #e5e7eb;
+}
+
+@media (min-width: 64rem) {
+  .contact-panel {
+    border-left: 1px solid #e5e7eb;
+    padding-left: 40px;
+  }
+}
+
+.contact-title {
+  max-width: 460px;
+  margin: 20px 0 0;
+  color: #0d0d0f;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 34px;
+}
+
+.contact-copy {
+  margin: 12px 0 0;
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.contact-button {
+  display: inline-flex;
+  height: 56px;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 24px;
+  border-radius: 8px;
+  background: #0d0d0f;
+  padding: 0 28px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 800;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.contact-illustration {
+  position: relative;
+  display: none;
+  width: 260px;
+  height: 190px;
+  flex: 0 0 260px;
+}
+
+@media (min-width: 48rem) {
+  .contact-illustration {
+    display: block;
+  }
+}
+
+.contact-bubble {
+  position: absolute;
+  border-radius: 18px;
+  background: #eef0ff;
+}
+
+.contact-bubble-main {
+  left: 16px;
+  bottom: 28px;
+  width: 128px;
+  height: 96px;
+}
+
+.contact-bubble-main::after {
+  position: absolute;
+  right: 22px;
+  bottom: -19px;
+  width: 34px;
+  height: 34px;
+  background: #eef0ff;
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+  content: "";
+}
+
+.contact-bubble-main span {
+  position: absolute;
+  top: 38px;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #6366f1;
+}
+
+.contact-bubble-main span:nth-child(1) {
+  left: 38px;
+}
+
+.contact-bubble-main span:nth-child(2) {
+  left: 62px;
+}
+
+.contact-bubble-main span:nth-child(3) {
+  left: 86px;
+}
+
+.contact-plane {
+  position: absolute;
+  right: 6px;
+  bottom: 9px;
+  z-index: 1;
+  color: #ffffff;
+  fill: #ffffff;
+  filter: drop-shadow(0 4px 10px rgba(99, 102, 241, 0.18));
+  transform: rotate(-9deg);
+}
+
+.contact-bubble-small {
+  top: 10px;
+  right: 8px;
+  width: 126px;
+  height: 94px;
+}
+
+.contact-bubble-small::after {
+  position: absolute;
+  right: 18px;
+  bottom: -16px;
+  width: 30px;
+  height: 30px;
+  background: #eef0ff;
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+  content: "";
+}
+
+.contact-bubble-small i {
+  position: absolute;
+  left: 32px;
+  width: 58px;
+  height: 3px;
+  border-radius: 999px;
+  background: #6b7280;
+}
+
+.contact-bubble-small i:nth-child(1) {
+  top: 28px;
+}
+
+.contact-bubble-small i:nth-child(2) {
+  top: 46px;
+  width: 72px;
+}
+
+.contact-bubble-small i:nth-child(3) {
+  top: 64px;
+  width: 48px;
+}
+
+.contact-trail {
+  position: absolute;
+  left: -20px;
+  bottom: 2px;
+  width: 112px;
+  height: 58px;
+  border-bottom: 3px dashed rgba(99, 102, 241, 0.42);
+  border-left: 3px dashed rgba(99, 102, 241, 0.42);
+  border-radius: 0 0 0 70px;
+  transform: rotate(-23deg);
+}
+
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  color: #6b7280;
+}
+
+.footer-socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+}
+
+.footer-linkedin {
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
 .agent-section {
   border-top: 1px solid #e5e7eb;
 }
@@ -508,7 +744,7 @@ a {
 
 .agent-message {
   width: fit-content;
-  max-width: 330px;
+  max-width: 100%;
   border-radius: 14px;
   padding: 14px 16px;
   font-size: 13px;
@@ -525,12 +761,14 @@ a {
 }
 
 .agent-message-bot {
+  width: calc(100% - 8px);
   background: #f1f2f8;
   color: #111827;
 }
 
 .agent-message-user {
   margin-left: auto;
+  max-width: 82%;
   background: #6366f1;
   color: #ffffff;
 }

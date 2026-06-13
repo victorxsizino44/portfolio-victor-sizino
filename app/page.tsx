@@ -8,16 +8,14 @@ import {
   Code2,
   Compass,
   ExternalLink,
-  GitBranch,
-  Link,
   Mail,
   MapPin,
-  Moon,
   PackageCheck,
   PenTool,
   RefreshCw,
   Rocket,
   Search,
+  Send,
   Sparkles,
   Target,
 } from "lucide-react";
@@ -136,10 +134,6 @@ export default function Home() {
             </a>
           ))}
         </nav>
-        <button className="inline-flex h-10 items-center gap-2 rounded-lg bg-ink px-4 text-xs font-semibold text-white shadow-md">
-          <Moon size={14} />
-          Modo escuro
-        </button>
       </header>
 
       <section id="inicio" className="mx-auto max-w-[1096px] border-b border-line px-5 pb-8 pt-12 md:px-8">
@@ -166,15 +160,15 @@ export default function Home() {
               </a>
             </div>
           </div>
-          <div className="relative min-h-[370px] overflow-hidden">
-            <div className="dot-grid absolute inset-x-0 top-0 h-[292px]" />
+          <div className="relative min-h-[430px] overflow-hidden">
+            <div className="dot-grid absolute inset-x-0 top-0 h-[360px]" />
             <Image
-              src="/images/victor-hero.png"
+              src="/images/victor-hero-v2.png"
               alt="Victor Sizino"
               width={520}
               height={505}
               priority
-              className="relative z-10 ml-auto h-auto w-full max-w-[520px] object-contain"
+              className="relative z-10 ml-auto h-[430px] w-full max-w-[520px] object-contain object-top"
             />
           </div>
         </div>
@@ -193,24 +187,25 @@ export default function Home() {
 
       <section id="sobre" className="mx-auto max-w-[1096px] px-5 py-9 md:px-8">
         <div className="grid gap-8 md:grid-cols-[156px_1fr_344px]">
-          <Image src="/images/victor-card.png" alt="Victor Sizino" width={156} height={180} className="h-[180px] rounded-lg object-cover shadow-sm" />
+          <Image src="/images/victor-card-v2.png" alt="Victor Sizino" width={156} height={180} className="h-[180px] rounded-lg object-cover shadow-sm" />
           <div>
             <p className="section-label">Sobre mim</p>
-            <h2 className="mt-5 max-w-[520px] text-[26px] font-bold leading-tight">
+            <h2 className="about-title">
               Transformando problemas complexos em produtos escalaveis.
             </h2>
-            <p className="mt-4 max-w-[600px] text-sm leading-7 text-muted">
-              Atuo conectando produto, design e engenharia para sair de problemas nebulosos ate solucoes utilizaveis,
-              mensuraveis e prontas para crescer.
+            <p className="about-copy">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer feugiat, augue nec fermentum dapibus,
+              massa arcu consequat sapien, vel vulputate quam mauris et lorem. Euismod pretium eget id purus sed
+              faucibus. Apaixonado por produtos, dados e tecnologia.
             </p>
           </div>
-          <div className="grid gap-4 text-xs">
+          <div className="about-highlights">
             {highlights.map(({ title, text, icon: Icon }) => (
-              <div className="flex items-center gap-4" key={title}>
+              <div className="about-highlight" key={title}>
                 <span className="icon-box">
                   <Icon size={17} />
                 </span>
-                <p className="leading-5">
+                <p>
                   <strong>{title}</strong>
                   <br />
                   <span className="text-muted">{text}</span>
@@ -333,19 +328,32 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <div id="contato" className="flex items-center justify-between gap-8 border-line lg:border-l lg:pl-10">
+        <div id="contato" className="contact-panel">
           <div>
             <p className="section-label">Vamos conversar?</p>
-            <h2 className="mt-5 max-w-md text-[28px] font-bold leading-tight">
-              Interessado em discutir produto, IA ou tecnologia?
+            <h2 className="contact-title">
+              Interessado em discutir produto,
+              <br />
+              IA ou tecnologia?
             </h2>
-            <p className="mt-3 text-sm text-muted">Vamos criar produtos incriveis juntos.</p>
-            <a className="mt-6 inline-flex h-11 items-center gap-3 rounded-lg bg-ink px-5 text-sm font-bold text-white shadow-md" href="mailto:contato@victorsizino.com">
+            <p className="contact-copy">Vamos criar produtos incriveis juntos.</p>
+            <a className="contact-button" href="mailto:contato@victorsizino.com">
               Agendar conversa <ArrowRight size={17} />
             </a>
           </div>
-          <div className="hidden text-violet md:block">
-            <Mail size={118} strokeWidth={1.3} />
+          <div className="contact-illustration" aria-hidden="true">
+            <div className="contact-bubble contact-bubble-main">
+              <span />
+              <span />
+              <span />
+              <Send className="contact-plane" size={58} strokeWidth={1.7} />
+            </div>
+            <div className="contact-bubble contact-bubble-small">
+              <i />
+              <i />
+              <i />
+            </div>
+            <div className="contact-trail" />
           </div>
         </div>
       </section>
@@ -355,10 +363,13 @@ export default function Home() {
           VS<span className="text-violet">.</span>
         </p>
         <p className="text-xs text-muted">2024 Victor Sizino. Todos os direitos reservados.</p>
-        <div className="flex items-center gap-5 text-muted">
-          <Link size={19} />
-          <GitBranch size={19} />
-          <Mail size={19} />
+        <div className="footer-socials">
+          <a className="footer-linkedin" href="https://www.linkedin.com/" aria-label="LinkedIn">
+            in
+          </a>
+          <a href="mailto:contato@victorsizino.com" aria-label="Email">
+            <Mail size={19} />
+          </a>
         </div>
       </footer>
     </main>

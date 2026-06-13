@@ -135,7 +135,7 @@ export function AgentRSection() {
 
         <div className="agent-chat" aria-label="Chat com Agente R">
           <div className="agent-chat-header">
-            <Image src="/images/agente-r-v3.png" alt="" width={48} height={48} className="agent-avatar" />
+            <Image src="/images/agente-r-avatar-v1.png" alt="" width={48} height={48} className="agent-avatar" />
             <div>
               <strong>AGENTE R</strong>
               <span>
