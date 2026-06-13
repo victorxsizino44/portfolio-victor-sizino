@@ -5,13 +5,13 @@ import { cases } from "../../data/home";
 export default function CasesSection() {
   return (
     <section id="cases" className="mx-auto max-w-[1096px] px-5 py-3 md:px-8">
-      <div className="mb-5 flex items-center justify-between">
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
         <p className="section-label">Cases de impacto</p>
         <a href="#contato" className="text-sm font-bold text-violet">
           Ver todos os cases <ArrowRight className="inline" size={15} />
         </a>
       </div>
-      <div className="grid gap-4 lg:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {cases.map((item) => (
           <article className="case-card" key={item.title}>
             <Image src={item.image} alt="" fill className="case-card-image" />
