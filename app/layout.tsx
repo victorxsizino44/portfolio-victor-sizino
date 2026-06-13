@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Victor Sizino | Technical Product Manager",
+  title: "Victor Sizino | AI Technical Product Manager",
   description:
-    "Portfolio de Victor Sizino, Technical Product Manager focado em produto, design, engenharia e IA.",
+    "Portfolio de Victor Sizino, AI Technical Product Manager especializado em Produto, Inteligencia Artificial, Automacao, UX e Tecnologia.",
 };
 
 export default function RootLayout({

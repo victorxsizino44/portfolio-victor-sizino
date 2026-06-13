@@ -98,7 +98,7 @@ export function AgentRSection() {
   };
 
   return (
-    <section className="agent-section mx-auto max-w-[1096px] px-5 py-10 md:px-8">
+    <section id="agente-r" className="agent-section mx-auto max-w-[1096px] px-5 py-10 md:px-8">
       <div className="agent-shell">
         <div className="agent-intro">
           <div className="agent-kicker">
@@ -188,3 +188,5 @@ export function AgentRSection() {
     </section>
   );
 }
+
+export default AgentRSection;
