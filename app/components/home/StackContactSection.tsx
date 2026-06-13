@@ -6,7 +6,7 @@ export default function StackContactSection() {
     <section id="stack" className="mx-auto grid max-w-[1096px] gap-10 border-y border-line px-5 py-9 md:px-8 lg:grid-cols-2">
       <div>
         <p className="section-label">Stack & ferramentas</p>
-        <div className="mt-6 grid grid-cols-3 gap-3 sm:grid-cols-4">
+        <div className="mt-6 grid grid-cols-2 gap-3 min-[390px]:grid-cols-3 sm:grid-cols-4">
           {stack.map(({ name, icon: Icon }) => (
             <div className="card-border grid h-[70px] place-items-center text-center text-[11px] font-semibold" key={name}>
               <Icon className="text-ink" size={20} />
@@ -20,7 +20,7 @@ export default function StackContactSection() {
           <p className="section-label">Vamos conversar?</p>
           <h2 className="contact-title">
             Procurando alguem para liderar produtos,
-            <br />
+            <br className="hidden sm:block" />
             iniciativas de IA ou automacoes?
           </h2>
           <p className="contact-copy">Vamos transformar ideias em produtos escalaveis.</p>

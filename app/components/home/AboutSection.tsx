@@ -3,15 +3,15 @@ import { highlights } from "../../data/home";
 
 export default function AboutSection() {
   return (
-    <div className="grid gap-8 md:grid-cols-[156px_1fr_344px]">
+    <div className="grid gap-7 md:grid-cols-[156px_1fr_344px] md:gap-8">
       <Image
         src="/images/victor-card-v2.png"
         alt="Victor Sizino"
         width={156}
         height={180}
-        className="h-[180px] rounded-lg object-cover shadow-sm"
+        className="h-[112px] w-[112px] rounded-lg object-cover shadow-sm md:h-[180px] md:w-[156px]"
       />
-      <div>
+      <div className="min-w-0">
         <p className="section-label">Sobre mim</p>
         <h2 className="about-title">Construindo produtos que unem negocio, tecnologia e inteligencia artificial.</h2>
         <p className="about-copy">
