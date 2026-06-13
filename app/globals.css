@@ -696,16 +696,19 @@ a {
 .agent-chat {
   display: flex;
   flex-direction: column;
+  height: 640px;
+  max-height: 640px;
+  min-height: 0;
   border: 1px solid #e5e7eb;
   border-radius: 24px;
   background: #ffffff;
-  min-height: 560px;
   padding: 24px;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
 }
 
 .agent-chat-header {
   display: flex;
+  flex: 0 0 auto;
   align-items: center;
   gap: 14px;
 }
@@ -747,9 +750,23 @@ a {
   flex-direction: column;
   gap: 10px;
   margin-top: 22px;
+  overscroll-behavior: contain;
   overflow-y: auto;
-  padding-right: 4px;
+  padding-right: 6px;
   scroll-behavior: smooth;
+}
+
+.agent-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.agent-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.agent-messages::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(99, 102, 241, 0.24);
 }
 
 .agent-message {
@@ -801,6 +818,7 @@ a {
 
 .agent-input {
   display: flex;
+  flex: 0 0 auto;
   min-height: 48px;
   align-items: center;
   justify-content: space-between;

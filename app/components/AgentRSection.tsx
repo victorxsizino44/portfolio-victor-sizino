@@ -16,10 +16,10 @@ const initialMessage: Message = {
 };
 
 const agentBenefits = [
-  { text: "Conhece toda a trajetoria do Victor", icon: Boxes },
-  { text: "Explica projetos, tecnologias e resultados", icon: Rocket },
-  { text: "Suas informacoes ficam seguras comigo", icon: PackageCheck },
-  { text: "Powered by n8n + OpenAI + Agente R", icon: Sparkles },
+  { text: "Conheça experiências e projetos", icon: Boxes },
+  { text: "Explore cases e resultados", icon: Rocket },
+  { text: "Pergunte sobre IA e automação", icon: PackageCheck },
+  { text: "Construído com OpenAI + Make + Agente R", icon: Sparkles },
 ];
 
 export function AgentRSection() {
@@ -115,11 +115,16 @@ export function AgentRSection() {
             <em>(Most Intelligent Buddy)</em>
           </p>
           <p className="agent-copy">
-            Fui treinado para contar a trajetoria do Victor Sizino, compartilhar experiencias profissionais, projetos,
-            habilidades tecnicas e iniciativas envolvendo Produto, Design, Desenvolvimento e Inteligencia Artificial.
+            Sou um agente de Inteligência Artificial desenvolvido para apresentar a trajetória profissional de Victor
+            Sizino de forma interativa.
           </p>
           <p className="agent-copy">
-            Pode me perguntar sobre cases, tecnologias, metodologias, carreira ou qualquer projeto do portfolio.
+            Fui treinado com experiências, cases, projetos, tecnologias e iniciativas envolvendo Produto, IA,
+            Automação, UX e Desenvolvimento Digital.
+          </p>
+          <p className="agent-copy">
+            Experimente perguntar sobre empresas onde ele atuou, desafios resolvidos, resultados alcançados ou projetos
+            de Inteligência Artificial.
           </p>
 
           <div className="agent-benefits">

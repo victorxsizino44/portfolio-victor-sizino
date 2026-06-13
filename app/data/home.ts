@@ -108,7 +108,7 @@ export const companies: CompanyItem[] = [
     context: "Produto • Analytics • UX",
     description:
       "Evolução de produtos digitais, melhorias de experiência, instrumentação de métricas, integrações e iniciativas orientadas por dados.",
-    logo: "/logos/reclame-aqui.png",
+    logo: "/logos/reclame-aqui-v2.png",
   },
   {
     name: "Méliuz",
