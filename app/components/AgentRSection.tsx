@@ -36,7 +36,6 @@ export function AgentRSection() {
     if (!input.trim() || loading) return;
 
     const question = input.trim();
-    const webhookUrl = process.env.NEXT_PUBLIC_AGENT_R_WEBHOOK;
 
     setMessages((prev) => [
       ...prev,
@@ -50,11 +49,7 @@ export function AgentRSection() {
     setLoading(true);
 
     try {
-      if (!webhookUrl) {
-        throw new Error("NEXT_PUBLIC_AGENT_R_WEBHOOK is not configured.");
-      }
-
-      const response = await fetch(webhookUrl, {
+      const response = await fetch("/api/agente-r", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -65,7 +60,7 @@ export function AgentRSection() {
       });
 
       if (!response.ok) {
-        throw new Error(`Agent webhook failed with status ${response.status}.`);
+        throw new Error(`Agent API failed with status ${response.status}.`);
       }
 
       const data = await response.json();
