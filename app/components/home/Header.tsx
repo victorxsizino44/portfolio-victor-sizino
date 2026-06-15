@@ -1,11 +1,37 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { navItems } from "../../data/home";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+
+  const getHref = (item: string) => {
+    if (item === "Inicio") {
+      return "/";
+    }
+
+    if (item === "Sobre") {
+      return "/about";
+    }
+
+    return `/#${item.toLowerCase()}`;
+  };
+
+  const isActive = (item: string) => {
+    if (item === "Inicio") {
+      return pathname === "/";
+    }
+
+    if (item === "Sobre") {
+      return pathname === "/about";
+    }
+
+    return false;
+  };
 
   return (
     <header className="relative mx-auto max-w-[1096px] border-b border-line px-5 py-5 md:px-8 md:py-6">
@@ -14,10 +40,10 @@ export default function Header() {
           VS<span className="text-violet">.</span>
         </a>
         <nav className="hidden items-center gap-8 text-[13px] font-semibold md:flex">
-          {navItems.map((item, index) => (
+          {navItems.map((item) => (
             <a
-              href={`#${item.toLowerCase()}`}
-              className={index === 0 ? "border-b-2 border-ink pb-2" : "pb-2 text-dark/80 hover:text-ink"}
+              href={getHref(item)}
+              className={isActive(item) ? "border-b-2 border-violet pb-2 text-violet" : "pb-2 text-dark/80 hover:text-ink"}
               key={item}
             >
               {item}
@@ -39,7 +65,7 @@ export default function Header() {
           {navItems.map((item) => (
             <a
               className="rounded-md px-3 py-3 text-dark/80 hover:bg-canvas hover:text-ink"
-              href={`#${item.toLowerCase()}`}
+              href={getHref(item)}
               key={item}
               onClick={() => setIsOpen(false)}
             >
