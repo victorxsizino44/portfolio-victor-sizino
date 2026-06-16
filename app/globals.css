@@ -91,6 +91,19 @@ a {
   background: #ffffff;
 }
 
+.accordion-trigger,
+.accordion-trigger:focus,
+.accordion-trigger:focus-visible,
+.accordion-trigger:active {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  border: 0 !important;
+  background: #ffffff !important;
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
 .about-title {
   max-width: 520px;
   margin: 20px 0 0;

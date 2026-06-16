@@ -7,7 +7,7 @@ export default function AboutHero() {
       <div className="grid items-end gap-8 lg:grid-cols-[1fr_520px]">
         <div className="min-w-0 pb-5 md:pb-9">
           <p className="mb-5 text-xs font-semibold uppercase tracking-[0.16em] text-muted">Sobre</p>
-          <h1 className="max-w-3xl text-[40px] font-black leading-[0.98] tracking-normal sm:text-[48px] md:text-[64px]">
+          <h1 className="max-w-3xl text-[38px] font-black leading-[1.05] tracking-normal">
             Estrategia. Tecnologia. Produto. Impacto real<span className="text-violet">.</span>
           </h1>
           <p className="mt-4 text-[20px] leading-7 text-muted md:mt-5 md:text-[24px] md:leading-8">
