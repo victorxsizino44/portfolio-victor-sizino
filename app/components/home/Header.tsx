@@ -26,6 +26,10 @@ export default function Header() {
       return "/experiencia";
     }
 
+    if (item === "Stack") {
+      return "/stack";
+    }
+
     const anchor = item
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
@@ -49,6 +53,10 @@ export default function Header() {
 
     if (item === "Experiência") {
       return pathname === "/experiencia";
+    }
+
+    if (item === "Stack") {
+      return pathname === "/stack";
     }
 
     return false;

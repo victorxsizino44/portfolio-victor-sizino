@@ -91,6 +91,25 @@ a {
   background: #ffffff;
 }
 
+.certifications-carousel {
+  scrollbar-width: thin;
+  scrollbar-color: #6366f1 #eef0ff;
+}
+
+.certifications-carousel::-webkit-scrollbar {
+  height: 8px;
+}
+
+.certifications-carousel::-webkit-scrollbar-track {
+  border-radius: 999px;
+  background: #eef0ff;
+}
+
+.certifications-carousel::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: #6366f1;
+}
+
 .accordion-trigger,
 .accordion-trigger:focus,
 .accordion-trigger:focus-visible,
