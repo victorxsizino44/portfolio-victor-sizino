@@ -1,34 +1,36 @@
 import Image from "next/image";
 import { ArrowRight, ExternalLink } from "lucide-react";
-import { heroBadges } from "../../data/about";
 
 export default function AboutHero() {
   return (
-    <section className="mx-auto max-w-[1096px] border-b border-line px-5 pb-8 pt-9 md:px-8 md:py-10">
-      <div className="grid items-center gap-8 lg:grid-cols-[1fr_520px]">
-        <div className="min-w-0">
-          <p className="section-label text-violet">Sobre</p>
-          <h1 className="mt-5 max-w-[590px] text-[36px] font-black leading-[1.08] tracking-normal sm:text-[44px] md:text-[52px]">
+    <section id="sobre" className="mx-auto max-w-[1096px] border-b border-line px-5 pb-8 pt-9 md:px-8 md:pt-12">
+      <div className="grid items-end gap-8 lg:grid-cols-[1fr_520px]">
+        <div className="min-w-0 pb-5 md:pb-9">
+          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.16em] text-muted">Sobre</p>
+          <h1 className="max-w-3xl text-[40px] font-black leading-[0.98] tracking-normal sm:text-[48px] md:text-[64px]">
             Estrategia. Tecnologia. Produto. Impacto real<span className="text-violet">.</span>
           </h1>
-          <p className="mt-6 max-w-[540px] text-sm leading-6 text-muted md:text-base md:leading-7">
+          <p className="mt-4 text-[20px] leading-7 text-muted md:mt-5 md:text-[24px] md:leading-8">
+            AI Product Manager | Technical Product Manager
+          </p>
+          <p className="mt-4 w-full max-w-full text-sm leading-6 text-muted md:mt-5 md:max-w-[500px] md:text-base md:leading-7">
             Atuo conectando negocio, produto, design e engenharia para transformar problemas complexos em solucoes digitais
             escalaveis.
           </p>
-          <p className="mt-4 max-w-[540px] text-sm leading-6 text-muted md:text-base md:leading-7">
+          <p className="mt-4 w-full max-w-full text-sm leading-6 text-muted md:max-w-[500px] md:text-base md:leading-7">
             Com mais de 10 anos de experiencia, ja atuei em empresas privadas, governo, startups e projetos internacionais,
             sempre com foco em gerar impacto mensuravel para usuarios e organizacoes.
           </p>
-          <div className="mt-7 flex flex-col gap-3 sm:max-w-[360px] md:flex-row md:flex-wrap">
+          <div className="mt-6 grid gap-3 sm:max-w-[360px] md:mt-7 md:max-w-none md:flex md:flex-wrap md:gap-4">
             <a
-              className="inline-flex h-11 items-center justify-center gap-3 rounded-lg bg-ink px-5 text-sm font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet"
+              className="inline-flex h-11 min-w-0 items-center justify-center gap-3 rounded-lg bg-ink px-5 text-sm font-bold text-white shadow-md md:min-w-[132px]"
               href="/#cases"
             >
               Ver cases <ArrowRight size={17} />
             </a>
             <a
               aria-label="Ver perfil de Victor Sizino no LinkedIn"
-              className="inline-flex h-11 items-center justify-center gap-3 rounded-lg border border-line bg-white px-5 text-sm font-bold shadow-sm transition hover:-translate-y-0.5 hover:border-violet/40 hover:text-violet focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet"
+              className="inline-flex h-11 min-w-0 items-center justify-center gap-3 rounded-lg border border-line bg-white px-5 text-sm font-bold shadow-sm md:min-w-[132px]"
               href="https://www.linkedin.com/"
               rel="noreferrer"
               target="_blank"
@@ -37,28 +39,16 @@ export default function AboutHero() {
             </a>
           </div>
         </div>
-        <div className="relative min-h-[300px] overflow-hidden rounded-lg border border-line bg-white shadow-sm sm:min-h-[380px]">
-          <div className="dot-grid absolute inset-0 opacity-80" />
+        <div className="relative min-h-[340px] overflow-hidden sm:min-h-[400px] lg:min-h-[520px]">
+          <div className="dot-grid absolute inset-x-0 top-0 h-[300px] sm:h-[360px] lg:h-[450px]" />
           <Image
             src="/images/victor-hero-v2.png"
             alt="Victor Sizino"
             width={520}
             height={505}
             priority
-            className="absolute bottom-0 left-1/2 z-10 h-[300px] w-[330px] max-w-none -translate-x-1/2 object-contain object-bottom sm:h-[390px] sm:w-[430px]"
+            className="relative z-10 mx-auto h-[340px] w-full max-w-[420px] object-contain object-top sm:h-[400px] lg:ml-auto lg:h-[520px] lg:max-w-[620px]"
           />
-          {heroBadges.map(({ title, lines, icon: Icon, position }) => (
-            <div
-              className={`absolute z-20 hidden w-[122px] rounded-lg border border-violet/20 bg-white/92 p-4 text-xs font-black leading-4 shadow-md backdrop-blur sm:block ${position}`}
-              key={title}
-            >
-              <Icon className="mb-3 text-violet" size={24} strokeWidth={2} />
-              <p>{title}</p>
-              {lines?.map((line) => (
-                <p key={line}>{line}</p>
-              ))}
-            </div>
-          ))}
         </div>
       </div>
     </section>
