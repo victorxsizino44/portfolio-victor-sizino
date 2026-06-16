@@ -36,7 +36,7 @@ import type {
   TimelineItem,
 } from "../types/home";
 
-export const navItems: NavItem[] = ["Inicio", "Sobre", "Cases", "Experiencia", "Stack", "Contato"];
+export const navItems: NavItem[] = ["Inicio", "Sobre", "Cases", "Experiência", "Stack", "Contato"];
 
 export const skills: SkillItem[] = [
   { label: "AI Product Management", icon: Sparkles },

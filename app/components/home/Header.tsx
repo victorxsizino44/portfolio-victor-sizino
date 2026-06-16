@@ -18,7 +18,20 @@ export default function Header() {
       return "/about";
     }
 
-    return `/#${item.toLowerCase()}`;
+    if (item === "Cases") {
+      return "/cases";
+    }
+
+    if (item === "Experiência") {
+      return "/experiencia";
+    }
+
+    const anchor = item
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase();
+
+    return `/#${anchor}`;
   };
 
   const isActive = (item: string) => {
@@ -30,13 +43,21 @@ export default function Header() {
       return pathname === "/about";
     }
 
+    if (item === "Cases") {
+      return pathname === "/cases";
+    }
+
+    if (item === "Experiência") {
+      return pathname === "/experiencia";
+    }
+
     return false;
   };
 
   return (
     <header className="relative mx-auto max-w-[1096px] border-b border-line px-5 py-5 md:px-8 md:py-6">
       <div className="flex max-w-full items-center justify-between">
-        <a href="#inicio" className="text-[30px] font-black leading-none tracking-normal md:text-[32px]">
+        <a href="/" className="text-[30px] font-black leading-none tracking-normal md:text-[32px]">
           VS<span className="text-violet">.</span>
         </a>
         <nav className="hidden items-center gap-8 text-[13px] font-semibold md:flex">
@@ -61,7 +82,7 @@ export default function Header() {
         </button>
       </div>
       {isOpen ? (
-        <nav className="mt-4 grid gap-2 rounded-lg border border-line bg-white p-2 text-sm font-bold shadow-md md:hidden">
+        <nav className="fixed left-5 right-5 top-[76px] z-40 grid gap-2 rounded-lg border border-line bg-white p-2 text-sm font-bold shadow-md md:hidden">
           {navItems.map((item) => (
             <a
               className="rounded-md px-3 py-3 text-dark/80 hover:bg-canvas hover:text-ink"
