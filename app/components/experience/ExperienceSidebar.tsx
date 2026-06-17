@@ -23,7 +23,7 @@ function Badge({ children }: { children: ReactNode }) {
 function Panel({ title, children }: { title: string; children: ReactNode }) {
   return (
     <section className="card-border p-5">
-      <h2 className="text-xs font-black uppercase tracking-[0.16em] text-slate-700">{title}</h2>
+      <h2 className="text-xs font-black uppercase tracking-[0.16em] text-dark">{title}</h2>
       {children}
     </section>
   );
@@ -50,8 +50,8 @@ function MobileDisclosure({
         onClick={() => setIsOpen((value) => !value)}
         type="button"
       >
-        <span className="inline-flex items-center gap-3 text-xs font-black uppercase tracking-[0.12em] text-slate-700">
-          <span className="grid size-9 place-items-center rounded-lg bg-violet/10 text-violet">
+        <span className="inline-flex items-center gap-3 text-xs font-black uppercase tracking-[0.12em] text-dark">
+          <span className="grid size-9 place-items-center rounded-lg border border-line bg-white text-violet">
             <Icon size={18} />
           </span>
           {title}
@@ -98,8 +98,8 @@ function SegmentsPanel({ section }: { section: SidebarSection }) {
       {section.items.map((item) => {
         const Icon = segmentIcons[item as keyof typeof segmentIcons] ?? Globe2;
         return (
-          <p className="m-0 flex items-center gap-3 text-sm font-semibold text-slate-700" key={item}>
-            <span className="grid size-8 place-items-center rounded-lg bg-violet/10 text-violet">
+          <p className="m-0 flex items-center gap-3 text-sm font-semibold text-dark" key={item}>
+            <span className="grid size-8 place-items-center rounded-lg border border-line bg-white text-violet">
               <Icon size={16} />
             </span>
             {item}
@@ -114,7 +114,7 @@ function ToolsPanel() {
   return (
     <div className="mt-4 grid grid-cols-2 gap-3">
       {tools.map(({ name, icon: Icon }) => (
-        <p className="m-0 flex items-center gap-2 text-xs font-bold text-slate-700" key={name}>
+        <p className="m-0 flex items-center gap-2 text-xs font-bold text-dark" key={name}>
           <Icon className="text-violet" size={16} />
           {name}
         </p>
@@ -171,7 +171,7 @@ function PlacesPanel() {
 function SideCTA() {
   return (
     <section className="card-border p-5 text-center">
-      <span className="mx-auto grid size-12 place-items-center rounded-full bg-violet/10 text-violet">
+      <span className="mx-auto grid size-12 place-items-center rounded-lg border border-line bg-white text-violet">
         <Send size={22} />
       </span>
       <h2 className="mt-4 text-base font-black leading-6 text-ink">Vamos construir o próximo case de sucesso juntos?</h2>
@@ -179,13 +179,13 @@ function SideCTA() {
         Estou sempre aberto a novos desafios e oportunidades que geram impacto real.
       </p>
       <a
-        className="mt-5 inline-flex h-12 w-full items-center justify-center rounded-lg bg-ink px-5 text-sm font-black text-white shadow-md"
+        className="violet-button-hover mt-5 inline-flex h-12 w-full items-center justify-center rounded-lg border border-ink bg-ink px-5 text-sm font-black text-white shadow-md"
         href="/cases"
       >
         Ver meus cases
       </a>
       <a
-        className="mt-3 inline-flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-white px-5 text-sm font-black text-ink"
+        className="standard-hover mt-3 inline-flex h-11 w-full items-center justify-center gap-2 rounded-lg border border-line bg-white px-5 text-sm font-black text-ink shadow-sm"
         href="mailto:contato@victorsizino.com"
       >
         Falar comigo <ExternalLink size={15} />

@@ -18,19 +18,19 @@ export default function HeroSection() {
           </p>
           <div className="mt-6 grid gap-3 sm:max-w-[360px] md:mt-7 md:max-w-none md:flex md:flex-wrap md:gap-4">
             <a
-              className="inline-flex h-11 min-w-0 items-center justify-center gap-3 rounded-lg bg-ink px-5 text-sm font-bold text-white shadow-md md:min-w-[132px]"
+              className="violet-button-hover inline-flex h-11 min-w-0 items-center justify-center gap-3 rounded-lg border border-ink bg-ink px-5 text-sm font-bold text-white shadow-md md:min-w-[132px]"
               href="#cases"
             >
               Ver Cases <ArrowRight size={17} />
             </a>
             <a
-              className="inline-flex h-11 min-w-0 items-center justify-center gap-3 rounded-lg border border-line bg-white px-5 text-sm font-bold shadow-sm md:min-w-[154px]"
+              className="standard-hover inline-flex h-11 min-w-0 items-center justify-center gap-3 rounded-lg border border-line bg-white px-5 text-sm font-bold shadow-sm md:min-w-[154px]"
               href="#agente-r"
             >
               Conversar com Agente R <MessageCircle size={16} />
             </a>
             <a
-              className="inline-flex h-11 min-w-0 items-center justify-center gap-3 rounded-lg border border-line bg-white px-5 text-sm font-bold shadow-sm md:min-w-[132px]"
+              className="standard-hover inline-flex h-11 min-w-0 items-center justify-center gap-3 rounded-lg border border-line bg-white px-5 text-sm font-bold shadow-sm md:min-w-[132px]"
               href="/victor-sizino-cv.pdf"
             >
               Baixar CV <Download size={16} />

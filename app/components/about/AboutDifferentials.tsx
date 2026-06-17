@@ -8,8 +8,8 @@ export default function AboutDifferentials() {
       <AboutSectionTitle eyebrow="O que me diferencia" />
       <div className="mt-6 grid gap-3 md:grid-cols-2 lg:grid-cols-4">
         {differentials.map(({ title, description, icon: Icon }) => (
-          <article className="card-border p-5 transition hover:-translate-y-0.5 hover:border-violet/35 hover:shadow-md" key={title}>
-            <span className="grid size-11 place-items-center rounded-full bg-violet/10 text-violet">
+          <article className="card-border standard-hover p-5" key={title}>
+            <span className="grid size-11 place-items-center rounded-lg border border-line bg-white text-violet">
               <Icon size={21} strokeWidth={2} />
             </span>
             <div className="mt-5 flex items-center justify-between gap-3">

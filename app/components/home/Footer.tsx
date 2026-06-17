@@ -2,7 +2,7 @@ import { Mail } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="mx-auto flex max-w-[1096px] flex-col items-start gap-5 px-5 py-7 md:flex-row md:items-center md:justify-between md:gap-6 md:px-8">
+    <footer className="mx-auto flex max-w-[1096px] flex-col items-start gap-5 border-t border-line px-5 py-7 md:flex-row md:items-center md:justify-between md:gap-6 md:px-8">
       <p className="text-[30px] font-black leading-none">
         VS<span className="text-violet">.</span>
       </p>

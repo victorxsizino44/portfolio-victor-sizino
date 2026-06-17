@@ -26,7 +26,7 @@ export default function Header() {
       return "/experiencia";
     }
 
-    if (item === "Stack") {
+    if (item === "Skill & Stack") {
       return "/stack";
     }
 
@@ -55,7 +55,7 @@ export default function Header() {
       return pathname === "/experiencia";
     }
 
-    if (item === "Stack") {
+    if (item === "Skill & Stack") {
       return pathname === "/stack";
     }
 

@@ -13,7 +13,7 @@ function SkillsContent({ category, compact = false }: { category: StackCategory;
           ) : null}
           <ul className={compact ? "grid gap-2 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2" : "grid gap-2"}>
             {group.skills.map((skill) => (
-              <li className="flex min-w-0 items-start gap-2 text-xs font-semibold leading-5 text-slate-700" key={skill}>
+              <li className="flex min-w-0 items-start gap-2 text-xs font-semibold leading-5 text-muted" key={skill}>
                 <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-violet" aria-hidden="true" />
                 {skill}
               </li>
@@ -34,18 +34,18 @@ type StackCategoryCardProps = {
 
 export default function StackCategoryCard({ category, compact = false, index, mode = "all" }: StackCategoryCardProps) {
   const Icon = category.icon;
-  const featuredClasses = category.featured && !compact ? "border-violet/20 bg-white shadow-md" : "bg-white";
+  const featuredClasses = category.featured && !compact ? "border-violet/35 bg-white shadow-md" : "bg-white";
   const desktopVisibility = mode === "mobile" ? "hidden" : "hidden md:block";
   const mobileVisibility = mode === "desktop" ? "hidden" : "md:hidden";
 
   return (
     <>
       <article
-        className={`card-border min-h-[280px] p-5 transition hover:-translate-y-0.5 hover:border-violet/30 hover:shadow-md ${desktopVisibility} ${featuredClasses}`}
+        className={`card-border standard-hover min-h-[280px] p-5 ${desktopVisibility} ${featuredClasses}`}
       >
         <div className="flex items-start justify-between gap-4">
           <div className="flex min-w-0 items-center gap-4">
-            <span className="grid size-11 shrink-0 place-items-center rounded-lg bg-violet/10 text-violet">
+            <span className="grid size-11 shrink-0 place-items-center rounded-lg border border-line bg-white text-violet">
               <Icon aria-hidden="true" size={21} strokeWidth={2} />
             </span>
             <h3 className="text-base font-black uppercase leading-6 text-ink">{category.title}</h3>
@@ -60,7 +60,7 @@ export default function StackCategoryCard({ category, compact = false, index, mo
       <details className={`card-border group overflow-hidden ${mobileVisibility}`}>
         <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-4 marker:hidden">
           <span className="flex min-w-0 items-center gap-3">
-            <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-violet/10 text-violet">
+            <span className="grid size-10 shrink-0 place-items-center rounded-lg border border-line bg-white text-violet">
               <Icon aria-hidden="true" size={19} strokeWidth={2} />
             </span>
             {typeof index === "number" ? <span className="text-sm font-black text-violet">{index + 1}</span> : null}

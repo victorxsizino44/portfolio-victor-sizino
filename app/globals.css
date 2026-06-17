@@ -91,6 +91,48 @@ a {
   background: #ffffff;
 }
 
+.standard-hover {
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.standard-hover:hover,
+.standard-hover:focus-visible {
+  border-color: rgba(99, 102, 241, 0.42);
+  box-shadow: 0 12px 24px rgba(99, 102, 241, 0.1);
+  transform: translateY(-2px);
+}
+
+.standard-hover:focus-visible {
+  outline: 2px solid rgba(99, 102, 241, 0.32);
+  outline-offset: 3px;
+}
+
+.violet-button-hover {
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.violet-button-hover:hover,
+.violet-button-hover:focus-visible {
+  border-color: #6366f1;
+  background: #6366f1;
+  color: #ffffff;
+  box-shadow: 0 12px 24px rgba(99, 102, 241, 0.1);
+  transform: translateY(-2px);
+}
+
+.violet-button-hover:focus-visible {
+  outline: 2px solid rgba(99, 102, 241, 0.32);
+  outline-offset: 3px;
+}
+
 .certifications-carousel {
   scrollbar-width: thin;
   scrollbar-color: #6366f1 #eef0ff;
@@ -171,6 +213,16 @@ a {
   border-radius: 8px;
   background: #0d0d0f;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.case-card:hover,
+.case-card:focus-within {
+  box-shadow: 0 12px 24px rgba(99, 102, 241, 0.1);
+  transform: translateY(-2px);
 }
 
 .case-card-image {
@@ -441,6 +493,25 @@ a {
   font-weight: 800;
   white-space: nowrap;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.contact-button:hover,
+.contact-button:focus-visible {
+  background: #6366f1;
+  color: #ffffff;
+  box-shadow: 0 12px 24px rgba(99, 102, 241, 0.1);
+  transform: translateY(-2px);
+}
+
+.contact-button:focus-visible {
+  outline: 2px solid rgba(99, 102, 241, 0.32);
+  outline-offset: 3px;
 }
 
 .contact-illustration {

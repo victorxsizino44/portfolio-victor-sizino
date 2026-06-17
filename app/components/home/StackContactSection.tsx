@@ -3,7 +3,7 @@ import { stack } from "../../data/home";
 
 export default function StackContactSection() {
   return (
-    <section id="stack" className="mx-auto grid max-w-[1096px] gap-10 border-y border-line px-5 py-9 md:px-8 lg:grid-cols-2">
+    <section id="stack" className="mx-auto grid max-w-[1096px] gap-10 border-t border-line px-5 py-9 md:px-8 lg:grid-cols-2">
       <div>
         <p className="section-label">Stack & ferramentas</p>
         <div className="mt-6 grid grid-cols-2 gap-3 min-[390px]:grid-cols-3 sm:grid-cols-4">

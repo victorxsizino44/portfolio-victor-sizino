@@ -20,7 +20,7 @@ export default function ExperienciaPage() {
       <Header />
       <main>
         <ExperienceHero />
-        <div className="mx-auto grid max-w-[1096px] gap-6 px-5 pb-10 md:px-8 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start">
+        <div className="mx-auto grid max-w-[1096px] gap-6 px-5 pb-10 pt-6 md:px-8 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-start">
           <div className="grid min-w-0 gap-6">
             <ImpactHighlights />
             <div className="lg:hidden">
