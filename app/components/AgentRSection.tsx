@@ -26,10 +26,14 @@ export function AgentRSection() {
   const [messages, setMessages] = useState<Message[]>([initialMessage]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  const messagesRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+    const messagesElement = messagesRef.current;
+
+    if (!messagesElement) return;
+
+    messagesElement.scrollTop = messagesElement.scrollHeight;
   }, [messages, loading]);
 
   const sendMessage = async () => {
@@ -149,7 +153,7 @@ export function AgentRSection() {
             </div>
           </div>
 
-          <div className="agent-messages" aria-live="polite">
+          <div className="agent-messages" aria-live="polite" ref={messagesRef}>
             {messages.map((message, index) => (
               <div
                 className={`agent-message ${
@@ -172,7 +176,6 @@ export function AgentRSection() {
                 </span>
               </div>
             )}
-            <div ref={messagesEndRef} />
           </div>
 
           <form className="agent-input" onSubmit={handleSubmit}>

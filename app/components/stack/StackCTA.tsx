@@ -3,9 +3,9 @@ import { stackCtaIcon as Icon } from "../../data/stack";
 
 export default function StackCTA() {
   return (
-    <section className="flex flex-col gap-6 rounded-lg border border-violet/15 bg-violet/10 p-6 md:flex-row md:items-center md:justify-between md:p-8">
+    <section className="card-border flex flex-col gap-6 p-6 md:flex-row md:items-center md:justify-between md:p-8">
       <div className="flex min-w-0 gap-5">
-        <span className="grid size-14 shrink-0 place-items-center rounded-lg bg-white text-violet shadow-sm">
+        <span className="grid size-14 shrink-0 place-items-center rounded-lg border border-line bg-white text-violet">
           <Icon aria-hidden="true" size={25} strokeWidth={2} />
         </span>
         <div>
@@ -16,7 +16,7 @@ export default function StackCTA() {
         </div>
       </div>
       <a
-        className="inline-flex h-12 w-full items-center justify-center gap-3 rounded-lg bg-ink px-5 text-sm font-black text-white shadow-md transition hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet md:w-auto"
+        className="standard-hover inline-flex h-12 w-full items-center justify-center gap-3 rounded-lg border border-ink bg-ink px-5 text-sm font-black text-white shadow-md md:w-auto"
         href="/#contato"
       >
         Entrar em contato <ArrowRight aria-hidden="true" size={17} />

@@ -12,7 +12,7 @@ export default function CertificationsSection() {
           <div className="flex min-w-max">
             {certifications.map(({ year, title, institution }) => (
               <article className="relative flex min-h-[112px] w-[278px] shrink-0 items-center gap-4 p-4" key={title}>
-                <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-violet/10 text-violet ring-1 ring-violet/15">
+                <span className="grid size-10 shrink-0 place-items-center rounded-lg border border-line bg-white text-violet">
                   <FileBadge aria-hidden="true" size={19} strokeWidth={2} />
                 </span>
                 <div className="min-w-0">
@@ -26,13 +26,13 @@ export default function CertificationsSection() {
             ))}
           </div>
         </div>
-        <article className="flex min-h-[112px] items-center gap-4 rounded-lg border border-violet/20 bg-violet/5 p-4">
-          <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-white text-violet shadow-sm ring-1 ring-violet/15">
+        <article className="flex min-h-[112px] items-center gap-4 rounded-lg border border-line bg-white p-4 shadow-sm">
+          <span className="grid size-10 shrink-0 place-items-center rounded-lg border border-line bg-white text-violet">
             <Star aria-hidden="true" size={20} strokeWidth={2} />
           </span>
           <div className="min-w-0">
-            <h3 className="text-xs font-black leading-5 text-violet md:text-[13px]">{continuousLearningCard.title}</h3>
-            <p className="mt-2 text-xs font-semibold leading-5 text-slate-700">{continuousLearningCard.description}</p>
+            <h3 className="text-xs font-black leading-5 text-ink md:text-[13px]">{continuousLearningCard.title}</h3>
+            <p className="mt-2 text-xs font-semibold leading-5 text-muted">{continuousLearningCard.description}</p>
           </div>
         </article>
       </div>

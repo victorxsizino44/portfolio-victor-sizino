@@ -4,7 +4,7 @@ import ExperienceStats from "./ExperienceStats";
 
 export default function ExperienceHero() {
   return (
-    <section id="inicio" className="mx-auto max-w-[1096px] px-5 pb-8 pt-9 md:px-8 md:pt-12">
+    <section id="inicio" className="mx-auto max-w-[1096px] border-b border-line px-5 pb-8 pt-9 md:px-8 md:pt-12">
       <div className="grid items-end gap-8 lg:grid-cols-[1fr_470px]">
         <div className="min-w-0">
           <p className="mb-5 text-xs font-black uppercase tracking-[0.18em] text-violet">Experiência</p>
@@ -20,7 +20,7 @@ export default function ExperienceHero() {
           </div>
         </div>
         <div className="relative min-h-[360px] overflow-hidden md:min-h-[470px]">
-          <div className="dot-grid absolute inset-x-0 top-0 h-[360px] rounded-3xl opacity-80 md:h-[440px]" />
+          <div className="dot-grid absolute inset-x-0 top-0 h-[360px] opacity-80 md:h-[440px]" />
           <Image
             src="/images/victor-hero-v2.png"
             alt="Victor Sizino em foto de perfil profissional"
@@ -32,7 +32,7 @@ export default function ExperienceHero() {
           {floatingCards.map(({ title, description, icon: Icon }, index) => (
             <div
               className={[
-                "absolute z-20 hidden w-[138px] rotate-[-2deg] rounded-xl border border-violet/20 bg-white/92 p-4 shadow-lg backdrop-blur md:block",
+                "absolute z-20 hidden w-[138px] rotate-[-2deg] rounded-lg border border-line bg-white p-4 shadow-md md:block",
                 index === 0 ? "left-3 top-16" : "",
                 index === 1 ? "left-5 top-[205px]" : "",
                 index === 2 ? "right-2 top-28 rotate-[6deg]" : "",

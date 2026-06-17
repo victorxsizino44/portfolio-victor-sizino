@@ -16,8 +16,8 @@ function Badge({ children }: { children: ReactNode }) {
 
 export default function InternationalExperience() {
   return (
-    <section id="experiencia-internacional" aria-labelledby="international-title">
-      <h2 id="international-title" className="text-xs font-black uppercase tracking-[0.16em] text-slate-700">
+    <section id="experiencia-internacional" className="border-b border-line pb-6" aria-labelledby="international-title">
+      <h2 id="international-title" className="text-xs font-black uppercase tracking-[0.16em] text-dark">
         Experiência internacional
       </h2>
       <div className="mt-5 grid gap-5">
@@ -44,7 +44,7 @@ function InternationalExperienceCard({ defaultOpen = false, item }: { defaultOpe
         type="button"
       >
         <div>
-          <div className="flex h-[74px] w-[128px] items-center justify-center rounded-xl bg-white">
+          <div className="flex h-[74px] w-[128px] items-center justify-center rounded-lg border border-line bg-white">
             <Image
               src={item.logo}
               alt={`Logo ${item.company}`}
@@ -77,7 +77,7 @@ function InternationalExperienceCard({ defaultOpen = false, item }: { defaultOpe
             </div>
           </div>
           <div className="min-w-0">
-            <p className="text-[11px] font-black uppercase tracking-[0.12em] text-slate-700">Stack</p>
+            <p className="text-[11px] font-black uppercase tracking-[0.12em] text-dark">Stack</p>
             <div className="mt-3 flex flex-wrap gap-2">
               {item.stack.slice(0, isOpen ? item.stack.length : 4).map((badge) => (
                 <Badge key={badge}>{badge}</Badge>
@@ -85,7 +85,7 @@ function InternationalExperienceCard({ defaultOpen = false, item }: { defaultOpe
             </div>
           </div>
         </div>
-        <span className="absolute right-5 top-5 grid size-9 place-items-center rounded-full border border-line bg-white text-ink transition group-hover:border-violet/35 md:static md:size-8">
+        <span className="absolute right-5 top-5 grid size-9 place-items-center rounded-lg border border-line bg-white text-ink transition group-hover:border-violet/35 md:static md:size-8">
           <ChevronDown className={isOpen ? "rotate-180 transition" : "transition"} size={16} />
         </span>
       </button>
@@ -94,12 +94,12 @@ function InternationalExperienceCard({ defaultOpen = false, item }: { defaultOpe
           <div className="hidden md:block" />
           <div className="grid min-w-0 gap-5 md:border-l md:border-line md:pl-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
             <div className="min-w-0">
-              <p className="text-[11px] font-black uppercase tracking-[0.12em] text-slate-700">Projeto de destaque</p>
+              <p className="text-[11px] font-black uppercase tracking-[0.12em] text-dark">Projeto de destaque</p>
               <h3 className="mt-3 text-base font-black text-ink">{item.featuredProject}</h3>
               <p className="mt-3 text-xs leading-5 text-muted">{item.projectDescription}</p>
             </div>
             <div className="min-w-0">
-              <p className="text-[11px] font-black uppercase tracking-[0.12em] text-slate-700">Principal aprendizado</p>
+              <p className="text-[11px] font-black uppercase tracking-[0.12em] text-dark">Principal aprendizado</p>
               <p className="mt-3 text-xs leading-5 text-muted">{item.learning}</p>
               <p className="mt-4 inline-flex items-center gap-2 text-xs font-bold text-muted">
                 <Users size={14} className="text-violet" /> {item.team}

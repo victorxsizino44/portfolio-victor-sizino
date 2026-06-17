@@ -3,8 +3,8 @@ import ExperienceCard from "./ExperienceCard";
 
 export default function ExperienceTimeline() {
   return (
-    <section id="minha-trajetoria" aria-labelledby="experience-timeline-title">
-      <h2 id="experience-timeline-title" className="text-xs font-black uppercase tracking-[0.16em] text-slate-700">
+    <section id="minha-trajetoria" className="border-b border-line pb-6" aria-labelledby="experience-timeline-title">
+      <h2 id="experience-timeline-title" className="text-xs font-black uppercase tracking-[0.16em] text-dark">
         Minha trajetória
       </h2>
       <div className="relative mt-5 grid gap-4 md:gap-0">

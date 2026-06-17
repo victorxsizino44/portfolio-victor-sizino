@@ -21,7 +21,7 @@ function Badge({ children }: { children: ReactNode }) {
 
 function Logo({ experience }: { experience: ProfessionalExperience }) {
   return (
-    <div className="flex h-[74px] w-[128px] flex-none items-center justify-center rounded-xl bg-white">
+    <div className="flex h-[74px] w-[128px] flex-none items-center justify-center rounded-lg border border-line bg-white">
       {experience.logo ? (
         <Image
           src={experience.logo}
@@ -64,7 +64,7 @@ export default function ExperienceCard({ experience, defaultOpen = false }: Expe
               {!isOpen ? <p className="mt-3 text-[11px] leading-5 text-muted">{experience.context}</p> : null}
             </div>
             <div className="min-w-0">
-              <p className="m-0 text-[11px] font-black uppercase tracking-[0.12em] text-slate-700">Segmento</p>
+              <p className="m-0 text-[11px] font-black uppercase tracking-[0.12em] text-dark">Segmento</p>
               <div className="mt-3">
                 <Badge>{experience.segment}</Badge>
               </div>
@@ -73,7 +73,7 @@ export default function ExperienceCard({ experience, defaultOpen = false }: Expe
               </p>
             </div>
             <div className="min-w-0">
-              <p className="m-0 text-[11px] font-black uppercase tracking-[0.12em] text-slate-700">Stack</p>
+              <p className="m-0 text-[11px] font-black uppercase tracking-[0.12em] text-dark">Stack</p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {experience.stack.slice(0, isOpen ? experience.stack.length : 3).map((item) => (
                   <Badge key={item}>{item}</Badge>
@@ -81,7 +81,7 @@ export default function ExperienceCard({ experience, defaultOpen = false }: Expe
               </div>
             </div>
           </div>
-          <span className="grid size-8 place-items-center rounded-full border border-line bg-white text-ink transition group-hover:border-violet/35">
+          <span className="grid size-8 place-items-center rounded-lg border border-line bg-white text-ink transition group-hover:border-violet/35">
             <ChevronDown className={isOpen ? "rotate-180 transition" : "transition"} size={16} />
           </span>
         </button>
@@ -90,14 +90,14 @@ export default function ExperienceCard({ experience, defaultOpen = false }: Expe
             <div className="hidden md:block" />
             <div className="grid min-w-0 gap-5 border-l border-line pl-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,0.85fr)]">
               <div className="min-w-0">
-                <p className="m-0 text-[11px] font-black uppercase tracking-[0.12em] text-slate-700">Contexto</p>
+                <p className="m-0 text-[11px] font-black uppercase tracking-[0.12em] text-dark">Contexto</p>
                 <p className="mt-3 text-xs leading-5 text-muted">{experience.context}</p>
                 <div className="mt-4">
                   <Badge>{experience.badge}</Badge>
                 </div>
               </div>
               <div className="min-w-0">
-                <p className="m-0 text-[11px] font-black uppercase tracking-[0.12em] text-slate-700">Meu papel</p>
+                <p className="m-0 text-[11px] font-black uppercase tracking-[0.12em] text-dark">Meu papel</p>
                 <ul className="mt-3 space-y-1.5 pl-4 text-xs leading-5 text-ink">
                   {experience.responsibilities.map((item) => (
                     <li key={item}>{item}</li>
@@ -105,7 +105,7 @@ export default function ExperienceCard({ experience, defaultOpen = false }: Expe
                 </ul>
               </div>
               <div className="min-w-0">
-                <p className="m-0 text-[11px] font-black uppercase tracking-[0.12em] text-slate-700">
+                <p className="m-0 text-[11px] font-black uppercase tracking-[0.12em] text-dark">
                   Principal resultado
                 </p>
                 <p className="mt-3 text-xs leading-5 text-muted">{experience.result}</p>
@@ -139,20 +139,20 @@ export default function ExperienceCard({ experience, defaultOpen = false }: Expe
               <Badge>{experience.segment}</Badge>
             </div>
           </div>
-          <span className="grid size-9 flex-none place-items-center rounded-full border border-line bg-canvas text-ink">
+          <span className="grid size-9 flex-none place-items-center rounded-lg border border-line bg-canvas text-ink">
             <ChevronDown className={isOpen ? "rotate-180 transition" : "transition"} size={16} />
           </span>
         </button>
         {isOpen ? (
           <div className="mt-5 border-t border-line pt-5" id={mobilePanelId}>
             <p className="text-xs leading-5 text-muted">{experience.context}</p>
-            <p className="mt-5 text-[11px] font-black uppercase tracking-[0.12em] text-slate-700">Meu papel</p>
+            <p className="mt-5 text-[11px] font-black uppercase tracking-[0.12em] text-dark">Meu papel</p>
             <ul className="mt-3 space-y-1.5 pl-4 text-xs leading-5 text-ink">
               {experience.responsibilities.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
-            <p className="mt-5 text-[11px] font-black uppercase tracking-[0.12em] text-slate-700">
+            <p className="mt-5 text-[11px] font-black uppercase tracking-[0.12em] text-dark">
               Principal resultado
             </p>
             <p className="mt-3 text-xs leading-5 text-muted">{experience.result}</p>

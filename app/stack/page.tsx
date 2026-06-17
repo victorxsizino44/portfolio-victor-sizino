@@ -35,41 +35,33 @@ export default function StackPage() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-canvas text-ink">
       <Header />
-      <main className="mx-auto max-w-[1400px] px-5 pb-10 md:px-8">
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px] lg:items-stretch">
-          <div className="min-w-0">
-            <StackHero />
-            <StackStats />
-            <div className="mt-6 grid gap-6">
-              <div className="lg:hidden">
-                <CoreCompetencies variant="mobile" />
+      <main className="mx-auto max-w-[1096px] px-5 pb-10 md:px-8">
+        <div className="min-w-0">
+          <StackHero />
+          <StackStats />
+          <div className="grid gap-6">
+            <ProficiencyLegend />
+            <section aria-labelledby="stack-categories-title" className="border-b border-line pb-6">
+              <h2 id="stack-categories-title" className="sr-only">
+                Categorias principais de stack
+              </h2>
+              <div className="hidden gap-4 md:grid md:grid-cols-2 xl:grid-cols-3">
+                <CoreCompetencies variant="desktop" />
+                {orderedCategories.map((category, index) => (
+                  <StackCategoryCard category={category} index={index} key={category.title} mode="desktop" />
+                ))}
               </div>
-              <ProficiencyLegend />
-              <section aria-labelledby="stack-categories-title">
-                <h2 id="stack-categories-title" className="sr-only">
-                  Categorias principais de stack
-                </h2>
-                <div className="hidden gap-4 md:grid md:grid-cols-2 xl:grid-cols-3">
-                  {orderedCategories.map((category, index) => (
-                    <StackCategoryCard category={category} index={index} key={category.title} mode="desktop" />
-                  ))}
-                </div>
-                <div className="grid gap-3 md:hidden">
-                  {orderedCategories.map((category, index) => (
-                    <StackCategoryCard category={category} index={index} key={category.title} mode="mobile" />
-                  ))}
-                </div>
-              </section>
-              <CertificationsSection />
-              <ValueSection />
-              <StackCTA />
-            </div>
+              <div className="grid gap-3 md:hidden">
+                <CoreCompetencies variant="mobile" />
+                {orderedCategories.map((category, index) => (
+                  <StackCategoryCard category={category} index={index} key={category.title} mode="mobile" />
+                ))}
+              </div>
+            </section>
+            <CertificationsSection />
+            <ValueSection />
+            <StackCTA />
           </div>
-          <aside className="hidden self-stretch lg:block">
-            <div className="sticky top-6 pt-10">
-              <CoreCompetencies variant="desktop" />
-            </div>
-          </aside>
         </div>
       </main>
       <Footer />

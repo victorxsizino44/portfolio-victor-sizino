@@ -4,7 +4,7 @@ export default function ExperienceCTA() {
   return (
     <section className="card-border p-5 md:flex md:items-center md:justify-between md:gap-8 md:p-6">
       <div className="flex min-w-0 items-start gap-4">
-        <span className="grid size-12 flex-none place-items-center rounded-full bg-violet/10 text-violet">
+        <span className="grid size-12 flex-none place-items-center rounded-lg border border-line bg-white text-violet">
           <Send size={22} />
         </span>
         <div className="min-w-0">
@@ -16,13 +16,13 @@ export default function ExperienceCTA() {
       </div>
       <div className="mt-5 grid gap-3 sm:grid-cols-2 md:mt-0 md:flex md:flex-none">
         <a
-          className="inline-flex h-12 items-center justify-center gap-3 rounded-lg bg-ink px-6 text-sm font-black text-white shadow-md"
+          className="violet-button-hover inline-flex h-12 items-center justify-center gap-3 rounded-lg border border-ink bg-ink px-6 text-sm font-black text-white shadow-md"
           href="/cases"
         >
           Ver meus cases <ArrowRight size={16} />
         </a>
         <a
-          className="inline-flex h-12 items-center justify-center gap-3 rounded-lg border border-line bg-white px-6 text-sm font-black text-ink shadow-sm"
+          className="standard-hover inline-flex h-12 items-center justify-center gap-3 rounded-lg border border-line bg-white px-6 text-sm font-black text-ink shadow-sm"
           href="mailto:contato@victorsizino.com"
         >
           Falar comigo <ExternalLink size={15} />

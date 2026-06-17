@@ -16,7 +16,7 @@ export default function AboutWorkStyle() {
       <div className="mt-6 grid gap-3 sm:grid-cols-2">
         {workStyles.map(({ title, description, icon: Icon }) => (
           <article className="card-border p-5" key={title}>
-            <span className="grid size-10 place-items-center rounded-full bg-violet/10 text-violet">
+            <span className="grid size-10 place-items-center rounded-lg border border-line bg-white text-violet">
               <Icon size={19} strokeWidth={2} />
             </span>
             <h2 className="mt-4 text-sm font-black leading-5">{title}</h2>

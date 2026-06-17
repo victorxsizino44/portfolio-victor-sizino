@@ -8,7 +8,7 @@ export default function AboutHighlights() {
       <div className="mt-6 grid gap-3">
         {journeyHighlights.map(({ title, description, icon: Icon }) => (
           <article className="card-border flex gap-4 p-5" key={title}>
-            <span className="grid size-10 shrink-0 place-items-center rounded-full bg-violet/10 text-violet">
+            <span className="grid size-10 shrink-0 place-items-center rounded-lg border border-line bg-white text-violet">
               <Icon size={18} strokeWidth={2} />
             </span>
             <div>

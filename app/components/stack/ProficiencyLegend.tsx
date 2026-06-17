@@ -11,13 +11,13 @@ const proficiencyIcons = {
 
 export default function ProficiencyLegend() {
   return (
-    <section className="hidden md:block" aria-labelledby="proficiency-title">
-      <div className="mb-3 flex items-center gap-3">
+    <section className="hidden border-b border-line py-6 md:block" aria-labelledby="proficiency-title">
+      <div className="mb-4 flex items-center gap-3">
         <span className="h-5 w-0.5 rounded-full bg-violet" aria-hidden="true" />
         <h2 id="proficiency-title" className="m-0 text-xs font-black uppercase tracking-[0.12em] text-ink">
           Niveis de proficiencia
         </h2>
-        <span className="grid size-4 place-items-center rounded-lg border border-line text-[10px] font-black text-muted">
+        <span className="grid size-4 place-items-center rounded-lg border border-violet/35 text-[10px] font-black text-violet">
           i
         </span>
       </div>
@@ -30,12 +30,12 @@ export default function ProficiencyLegend() {
               className="flex min-w-0 items-start gap-4 border-b border-line p-4 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0"
               key={level}
             >
-              <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-violet/10 text-violet ring-1 ring-violet/15">
+              <span className="grid size-9 shrink-0 place-items-center rounded-lg border border-line bg-white text-violet">
                 <Icon aria-hidden="true" size={18} strokeWidth={2.2} />
               </span>
               <div className="min-w-0">
                 <LevelBadge level={level} />
-                <p className="m-0 mt-2 text-xs font-semibold leading-5 text-slate-700">{description}</p>
+                <p className="m-0 mt-2 text-xs font-semibold leading-5 text-muted">{description}</p>
               </div>
             </div>
           );
