@@ -208,6 +208,7 @@ a {
 
 .case-card {
   position: relative;
+  display: block;
   height: 344px;
   overflow: hidden;
   border-radius: 8px;

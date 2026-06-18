@@ -52,7 +52,7 @@ export default function Header() {
     }
 
     if (item === "Cases") {
-      return pathname === "/cases";
+      return pathname.startsWith("/cases");
     }
 
     if (item === "Experiência") {
