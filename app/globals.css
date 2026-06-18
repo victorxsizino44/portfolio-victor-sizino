@@ -485,6 +485,7 @@ a {
   justify-content: center;
   gap: 14px;
   margin-top: 24px;
+  border: 1px solid transparent;
   border-radius: 8px;
   background: #0d0d0f;
   padding: 0 28px;
@@ -503,6 +504,7 @@ a {
 
 .contact-button:hover,
 .contact-button:focus-visible {
+  border-color: transparent;
   background: #6366f1;
   color: #ffffff;
   box-shadow: 0 12px 24px rgba(99, 102, 241, 0.1);
@@ -777,11 +779,12 @@ a {
 
 .agent-mascot {
   position: absolute;
-  right: -8px;
-  bottom: -14px;
+  right: -190px;
+  bottom: 0;
   z-index: 1;
-  width: 230px;
-  height: auto;
+  width: auto;
+  height: revert-rule;
+  -o-object-fit: contain;
   object-fit: contain;
   filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.12));
 }
@@ -1399,9 +1402,11 @@ a {
     right: auto;
     bottom: auto;
     order: 2;
-    width: min(260px, 74vw);
-    margin: 20px auto 6px;
-    transform: none;
+    width: min(340px, 92vw);
+    max-width: 100%;
+    margin: 22px auto 36px;
+    transform: scale(2.04);
+    transform-origin: center center;
   }
 
   .agent-chat {

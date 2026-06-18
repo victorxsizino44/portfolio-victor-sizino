@@ -30,6 +30,10 @@ export default function Header() {
       return "/stack";
     }
 
+    if (item === "Contato") {
+      return "/contato";
+    }
+
     const anchor = item
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
@@ -57,6 +61,10 @@ export default function Header() {
 
     if (item === "Skill & Stack") {
       return pathname === "/stack";
+    }
+
+    if (item === "Contato") {
+      return pathname === "/contato";
     }
 
     return false;
