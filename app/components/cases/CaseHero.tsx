@@ -10,12 +10,12 @@ type CaseHeroProps = {
 
 export default function CaseHero({ item }: CaseHeroProps) {
   return (
-    <section className="pt-7 md:pt-10">
+    <section className="pt-9 md:pt-12">
       <Link
         className="inline-flex items-center gap-2 text-sm font-bold text-violet outline-offset-4 transition-colors hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-violet/40"
         href="/cases"
       >
-        <ArrowLeft size={16} strokeWidth={2.4} />
+        <ArrowLeft className="text-ink" size={16} strokeWidth={2.4} />
         Voltar para cases
       </Link>
 

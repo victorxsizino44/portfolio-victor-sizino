@@ -5,7 +5,7 @@ export default function StackCTA() {
   return (
     <section className="card-border flex flex-col gap-6 p-6 md:flex-row md:items-center md:justify-between md:p-8">
       <div className="flex min-w-0 gap-5">
-        <span className="grid size-14 shrink-0 place-items-center rounded-lg border border-line bg-white text-violet">
+        <span className="grid size-14 shrink-0 place-items-center rounded-lg border border-line bg-canvas text-ink">
           <Icon aria-hidden="true" size={25} strokeWidth={2} />
         </span>
         <div>

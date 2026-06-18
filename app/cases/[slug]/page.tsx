@@ -75,7 +75,7 @@ export default async function CaseDetailsPage({ params }: CasePageProps) {
               <ul className="mt-5 grid gap-3">
                 {item.myRoleBullets.map((bullet) => (
                   <li className="flex items-start gap-2" key={bullet}>
-                    <CircleCheck className="mt-0.5 flex-none text-violet" size={16} strokeWidth={2.4} />
+                    <CircleCheck className="mt-0.5 flex-none text-ink" size={16} strokeWidth={2.4} />
                     <span>{bullet}</span>
                   </li>
                 ))}

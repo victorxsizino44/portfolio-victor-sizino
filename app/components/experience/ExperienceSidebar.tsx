@@ -51,7 +51,7 @@ function MobileDisclosure({
         type="button"
       >
         <span className="inline-flex items-center gap-3 text-xs font-black uppercase tracking-[0.12em] text-dark">
-          <span className="grid size-9 place-items-center rounded-lg border border-line bg-white text-violet">
+          <span className="grid size-9 place-items-center rounded-lg border border-line bg-canvas text-ink">
             <Icon size={18} />
           </span>
           {title}
@@ -99,7 +99,7 @@ function SegmentsPanel({ section }: { section: SidebarSection }) {
         const Icon = segmentIcons[item as keyof typeof segmentIcons] ?? Globe2;
         return (
           <p className="m-0 flex items-center gap-3 text-sm font-semibold text-dark" key={item}>
-            <span className="grid size-8 place-items-center rounded-lg border border-line bg-white text-violet">
+            <span className="grid size-8 place-items-center rounded-lg border border-line bg-canvas text-ink">
               <Icon size={16} />
             </span>
             {item}
@@ -115,7 +115,7 @@ function ToolsPanel() {
     <div className="mt-4 grid grid-cols-2 gap-3">
       {tools.map(({ name, icon: Icon }) => (
         <p className="m-0 flex items-center gap-2 text-xs font-bold text-dark" key={name}>
-          <Icon className="text-violet" size={16} />
+          <Icon className="text-ink" size={16} />
           {name}
         </p>
       ))}
@@ -138,7 +138,7 @@ function PlacesPanel() {
       <div className="grid gap-4 text-xs leading-5 sm:grid-cols-3">
         <p className="m-0 text-muted">
           <a
-            className="block text-sm font-black text-violet outline-none hover:underline focus-visible:rounded focus-visible:ring-2 focus-visible:ring-violet/40 focus-visible:ring-offset-2"
+            className="block text-sm font-black text-violet outline-none transition-colors hover:text-ink focus-visible:rounded focus-visible:ring-2 focus-visible:ring-violet/40 focus-visible:ring-offset-2"
             href="#minha-trajetoria"
           >
             Brasil
@@ -147,7 +147,7 @@ function PlacesPanel() {
         </p>
         <p className="m-0 text-muted">
           <a
-            className="block text-sm font-black text-violet outline-none hover:underline focus-visible:rounded focus-visible:ring-2 focus-visible:ring-violet/40 focus-visible:ring-offset-2"
+            className="block text-sm font-black text-violet outline-none transition-colors hover:text-ink focus-visible:rounded focus-visible:ring-2 focus-visible:ring-violet/40 focus-visible:ring-offset-2"
             href="#webbix"
           >
             Irlanda
@@ -156,7 +156,7 @@ function PlacesPanel() {
         </p>
         <p className="m-0 text-muted">
           <a
-            className="block text-sm font-black text-violet outline-none hover:underline focus-visible:rounded focus-visible:ring-2 focus-visible:ring-violet/40 focus-visible:ring-offset-2"
+            className="block text-sm font-black text-violet outline-none transition-colors hover:text-ink focus-visible:rounded focus-visible:ring-2 focus-visible:ring-violet/40 focus-visible:ring-offset-2"
             href="#hirevue"
           >
             EUA
@@ -171,7 +171,7 @@ function PlacesPanel() {
 function SideCTA() {
   return (
     <section className="card-border p-5 text-center">
-      <span className="mx-auto grid size-12 place-items-center rounded-lg border border-line bg-white text-violet">
+      <span className="mx-auto grid size-12 place-items-center rounded-lg border border-line bg-canvas text-ink">
         <Send size={22} />
       </span>
       <h2 className="mt-4 text-base font-black leading-6 text-ink">Vamos construir o próximo case de sucesso juntos?</h2>

@@ -12,7 +12,7 @@ export default function CertificationsSection() {
           <div className="flex min-w-max">
             {certifications.map(({ year, title, institution }) => (
               <article className="relative flex min-h-[112px] w-[278px] shrink-0 items-center gap-4 p-4" key={title}>
-                <span className="grid size-10 shrink-0 place-items-center rounded-lg border border-line bg-white text-violet">
+                <span className="grid size-10 shrink-0 place-items-center rounded-lg border border-line bg-canvas text-ink">
                   <FileBadge aria-hidden="true" size={19} strokeWidth={2} />
                 </span>
                 <div className="min-w-0">
@@ -27,7 +27,7 @@ export default function CertificationsSection() {
           </div>
         </div>
         <article className="flex min-h-[112px] items-center gap-4 rounded-lg border border-line bg-white p-4 shadow-sm">
-          <span className="grid size-10 shrink-0 place-items-center rounded-lg border border-line bg-white text-violet">
+          <span className="grid size-10 shrink-0 place-items-center rounded-lg border border-line bg-canvas text-ink">
             <Star aria-hidden="true" size={20} strokeWidth={2} />
           </span>
           <div className="min-w-0">

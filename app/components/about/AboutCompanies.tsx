@@ -4,7 +4,7 @@ import AboutSectionTitle from "./AboutSectionTitle";
 
 export default function AboutCompanies() {
   return (
-    <section className="mx-auto max-w-[1096px] border-b border-line px-5 py-8 md:px-8 md:py-10">
+    <section className="mx-auto max-w-[1096px] border-b border-line px-5 py-9 md:px-8">
       <AboutSectionTitle eyebrow="Empresas e projetos" />
       <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-8">
         {aboutCompanies.map(({ name, role, logo }) => (

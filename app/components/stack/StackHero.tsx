@@ -1,9 +1,9 @@
 export default function StackHero() {
   return (
-    <section id="inicio" className="border-b border-line pb-7 pt-8 md:pt-10">
+    <section id="inicio" className="border-b border-line pb-8 pt-9 md:pt-12">
       <div className="grid grid-cols-[minmax(0,1fr)_118px] items-center gap-5 sm:grid-cols-[minmax(0,1fr)_190px] lg:grid-cols-[minmax(0,1fr)_390px]">
         <div className="min-w-0">
-          <p className="mb-5 text-xs font-black uppercase tracking-[0.18em] text-violet">Stack & Skills</p>
+          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.16em] text-muted">Stack & Skills</p>
           <h1 className="max-w-[650px] text-[34px] font-black leading-[1.05] tracking-normal text-ink sm:text-[38px] md:text-[54px]">
             Skills & Stack<span className="text-violet">.</span>
           </h1>

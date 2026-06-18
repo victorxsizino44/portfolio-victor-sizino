@@ -45,7 +45,7 @@ export default function StackCategoryCard({ category, compact = false, index, mo
       >
         <div className="flex items-start justify-between gap-4">
           <div className="flex min-w-0 items-center gap-4">
-            <span className="grid size-11 shrink-0 place-items-center rounded-lg border border-line bg-white text-violet">
+            <span className="grid size-11 shrink-0 place-items-center rounded-lg border border-line bg-canvas text-ink">
               <Icon aria-hidden="true" size={21} strokeWidth={2} />
             </span>
             <h3 className="text-base font-black uppercase leading-6 text-ink">{category.title}</h3>
@@ -60,7 +60,7 @@ export default function StackCategoryCard({ category, compact = false, index, mo
       <details className={`card-border group overflow-hidden ${mobileVisibility}`}>
         <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-4 marker:hidden">
           <span className="flex min-w-0 items-center gap-3">
-            <span className="grid size-10 shrink-0 place-items-center rounded-lg border border-line bg-white text-violet">
+            <span className="grid size-10 shrink-0 place-items-center rounded-lg border border-line bg-canvas text-ink">
               <Icon aria-hidden="true" size={19} strokeWidth={2} />
             </span>
             {typeof index === "number" ? <span className="text-sm font-black text-violet">{index + 1}</span> : null}

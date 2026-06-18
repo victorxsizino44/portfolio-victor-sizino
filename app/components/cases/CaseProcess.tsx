@@ -24,7 +24,7 @@ export default function CaseProcess({ steps, framed = true, showTitle = true }: 
           return (
             <li className="relative" key={step.title}>
               <div className="flex items-center gap-3">
-                <span className="grid size-11 flex-none place-items-center rounded-full bg-violet/10 text-violet">
+                <span className="grid size-11 flex-none place-items-center rounded-lg border border-line bg-canvas text-ink">
                   <Icon size={18} strokeWidth={2.2} />
                 </span>
                 {index < steps.length - 1 ? (

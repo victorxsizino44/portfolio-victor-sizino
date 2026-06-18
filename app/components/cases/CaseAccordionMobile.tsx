@@ -49,7 +49,7 @@ export default function CaseAccordionMobile({ item }: CaseAccordionMobileProps) 
           <ul className="m-0 mt-4 grid list-none gap-2 p-0">
             {item.myRoleBullets.map((bullet) => (
               <li className="flex gap-2" key={bullet}>
-                <CircleDot className="mt-1 flex-none text-violet" size={15} />
+                <CircleDot className="mt-1 flex-none text-ink" size={15} />
                 <span>{bullet}</span>
               </li>
             ))}
@@ -99,12 +99,12 @@ export default function CaseAccordionMobile({ item }: CaseAccordionMobileProps) 
               type="button"
             >
               <span className="inline-flex min-w-0 items-center gap-3 text-xs font-black uppercase tracking-[0.12em] text-dark">
-                <span className="grid size-9 shrink-0 place-items-center rounded-lg border border-line bg-white text-violet">
+                <span className="grid size-9 shrink-0 place-items-center rounded-lg border border-line bg-canvas text-ink">
                   <Icon size={18} strokeWidth={2.1} />
                 </span>
                 {section.title}
               </span>
-              <ChevronDown className={isOpen ? "rotate-180 text-violet transition" : "text-muted transition"} size={17} />
+              <ChevronDown className={isOpen ? "rotate-180 text-ink transition" : "text-muted transition"} size={17} />
             </button>
             {isOpen ? (
               <div id={`case-section-${section.id}`} className="border-t border-line p-5 pt-4 text-sm leading-6 text-muted">

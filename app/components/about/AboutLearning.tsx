@@ -3,7 +3,7 @@ import AboutSectionTitle from "./AboutSectionTitle";
 
 export default function AboutLearning() {
   return (
-    <section className="mx-auto max-w-[1096px] border-b border-line px-5 py-8 md:px-8 md:py-10">
+    <section className="mx-auto max-w-[1096px] border-b border-line px-5 py-9 md:px-8">
       <AboutSectionTitle eyebrow="Aprendizado continuo" />
       <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
         {learningGroups.map(({ category, items }) => (

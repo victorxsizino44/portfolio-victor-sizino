@@ -20,7 +20,7 @@ export default function ExperienceSection() {
           ))}
         </div>
         <a className="timeline-link" href="#sobre">
-          Conheca minha historia <ArrowRight size={15} />
+          Conheca minha historia <ArrowRight className="text-ink" size={15} />
         </a>
       </div>
       <div>

@@ -17,7 +17,7 @@ export default function ProficiencyLegend() {
         <h2 id="proficiency-title" className="m-0 text-xs font-black uppercase tracking-[0.12em] text-ink">
           Niveis de proficiencia
         </h2>
-        <span className="grid size-4 place-items-center rounded-lg border border-violet/35 text-[10px] font-black text-violet">
+        <span className="grid size-4 place-items-center rounded-lg border border-line text-[10px] font-black text-ink">
           i
         </span>
       </div>
@@ -30,7 +30,7 @@ export default function ProficiencyLegend() {
               className="flex min-w-0 items-start gap-4 border-b border-line p-4 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0"
               key={level}
             >
-              <span className="grid size-9 shrink-0 place-items-center rounded-lg border border-line bg-white text-violet">
+              <span className="grid size-9 shrink-0 place-items-center rounded-lg border border-line bg-canvas text-ink">
                 <Icon aria-hidden="true" size={18} strokeWidth={2.2} />
               </span>
               <div className="min-w-0">

@@ -23,7 +23,7 @@ export default function CaseImpact({ items, framed = true, showTitle = true }: C
 
           return (
             <article className="rounded-lg border border-line bg-white p-5 shadow-sm" key={item.title}>
-              <span className="grid size-10 place-items-center rounded-full bg-violet/10 text-violet">
+              <span className="grid size-10 place-items-center rounded-lg border border-line bg-canvas text-ink">
                 <Icon size={18} strokeWidth={2.2} />
               </span>
               <h3 className="mt-5 text-sm font-black leading-5 text-ink">{item.title}</h3>

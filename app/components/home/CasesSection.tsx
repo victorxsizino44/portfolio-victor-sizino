@@ -14,18 +14,22 @@ const badgeBySlug: Record<string, { label: string; className: string }> = {
 type CasesSectionProps = {
   limit?: number;
   showAllLink?: boolean;
+  showTopBorder?: boolean;
 };
 
-export default function CasesSection({ limit = 3, showAllLink = true }: CasesSectionProps) {
+export default function CasesSection({ limit = 3, showAllLink = true, showTopBorder = true }: CasesSectionProps) {
   const cases = getAllCases().slice(0, limit);
 
   return (
-    <section id="cases" className="mx-auto max-w-[1096px] px-5 py-3 md:px-8">
+    <section
+      id="cases"
+      className={`mx-auto max-w-[1096px] px-5 py-9 md:px-8 ${showTopBorder ? "border-t border-line" : ""}`}
+    >
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
         <p className="section-label">Cases de impacto</p>
         {showAllLink ? (
           <Link href="/cases" className="inline-flex items-center gap-1.5 text-sm font-bold leading-none text-violet">
-            Ver todos os cases <ArrowRight className="translate-y-px" size={15} strokeWidth={2.2} />
+            Ver todos os cases <ArrowRight className="translate-y-px text-ink" size={15} strokeWidth={2.2} />
           </Link>
         ) : null}
       </div>

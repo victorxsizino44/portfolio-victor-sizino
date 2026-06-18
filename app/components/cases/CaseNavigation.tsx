@@ -21,14 +21,14 @@ function NavigationCard({
 
   return (
     <Link
-      className="group flex min-h-[84px] items-center justify-between gap-4 rounded-lg border border-line bg-white p-4 shadow-sm outline-offset-4 transition hover:border-violet/40 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-violet/40"
+      className="standard-hover group flex min-h-[84px] items-center justify-between gap-4 rounded-lg border border-line bg-white p-4 shadow-sm outline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-violet/40"
       href={`/cases/${item.slug}`}
     >
       <div className={direction === "next" ? "order-1 text-right" : ""}>
         <span className="inline-flex items-center gap-1 text-xs font-black text-violet">
-          {direction === "previous" ? <Icon size={14} /> : null}
+          {direction === "previous" ? <Icon className="text-ink" size={14} /> : null}
           {label}
-          {direction === "next" ? <Icon size={14} /> : null}
+          {direction === "next" ? <Icon className="text-ink" size={14} /> : null}
         </span>
         <p className="mt-2 text-sm font-semibold leading-5 text-muted transition group-hover:text-ink">{item.title}</p>
       </div>

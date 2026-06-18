@@ -3,7 +3,7 @@ import AboutSectionTitle from "./AboutSectionTitle";
 
 export default function AboutImpact() {
   return (
-    <section className="mx-auto max-w-[1096px] border-b border-line px-5 py-8 md:px-8 md:py-10">
+    <section className="mx-auto max-w-[1096px] border-b border-line px-5 py-9 md:px-8">
       <AboutSectionTitle eyebrow="Impacto" />
       <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
         {impactMetrics.map(({ value, label }) => (
