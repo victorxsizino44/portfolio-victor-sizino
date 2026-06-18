@@ -90,7 +90,7 @@ export default function Header() {
         <button
           aria-expanded={isOpen}
           aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
-          className="fixed right-5 top-5 z-50 grid size-11 place-items-center rounded-lg border border-line bg-white text-ink shadow-sm md:hidden"
+          className="fixed right-5 top-5 z-50 grid size-11 place-items-center rounded-lg border border-line bg-canvas text-ink shadow-sm md:hidden"
           onClick={() => setIsOpen((value) => !value)}
           type="button"
         >

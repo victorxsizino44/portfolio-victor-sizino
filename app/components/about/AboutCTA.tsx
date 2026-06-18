@@ -3,10 +3,10 @@ import { aboutCtaIcon as Icon } from "../../data/about";
 
 export default function AboutCTA() {
   return (
-    <section className="mx-auto max-w-[1096px] px-5 py-8 md:px-8 md:py-10">
+    <section className="mx-auto max-w-[1096px] px-5 py-9 md:px-8">
       <div className="card-border flex flex-col gap-6 p-6 md:flex-row md:items-center md:justify-between md:p-8">
         <div className="flex min-w-0 gap-5">
-          <span className="grid size-14 shrink-0 place-items-center rounded-lg border border-line bg-white text-violet">
+          <span className="grid size-14 shrink-0 place-items-center rounded-lg border border-line bg-canvas text-ink">
             <Icon size={25} strokeWidth={2} />
           </span>
           <div>

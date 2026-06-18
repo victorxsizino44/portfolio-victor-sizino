@@ -9,7 +9,7 @@ export default function ExpertiseSection() {
           <article className="card-border min-h-[170px] p-5 md:min-h-[190px] md:p-6" key={title}>
             <div className="flex items-center gap-5">
               <span className="grid size-9 shrink-0 place-items-center rounded-lg border border-line bg-canvas">
-                <Icon className={title === "Technical Delivery" ? "text-violet" : "text-ink"} size={18} />
+                <Icon className="text-ink" size={18} />
               </span>
               <h3 className="text-base font-bold">{title}</h3>
             </div>

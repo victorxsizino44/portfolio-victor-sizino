@@ -127,11 +127,11 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-canvas text-ink">
       <Header />
-      <main className="mx-auto max-w-[1096px] px-5 py-12 md:px-8 md:py-16">
-        <section className="border-b border-line pb-8">
+      <main className="mx-auto max-w-[1096px] px-5 md:px-8">
+        <section className="border-b border-line pb-8 pt-9 md:pt-12">
           <div className="grid items-end gap-8 lg:grid-cols-[1fr_520px]">
             <div className="min-w-0 pb-5 md:pb-9">
-              <p className="mb-5 text-xs font-semibold uppercase tracking-[0.16em] text-violet">FALE COMIGO</p>
+              <p className="mb-5 text-xs font-semibold uppercase tracking-[0.16em] text-muted">FALE COMIGO</p>
               <h1 className="max-w-3xl text-[40px] font-black leading-[0.98] tracking-normal sm:text-[48px] md:text-[72px]">
                 Vamos construir algo juntos<span className="text-violet">.</span>
               </h1>
@@ -169,11 +169,11 @@ export default function ContactPage() {
           </div>
         </section>
 
-        <section className="mt-12 grid items-stretch gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.92fr)]">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-rows-2">
+        <section className="mt-9 grid items-stretch gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.92fr)]">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-rows-2">
             {contactCards.map(({ title, value, action, href, badges, icon: Icon, actionIcon: ActionIcon }) => (
-              <article className="card-border standard-hover flex min-h-[210px] flex-col p-7 lg:min-h-0" key={title}>
-                <span className="icon-box bg-[#f4f3ff] text-violet">
+              <article className="card-border standard-hover flex min-h-[210px] flex-col p-5 md:p-6 lg:min-h-0" key={title}>
+                <span className="icon-box text-ink">
                   <Icon size={24} />
                 </span>
                 <h2 className="mt-7 text-xl font-black text-ink">{title}</h2>
@@ -181,14 +181,14 @@ export default function ContactPage() {
                 {badges ? (
                   <div className="mt-auto flex flex-wrap gap-2 pt-7">
                     {badges.map((badge) => (
-                      <span className="rounded-md bg-[#eef0ff] px-3 py-2 text-xs font-bold text-violet" key={badge}>
+                      <span className="rounded-md bg-violet/10 px-3 py-2 text-xs font-bold text-violet" key={badge}>
                         {badge}
                       </span>
                     ))}
                   </div>
                 ) : title === "E-mail" ? (
                   <button
-                    className="mt-auto inline-flex h-11 items-center gap-3 self-start rounded-lg border border-line bg-white px-5 text-sm font-bold text-dark hover:border-violet hover:text-violet"
+                    className="standard-hover mt-auto inline-flex h-11 items-center gap-3 self-start rounded-lg border border-line bg-white px-5 text-sm font-bold text-ink shadow-sm"
                     onClick={copyEmail}
                     type="button"
                   >
@@ -196,7 +196,7 @@ export default function ContactPage() {
                   </button>
                 ) : (
                   <a
-                    className="mt-auto inline-flex h-11 items-center gap-3 self-start rounded-lg border border-line bg-white px-5 text-sm font-bold text-dark hover:border-violet hover:text-violet"
+                    className="standard-hover mt-auto inline-flex h-11 items-center gap-3 self-start rounded-lg border border-line bg-white px-5 text-sm font-bold text-ink shadow-sm"
                     href={href}
                     rel={href?.startsWith("http") ? "noreferrer" : undefined}
                     target={href?.startsWith("http") ? "_blank" : undefined}
@@ -208,9 +208,9 @@ export default function ContactPage() {
             ))}
           </div>
 
-          <article id="agenda" className="card-border h-full p-7 md:p-8">
+          <article id="agenda" className="card-border h-full p-5 md:p-6">
             <div className="flex items-center gap-4">
-              <span className="icon-box bg-[#f4f3ff] text-violet">
+              <span className="icon-box text-ink">
                 <Calendar size={20} />
               </span>
               <h2 className="text-2xl font-black">Agende uma conversa</h2>
@@ -223,19 +223,19 @@ export default function ContactPage() {
                 <p className="text-xs text-muted">Victor Sizino</p>
                 <h3 className="mt-2 text-2xl font-black leading-7">Reunião de Descoberta</h3>
                 <p className="mt-7 flex items-center gap-2 text-sm font-semibold text-muted">
-                  <Calendar size={15} /> 30 min
+                  <Calendar className="text-ink" size={15} /> 30 min
                 </p>
                 <p className="mt-4 flex items-center gap-2 text-sm font-semibold text-muted">
-                  <MapPin size={15} /> Conversa online
+                  <MapPin className="text-ink" size={15} /> Conversa online
                 </p>
               </div>
               <div className="p-6">
                 <div className="mb-5 flex items-center justify-between">
-                  <button aria-label="Mês anterior" className="grid size-8 place-items-center rounded-lg hover:bg-canvas" type="button">
+                  <button aria-label="Mês anterior" className="grid size-8 place-items-center rounded-lg text-ink transition hover:bg-violet/10 hover:text-violet" type="button">
                     ‹
                   </button>
                   <strong className="text-sm">Junho 2025</strong>
-                  <button aria-label="Próximo mês" className="grid size-8 place-items-center rounded-lg hover:bg-canvas" type="button">
+                  <button aria-label="Próximo mês" className="grid size-8 place-items-center rounded-lg text-ink transition hover:bg-violet/10 hover:text-violet" type="button">
                     ›
                   </button>
                 </div>
@@ -260,8 +260,8 @@ export default function ContactPage() {
           </article>
         </section>
 
-        <section className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.92fr)]">
-          <article className="card-border p-7 md:p-8">
+        <section className="mt-9 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.92fr)]">
+          <article className="card-border p-5 md:p-6">
             <h2 className="text-2xl font-black">Ou envie uma mensagem</h2>
             <form className="mt-6 grid gap-5" onSubmit={handleSubmit}>
               <div className="grid gap-5 sm:grid-cols-2">
@@ -322,7 +322,7 @@ export default function ContactPage() {
                 />
               </label>
               {submitted ? (
-                <p className="rounded-lg border border-violet/20 bg-[#eef0ff] px-4 py-3 text-sm font-bold text-violet">
+                <p className="rounded-lg border border-violet/20 bg-violet/10 px-4 py-3 text-sm font-bold text-violet">
                   Mensagem preparada com sucesso. Em breve conectaremos este formulário ao envio real.
                 </p>
               ) : null}
@@ -332,31 +332,31 @@ export default function ContactPage() {
             </form>
           </article>
 
-          <div className="grid gap-8">
-            <article className="card-border p-7 md:p-8">
+          <div className="grid gap-6">
+            <article className="card-border p-5 md:p-6">
               <h2 className="text-2xl font-black">Disponibilidade Atual</h2>
-              <p className="mt-4 flex items-center gap-2 text-base font-bold text-emerald-600">
-                <span className="size-2 rounded-full bg-emerald-500" /> Aberto para novas oportunidades
+              <p className="mt-4 flex items-center gap-2 text-base font-bold text-violet">
+                <span className="size-2 rounded-full bg-violet" /> Aberto para novas oportunidades
               </p>
               <p className="mt-6 text-sm leading-6 text-muted">Atualmente estou interessado em:</p>
               <ul className="mt-5 grid gap-3">
                 {availability.map((item) => (
                   <li className="flex items-start gap-3 text-sm font-semibold text-dark" key={item}>
-                    <CheckCircle2 className="mt-0.5 text-violet" size={16} />
+                    <CheckCircle2 className="mt-0.5 text-ink" size={16} />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </article>
 
-            <article className="card-border relative min-h-[220px] overflow-hidden p-7 md:p-8">
+            <article className="card-border relative min-h-[220px] overflow-hidden p-5 md:p-6">
               <div className="relative z-10 max-w-[310px]">
                 <h2 className="m-0 text-2xl font-black leading-8">Prefere conhecer meu trabalho?</h2>
                 <p className="mt-4 text-sm leading-6 text-muted">
                   Converse com o Agente R e conheça mais sobre minha trajetória, experiências e projetos.
                 </p>
                 <a
-                  className="mt-6 inline-flex h-11 items-center gap-3 rounded-lg border border-line bg-white px-5 text-sm font-bold hover:border-violet hover:text-violet"
+                  className="standard-hover mt-6 inline-flex h-11 items-center gap-3 rounded-lg border border-line bg-white px-5 text-sm font-bold text-ink shadow-sm"
                   href="/#agente-r"
                 >
                   Conversar com o Agente R <MessageCircle size={15} />
@@ -375,10 +375,10 @@ export default function ContactPage() {
 
         <section className="mt-12">
           <p className="section-label text-violet">O QUE VOCÊ PODE ESPERAR AO TRABALHAR COMIGO</p>
-          <div className="mt-7 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {expectations.map(({ title, text, icon: Icon }) => (
-              <article className="card-border standard-hover p-7" key={title}>
-                <span className="icon-box bg-[#f4f3ff] text-violet">
+              <article className="card-border standard-hover p-5 md:p-6" key={title}>
+                <span className="icon-box text-ink">
                   <Icon size={24} />
                 </span>
                 <h2 className="mt-7 text-xl font-black">{title}</h2>
@@ -388,7 +388,7 @@ export default function ContactPage() {
           </div>
         </section>
 
-        <section className="card-border relative mt-12 flex flex-col gap-6 overflow-hidden p-6 md:min-h-[116px] md:flex-row md:items-center md:justify-between md:px-8 md:py-6">
+        <section className="card-border relative my-9 flex flex-col gap-6 overflow-hidden p-6 md:min-h-[116px] md:flex-row md:items-center md:justify-between md:px-8 md:py-6">
           <div className="relative z-10 flex items-center gap-5">
             <span className="grid size-16 flex-none place-items-center rounded-lg bg-violet text-2xl font-black text-white shadow-md">
               VS.

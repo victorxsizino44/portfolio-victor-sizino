@@ -69,7 +69,7 @@ export default function ExperienceCard({ experience, defaultOpen = false }: Expe
                 <Badge>{experience.segment}</Badge>
               </div>
               <p className="mt-4 inline-flex items-center gap-2 text-xs font-bold text-muted">
-                <Users size={14} className="text-violet" /> {experience.team}
+                <Users size={14} className="text-ink" /> {experience.team}
               </p>
             </div>
             <div className="min-w-0">
@@ -81,7 +81,7 @@ export default function ExperienceCard({ experience, defaultOpen = false }: Expe
               </div>
             </div>
           </div>
-          <span className="grid size-8 place-items-center rounded-lg border border-line bg-white text-ink transition group-hover:border-violet/35">
+          <span className="grid size-8 place-items-center rounded-lg border border-line bg-canvas text-ink transition group-hover:border-violet/35">
             <ChevronDown className={isOpen ? "rotate-180 transition" : "transition"} size={16} />
           </span>
         </button>
@@ -131,7 +131,7 @@ export default function ExperienceCard({ experience, defaultOpen = false }: Expe
               <span>{experience.period}</span>
               <span aria-hidden="true">•</span>
               <span className="inline-flex items-center gap-1">
-                <MapPin size={13} className="text-violet" />
+                <MapPin size={13} className="text-ink" />
                 {experience.location}
               </span>
             </p>
@@ -163,7 +163,7 @@ export default function ExperienceCard({ experience, defaultOpen = false }: Expe
               ))}
             </div>
             <p className="mt-4 inline-flex items-center gap-2 text-xs font-bold text-muted">
-              <Users size={14} className="text-violet" /> Time: {experience.team}
+              <Users size={14} className="text-ink" /> Time: {experience.team}
             </p>
           </div>
         ) : null}

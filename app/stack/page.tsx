@@ -35,7 +35,7 @@ export default function StackPage() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-canvas text-ink">
       <Header />
-      <main className="mx-auto max-w-[1096px] px-5 pb-10 md:px-8">
+      <main className="mx-auto max-w-[1096px] px-5 pb-9 md:px-8">
         <div className="min-w-0">
           <StackHero />
           <StackStats />

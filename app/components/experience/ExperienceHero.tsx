@@ -7,7 +7,7 @@ export default function ExperienceHero() {
     <section id="inicio" className="mx-auto max-w-[1096px] border-b border-line px-5 pb-8 pt-9 md:px-8 md:pt-12">
       <div className="grid items-end gap-8 lg:grid-cols-[1fr_470px]">
         <div className="min-w-0">
-          <p className="mb-5 text-xs font-black uppercase tracking-[0.18em] text-violet">Experiência</p>
+          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.16em] text-muted">Experiência</p>
           <h1 className="max-w-[650px] text-[38px] font-black leading-[1.05] tracking-normal text-ink">
             Mais de 7 anos transformando negócios em impacto real<span className="text-violet">.</span>
           </h1>
@@ -39,7 +39,7 @@ export default function ExperienceHero() {
               ].join(" ")}
               key={title}
             >
-              <Icon className="mb-3 text-violet" size={24} strokeWidth={1.9} />
+              <Icon className="mb-3 text-ink" size={24} strokeWidth={1.9} />
               <p className="m-0 text-xs font-black leading-4 text-ink">{title}</p>
               <p className="m-0 mt-1 text-[11px] font-bold leading-4 text-ink">{description}</p>
             </div>

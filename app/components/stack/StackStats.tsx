@@ -8,7 +8,7 @@ export default function StackStats() {
     >
       {stackMetrics.map(({ title, description, icon: Icon }) => (
         <article className="card-border flex min-h-[86px] items-center gap-4 px-4 py-4 md:min-h-[92px] md:px-5" key={title}>
-          <span className="grid size-12 shrink-0 place-items-center rounded-lg border border-line bg-white text-violet">
+          <span className="grid size-12 shrink-0 place-items-center rounded-lg border border-line bg-canvas text-ink">
             <Icon aria-hidden="true" size={25} strokeWidth={2.1} />
           </span>
           <div className="min-w-0">

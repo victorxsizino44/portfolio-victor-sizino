@@ -88,7 +88,7 @@ a {
   place-items: center;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
-  background: #ffffff;
+  background: #f8fafc;
 }
 
 .standard-hover {
@@ -209,7 +209,7 @@ a {
 .case-card {
   position: relative;
   display: block;
-  height: 344px;
+  height: 376px;
   overflow: hidden;
   border-radius: 8px;
   background: #0d0d0f;
@@ -267,19 +267,30 @@ a {
 }
 
 .case-title {
+  display: -webkit-box;
+  min-height: 48px;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
   margin: 0;
   font-size: 20px;
   font-weight: 800;
   line-height: 24px;
+  text-overflow: ellipsis;
 }
 
 .case-description {
-  min-height: 44px;
+  display: -webkit-box;
+  min-height: 60px;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
   margin: 10px 0 0;
   color: rgba(255, 255, 255, 0.9);
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
+  text-overflow: ellipsis;
 }
 
 .case-results {
@@ -310,7 +321,7 @@ a {
   min-height: 28px;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: auto;
+  margin-top: 16px;
   overflow: hidden;
 }
 
@@ -581,8 +592,8 @@ a {
   right: 6px;
   bottom: 9px;
   z-index: 1;
-  color: #ffffff;
-  fill: #ffffff;
+  color: #0d0d0f;
+  fill: #0d0d0f;
   filter: drop-shadow(0 4px 10px rgba(99, 102, 241, 0.18));
   transform: rotate(-9deg);
 }
@@ -644,7 +655,7 @@ a {
   display: flex;
   align-items: center;
   gap: 28px;
-  color: #6b7280;
+  color: #0d0d0f;
 }
 
 .footer-socials a {
@@ -729,6 +740,7 @@ a {
 .agent-title svg {
   width: 16px;
   height: 16px;
+  color: #0d0d0f;
 }
 
 .agent-copy {
@@ -1483,15 +1495,11 @@ a {
 
   .case-card {
     height: auto;
-    min-height: 344px;
+    min-height: 376px;
   }
 
   .case-card-content {
     padding: 22px 18px 18px;
-  }
-
-  .case-description {
-    min-height: 0;
   }
 
   .case-results {

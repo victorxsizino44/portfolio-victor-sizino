@@ -37,12 +37,12 @@ export default function CoreCompetencies({ variant = "desktop" }: CoreCompetenci
       <details className="card-border group overflow-hidden">
         <summary className="flex cursor-pointer list-none items-center justify-between gap-4 bg-ink p-4 marker:hidden">
           <span className="inline-flex items-center gap-3 text-sm font-black uppercase text-white">
-            <span className="grid size-9 place-items-center rounded-lg bg-white/10 text-white">
+            <span className="grid size-9 place-items-center rounded-lg border border-line bg-canvas text-ink">
               <Star aria-hidden="true" size={16} strokeWidth={2} />
             </span>
             Core Competencies
           </span>
-          <ChevronDown className="shrink-0 text-white transition group-open:rotate-180" size={17} strokeWidth={2} />
+          <ChevronDown className="shrink-0 rounded border border-line bg-canvas text-ink transition group-open:rotate-180" size={17} strokeWidth={2} />
         </summary>
         <div className="border-t border-white/10 bg-ink p-5 pt-4">
           <CompetenciesList />
@@ -54,7 +54,9 @@ export default function CoreCompetencies({ variant = "desktop" }: CoreCompetenci
   return (
     <section className="rounded-lg border border-violet/20 bg-ink p-5 text-white shadow-lg">
       <p className="flex items-center gap-3 text-xs font-black uppercase tracking-[0.12em] text-white">
-        <Star aria-hidden="true" className="text-white" size={18} strokeWidth={2} />
+        <span className="grid size-8 place-items-center rounded-lg border border-line bg-canvas text-ink">
+          <Star aria-hidden="true" size={16} strokeWidth={2} />
+        </span>
         Core Competencies
       </p>
       <div className="mt-4 h-px bg-white/10" />

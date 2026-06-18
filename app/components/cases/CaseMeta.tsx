@@ -20,7 +20,7 @@ export default function CaseMeta({ duration, role, squad, projectType }: CaseMet
 
         return (
           <div className="flex min-h-[82px] items-center gap-3 bg-white p-4" key={item.key}>
-            <span className="grid size-9 flex-none place-items-center rounded-lg bg-violet/10 text-violet">
+            <span className="grid size-9 flex-none place-items-center rounded-lg border border-line bg-canvas text-ink">
               <Icon size={18} strokeWidth={2.2} />
             </span>
             <div className="grid gap-0.5">

@@ -4,7 +4,7 @@ export default function ExperienceCTA() {
   return (
     <section className="card-border p-5 md:flex md:items-center md:justify-between md:gap-8 md:p-6">
       <div className="flex min-w-0 items-start gap-4">
-        <span className="grid size-12 flex-none place-items-center rounded-lg border border-line bg-white text-violet">
+        <span className="grid size-12 flex-none place-items-center rounded-lg border border-line bg-canvas text-ink">
           <Send size={22} />
         </span>
         <div className="min-w-0">

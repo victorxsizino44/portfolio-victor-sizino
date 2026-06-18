@@ -14,8 +14,8 @@ export default function CasesPage() {
   return (
     <div className="min-h-screen bg-canvas text-ink">
       <Header />
-      <main className="pt-8">
-        <CasesSection limit={Number.POSITIVE_INFINITY} showAllLink={false} />
+      <main className="pt-9">
+        <CasesSection limit={Number.POSITIVE_INFINITY} showAllLink={false} showTopBorder={false} />
         <StackContactSection />
       </main>
       <Footer />

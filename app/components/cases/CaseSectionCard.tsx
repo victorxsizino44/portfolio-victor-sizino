@@ -11,7 +11,7 @@ export default function CaseSectionCard({ title, children, icon: Icon }: CaseSec
     <article className="card-border p-6 md:p-7">
       <div className="flex items-center gap-3">
         {Icon ? (
-          <span className="grid size-10 flex-none place-items-center rounded-lg bg-violet/10 text-violet">
+          <span className="grid size-10 flex-none place-items-center rounded-lg border border-line bg-canvas text-ink">
             <Icon size={18} strokeWidth={2.2} />
           </span>
         ) : null}

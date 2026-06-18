@@ -9,7 +9,7 @@ export default function ValueSection() {
       <div className="mt-4 grid gap-4 md:grid-cols-4">
         {valueItems.map(({ title, description, icon: Icon }) => (
           <article className="flex gap-4" key={title}>
-            <span className="grid size-10 shrink-0 place-items-center rounded-lg border border-line bg-white text-violet">
+            <span className="grid size-10 shrink-0 place-items-center rounded-lg border border-line bg-canvas text-ink">
               <Icon aria-hidden="true" size={19} strokeWidth={2} />
             </span>
             <div>

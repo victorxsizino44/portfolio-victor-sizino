@@ -68,7 +68,7 @@ function InternationalExperienceCard({ defaultOpen = false, item }: { defaultOpe
               ) : null}
               <span aria-hidden="true">•</span>
               <span className="inline-flex items-center gap-1">
-                <MapPin size={13} className="text-violet" />
+                <MapPin size={13} className="text-ink" />
                 {item.location}
               </span>
             </p>
@@ -85,7 +85,7 @@ function InternationalExperienceCard({ defaultOpen = false, item }: { defaultOpe
             </div>
           </div>
         </div>
-        <span className="absolute right-5 top-5 grid size-9 place-items-center rounded-lg border border-line bg-white text-ink transition group-hover:border-violet/35 md:static md:size-8">
+        <span className="absolute right-5 top-5 grid size-9 place-items-center rounded-lg border border-line bg-canvas text-ink transition group-hover:border-violet/35 md:static md:size-8">
           <ChevronDown className={isOpen ? "rotate-180 transition" : "transition"} size={16} />
         </span>
       </button>
@@ -102,7 +102,7 @@ function InternationalExperienceCard({ defaultOpen = false, item }: { defaultOpe
               <p className="text-[11px] font-black uppercase tracking-[0.12em] text-dark">Principal aprendizado</p>
               <p className="mt-3 text-xs leading-5 text-muted">{item.learning}</p>
               <p className="mt-4 inline-flex items-center gap-2 text-xs font-bold text-muted">
-                <Users size={14} className="text-violet" /> {item.team}
+                <Users size={14} className="text-ink" /> {item.team}
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {item.badges.map((badge) => (
