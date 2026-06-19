@@ -9,9 +9,9 @@ import Footer from "../components/home/Footer";
 import Header from "../components/home/Header";
 
 export const metadata: Metadata = {
-  title: "Experiência | Victor Sizino",
+  title: "Experiência Profissional | Victor Sizino — AI Product Manager & Technical Product Manager",
   description:
-    "Experiência profissional de Victor Sizino em Produto, IA, Tecnologia, e-commerce, fintech, governo e projetos internacionais.",
+    "Conheça a trajetória profissional de Victor Sizino em Product Management, Technical Product Management, Inteligência Artificial, Design Systems, produtos digitais e experiências internacionais em plataformas globais.",
 };
 
 export default function ExperienciaPage() {

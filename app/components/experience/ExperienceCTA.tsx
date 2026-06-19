@@ -23,7 +23,7 @@ export default function ExperienceCTA() {
         </a>
         <a
           className="standard-hover inline-flex h-12 items-center justify-center gap-3 rounded-lg border border-line bg-white px-6 text-sm font-black text-ink shadow-sm"
-          href="mailto:contato@victorsizino.com"
+          href="mailto:victorvsp@gmail.com"
         >
           Falar comigo <ExternalLink size={15} />
         </a>

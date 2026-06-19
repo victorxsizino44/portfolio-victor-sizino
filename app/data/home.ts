@@ -65,19 +65,20 @@ export const expertise: ExpertiseItem[] = [
 
 export const cases: CaseItem[] = [
   {
-    title: "Otimizacao de Conversao",
-    badge: "m",
-    badgeClass: "bg-pink-500 text-white",
-    image: "/images/case-meliuz.png",
-    description: "Analise da jornada do usuario e experimentacao orientada por metricas para aumento da conversao.",
-    stats: ["+18% retencao", "+12% conversao"],
-    tags: ["Product", "Growth", "Analytics", "Experimentacao"],
+    title: "Intelligent Hiring Platform",
+    badge: "HV",
+    badgeClass: "bg-violet text-white",
+    image: "/images/hirevue-case.png",
+    description:
+      "Evolucao de produtos orientados por IA para otimizar avaliacao de candidatos e apoiar decisoes de contratacao em escala.",
+    stats: ["Mais precisao", "Menos tempo", "Melhor experiencia"],
+    tags: ["AI", "Product", "Platform", "Strategy"],
   },
   {
     title: "Buscador Inteligente",
     badge: "AGU",
     badgeClass: "bg-slate-700 text-white",
-    image: "/images/case-agu.png",
+    image: "/images/agu-case.png",
     description: "Plataforma com busca e sumarizacao inteligente para documentos juridicos.",
     stats: ["70% menos tempo de busca", "Controle de acesso seguro", "Consulta inteligente"],
     tags: ["IA", "Busca", "Produto", "Governo"],
@@ -119,12 +120,12 @@ export const companies: CompanyItem[] = [
     logo: "/logos/meliuz.png",
   },
   {
-    name: "IPNET",
-    segment: "Tecnologia",
-    context: "TPM • Produto • Tecnologia",
+    name: "HireVue",
+    segment: "AI & HR Tech",
+    context: "AI Product • TPM • Plataforma",
     description:
-      "Atuação como Technical Product Manager em iniciativas digitais, plataformas corporativas e projetos de transformação digital.",
-    logo: "/logos/ipnet-v2.png",
+      "Atuação como Technical Product Manager na evolução de soluções de Inteligência Artificial aplicadas à avaliação de candidatos, descoberta de insights e tomada de decisão em recrutamento. Condução de iniciativas de discovery, roadmap, definição de requisitos técnicos e alinhamento entre produto, engenharia e negócio.",
+    logo: "/logos/hirevue-logo.svg",
   },
   {
     name: "AGU",
@@ -159,7 +160,7 @@ export const timeline: TimelineItem[] = [
     role: "Technical Product Manager (AI & Digital Experience) / Front-end Engineer",
     description: "Reclame Aqui",
   },
-  { year: "2023 - 2024", role: "Product Designer", description: "IPNET - AGU - Porto Seguro" },
+  { year: "2023 - 2024", role: "Technical Product Manager", description: "IPNET - AGU - SETUR" },
   { year: "2019 - 2021", role: "Front-End Developer & Technical Lead", description: "Carrefour" },
   { year: "2018", role: "Product Designer", description: "Webbix - Irlanda" },
 ];
@@ -173,8 +174,8 @@ export const process: ProcessItem[] = [
 ];
 
 export const highlights: HighlightItem[] = [
-  { title: "5+ anos", description: "em tecnologia", icon: Boxes },
-  { title: "20+ projetos", description: "entregues", icon: PackageCheck },
+  { title: "10+ anos", description: "em tecnologia", icon: Boxes },
+  { title: "40+ projetos", description: "entregues", icon: PackageCheck },
   { title: "Produto - IA - Engenharia", description: "visao multidisciplinar", icon: Code2 },
   { title: "Experiencia", description: "ponta a ponta", icon: MapPin },
 ];

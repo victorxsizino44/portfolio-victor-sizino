@@ -9,9 +9,9 @@ export const cases: CaseStudy[] = [
     shortDescription: "Plataforma com busca e sumarizacao inteligente para documentos juridicos.",
     heroDescription:
       "Produto interno criado para organizar, consultar e apoiar a gestao de documentos juridicos, combinando busca estruturada, upload de arquivos e recursos de IA.",
-    coverImage: "/images/case-agu.png",
-    thumbnailImage: "/images/case-agu.png",
-    tags: ["Next.js", "Firebase", "IA", "UX", "DataGrid"],
+    coverImage: "/images/agu-case.png",
+    thumbnailImage: "/images/agu-case.png",
+    tags: ["Next.js", "ElasticSearch", "AI", "UX", "DataGrid"],
     duration: "6 meses",
     role: "TPM / PM",
     squad: "8 pessoas",
@@ -49,6 +49,99 @@ export const cases: CaseStudy[] = [
       "Esse projeto reforcou minha capacidade de atuar em ambientes complexos, traduzindo necessidades operacionais em produto digital escalavel, com visao tecnica, foco no usuario e potencial de aplicacao de IA para gerar impacto real.",
     quote:
       "A combinacao de produto, dados e IA e o que transforma informacao em inteligencia e operacao em resultado.",
+  },
+  {
+    slug: "case-hirevue",
+    title: "Intelligent Hiring Platform",
+    category: "AI + Hiring Platform",
+    filterCategory: "AI",
+    shortDescription:
+      "Evolucao de produtos orientados por IA para otimizar avaliacao de candidatos e apoiar decisoes de contratacao em escala.",
+    heroDescription:
+      "Evolucao de uma plataforma inteligente de recrutamento, conectando IA, produto e estrategia para apoiar avaliacoes de candidatos e decisoes de contratacao em escala.",
+    coverImage: "/images/hirevue-case.png",
+    thumbnailImage: "/images/hirevue-case.png",
+    tags: ["AI", "Product", "Platform", "Strategy"],
+    duration: "4 meses",
+    role: "Technical Product Manager",
+    squad: "6 pessoas",
+    projectType: "AI Platform",
+    context:
+      "A plataforma precisava evoluir recursos orientados por IA para apoiar processos seletivos mais consistentes, escalaveis e claros para times de contratacao e candidatos.",
+    problem:
+      "A avaliacao de candidatos em escala exige velocidade, padronizacao e clareza, sem comprometer qualidade da decisao, experiencia do candidato e confianca dos stakeholders.",
+    myRole:
+      "Atuei conectando produto, IA e engenharia para evoluir fluxos, requisitos e experiencias de uma plataforma inteligente de recrutamento.",
+    myRoleBullets: [
+      "Mapeamento de oportunidades em fluxos de avaliacao",
+      "Definicao de requisitos para experiencias orientadas por IA",
+      "Priorizacao de melhorias para escala e clareza",
+      "Alinhamento entre produto, design e engenharia",
+      "Apoio na evolucao de plataforma e workflows",
+      "Validacao de impacto na experiencia de usuarios",
+    ],
+    process: [
+      { title: "Discovery", description: "Entendimento dos fluxos de recrutamento, avaliacao e tomada de decisao." },
+      { title: "Mapeamento", description: "Organizacao de necessidades de usuarios, stakeholders e plataforma." },
+      { title: "Priorizacao", description: "Definicao de oportunidades com foco em impacto, escala e viabilidade." },
+      { title: "Entrega", description: "Acompanhamento de solucoes com design, engenharia e produto." },
+      { title: "Evolucao", description: "Ajustes orientados por aprendizado e experiencia dos usuarios." },
+    ],
+    impact: [
+      { title: "Mais precisao", description: "Avaliacao de candidatos com maior consistencia e apoio inteligente." },
+      { title: "Menos tempo", description: "Fluxos otimizados para reduzir esforco operacional em processos seletivos." },
+      { title: "Melhor experiencia", description: "Jornadas mais claras para candidatos e times de contratacao." },
+      { title: "Mais escala", description: "Base de produto preparada para decisoes de contratacao em alto volume." },
+    ],
+    tools: ["AI", "Product Strategy", "Platform", "React", "TypeScript", "APIs", "Jira"],
+    learnings:
+      "Produtos de IA em recrutamento exigem equilibrio entre automacao, confianca, clareza de experiencia e alinhamento tecnico para gerar valor em escala.",
+  },
+  {
+    slug: "case-ra-reviews",
+    title: "Evolucao da experiencia RA Reviews.",
+    category: "Consumer Tech + Produto",
+    filterCategory: "UX",
+    shortDescription: "Evolucao de experiencia, instrumentacao e priorizacao de melhorias em produto de reviews.",
+    heroDescription:
+      "Trabalho de evolucao em uma experiencia de reviews com alto impacto em confianca, tomada de decisao e relacionamento entre consumidores e marcas.",
+    coverImage: "/images/ra-case.png",
+    thumbnailImage: "/images/ra-case.png",
+    tags: ["UX", "Analytics", "Front-End", "AI", "Produto", "Reviews", "B2C"],
+    duration: "5 meses",
+    role: "TPM / Product",
+    squad: "7 pessoas",
+    projectType: "Experiencia Digital",
+    context:
+      "Reviews sao parte central da confianca do consumidor. A experiencia precisava equilibrar clareza, utilidade, regras de negocio e necessidades das marcas.",
+    problem:
+      "A experiencia apresentava oportunidades de melhoria em leitura, descoberta e sinalizacao de valor, alem de pontos que precisavam ser melhor instrumentados para decisao.",
+    myRole:
+      "Atuei conectando necessidades de negocio, comportamento do usuario e viabilidade tecnica para priorizar melhorias com impacto real na experiencia.",
+    myRoleBullets: [
+      "Mapeamento da jornada de reviews",
+      "Priorizacao de melhorias por valor",
+      "Alinhamento com stakeholders",
+      "Definicao de requisitos e criterios",
+      "Acompanhamento tecnico das entregas",
+      "Leitura de resultados e proximos passos",
+    ],
+    process: [
+      { title: "Imersao", description: "Entendimento do produto, regras e dores dos usuarios." },
+      { title: "Jornada", description: "Mapeamento de pontos de decisao e oportunidade." },
+      { title: "Backlog", description: "Priorizacao orientada por valor e esforco." },
+      { title: "Entrega", description: "Acompanhamento de discovery, design e tecnologia." },
+      { title: "Evolucao", description: "Aprendizados para ciclos seguintes." },
+    ],
+    impact: [
+      { title: "Mais confianca", description: "Experiencia mais clara para tomada de decisao." },
+      { title: "Melhor leitura", description: "Informacoes organizadas para consumo rapido." },
+      { title: "Backlog qualificado", description: "Priorizacao conectada a impacto e viabilidade." },
+      { title: "Produto mensuravel", description: "Base mais clara para acompanhar resultados." },
+    ],
+    tools: ["Product Discovery", "Analytics", "Figma", "React", "TypeScript", "Jira"],
+    learnings:
+      "Em produtos de confianca, pequenas decisoes de experiencia podem alterar a percepcao de valor. O papel de produto e conectar essa sensibilidade ao delivery.",
   },
   {
     slug: "case-meliuz",
@@ -95,52 +188,6 @@ export const cases: CaseStudy[] = [
     tools: ["Analytics", "Product Discovery", "Figma", "React", "TypeScript", "A/B Testing", "Jira"],
     learnings:
       "A combinacao de dados quantitativos, leitura da experiencia e alinhamento claro de hipoteses ajuda o time a evoluir produto com menos opiniao solta e mais aprendizado acumulado.",
-  },
-  {
-    slug: "case-ra-reviews",
-    title: "Evolucao da experiencia RA Reviews.",
-    category: "Consumer Tech + Produto",
-    filterCategory: "UX",
-    shortDescription: "Evolucao de experiencia, instrumentacao e priorizacao de melhorias em produto de reviews.",
-    heroDescription:
-      "Trabalho de evolucao em uma experiencia de reviews com alto impacto em confianca, tomada de decisao e relacionamento entre consumidores e marcas.",
-    coverImage: "/images/agente-r.png",
-    thumbnailImage: "/images/agente-r.png",
-    tags: ["UX", "Analytics", "Produto", "Reviews", "B2C"],
-    duration: "5 meses",
-    role: "TPM / Product",
-    squad: "7 pessoas",
-    projectType: "Experiencia Digital",
-    context:
-      "Reviews sao parte central da confianca do consumidor. A experiencia precisava equilibrar clareza, utilidade, regras de negocio e necessidades das marcas.",
-    problem:
-      "A experiencia apresentava oportunidades de melhoria em leitura, descoberta e sinalizacao de valor, alem de pontos que precisavam ser melhor instrumentados para decisao.",
-    myRole:
-      "Atuei conectando necessidades de negocio, comportamento do usuario e viabilidade tecnica para priorizar melhorias com impacto real na experiencia.",
-    myRoleBullets: [
-      "Mapeamento da jornada de reviews",
-      "Priorizacao de melhorias por valor",
-      "Alinhamento com stakeholders",
-      "Definicao de requisitos e criterios",
-      "Acompanhamento tecnico das entregas",
-      "Leitura de resultados e proximos passos",
-    ],
-    process: [
-      { title: "Imersao", description: "Entendimento do produto, regras e dores dos usuarios." },
-      { title: "Jornada", description: "Mapeamento de pontos de decisao e oportunidade." },
-      { title: "Backlog", description: "Priorizacao orientada por valor e esforco." },
-      { title: "Entrega", description: "Acompanhamento de discovery, design e tecnologia." },
-      { title: "Evolucao", description: "Aprendizados para ciclos seguintes." },
-    ],
-    impact: [
-      { title: "Mais confianca", description: "Experiencia mais clara para tomada de decisao." },
-      { title: "Melhor leitura", description: "Informacoes organizadas para consumo rapido." },
-      { title: "Backlog qualificado", description: "Priorizacao conectada a impacto e viabilidade." },
-      { title: "Produto mensuravel", description: "Base mais clara para acompanhar resultados." },
-    ],
-    tools: ["Product Discovery", "Analytics", "Figma", "React", "TypeScript", "Jira"],
-    learnings:
-      "Em produtos de confianca, pequenas decisoes de experiencia podem alterar a percepcao de valor. O papel de produto e conectar essa sensibilidade ao delivery.",
   },
   {
     slug: "case-porto-seguro-setur",

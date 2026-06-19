@@ -143,7 +143,7 @@ function PlacesPanel() {
           >
             Brasil
           </a>
-          São Paulo, Brasília, Porto Seguro
+          São Paulo
         </p>
         <p className="m-0 text-muted">
           <a
@@ -161,7 +161,7 @@ function PlacesPanel() {
           >
             EUA
           </a>
-          Chicago
+          Remote / Global Team
         </p>
       </div>
     </div>
@@ -186,7 +186,7 @@ function SideCTA() {
       </a>
       <a
         className="standard-hover mt-3 inline-flex h-11 w-full items-center justify-center gap-2 rounded-lg border border-line bg-white px-5 text-sm font-black text-ink shadow-sm"
-        href="mailto:contato@victorsizino.com"
+        href="mailto:victorvsp@gmail.com"
       >
         Falar comigo <ExternalLink size={15} />
       </a>

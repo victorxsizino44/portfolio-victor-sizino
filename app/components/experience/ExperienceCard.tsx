@@ -19,7 +19,31 @@ function Badge({ children }: { children: ReactNode }) {
   );
 }
 
+function ExperienceMeta({ experience }: { experience: ProfessionalExperience }) {
+  const metaItems = [
+    experience.period,
+    experience.workMode,
+    experience.location && experience.location !== experience.workMode ? experience.location : undefined,
+  ].filter(Boolean);
+
+  return (
+    <>
+      {metaItems.map((item, index) => (
+        <span className="inline-flex items-center gap-1" key={item}>
+          {index > 0 ? <span className="px-1" aria-hidden="true">•</span> : null}
+          {index === metaItems.length - 1 && item === experience.location ? <MapPin size={13} className="text-ink" /> : null}
+          {item}
+        </span>
+      ))}
+    </>
+  );
+}
+
 function Logo({ experience }: { experience: ProfessionalExperience }) {
+  const words = experience.company.split(/\s+/).filter(Boolean);
+  const uppercaseWord = words.find((word) => word.length > 1 && word === word.toUpperCase());
+  const fallbackLabel = uppercaseWord ?? words.map((word) => word[0]).join("").slice(0, 3).toUpperCase();
+
   return (
     <div className="flex h-[74px] w-[128px] flex-none items-center justify-center rounded-lg border border-line bg-white">
       {experience.logo ? (
@@ -31,7 +55,7 @@ function Logo({ experience }: { experience: ProfessionalExperience }) {
           className="max-h-[54px] w-auto max-w-[108px] object-contain"
         />
       ) : (
-        <span className="text-lg font-black tracking-tight text-ink">stefanini</span>
+        <span className="text-lg font-black tracking-tight text-ink">{fallbackLabel}</span>
       )}
     </div>
   );
@@ -58,8 +82,8 @@ export default function ExperienceCard({ experience, defaultOpen = false }: Expe
             <div className="min-w-0">
               <h3 className="m-0 text-sm font-black leading-5 text-ink">{experience.role}</h3>
               <p className="mt-2 text-xs font-extrabold text-violet">{experience.company}</p>
-              <p className="mt-1 text-xs font-bold leading-5 text-muted">
-                {experience.period} <span className="px-1">•</span> {experience.location}
+              <p className="mt-1 flex flex-wrap items-center gap-y-1 text-xs font-bold leading-5 text-muted">
+                <ExperienceMeta experience={experience} />
               </p>
               {!isOpen ? <p className="mt-3 text-[11px] leading-5 text-muted">{experience.context}</p> : null}
             </div>
@@ -128,12 +152,7 @@ export default function ExperienceCard({ experience, defaultOpen = false }: Expe
             <h3 className="mt-4 text-base font-black leading-5 text-ink">{experience.role}</h3>
             <p className="mt-2 text-sm font-extrabold text-violet">{experience.company}</p>
             <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-bold leading-5 text-muted">
-              <span>{experience.period}</span>
-              <span aria-hidden="true">•</span>
-              <span className="inline-flex items-center gap-1">
-                <MapPin size={13} className="text-ink" />
-                {experience.location}
-              </span>
+              <ExperienceMeta experience={experience} />
             </p>
             <div className="mt-3">
               <Badge>{experience.segment}</Badge>
