@@ -23,17 +23,17 @@ import { FormEvent, useState } from "react";
 const contactCards = [
   {
     title: "E-mail",
-    value: "victor@victorsizino.com.br",
+    value: "victorvsp@gmail.com",
     action: "Copiar e-mail",
-    href: "mailto:victor@victorsizino.com.br",
+    href: "mailto:victorvsp@gmail.com",
     icon: Mail,
     actionIcon: Copy,
   },
   {
     title: "LinkedIn",
-    value: "linkedin.com/in/victorsizino",
+    value: "linkedin.com/in/xsizinox",
     action: "Abrir LinkedIn",
-    href: "https://www.linkedin.com/in/victorsizino",
+    href: "https://www.linkedin.com/in/xsizinox/",
     icon: ExternalLink,
     actionIcon: ExternalLink,
   },
@@ -120,7 +120,7 @@ export default function ContactPage() {
   };
 
   const copyEmail = async () => {
-    await navigator.clipboard.writeText("victor@victorsizino.com.br");
+    await navigator.clipboard.writeText("victorvsp@gmail.com");
     setCopiedEmail(true);
   };
 
@@ -147,7 +147,7 @@ export default function ContactPage() {
                 </a>
                 <a
                   className="standard-hover inline-flex h-11 min-w-0 items-center justify-center gap-3 rounded-lg border border-line bg-white px-5 text-sm font-bold shadow-sm md:min-w-[154px]"
-                  href="https://www.linkedin.com/in/victorsizino"
+                  href="https://www.linkedin.com/in/xsizinox/"
                   rel="noreferrer"
                   target="_blank"
                 >

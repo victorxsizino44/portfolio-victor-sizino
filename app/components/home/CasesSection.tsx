@@ -5,8 +5,9 @@ import { getAllCases } from "../../lib/cases";
 
 const badgeBySlug: Record<string, { label: string; className: string }> = {
   "case-agu": { label: "AGU", className: "bg-slate-700 text-white" },
+  "case-hirevue": { label: "HV", className: "bg-slate-700 text-white" },
   "case-meliuz": { label: "m", className: "bg-pink-500 text-white" },
-  "case-ra-reviews": { label: "RA", className: "bg-violet text-white" },
+  "case-ra-reviews": { label: "RA", className: "bg-slate-700 text-white" },
   "case-porto-seguro-setur": { label: "PS", className: "bg-white text-violet" },
   "case-houzbuddy": { label: "HB", className: "bg-dark text-white" },
 };
@@ -29,7 +30,7 @@ export default function CasesSection({ limit = 3, showAllLink = true, showTopBor
         <p className="section-label">Cases de impacto</p>
         {showAllLink ? (
           <Link href="/cases" className="inline-flex items-center gap-1.5 text-sm font-bold leading-none text-violet">
-            Ver todos os cases <ArrowRight className="translate-y-px text-ink" size={15} strokeWidth={2.2} />
+            Ver todos os cases <ArrowRight className="translate-y-px text-violet" size={15} strokeWidth={2.2} />
           </Link>
         ) : null}
       </div>

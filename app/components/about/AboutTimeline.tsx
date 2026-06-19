@@ -14,7 +14,7 @@ export default function AboutTimeline() {
               aria-hidden="true"
             />
             <div>
-              <p className="mb-[5px] text-[13px] font-medium leading-[14px] text-violet">{period}</p>
+              <p className="mb-[5px] mt-0 text-[13px] font-medium leading-[14px] text-violet">{period}</p>
               <h2 className="m-0 text-[15px] font-black leading-[17px] text-ink">{role}</h2>
               <p className="mt-0 max-w-[275px] text-[13px] leading-[20px] text-muted">{description}</p>
             </div>

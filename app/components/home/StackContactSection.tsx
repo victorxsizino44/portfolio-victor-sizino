@@ -24,7 +24,7 @@ export default function StackContactSection() {
             iniciativas de IA ou automacoes?
           </h2>
           <p className="contact-copy">Vamos transformar ideias em produtos escalaveis.</p>
-          <a className="contact-button" href="mailto:contato@victorsizino.com">
+          <a className="contact-button" href="mailto:victorvsp@gmail.com">
             Agendar conversa <ArrowRight size={17} />
           </a>
         </div>

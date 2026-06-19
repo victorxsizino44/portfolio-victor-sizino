@@ -139,12 +139,11 @@ export const journeyHighlights: AboutHighlight[] = [
 export const aboutCompanies: AboutCompany[] = [
   { name: "Meliuz", role: "AI Product Manager", logo: "/logos/meliuz.png" },
   { name: "Reclame Aqui", role: "Technical Product Manager", logo: "/logos/reclame-aqui-v2.png" },
-  { name: "HireVue", role: "TPM AI & Platforms" },
-  { name: "Mold3", role: "Consultor de Produto & Inovacao" },
+  { name: "HireVue", role: "TPM AI & Platforms", logo: "/logos/hirevue-logo.svg" },
   { name: "Carrefour", role: "Tech Lead", logo: "/logos/carrefour.png" },
   { name: "IPNET", role: "Technical Product Manager", logo: "/logos/ipnet-v2.png" },
   { name: "Webbix", role: "Product Designer", logo: "/logos/webbix.png" },
-  { name: "Stefanini", role: "Senior Front-end Developer" },
+  { name: "Stefanini", role: "Senior Front-end Developer", logo: "/logos/stefanini-logo.png" },
 ];
 
 export const learningGroups: AboutLearningGroup[] = [
@@ -154,7 +153,10 @@ export const learningGroups: AboutLearningGroup[] = [
   },
   {
     category: "IA & Automacao",
-    items: ["Agentes de IA e Automacao n8n | Hashtag Treinamentos (2026)", "IA para Iniciantes | Udemy (2025)"],
+    items: [
+      "Agentes de IA e Automacao n8n | Hashtag Treinamentos (2026)",
+      "Curso de IA: Domine as Melhores Ferramentas de IA e Simplifique seu Trabalho | Udemy (2025)",
+    ],
   },
   {
     category: "Dados",

@@ -9,7 +9,7 @@ export default function ExperienceHero() {
         <div className="min-w-0">
           <p className="mb-5 text-xs font-semibold uppercase tracking-[0.16em] text-muted">Experiência</p>
           <h1 className="max-w-[650px] text-[38px] font-black leading-[1.05] tracking-normal text-ink">
-            Mais de 7 anos transformando negócios em impacto real<span className="text-violet">.</span>
+            Mais de 10 anos transformando negócios em impacto real<span className="text-violet">.</span>
           </h1>
           <p className="mt-5 max-w-[640px] text-sm leading-6 text-muted md:text-base md:leading-7">
             Atuei em diferentes segmentos, liderando produtos e times multidisciplinares para entregar soluções que geram

@@ -19,8 +19,8 @@ export default function ExperienceSection() {
             </div>
           ))}
         </div>
-        <a className="timeline-link" href="#sobre">
-          Conheca minha historia <ArrowRight className="text-ink" size={15} />
+        <a className="timeline-link" href="/experiencia">
+          Conheça minha historia <ArrowRight className="text-violet" size={15} />
         </a>
       </div>
       <div>

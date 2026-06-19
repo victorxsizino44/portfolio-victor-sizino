@@ -11,7 +11,7 @@ const initialsByCompany: Record<string, string> = {
   Carrefour: "CA",
   "Reclame Aqui": "RA",
   Méliuz: "M",
-  IPNET: "IP",
+  HireVue: "HV",
   AGU: "AGU",
   SETUR: "ST",
   Webbix: "WB",
@@ -104,7 +104,7 @@ export default function CompaniesSection() {
           <BriefcaseBusiness size={15} strokeWidth={2.4} />
         </span>
         <div>
-          <strong>20+ projetos entregues</strong>
+          <strong>40+ projetos entregues</strong>
           <p>Experiência em empresas, startups e iniciativas digitais de diferentes segmentos.</p>
         </div>
       </div>
