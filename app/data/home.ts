@@ -161,6 +161,7 @@ export const timeline: TimelineItem[] = [
     description: "Reclame Aqui",
   },
   { year: "2023 - 2024", role: "Technical Product Manager", description: "IPNET - AGU - SETUR" },
+  { year: "2021 - 2023", role: "Front-end Developer / Technical Product Manager", description: "ADS - Ebanx - AkzoNobel" },
   { year: "2019 - 2021", role: "Front-End Developer & Technical Lead", description: "Carrefour" },
   { year: "2018", role: "Product Designer", description: "Webbix - Irlanda" },
 ];
