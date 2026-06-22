@@ -186,7 +186,7 @@ function SideCTA() {
       </a>
       <a
         className="standard-hover mt-3 inline-flex h-11 w-full items-center justify-center gap-2 rounded-lg border border-line bg-white px-5 text-sm font-black text-ink shadow-sm"
-        href="mailto:victorvsp@gmail.com"
+        href="/contato"
       >
         Falar comigo <ExternalLink size={15} />
       </a>

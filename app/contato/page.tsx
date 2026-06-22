@@ -141,7 +141,7 @@ export default function ContactPage() {
               <div className="mt-6 grid gap-3 sm:max-w-[360px] md:mt-7 md:max-w-none md:flex md:flex-wrap md:gap-4">
                 <a
                   className="violet-button-hover inline-flex h-11 min-w-0 items-center justify-center gap-3 rounded-lg border border-ink bg-ink px-5 text-sm font-bold text-white shadow-md md:min-w-[176px]"
-                  href="#agenda"
+                  href="/contato#agenda"
                 >
                   Agendar uma conversa <Calendar size={16} />
                 </a>
@@ -401,7 +401,7 @@ export default function ContactPage() {
             </div>
           </div>
           <div className="dot-grid pointer-events-none absolute inset-y-5 left-[52%] hidden w-[190px] opacity-70 md:block" />
-          <a className="contact-button relative z-10 m-0 h-12 px-6 text-sm" href="#agenda">
+          <a className="contact-button relative z-10 m-0 h-12 px-6 text-sm" href="/contato#agenda">
             Agendar conversa <Calendar size={16} />
           </a>
         </section>

@@ -17,7 +17,7 @@ export default function StackCTA() {
       </div>
       <a
         className="standard-hover inline-flex h-12 w-full items-center justify-center gap-3 rounded-lg border border-ink bg-ink px-5 text-sm font-black text-white shadow-md md:w-auto"
-        href="/#contato"
+        href="/contato"
       >
         Entrar em contato <ArrowRight aria-hidden="true" size={17} />
       </a>

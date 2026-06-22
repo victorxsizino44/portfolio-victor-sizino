@@ -25,7 +25,7 @@ export default function AboutCTA() {
           </a>
           <a
             className="standard-hover inline-flex h-11 items-center justify-center gap-3 rounded-lg border border-line bg-white px-5 text-sm font-bold shadow-sm"
-            href="/#contato"
+            href="/contato"
           >
             Entrar em contato <Mail size={16} />
           </a>
