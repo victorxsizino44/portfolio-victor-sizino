@@ -1,5 +1,6 @@
 import { BadgeCheck, Circle, Gauge, Lightbulb } from "lucide-react";
-import { proficiencyLegend } from "../../data/stack";
+import Tooltip from "../Tooltip";
+import { proficiencyLegend, proficiencyTooltipText } from "../../data/stack";
 import LevelBadge from "./LevelBadge";
 
 const proficiencyIcons = {
@@ -11,15 +12,13 @@ const proficiencyIcons = {
 
 export default function ProficiencyLegend() {
   return (
-    <section className="hidden border-b border-line py-6 md:block" aria-labelledby="proficiency-title">
+    <section className="border-b border-line py-6" aria-labelledby="proficiency-title">
       <div className="mb-4 flex items-center gap-3">
         <span className="h-5 w-0.5 rounded-full bg-violet" aria-hidden="true" />
         <h2 id="proficiency-title" className="m-0 text-xs font-black uppercase tracking-[0.12em] text-ink">
-          Niveis de proficiencia
+          Níveis de Proficiência
         </h2>
-        <span className="grid size-4 place-items-center rounded-lg border border-line text-[10px] font-black text-ink">
-          i
-        </span>
+        <Tooltip label="Entenda os níveis de proficiência">{proficiencyTooltipText}</Tooltip>
       </div>
       <div className="card-border grid overflow-hidden md:grid-cols-4">
         {proficiencyLegend.map(({ level, description }) => {
