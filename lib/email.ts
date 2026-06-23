@@ -1,7 +1,5 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const CONTACT_RECIPIENT = "victorvsp@gmail.com";
 const MESSAGE_MAX_LENGTH = 2000;
 
@@ -52,6 +50,16 @@ function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+function createResendClient() {
+  const apiKey = process.env.RESEND_API_KEY;
+
+  if (!apiKey) {
+    throw new Error("RESEND_API_KEY is not configured.");
+  }
+
+  return new Resend(apiKey);
+}
+
 export function validateContactPayload(payload: unknown): ContactValidationResult {
   const source = payload && typeof payload === "object" ? (payload as Record<string, unknown>) : {};
   const data: ContactEmailInput = {
@@ -80,9 +88,7 @@ export function validateContactPayload(payload: unknown): ContactValidationResul
 }
 
 export async function sendContactEmail(data: ContactEmailInput) {
-  if (!process.env.RESEND_API_KEY) {
-    throw new Error("RESEND_API_KEY is not configured.");
-  }
+  const resend = createResendClient();
 
   return resend.emails.send({
     from: "Portfolio Victor Sizino <onboarding@resend.dev>",
