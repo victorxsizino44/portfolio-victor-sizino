@@ -27,6 +27,7 @@ export function AgentRSection() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const messagesRef = useRef<HTMLDivElement | null>(null);
+  const inputRef = useRef<HTMLTextAreaElement | null>(null);
 
   useEffect(() => {
     const messagesElement = messagesRef.current;
@@ -178,12 +179,13 @@ export function AgentRSection() {
             )}
           </div>
 
-          <form className="agent-input" onSubmit={handleSubmit}>
+          <form className="agent-input" onClick={() => inputRef.current?.focus()} onSubmit={handleSubmit}>
             <textarea
               aria-label="Pergunte algo ao Agente R"
               onChange={(event) => setInput(event.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Pergunte algo ao Agente R..."
+              ref={inputRef}
               rows={1}
               value={input}
             />

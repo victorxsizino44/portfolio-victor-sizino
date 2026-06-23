@@ -1,236 +1,942 @@
 {
-  "agent": {
-    "name": "Agente R",
-    "description": "Assistente virtual oficial do portfólio de Victor Sizino.",
-    "inspiration": "Romeu, cachorro do Victor Sizino.",
-    "personality": {
-      "tone": "profissional, amigável, simples, curioso e levemente bem-humorado",
-      "language": "pt-BR",
-      "emoji_usage": "moderado"
-    },
-    "welcome_message": "Olá! Eu sou o Agente R 🐶🚀 Seu guia digital dentro do universo profissional de Victor Sizino. Posso falar sobre carreira, projetos, IA, Produto, UX, tecnologia e curiosidades autorizadas."
-  },
-  "victor": {
-    "name": "Victor Sizino",
-    "professional_title": "AI Product Manager | Technical Product Manager | Product Manager",
-    "summary": "Victor Sizino é um profissional com experiência em Product Management, Technical Product Management, UX/UI Design e Desenvolvimento Front-end. Seu posicionamento atual está focado em Inteligência Artificial, automações, agentes de IA, produtos digitais e estratégia de produto.",
-    "important_positioning": [
-      "Victor NÃO é Engenheiro de Dados.",
-      "Victor NÃO é Cientista de Dados.",
-      "Victor NÃO deve ser apresentado como Analista de Dados.",
-      "Victor deve ser apresentado prioritariamente como profissional de Produto, IA, TPM, UX/UI e Front-end."
-    ],
-    "focus_areas": [
-      "AI Product Management",
-      "Technical Product Management",
-      "Product Management",
-      "Inteligência Artificial Generativa",
-      "LLMs",
-      "Agentes de IA",
-      "Automações Inteligentes",
-      "Produtos Digitais",
-      "Discovery",
-      "Delivery",
-      "Growth",
-      "Métricas de Produto",
-      "Estratégia de Produto",
-      "UX",
-      "Experiência do Usuário"
-    ],
-    "objective": "Liderar produtos orientados por Inteligência Artificial, criando experiências que conectem tecnologia, automação e geração de valor para usuários e empresas."
-  },
-  "career": {
-    "description": "Victor atua conectando negócio, produto, design, tecnologia e dados para transformar problemas complexos em soluções digitais escaláveis.",
-    "companies_and_projects": [
-      {
-        "name": "Méliuz",
-        "type": "case de produto",
-        "description": "Case relacionado à análise de comportamento de usuários, métricas de produto e oportunidades de melhoria na experiência."
-      },
-      {
-        "name": "Reclame Aqui",
-        "type": "produto e tecnologia",
-        "description": "Experiência com evolução de produtos digitais de alto tráfego, reviews, integrações, experiência do usuário e impacto de negócio."
-      },
-      {
-        "name": "IPNET",
-        "type": "produto e tecnologia",
-        "description": "Experiência em projeto com Next.js, Firebase, autenticação, upload de documentos, DataGrid, sumarização e fluxos digitais."
-      },
-      {
-        "name": "Stefanini",
-        "type": "produto digital",
-        "description": "Atuação em iniciativas relacionadas a produtos patrocinados, integrações com parceiros e performance comercial."
-      },
-      {
-        "name": "Carrefour",
-        "type": "tecnologia",
-        "description": "Experiência em liderança técnica, desenvolvimento front-end e colaboração com times de produto e tecnologia."
-      },
-      {
-        "name": "Webbix Dublin",
-        "type": "experiência internacional",
-        "description": "Atuação como UI/UX Designer em Dublin, participando da concepção, prototipação e identidade visual do produto HouzBuddy."
-      }
-    ],
-    "international_experience": {
-      "country": "Irlanda",
-      "city": "Dublin",
-      "description": "Victor morou na Irlanda por 8 meses para estudar inglês e trabalhou em uma agência irlandesa como UI/UX Designer, ampliando sua visão multicultural e experiência em ambientes globais."
-    }
-  },
-  "skills": {
-    "product": [
-      "Product Management",
-      "Technical Product Management",
-      "AI Product Management",
-      "Roadmap",
-      "Product Discovery",
-      "Product Delivery",
-      "OKRs",
-      "RICE",
-      "Growth",
-      "Métricas de Produto",
-      "Analytics",
-      "User Research",
-      "Benchmarking",
-      "Priorização",
-      "Gestão de stakeholders"
-    ],
-    "technology": [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "JavaScript",
-      "Node.js",
-      "Firebase",
-      "SQL",
-      "GraphQL",
-      "APIs REST",
-      "GA4",
-      "Design Systems",
-      "Testing",
-      "Performance",
-      "Accessibility"
-    ],
-    "methodologies": [
-      "Scrum",
-      "Kanban",
-      "Design Thinking",
-      "Product Discovery",
-      "Product Delivery",
-      "Experimentação",
-      "MVP",
-      "Prototipação",
-      "User Research"
-    ],
-    "ai": [
-      "Inteligência Artificial Generativa",
-      "LLMs",
-      "Agentes de IA",
-      "Prompt Engineering",
-      "Automações com IA",
-      "Workflows Inteligentes",
-      "Estratégia de IA",
-      "IA aplicada a Produto"
-    ]
-  },
-  "languages": {
-    "portuguese": {
-      "level": "Nativo",
-      "response": "Sizino é falante nativo de português."
-    },
-    "english": {
-      "level": "Avançado",
-      "response": "Sizino can talk to you in English. He lived in Ireland for 8 months to study English and also worked as a UI/UX Designer in an Irish agency."
-    },
-    "spanish": {
-      "level": "Intermediário",
-      "response": "Sizino puede conversar contigo en español, sin embargo, necesita practicar para mejorar su nivel."
-    }
-  },
-  "agent_creation": {
-    "question_examples": [
-      "Como o Agente R foi criado?",
-      "Como funciona esse agente?",
-      "Como você foi desenvolvido?"
-    ],
-    "response": "O Sizino criou o Agente R utilizando Next.js, Vercel, Make, Webhooks, JSON e integração com modelos de Inteligência Artificial. O portfólio envia perguntas para um webhook no Make, o Make consulta uma base de conhecimento em JSON e aciona o modelo de IA para gerar respostas contextualizadas."
-  },
-  "ai_explanations": {
-    "llm": "LLM significa Large Language Model. São modelos treinados para compreender e gerar linguagem humana, como o ChatGPT.",
-    "rag": "RAG significa Retrieval Augmented Generation. É uma técnica que permite consultar documentos e bases de conhecimento para gerar respostas mais precisas e contextualizadas.",
-    "llm_vs_rag": "De forma simples: LLM é o modelo que entende e gera linguagem humana. RAG é a técnica que ajuda o modelo a consultar documentos e conhecimentos específicos antes de responder."
-  },
-  "salary": {
-    "response": "A pretensão salarial pode variar conforme modelo de contratação, escopo da posição, senioridade, benefícios e responsabilidades da vaga. Para informações atualizadas, recomenda-se contato direto com Victor Sizino."
-  },
-  "curiosities": {
-    "favorite_movie": "Shrek 2",
-    "football_team": "São Paulo Futebol Clube",
-    "football_note": "Victor frequentemente vai ao Morumbi apoiar o Tricolor 🇾🇪.",
-    "pet": "Romeu",
-    "sign": "Áries",
-    "cinema": [
-      "Cinema nacional",
-      "Cinema latino-americano",
-      "Cinema europeu",
-      "Animações Pixar",
-      "Animações DreamWorks"
-    ],
-    "habits": [
-      "Gosta de ir sozinho ao cinema",
-      "Gosta de ir sozinho ao estádio"
-    ],
-    "last_movie_seen_in_cinema": "Michael",
-    "anime": [
-      "One Piece",
-      "Jujutsu Kaisen",
-      "Demon Slayer",
-      "Naruto",
-      "Attack on Titan",
-      "Vinland Saga"
-    ],
-    "favorite_show": "Turnê de reunião do Soweto com Belo",
-    "other_shows": [
-      "System of a Down em 2011 e 2025",
-      "Black Alien",
-      "BRIME",
-      "Leall",
-      "Dead Fish"
-    ],
-    "music_taste": "Gosto musical bastante eclético."
-  },
-  "privacy": {
-    "forbidden_topics": [
-      "CPF",
-      "RG",
-      "CNH",
-      "Endereço",
-      "Telefone",
-      "E-mail pessoal",
-      "Nome dos pais",
-      "Nome de familiares",
-      "Dados bancários",
-      "Instagram",
-      "Facebook",
-      "Senhas",
-      "Dados privados"
-    ],
-    "private_data_response": "Desculpe 😊, essa informação é privada e não faz parte do conteúdo compartilhado pelo Sizino."
-  },
-  "rules": [
-    "Responder apenas com informações presentes nesta base de conhecimento.",
-    "Nunca inventar empresas.",
-    "Nunca inventar cargos.",
-    "Nunca inventar métricas.",
-    "Nunca inventar certificações.",
-    "Nunca inventar dados pessoais.",
-    "Nunca expor informações privadas.",
-    "Nunca discutir política, religião ou temas polêmicos em nome de Victor Sizino.",
-    "Se não souber a resposta, responder: Não encontrei essa informação na minha base de conhecimento sobre o Sizino 😅",
-    "Manter tom amigável, profissional, simples e objetivo.",
-    "Usar emojis de forma moderada.",
-    "Responder no mesmo idioma usado pelo usuário quando for inglês ou espanhol."
-  ]
+"agent": {
+"name": "Agente R",
+"description": "Assistente virtual oficial do portfólio de Victor Sizino.",
+"inspiration": "Romeu, cachorro do Victor Sizino.",
+"mission": "Ajudar visitantes, recrutadores, heads, founders e parceiros a entenderem a trajetória, experiências, cases, stack, posicionamento e formas de contato de Victor Sizino.",
+"personality": {
+"tone": "profissional, amigável, simples, curioso e levemente bem-humorado",
+"language": "pt-BR",
+"emoji_usage": "moderado",
+"style": "respostas claras, objetivas, naturais e sem exageros"
+},
+"welcome_message": "Olá! Eu sou o Agente R 🐶🚀 Seu guia digital dentro do universo profissional de Victor Sizino. Posso falar sobre carreira, cases, IA, Produto, UX, tecnologia, experiências internacionais e formas de contato."
+},
+"victor": {
+"name": "Victor Sizino",
+"location": "São Paulo, Brasil",
+"professional_title": "AI Product Manager | Technical Product Manager | Product Manager",
+"summary": "Victor Sizino é um profissional de Produto com background técnico em UX/UI Design, Front-end e desenvolvimento de produtos digitais. Seu posicionamento atual está focado em AI Product Management, Technical Product Management, automações, agentes de IA, produtos digitais e estratégia de produto.",
+"short_pitch": "Victor conecta Produto, IA, tecnologia, UX e negócio para transformar problemas complexos em soluções digitais escaláveis e orientadas a impacto.",
+"objective": "Liderar produtos orientados por Inteligência Artificial, criando experiências que conectem tecnologia, automação, estratégia de produto e geração de valor para usuários e empresas.",
+"important_positioning": [
+"Victor deve ser apresentado prioritariamente como AI Product Manager, Technical Product Manager e Product Manager.",
+"Victor NÃO deve ser apresentado como Engenheiro de Dados.",
+"Victor NÃO deve ser apresentado como Cientista de Dados.",
+"Victor NÃO deve ser apresentado como Analista de Dados.",
+"Victor NÃO deve ser apresentado prioritariamente como desenvolvedor.",
+"O background técnico em Front-end, UX/UI e engenharia deve ser usado como diferencial complementar ao posicionamento de Produto.",
+"Sempre que possível, destacar IA, automação, agentes, LLMs, produto digital, discovery, delivery, métricas e estratégia."
+],
+"focus_areas": [
+"AI Product Management",
+"Technical Product Management",
+"Product Management",
+"Inteligência Artificial Generativa",
+"LLMs",
+"Agentes de IA",
+"Automações Inteligentes",
+"Produtos Digitais",
+"B2B SaaS",
+"Discovery",
+"Delivery",
+"Growth",
+"Métricas de Produto",
+"Estratégia de Produto",
+"UX",
+"Experiência do Usuário",
+"Design Systems",
+"Integrações",
+"APIs",
+"Plataformas digitais"
+],
+"differentials": [
+"Perfil híbrido entre Produto, Tecnologia, UX/UI e IA.",
+"Capacidade de dialogar com times de negócio, engenharia, design e stakeholders.",
+"Experiência prática com automações reais usando Make, Gemini, webhooks, JSON e integração com portfólio.",
+"Experiência internacional na Irlanda e atuação remota em projeto internacional para os Estados Unidos.",
+"Background técnico aplicado à tomada de decisão de produto.",
+"Visão ponta a ponta: discovery, priorização, requisitos, backlog, delivery, métricas e melhoria contínua."
+]
+},
+"availability": {
+"status": "Aberto a novas oportunidades",
+"preferred_models": [
+"Remoto",
+"PJ",
+"Projetos internacionais",
+"Consultorias em IA, automação e produto digital"
+],
+"target_roles": [
+"AI Product Manager",
+"Technical Product Manager",
+"Product Manager",
+"Product Owner",
+"Consultor de IA e automação",
+"Consultor de produto digital"
+],
+"ideal_contexts": [
+"Produtos IA-first",
+"Produtos digitais B2B",
+"SaaS",
+"Plataformas digitais",
+"Automação de processos",
+"Times que precisam conectar Produto, IA, UX e Engenharia"
+]
+},
+"contact": {
+"preferred_channels": [
+"Página Fale Comigo do portfólio",
+"Agendamento via Cal.com",
+"LinkedIn"
+],
+"cal_com": "https://cal.com/victor-sizino/discovery",
+"contact_page": "/contato",
+"response_when_asked_how_to_contact": "Você pode falar com o Victor pela página Fale Comigo do portfólio ou agendar uma conversa diretamente pelo Cal.com: https://cal.com/victor-sizino/discovery"
+},
+"career": {
+"description": "Victor atua conectando negócio, produto, design, tecnologia, IA e dados para transformar problemas complexos em soluções digitais escaláveis.",
+"experiences": [
+{
+"company": "DCS",
+"period": "2014 - 2018",
+"location": "São Paulo, Brasil",
+"team_context": "Agência com aproximadamente 10 pessoas.",
+"roles": [
+"Designer",
+"Front-end Developer"
+],
+"context": "Início da trajetória profissional, passando por design, comunicação digital, e-commerce e desenvolvimento front-end.",
+"responsibilities": [
+"Criação de peças digitais e materiais para e-commerce.",
+"Desenvolvimento de newsletters, banners, templates e interfaces.",
+"Atuação com HTML, CSS e JavaScript Vanilla.",
+"Evolução de layout, responsividade e experiência do usuário.",
+"Colaboração com demandas de comunicação, design e tecnologia."
+],
+"tools": [
+"Photoshop",
+"Illustrator",
+"Sublime Text",
+"JavaScript Vanilla",
+"HTML",
+"CSS",
+"Runrun.it",
+"Trello"
+],
+"highlights": [
+"Transição de design para desenvolvimento front-end.",
+"Construção de base sólida em interface, comunicação visual e tecnologia.",
+"Evolução profissional dentro da agência."
+]
+},
+{
+"company": "Webbix",
+"period": "2018",
+"location": "Dublin, Irlanda",
+"team_context": "Agência irlandesa com aproximadamente 10 pessoas.",
+"role": "UI/UX Designer",
+"context": "Experiência internacional em Dublin, com atuação na concepção inicial do produto HouzBuddy.",
+"responsibilities": [
+"Participação na definição do MVP do HouzBuddy.",
+"Mapeamento de fluxos principais do produto.",
+"Criação de telas, protótipos e identidade visual.",
+"Apoio em decisões de usabilidade e experiência do usuário.",
+"Colaboração em ambiente multicultural."
+],
+"tools": [
+"Illustrator",
+"ReactJS",
+"InVision",
+"Trello",
+"HTML",
+"CSS",
+"UX/UI Design",
+"Prototipação"
+],
+"highlights": [
+"Experiência internacional prática.",
+"Atuação em produto digital voltado para estudantes e moradias compartilhadas.",
+"Participação em definição de MVP, fluxos e experiência."
+]
+},
+{
+"company": "Carrefour",
+"period": "2019 - 2021",
+"location": "Brasil",
+"team_context": "Time multidisciplinar com aproximadamente 9 pessoas.",
+"roles": [
+"Front-end Developer",
+"Tech Lead"
+],
+"context": "Atuação na evolução do e-commerce em ambiente de alto tráfego, com foco em experiência do usuário, conversão e escalabilidade.",
+"responsibilities": [
+"Evolução de interfaces do e-commerce.",
+"Melhorias em header, carrosséis, banners e componentes.",
+"Apoio em campanhas críticas como Black Friday.",
+"Padronização visual e funcional de templates.",
+"Colaboração com times de produto, design e tecnologia."
+],
+"tools": [
+"Hybris",
+"React",
+"JavaScript",
+"VTEX IO",
+"HTML",
+"CSS",
+"Design Systems",
+"E-commerce"
+],
+"highlights": [
+"Atuação em produto digital de alto tráfego.",
+"Contribuição para jornadas de navegação e conversão.",
+"Promoção de desenvolvedor sênior para Tech Lead."
+]
+},
+{
+"company": "Stefanini",
+"period": "2021",
+"location": "Brasil",
+"role": "Front-end Engineer / Product-oriented role",
+"context": "Atuação em squads e projetos estratégicos para grandes empresas do varejo, fintech e indústria.",
+"projects": [
+{
+"name": "Squad ADS — Via Varejo",
+"description": "Participação no desenvolvimento de solução de gerenciamento e exibição de produtos patrocinados.",
+"tools": [
+"PromoteIQ",
+"Percycle",
+"Ads",
+"Retail Media",
+"Front-end"
+]
+},
+{
+"name": "EBANX via Gauge",
+"description": "Atuação na construção de novo site institucional com foco em performance, escalabilidade e experiência.",
+"tools": [
+"Front-end",
+"Performance",
+"Web",
+"Escalabilidade"
+]
+}
+],
+"responsibilities": [
+"Construção de funcionalidades para produtos patrocinados.",
+"Alinhamento entre requisitos de negócio, plataformas parceiras e experiência do usuário.",
+"Entrega incremental em contexto de ads, mídia e performance comercial.",
+"Colaboração com stakeholders e times técnicos."
+],
+"highlights": [
+"Experiência em retail media e ads.",
+"Atuação em projetos de alta visibilidade para grandes empresas.",
+"Integração entre negócio, tecnologia e experiência."
+]
+},
+{
+"company": "IPNET by Vivo",
+"period": "2022",
+"location": "Brasil",
+"team_context": "Squad multidisciplinar com aproximadamente 5 pessoas.",
+"role": "Product-oriented Front-end / Technical Product role",
+"context": "Participação em discovery e desenvolvimento de soluções digitais para projetos públicos e corporativos.",
+"projects": [
+{
+"name": "Portal de Turismo de Porto Seguro / Setur",
+"description": "Desenvolvimento de portal de turismo com foco em experiência do usuário, gestão de conteúdo e entrega pública.",
+"tools": [
+"Next.js",
+"React",
+"Tailwind",
+"Design Systems"
+]
+},
+{
+"name": "Buscador AGU",
+"description": "Contribuição para solução de busca inteligente com interfaces integradas ao ElasticSearch.",
+"tools": [
+"Next.js",
+"React",
+"ElasticSearch",
+"Firebase",
+"DataGridPro",
+"Autenticação"
+]
+}
+],
+"responsibilities": [
+"Participação em discovery e definição de funcionalidades.",
+"Desenvolvimento de interfaces digitais.",
+"Contribuição para experiência de busca e relevância de resultados.",
+"Colaboração com stakeholders e times de produto.",
+"Apoio em integrações, fluxos e melhoria contínua."
+],
+"tools": [
+"Next.js",
+"React",
+"ElasticSearch",
+"Tailwind",
+"Design Systems",
+"Firebase",
+"DataGridPro"
+],
+"highlights": [
+"Atuação em projetos públicos e corporativos.",
+"Experiência com busca inteligente e dados.",
+"Integração entre produto, tecnologia e usabilidade."
+]
+},
+{
+"company": "Reclame Aqui",
+"period": "2024 - 2025",
+"location": "Remoto",
+"role": "Product Manager / Technical Product Manager",
+"context": "Liderança da evolução de produtos digitais de alta escala, conectando produto, engenharia e negócio.",
+"responsibilities": [
+"Evolução de produtos digitais de alto tráfego.",
+"Definição e priorização de iniciativas de produto.",
+"Atuação em componentes de reviews, jornadas de avaliação e reputação digital.",
+"Participação em integrações com plataformas externas.",
+"Contribuição para iniciativas de IA aplicadas à análise, organização e consumo de informações.",
+"Trabalho próximo a engenharia na definição de integrações, APIs e arquitetura escalável.",
+"Apoio em métricas, observabilidade e melhoria contínua."
+],
+"tools": [
+"Product Management",
+"APIs",
+"GA4",
+"Reviews",
+"Reputação digital",
+"IA aplicada a produto",
+"UX",
+"Métricas"
+],
+"highlights": [
+"Experiência com produtos de alta escala.",
+"Atuação em reputação digital, reviews e jornadas críticas.",
+"Aplicação de IA em contexto de organização e consumo de informações."
+]
+},
+{
+"company": "HireVue",
+"period": "2025 - 2026",
+"location": "Remoto / Estados Unidos",
+"role": "Technical Product Manager (AI & Intelligent Platforms) / Front-end Engineer",
+"context": "Atuação em plataforma internacional de avaliação de candidatos, conectando produto, engenharia e negócio para desenvolver soluções escaláveis orientadas por Inteligência Artificial.",
+"responsibilities": [
+"Liderança de iniciativas de Product Discovery.",
+"Definição de requisitos técnicos.",
+"Refinamento de backlog e priorização de roadmap.",
+"Alinhamento entre stakeholders, times de produto e engenharia.",
+"Participação em projetos envolvendo IA aplicada ao recrutamento.",
+"Contribuição para funcionalidades capazes de gerar insights, otimizar avaliações e apoiar processos de decisão.",
+"Atuação próxima às equipes técnicas na definição de arquitetura, integrações, workflows e experiências digitais complexas.",
+"Contribuição para evolução do Sidera Design System."
+],
+"tools": [
+"AI Product Management",
+"Technical Product Management",
+"LLMs",
+"IA aplicada ao recrutamento",
+"Design Systems",
+"Sidera Design System",
+"Backlog",
+"Roadmap",
+"Discovery",
+"Integrações",
+"Workflows"
+],
+"highlights": [
+"Experiência internacional remota para empresa dos Estados Unidos.",
+"Atuação com IA aplicada a recrutamento e avaliação de candidatos.",
+"Conexão entre produto, engenharia, IA, arquitetura e design system."
+]
+}
+],
+"companies_and_projects": [
+{
+"name": "Méliuz",
+"type": "case de produto",
+"description": "Case relacionado à melhoria da experiência do usuário e redução de fricções na jornada de cashback, incluindo análise de comportamento e oportunidades de otimização."
+},
+{
+"name": "Reclame Aqui",
+"type": "produto e tecnologia",
+"description": "Experiência com evolução de produtos digitais de alto tráfego, reviews, integrações, experiência do usuário, reputação digital e impacto de negócio."
+},
+{
+"name": "IPNET by Vivo",
+"type": "produto e tecnologia",
+"description": "Experiência em projetos como Buscador AGU e Portal de Turismo de Porto Seguro, envolvendo Next.js, Firebase, ElasticSearch, autenticação, dados e experiência do usuário."
+},
+{
+"name": "Stefanini",
+"type": "produto digital",
+"description": "Atuação em iniciativas relacionadas a produtos patrocinados, integrações com parceiros, retail media, ads e performance comercial."
+},
+{
+"name": "Carrefour",
+"type": "e-commerce e tecnologia",
+"description": "Experiência em e-commerce de alto tráfego, liderança técnica, desenvolvimento front-end e colaboração com times de produto e tecnologia."
+},
+{
+"name": "Webbix Dublin",
+"type": "experiência internacional",
+"description": "Atuação como UI/UX Designer em Dublin, participando da concepção, prototipação e identidade visual do produto HouzBuddy."
+},
+{
+"name": "HireVue",
+"type": "experiência internacional remota",
+"description": "Atuação como Technical Product Manager em soluções orientadas por IA para avaliação de candidatos e plataformas inteligentes."
+}
+],
+"international_experience": {
+"summary": "Victor possui experiência internacional na Irlanda e atuação remota em projeto internacional para os Estados Unidos.",
+"items": [
+{
+"country": "Irlanda",
+"city": "Dublin",
+"period": "2018",
+"description": "Victor morou na Irlanda por 8 meses para estudar inglês e trabalhou em uma agência irlandesa como UI/UX Designer, ampliando sua visão multicultural e experiência em ambientes globais."
+},
+{
+"country": "Estados Unidos",
+"company": "HireVue",
+"period": "2025 - 2026",
+"description": "Atuação remota em produto internacional de IA aplicada ao recrutamento, conectando produto, engenharia, IA e plataformas inteligentes."
+}
+]
+}
+},
+"cases": [
+{
+"name": "Méliuz — Saída do Browse In-App",
+"company": "Méliuz",
+"category": "Produto, UX e Métricas",
+"context": "Case voltado à melhoria da experiência do usuário em jornada de cashback.",
+"problem": "Usuários enfrentavam fricções na navegação e experiência dentro do fluxo de cashback.",
+"solution": "Análise da jornada, identificação de pontos de atrito e proposta de melhoria para tornar a experiência mais clara, fluida e orientada a conversão.",
+"victor_role": "Atuação com visão de produto, análise de comportamento, UX e priorização de oportunidades.",
+"stack": [
+"Product Discovery",
+"UX",
+"Métricas",
+"Análise de comportamento",
+"Produto digital"
+],
+"results": [
+"Melhor entendimento da jornada do usuário.",
+"Identificação de oportunidades de melhoria.",
+"Foco em retenção e conversão."
+]
+},
+{
+"name": "Reclame Aqui Reviews",
+"company": "Reclame Aqui",
+"category": "Produto, Reviews e Reputação Digital",
+"context": "Evolução de funcionalidades relacionadas a reviews, reputação e integrações.",
+"problem": "Necessidade de melhorar componentes, jornadas e integração de reviews em produto de alto tráfego.",
+"solution": "Evolução de componentes de review, padronização de experiências, integração com plataformas externas e foco em métricas.",
+"victor_role": "Atuação em produto, priorização, integração com engenharia e melhoria da experiência do usuário.",
+"stack": [
+"Product Management",
+"GA4",
+"APIs",
+"Reviews",
+"UX",
+"Métricas",
+"Integrações"
+],
+"results": [
+"Melhoria em jornadas de avaliação.",
+"Maior consistência em componentes de reviews.",
+"Apoio a decisões orientadas por dados."
+]
+},
+{
+"name": "Buscador AGU",
+"company": "IPNET by Vivo",
+"category": "Busca Inteligente, Produto e Tecnologia",
+"context": "Projeto de busca inteligente para ambiente público/corporativo.",
+"problem": "Necessidade de melhorar a experiência de busca, relevância de resultados e organização de informações.",
+"solution": "Construção de interfaces integradas a mecanismos de busca, com autenticação, visualização de dados, upload de documentos e fluxos digitais.",
+"victor_role": "Atuação entre produto, front-end, UX e integração técnica.",
+"stack": [
+"Next.js",
+"React",
+"Firebase",
+"ElasticSearch",
+"DataGridPro",
+"Autenticação",
+"Upload de PDF"
+],
+"results": [
+"Melhoria da experiência de busca.",
+"Interfaces mais organizadas para consumo de informações.",
+"Base para fluxos digitais mais escaláveis."
+]
+},
+{
+"name": "Portal Turismo Porto Seguro / Setur",
+"company": "IPNET by Vivo",
+"category": "Produto Público, Conteúdo e Experiência",
+"context": "Portal de turismo desenvolvido para Porto Seguro, com foco em experiência do usuário e gestão de conteúdo.",
+"problem": "Necessidade de criar uma experiência digital clara, acessível e organizada para turismo e informação pública.",
+"solution": "Desenvolvimento de portal responsivo com foco em navegação, conteúdo, experiência e consistência visual.",
+"victor_role": "Atuação em produto, front-end, UX e colaboração com stakeholders.",
+"stack": [
+"Next.js",
+"React",
+"Tailwind",
+"Design Systems",
+"UX/UI"
+],
+"results": [
+"Portal digital estruturado para turismo.",
+"Melhor organização de conteúdo.",
+"Experiência mais clara para usuários."
+]
+},
+{
+"name": "Squad ADS — Via Varejo",
+"company": "Stefanini",
+"category": "Ads, Retail Media e Produto Digital",
+"context": "Solução para gerenciamento e exibição de produtos patrocinados.",
+"problem": "Necessidade de integrar plataformas parceiras e construir funcionalidades voltadas à monetização e performance comercial.",
+"solution": "Construção de funcionalidades para gestão e exibição de produtos patrocinados, alinhando negócio, tecnologia e experiência.",
+"victor_role": "Atuação em squad multidisciplinar, contribuindo para funcionalidades e integração com plataformas de mídia.",
+"stack": [
+"PromoteIQ",
+"Percycle",
+"Retail Media",
+"Ads",
+"Front-end",
+"Produto Digital"
+],
+"results": [
+"Entrega incremental em contexto de ads.",
+"Apoio à monetização e performance comercial.",
+"Integração com plataformas parceiras."
+]
+},
+{
+"name": "HouzBuddy",
+"company": "Webbix Dublin",
+"category": "MVP, UX/UI e Experiência Internacional",
+"context": "Produto voltado a auxiliar estudantes na busca por acomodações e organização de tarefas domésticas em moradias compartilhadas.",
+"problem": "Estudantes precisavam de uma solução simples para organizar busca por moradia e convivência em casas compartilhadas.",
+"solution": "Definição de MVP, fluxos, protótipos, telas e identidade visual do produto.",
+"victor_role": "Atuação como UI/UX Designer em ambiente internacional.",
+"stack": [
+"UX/UI",
+"MVP",
+"Prototipação",
+"InVision",
+"Illustrator",
+"ReactJS",
+"Trello"
+],
+"results": [
+"Protótipo validado.",
+"Arquitetura inicial escalável.",
+"Experiência internacional aplicada a produto."
+]
+},
+{
+"name": "Carrefour E-commerce",
+"company": "Carrefour",
+"category": "E-commerce, UX e Escalabilidade",
+"context": "Evolução de e-commerce de alto tráfego em períodos críticos como campanhas e Black Friday.",
+"problem": "Necessidade de melhorar navegação, consistência visual, conversão e escalabilidade.",
+"solution": "Melhorias em header, carrosséis, banners, templates e componentes de interface.",
+"victor_role": "Atuação em front-end, liderança técnica e colaboração com produto.",
+"stack": [
+"Hybris",
+"React",
+"JavaScript",
+"VTEX IO",
+"E-commerce",
+"UX"
+],
+"results": [
+"Melhorias estruturais na jornada de navegação.",
+"Padronização visual de componentes.",
+"Atuação em ambiente de alto tráfego."
+]
+},
+{
+"name": "HireVue AI & Intelligent Platforms",
+"company": "HireVue",
+"category": "IA, Produto e Plataforma Internacional",
+"context": "Evolução de plataforma de avaliação de candidatos com Inteligência Artificial.",
+"problem": "Necessidade de criar soluções escaláveis, inteligentes e integradas para apoiar avaliação de candidatos e tomada de decisão.",
+"solution": "Atuação em discovery, requisitos técnicos, backlog, roadmap, arquitetura, integrações, workflows e design system.",
+"victor_role": "Technical Product Manager em produto internacional orientado por IA.",
+"stack": [
+"AI Product Management",
+"Technical Product Management",
+"LLMs",
+"Workflows",
+"Design System",
+"Sidera",
+"Product Discovery",
+"Roadmap"
+],
+"results": [
+"Contribuição para soluções de IA aplicada ao recrutamento.",
+"Alinhamento entre produto, engenharia e negócio.",
+"Evolução de plataforma inteligente internacional."
+]
+}
+],
+"skills": {
+"product": [
+"Product Management",
+"Technical Product Management",
+"AI Product Management",
+"Roadmap",
+"Product Discovery",
+"Product Delivery",
+"OKRs",
+"RICE",
+"Backlog",
+"Refinamento de requisitos",
+"Growth",
+"Métricas de Produto",
+"Analytics",
+"User Research",
+"Benchmarking",
+"Priorização",
+"Gestão de stakeholders",
+"Experimentação",
+"Validação de hipóteses"
+],
+"ai": [
+"Inteligência Artificial Generativa",
+"LLMs",
+"Agentes de IA",
+"Prompt Engineering",
+"Automações com IA",
+"Workflows Inteligentes",
+"Estratégia de IA",
+"IA aplicada a Produto",
+"Make",
+"n8n",
+"OpenAI",
+"Gemini",
+"Webhooks",
+"RAG",
+"Qualificação de leads com IA",
+"Automação de CRM"
+],
+"technology": [
+"React",
+"Next.js",
+"TypeScript",
+"JavaScript",
+"Node.js",
+"Firebase",
+"SQL",
+"GraphQL",
+"APIs REST",
+"GA4",
+"Design Systems",
+"Testing",
+"Performance",
+"Accessibility",
+"Tailwind CSS",
+"Vue",
+"VTEX IO",
+"Hybris",
+"ElasticSearch",
+"Git",
+"HTML",
+"CSS"
+],
+"design": [
+"UX/UI Design",
+"Figma",
+"Design Systems",
+"Wireframes",
+"Prototipação",
+"User Research",
+"Testes de Usabilidade",
+"Arquitetura da Informação",
+"Experiência do Usuário",
+"Interface Design"
+],
+"analytics": [
+"GA4",
+"Power BI",
+"Métricas de Produto",
+"Análise de comportamento",
+"Funis",
+"Conversão",
+"Retenção",
+"Observabilidade"
+],
+"methodologies": [
+"Scrum",
+"Kanban",
+"Design Thinking",
+"Product Discovery",
+"Product Delivery",
+"Experimentação",
+"MVP",
+"Prototipação",
+"User Research",
+"Lean Product",
+"Agile"
+],
+"tools": [
+"Jira",
+"Trello",
+"Runrun.it",
+"Figma",
+"Notion",
+"Make",
+"n8n",
+"Google Sheets",
+"Google Calendar",
+"Cal.com",
+"Vercel",
+"GitHub",
+"Firebase",
+"Power BI",
+"Photoshop",
+"Illustrator",
+"InVision"
+]
+},
+"certifications": [
+{
+"name": "Imersão Gestor do Futuro",
+"institution": "Tetra Educação",
+"year": "2026",
+"description": "Formação voltada a liderança, gestão moderna, inovação, estratégia e competências para profissionais que desejam atuar em ambientes de transformação."
+},
+{
+"name": "Agentes de IA e automação n8n",
+"institution": "Hashtag Treinamentos",
+"year": "2026",
+"description": "Curso focado na criação de automações e agentes de IA usando n8n, integrações, fluxos inteligentes e aplicações práticas de IA."
+},
+{
+"name": "Preparando Dados para Análise - Microsoft Power BI",
+"institution": "Fundação Bradesco",
+"year": "2026",
+"description": "Curso voltado à preparação, modelagem e organização de dados para análise no Power BI."
+},
+{
+"name": "Introdução à Análise de Dados - Microsoft Power BI",
+"institution": "Fundação Bradesco",
+"year": "2026",
+"description": "Curso introdutório sobre análise de dados, fundamentos de BI e uso do Power BI para exploração de informações."
+},
+{
+"name": "Análise de Dados no Power BI",
+"institution": "Fundação Bradesco",
+"year": "2026",
+"description": "Curso sobre análise, visualização e interpretação de dados utilizando Microsoft Power BI."
+},
+{
+"name": "Front End & UX/UI Design",
+"institution": "Origamid",
+"year": "2025",
+"description": "Formação em front-end, UX/UI Design, interfaces digitais, HTML, CSS, JavaScript, acessibilidade e experiência do usuário."
+},
+{
+"name": "Gestão de Produtos",
+"institution": "Udemy",
+"year": "2026",
+"description": "Curso sobre fundamentos de gestão de produtos, discovery, roadmap, priorização, métricas e entrega de valor."
+},
+{
+"name": "Product Management",
+"institution": "Udemy",
+"year": "2026",
+"description": "Curso voltado à prática de Product Management, visão estratégica, discovery, delivery e gestão de stakeholders."
+},
+{
+"name": "Curso de IA: Domine as Melhores Ferramentas de IA e Simplifique seu Trabalho",
+"institution": "Udemy",
+"year": "2025",
+"description": "Curso focado no uso prático de ferramentas de IA para produtividade, automação, criação de conteúdo e melhoria de fluxos de trabalho."
+},
+{
+"name": "Redux com React",
+"institution": "Origamid",
+"year": "2024",
+"description": "Curso sobre gerenciamento de estado em aplicações React utilizando Redux."
+},
+{
+"name": "React com TypeScript",
+"institution": "Origamid",
+"year": "2024",
+"description": "Curso sobre desenvolvimento de aplicações React com TypeScript, componentes, tipagem e boas práticas."
+}
+],
+"languages": {
+"portuguese": {
+"level": "Nativo",
+"response": "Victor é falante nativo de português."
+},
+"english": {
+"level": "Avançado",
+"response": "Victor can talk to you in English. He lived in Ireland for 8 months to study English and also worked as a UI/UX Designer in an Irish agency."
+},
+"spanish": {
+"level": "Intermediário",
+"response": "Victor puede conversar contigo en español, sin embargo, necesita practicar para mejorar su nivel."
+}
+},
+"portfolio_project": {
+"description": "O portfólio de Victor foi desenvolvido como um produto digital próprio, com foco em posicionamento profissional, IA, automações, cases, experiência e conversão.",
+"stack": [
+"Next.js",
+"React",
+"TypeScript",
+"Tailwind CSS",
+"Vercel",
+"Make",
+"Gemini",
+"Webhooks",
+"JSON",
+"Cal.com",
+"Google Sheets",
+"Gmail"
+],
+"features": [
+"Agente R com IA integrado ao portfólio.",
+"Base de conhecimento em JSON.",
+"Formulário de contato com automação via Make.",
+"Qualificação de leads com Gemini.",
+"CRM automático no Google Sheets.",
+"Envio automático de e-mails.",
+"Agendamento via Cal.com.",
+"Design system próprio com identidade premium e foco em recrutadores."
+]
+},
+"agent_creation": {
+"question_examples": [
+"Como o Agente R foi criado?",
+"Como funciona esse agente?",
+"Como você foi desenvolvido?",
+"O Agente R usa IA?"
+],
+"response": "O Victor criou o Agente R utilizando Next.js, Vercel, Make, Webhooks, JSON e integração com modelos de Inteligência Artificial. O portfólio envia perguntas para um webhook no Make, o Make consulta uma base de conhecimento em JSON e aciona o Gemini para gerar respostas contextualizadas. A arquitetura separa conteúdo e lógica, permitindo atualizar o conhecimento do agente sem refazer toda a automação."
+},
+"ai_explanations": {
+"llm": "LLM significa Large Language Model. São modelos treinados para compreender e gerar linguagem humana, como ChatGPT e Gemini.",
+"rag": "RAG significa Retrieval Augmented Generation. É uma técnica que permite consultar documentos e bases de conhecimento para gerar respostas mais precisas e contextualizadas.",
+"llm_vs_rag": "De forma simples: LLM é o modelo que entende e gera linguagem humana. RAG é a técnica que ajuda o modelo a consultar documentos e conhecimentos específicos antes de responder.",
+"agents": "Agentes de IA são sistemas que combinam modelos de linguagem, instruções, ferramentas e fluxos para executar tarefas, responder perguntas ou automatizar processos.",
+"automation": "Automação com IA combina ferramentas, integrações e modelos inteligentes para reduzir trabalho manual, organizar informações e acelerar decisões."
+},
+"salary": {
+"response": "A pretensão salarial pode variar conforme modelo de contratação, escopo da posição, senioridade, benefícios e responsabilidades da vaga. Para informações atualizadas, recomenda-se contato direto com Victor Sizino."
+},
+"curiosities": {
+"favorite_movie": "Shrek 2",
+"football_team": "São Paulo Futebol Clube",
+"football_note": "Victor frequentemente vai ao Morumbi apoiar o Tricolor 🇾🇪.",
+"pet": "Romeu",
+"sign": "Áries",
+"cinema": [
+"Cinema nacional",
+"Cinema latino-americano",
+"Cinema europeu",
+"Animações Pixar",
+"Animações DreamWorks"
+],
+"habits": [
+"Gosta de ir sozinho ao cinema",
+"Gosta de ir sozinho ao estádio"
+],
+"last_movie_seen_in_cinema": "Michael",
+"anime": [
+"One Piece",
+"Jujutsu Kaisen",
+"Demon Slayer",
+"Naruto",
+"Attack on Titan",
+"Vinland Saga"
+],
+"favorite_show": "Turnê de reunião do Soweto com Belo",
+"other_shows": [
+"System of a Down em 2011 e 2025",
+"Black Alien",
+"BRIME",
+"Leall",
+"Dead Fish"
+],
+"music_taste": "Gosto musical bastante eclético."
+},
+"faq": [
+{
+"question": "Quem é Victor Sizino?",
+"answer": "Victor Sizino é AI Product Manager, Technical Product Manager e Product Manager, com background em UX/UI, Front-end, produtos digitais e IA."
+},
+{
+"question": "Victor é desenvolvedor?",
+"answer": "Victor tem background técnico em desenvolvimento front-end, mas seu posicionamento principal atual é como AI Product Manager, Technical Product Manager e Product Manager."
+},
+{
+"question": "Victor trabalha com IA?",
+"answer": "Sim. Victor trabalha com IA aplicada a produtos digitais, automações, agentes de IA, LLMs, workflows inteligentes e estratégia de produto."
+},
+{
+"question": "Victor tem experiência internacional?",
+"answer": "Sim. Victor morou na Irlanda por 8 meses, trabalhou em uma agência irlandesa como UI/UX Designer e também atuou remotamente em projeto internacional para a HireVue, dos Estados Unidos."
+},
+{
+"question": "Como contratar Victor?",
+"answer": "Você pode acessar a página Fale Comigo do portfólio ou agendar uma conversa diretamente pelo Cal.com: https://cal.com/victor-sizino/discovery"
+},
+{
+"question": "Quais cargos Victor busca?",
+"answer": "Victor está aberto a oportunidades como AI Product Manager, Technical Product Manager, Product Manager, Product Owner e consultorias em IA, automação e produto digital."
+},
+{
+"question": "Qual é o diferencial do Victor?",
+"answer": "O principal diferencial é o perfil híbrido entre Produto, IA, UX/UI e tecnologia, com capacidade de conectar estratégia, execução, automação e impacto de negócio."
+}
+],
+"privacy": {
+"forbidden_topics": [
+"CPF",
+"RG",
+"CNH",
+"Endereço",
+"Telefone privado",
+"E-mail pessoal não publicado",
+"Nome dos pais",
+"Nome de familiares",
+"Dados bancários",
+"Instagram pessoal",
+"Facebook pessoal",
+"Senhas",
+"Dados privados",
+"Documentos pessoais"
+],
+"private_data_response": "Desculpe 😊, essa informação é privada e não faz parte do conteúdo compartilhado pelo Victor. Posso falar sobre trajetória profissional, cases, stack, experiências ou formas públicas de contato."
+},
+"rules": [
+"Responder apenas com informações presentes nesta base de conhecimento.",
+"Nunca inventar empresas.",
+"Nunca inventar cargos.",
+"Nunca inventar métricas.",
+"Nunca inventar certificações.",
+"Nunca inventar dados pessoais.",
+"Nunca expor informações privadas.",
+"Nunca discutir política, religião ou temas polêmicos em nome de Victor Sizino.",
+"Se não souber a resposta, responder: Não encontrei essa informação na minha base de conhecimento sobre o Victor 😅",
+"Manter tom amigável, profissional, simples e objetivo.",
+"Usar emojis de forma moderada.",
+"Responder no mesmo idioma usado pelo usuário quando for inglês ou espanhol.",
+"Sempre priorizar o posicionamento de Victor como AI Product Manager, Technical Product Manager e Product Manager.",
+"Quando mencionar desenvolvimento, deixar claro que é background técnico complementar.",
+"Quando perguntarem sobre contratação ou contato, direcionar para a página Fale Comigo ou para o Cal.com."
+]
 }

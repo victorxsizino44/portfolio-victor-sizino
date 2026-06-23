@@ -948,10 +948,14 @@ a {
   padding: 0 6px 0 18px;
   color: #9ca3af;
   font-size: 14px;
+  cursor: text;
 }
 
 .agent-input textarea {
+  position: relative;
+  z-index: 1;
   width: 100%;
+  min-height: 46px;
   max-height: 96px;
   resize: none;
   border: 0;
@@ -960,6 +964,8 @@ a {
   color: #0d0d0f;
   font: inherit;
   line-height: 20px;
+  padding: 13px 0;
+  cursor: text;
 }
 
 .agent-input textarea::placeholder {
