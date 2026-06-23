@@ -8,8 +8,11 @@ import ExperienceSection from "./components/home/ExperienceSection";
 import AgentRSection from "./components/AgentRSection";
 import StackContactSection from "./components/home/StackContactSection";
 import Footer from "./components/home/Footer";
+import { getAllCases } from "./lib/cases";
 
 export default function Home() {
+  const cases = getAllCases();
+
   return (
     <div className="min-h-screen bg-canvas text-ink">
       <Header />
@@ -19,7 +22,7 @@ export default function Home() {
           <AboutSection />
           <ExpertiseSection />
         </section>
-        <CasesSection />
+        <CasesSection cases={cases} />
         <CompaniesSection />
         <ExperienceSection />
         <AgentRSection />
