@@ -23,13 +23,19 @@ export type CaseNavigationItem = {
 export type CaseStudy = {
   slug: string;
   title: string;
+  company: string;
+  period: string;
+  location?: string;
   category: string;
   filterCategory: string;
   shortDescription: string;
   heroDescription: string;
   coverImage: string;
+  coverAlt?: string;
   thumbnailImage?: string;
   tags: string[];
+  highlights?: string[];
+  heroMetrics?: CaseMetric[];
   duration: string;
   role: string;
   squad: string;
@@ -43,4 +49,5 @@ export type CaseStudy = {
   tools: string[];
   learnings: string;
   quote?: string;
+  featured?: boolean;
 };

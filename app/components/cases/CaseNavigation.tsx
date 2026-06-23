@@ -35,7 +35,7 @@ function NavigationCard({
       {item.thumbnailImage ? (
         <Image
           src={item.thumbnailImage}
-          alt=""
+          alt={`Imagem do case ${item.title}`}
           width={72}
           height={52}
           sizes="72px"

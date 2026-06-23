@@ -1,20 +1,22 @@
-import { BriefcaseBusiness, CalendarDays, UsersRound, UserRound } from "lucide-react";
+import { BriefcaseBusiness, Building2, CalendarDays, MapPin, UsersRound, UserRound } from "lucide-react";
 import type { CaseStudy } from "../../types/case";
 
-type CaseMetaProps = Pick<CaseStudy, "duration" | "role" | "squad" | "projectType">;
+type CaseMetaProps = Pick<CaseStudy, "company" | "period" | "location" | "duration" | "role" | "squad" | "projectType">;
 
 const metaItems = [
-  { label: "Duracao", key: "duration", icon: CalendarDays },
+  { label: "Empresa", key: "company", icon: Building2 },
+  { label: "Periodo", key: "period", icon: CalendarDays },
+  { label: "Localizacao", key: "location", icon: MapPin },
   { label: "Meu papel", key: "role", icon: UserRound },
   { label: "Squad", key: "squad", icon: UsersRound },
   { label: "Tipo de projeto", key: "projectType", icon: BriefcaseBusiness },
 ] as const;
 
-export default function CaseMeta({ duration, role, squad, projectType }: CaseMetaProps) {
-  const values = { duration, role, squad, projectType };
+export default function CaseMeta({ company, period, location, role, squad, projectType }: CaseMetaProps) {
+  const values = { company, period, location: location ?? "Remoto", role, squad, projectType };
 
   return (
-    <dl className="grid gap-px overflow-hidden rounded-lg border border-line bg-line md:grid-cols-4">
+    <dl className="grid gap-px overflow-hidden rounded-lg border border-line bg-line md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
       {metaItems.map((item) => {
         const Icon = item.icon;
 

@@ -29,7 +29,7 @@ export function getAdjacentCases(slug: string): {
     return {
       slug: item.slug,
       title: item.title,
-      thumbnailImage: item.thumbnailImage ?? item.coverImage,
+      thumbnailImage: item.coverImage,
     };
   };
 
@@ -41,4 +41,12 @@ export function getAdjacentCases(slug: string): {
 
 export function getCaseCategories() {
   return Array.from(new Set(cases.map((item) => item.filterCategory)));
+}
+
+export function getCasesByCategory(category: string) {
+  if (category === "Todos") {
+    return getAllCases();
+  }
+
+  return cases.filter((item) => item.filterCategory === category);
 }

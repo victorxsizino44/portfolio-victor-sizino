@@ -21,6 +21,22 @@ import {
 } from "lucide-react";
 import { FormEvent, useState } from "react";
 
+const WHATSAPP_PHONE = "5511985655503";
+const WHATSAPP_MESSAGE = `Olá, Victor! Vim pelo seu portfólio e gostaria de conversar.
+
+Tipo de contato:
+[Oportunidade profissional / Consultoria / Projeto de IA / Produto Digital / Parceria / Outro]
+
+Empresa:
+[Nome da empresa]
+
+Contexto:
+[Conte brevemente o motivo do contato]
+
+Prazo ou urgência:
+[Quando gostaria de conversar?]`;
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+
 const contactCards = [
   {
     title: "E-mail",
@@ -42,7 +58,7 @@ const contactCards = [
     title: "WhatsApp",
     value: "+55 11 98565-5503",
     action: "Conversar agora",
-    href: "https://wa.me/5511985655503",
+    href: WHATSAPP_URL,
     icon: MessageCircle,
     actionIcon: MessageCircle,
   },
@@ -309,6 +325,7 @@ export default function ContactPage() {
                     <select
                       className="h-12 rounded-lg border border-line bg-white px-4 text-sm font-medium text-muted outline-none focus:border-violet"
                       onChange={(event) => updateField("type", event.target.value)}
+                      required
                       value={form.type}
                     >
                       <option value="">Selecione uma opção</option>
@@ -339,7 +356,7 @@ export default function ContactPage() {
                 ) : null}
                 {isError ? (
                   <p className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm font-bold text-red-600">
-                    Não foi possível enviar a mensagem. Tente novamente.
+                    Não foi possível enviar a mensagem. Tente novamente ou fale comigo pelo WhatsApp.
                   </p>
                 ) : null}
                 <button
