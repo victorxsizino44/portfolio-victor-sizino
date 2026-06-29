@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowRight, Download, MessageCircle } from "lucide-react";
+import { ArrowRight, MessageCircle } from "lucide-react";
 import { skills } from "../../data/home";
 
 export default function HeroSection() {
@@ -28,12 +28,6 @@ export default function HeroSection() {
               href="#agente-r"
             >
               Conversar com Agente R <MessageCircle size={16} />
-            </a>
-            <a
-              className="standard-hover inline-flex h-11 min-w-0 items-center justify-center gap-3 rounded-lg border border-line bg-white px-5 text-sm font-bold shadow-sm md:min-w-[132px]"
-              href="/victor-sizino-cv.pdf"
-            >
-              Baixar CV <Download size={16} />
             </a>
           </div>
           <div className="mt-7 grid grid-cols-2 gap-3 md:hidden">
