@@ -42,7 +42,7 @@ export default function CoreCompetencies({ variant = "desktop" }: CoreCompetenci
             </span>
             Core Competencies
           </span>
-          <ChevronDown className="shrink-0 rounded border border-line bg-canvas text-ink transition group-open:rotate-180" size={17} strokeWidth={2} />
+          <ChevronDown className="shrink-0 text-white/70 transition group-open:rotate-180" size={17} strokeWidth={2.2} />
         </summary>
         <div className="border-t border-white/10 bg-ink p-5 pt-4">
           <CompetenciesList />
