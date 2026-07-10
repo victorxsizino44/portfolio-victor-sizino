@@ -13,10 +13,10 @@ export const cases: CaseStudy[] = [
       "Atuação como Technical Product Manager na evolução de plataforma inteligente para avaliação de candidatos com IA.",
     heroDescription:
       "Atuação internacional como Technical Product Manager na evolução de uma plataforma de avaliação de candidatos, conectando produto, engenharia, IA, integrações, workflows e experiência para apoiar decisões em recrutamento.",
-    coverImage: "/cases/hirevue-cover-v2.png",
+    coverImage: "/cases/case-hirevue-v1.png",
     coverAlt:
       "Mockup da plataforma HireVue AI Platform para avaliação de candidatos com dashboard, entrevistas, métricas e insights de IA.",
-    thumbnailImage: "/cases/hirevue-thumb.png",
+    thumbnailImage: "/cases/case-hirevue-v1.png",
     tags: ["AI Product", "TPM", "LLMs", "Platform", "Recruiting"],
     highlights: [
       "Product Discovery para soluções com IA",
@@ -75,8 +75,8 @@ export const cases: CaseStudy[] = [
       "Produto interno com autenticacao, upload de documentos, busca estruturada, sumarizacao e apoio a organizacao de conhecimento juridico.",
     heroDescription:
       "Plataforma interna criada para organizar, consultar e apoiar a gestao de documentos juridicos, combinando busca estruturada, upload de arquivos, metadados e recursos de IA para sumarizacao e extracao de informacoes.",
-    coverImage: "/cases/agu-cover-v2.png",
-    thumbnailImage: "/cases/agu-thumb.png",
+    coverImage: "/cases/case-agu-v1.png",
+    thumbnailImage: "/cases/case-agu-v1.png",
     tags: ["Next.js", "Firebase", "Elasticsearch", "UX", "DataGrid"],
     highlights: [
       "Busca inteligente",
@@ -135,10 +135,10 @@ export const cases: CaseStudy[] = [
       "Evolução de produto de reviews com foco em confiança, reputação digital, integrações e experiência do usuário.",
     heroDescription:
       "Atuação na evolução de uma solução B2B SaaS de reviews, conectando reputação digital, confiança, integrações com e-commerce e melhoria contínua da experiência do usuário.",
-    coverImage: "/cases/ra-reviews-cover-v2.png",
+    coverImage: "/cases/case-ra-v1.png",
     coverAlt:
       "Mockup do produto RA Reviews exibindo dashboard de avaliações, reputação digital, métricas de reviews, integrações e indicadores de confiança para e-commerce.",
-    thumbnailImage: "/cases/ra-reviews-thumb.png",
+    thumbnailImage: "/cases/case-ra-v1.png",
     tags: ["B2B SaaS", "Reviews", "Trust", "VTEX", "UX"],
     highlights: [
       "Evolução de produto B2B SaaS em alta escala",
@@ -201,10 +201,10 @@ export const cases: CaseStudy[] = [
       "Evolução de e-commerce de alto tráfego com foco em navegação, consistência visual, conversão e campanhas críticas como Black Friday.",
     heroDescription:
       "Atuação na evolução do e-commerce Carrefour em contexto de alto tráfego, contribuindo para melhorias de navegação, componentes, templates dinâmicos, consistência visual e performance em campanhas críticas.",
-    coverImage: "/cases/carrefour-cover-v2.png",
+    coverImage: "/cases/case-carrefour-v1.png",
     coverAlt:
       "Mockup do e-commerce Carrefour exibindo dashboard de campanhas, performance, produtos patrocinados, componentes reutilizáveis e métricas de navegação.",
-    thumbnailImage: "/cases/carrefour-thumb.png",
+    thumbnailImage: "/cases/case-carrefour-v1.png",
     tags: ["E-commerce", "VTEX IO", "React", "Hybris", "UX"],
     highlights: [
       "Evolução de e-commerce de alto tráfego",
@@ -267,10 +267,10 @@ export const cases: CaseStudy[] = [
       "MVP para estudantes internacionais com foco em moradia, convivência, organização da casa e adaptação multicultural.",
     heroDescription:
       "Criação de MVP mobile para estudantes internacionais na Irlanda, conectando moradia, convivência, tarefas compartilhadas e apoio à rotina de quem vive em casas compartilhadas.",
-    coverImage: "/cases/houzbuddy-cover-v2.png",
+    coverImage: "/cases/case-houzbuddy-v1.png",
     coverAlt:
       "Mockup do produto HouzBuddy exibindo dashboard e fluxos de moradia, organização de tarefas, leads, mensagens e rotina compartilhada para estudantes internacionais.",
-    thumbnailImage: "/cases/houzbuddy-thumb.png",
+    thumbnailImage: "/cases/case-houzbuddy-v1.png",
     tags: ["MVP", "UX/UI", "Research", "Mobile", "Internacional"],
     highlights: [
       "Concepção de MVP em contexto internacional",
@@ -332,10 +332,10 @@ export const cases: CaseStudy[] = [
       "Projeto público com foco em escopo, stakeholders, experiência digital e entrega de plataforma para turismo.",
     heroDescription:
       "Participação em projeto de plataforma digital para o turismo de Porto Seguro, em contexto público e de licitação, conectando escopo, experiência do usuário, stakeholders e entrega técnica.",
-    coverImage: "/cases/porto-seguro-cover-v2.png",
+    coverImage: "/cases/case-setur-v1.png",
     coverAlt:
       "Mockup do Portal de Turismo de Porto Seguro exibindo dashboard de atrativos turísticos, eventos, municípios, relatórios e indicadores de acesso da plataforma.",
-    thumbnailImage: "/cases/porto-seguro-thumb.png",
+    thumbnailImage: "/cases/case-setur-v1.png",
     tags: ["Governo", "Discovery", "UX", "Stakeholders", "Next.js"],
     highlights: [
       "Projeto público em contexto de licitação",
@@ -398,10 +398,10 @@ export const cases: CaseStudy[] = [
       "Solução de produtos patrocinados em e-commerce, conectando plataformas de mídia, monetização, experiência e entrega incremental.",
     heroDescription:
       "Atuação em squad estratégico de ADS para e-commerce, contribuindo para funcionalidades de produtos patrocinados, monetização e integração com plataformas parceiras.",
-    coverImage: "/cases/via-varejo-ads-cover-v2.png",
+    coverImage: "/cases/case-stefanini-v1.png",
     coverAlt:
       "Mockup da plataforma de ADS exibindo dashboard de campanhas, produtos patrocinados, métricas de performance, canais integrados e resultados de monetização em e-commerce.",
-    thumbnailImage: "/cases/via-varejo-ads-thumb.png",
+    thumbnailImage: "/cases/case-stefanini-v1.png",
     tags: ["ADS", "Monetização", "E-commerce", "PromoteIQ", "Produto"],
     highlights: [
       "Produtos patrocinados em jornada de e-commerce",
@@ -462,10 +462,10 @@ export const cases: CaseStudy[] = [
       "Análise de jornada e proposta de melhoria para reduzir fricção, melhorar navegação, retenção e conversão.",
     heroDescription:
       "Case focado em leitura de comportamento, análise de jornada e identificação de oportunidades para reduzir fricções no browse in-app, melhorando clareza, continuidade e conversão.",
-    coverImage: "/cases/meliuz-cover-v2.png",
+    coverImage: "/cases/case-meliuz-v1.png",
     coverAlt:
       "Mockup do produto Méliuz exibindo dashboard de performance, jornada in-app, métricas de conversão, parceiros, cashback e visualização mobile.",
-    thumbnailImage: "/cases/meliuz-thumb.png",
+    thumbnailImage: "/cases/case-meliuz-v1.png",
     tags: ["Growth", "Produto", "UX", "Funil", "Métricas"],
     highlights: [
       "Análise de comportamento e jornada do usuário",

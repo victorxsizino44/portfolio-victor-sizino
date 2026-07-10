@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { BriefcaseBusiness, ChevronDown, ExternalLink, Globe2, MapPin, Send } from "lucide-react";
+import { BriefcaseBusiness, ChevronDown, Download, ExternalLink, Globe2, MapPin, Send } from "lucide-react";
 import { useState } from "react";
 import type { ReactNode } from "react";
 import {
@@ -189,6 +189,13 @@ function SideCTA() {
         href="/contato"
       >
         Falar comigo <ExternalLink size={15} />
+      </a>
+      <a
+        className="standard-hover mt-3 inline-flex h-11 w-full items-center justify-center gap-2 rounded-lg border border-line bg-white px-5 text-sm font-black text-ink shadow-sm"
+        download="Victor_Sizino_PT-BR.pdf"
+        href="/victor-sizino-cv.pdf"
+      >
+        Baixar CV <Download size={15} />
       </a>
     </section>
   );

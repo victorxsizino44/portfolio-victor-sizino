@@ -11,6 +11,7 @@ import {
   Calendar,
   CheckCircle2,
   Copy,
+  Download,
   ExternalLink,
   Mail,
   MapPin,
@@ -198,6 +199,13 @@ export default function ContactPage() {
                   target="_blank"
                 >
                   Ver meu LinkedIn <ArrowRight size={16} />
+                </a>
+                <a
+                  className="standard-hover inline-flex h-11 min-w-0 items-center justify-center gap-3 rounded-lg border border-line bg-white px-5 text-sm font-bold shadow-sm md:min-w-[132px]"
+                  download="Victor_Sizino_PT-BR.pdf"
+                  href="/victor-sizino-cv.pdf"
+                >
+                  Baixar CV <Download size={16} />
                 </a>
               </div>
             </div>
