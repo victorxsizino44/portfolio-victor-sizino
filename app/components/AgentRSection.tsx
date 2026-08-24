@@ -9,6 +9,8 @@ type Message = {
   content: string;
 };
 
+const AGENT_R_QUESTION_MAX_LENGTH = 1000;
+
 const initialMessage: Message = {
   role: "assistant",
   content:
@@ -182,6 +184,7 @@ export function AgentRSection() {
           <form className="agent-input" onClick={() => inputRef.current?.focus()} onSubmit={handleSubmit}>
             <textarea
               aria-label="Pergunte algo ao Agente R"
+              maxLength={AGENT_R_QUESTION_MAX_LENGTH}
               onChange={(event) => setInput(event.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Pergunte algo ao Agente R..."
