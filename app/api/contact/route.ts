@@ -122,7 +122,7 @@ function getContactWebhookUrl() {
 }
 
 function getTimeoutMs() {
-  const configured = Number.parseInt(process.env.CONTACT_UPSTREAM_TIMEOUT_MS ?? "", 10);
+  const configured = Number.parseInt(process.env.CONTACT_WEBHOOK_TIMEOUT_MS ?? "", 10);
 
   if (!Number.isFinite(configured)) {
     return DEFAULT_TIMEOUT_MS;
@@ -138,9 +138,9 @@ function safeError(requestId: string, status: number, code: string, message: str
 export async function POST(request: Request) {
   const requestId = randomUUID();
   const startedAt = Date.now();
-  const contentType = request.headers.get("content-type")?.toLowerCase() ?? "";
+  const contentType = request.headers.get("content-type")?.split(";", 1)[0]?.trim().toLowerCase() ?? "";
 
-  if (!contentType.startsWith("application/json")) {
+  if (contentType !== "application/json") {
     return safeError(requestId, 415, "INVALID_CONTENT_TYPE", "Payload invalido.");
   }
 

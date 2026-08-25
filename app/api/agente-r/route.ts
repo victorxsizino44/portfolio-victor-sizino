@@ -42,7 +42,7 @@ function errorResponse(requestId: string, status: number, code: ErrorCode, messa
 }
 
 function getTimeoutMs() {
-  const configured = Number.parseInt(process.env.AGENT_R_UPSTREAM_TIMEOUT_MS ?? "", 10);
+  const configured = Number.parseInt(process.env.MAKE_AGENT_R_TIMEOUT_MS ?? "", 10);
 
   if (!Number.isFinite(configured)) {
     return DEFAULT_TIMEOUT_MS;
@@ -114,9 +114,9 @@ function logFailure(event: string, requestId: string, errorCode: ErrorCode, star
 export async function POST(request: Request) {
   const requestId = randomUUID();
   const startedAt = Date.now();
-  const contentType = request.headers.get("content-type")?.toLowerCase() ?? "";
+  const contentType = request.headers.get("content-type")?.split(";", 1)[0]?.trim().toLowerCase() ?? "";
 
-  if (!contentType.startsWith("application/json")) {
+  if (contentType !== "application/json") {
     return errorResponse(requestId, 415, "INVALID_CONTENT_TYPE", "Envie a pergunta em formato JSON.");
   }
 
@@ -179,7 +179,22 @@ export async function POST(request: Request) {
       return errorResponse(requestId, 502, "UPSTREAM_FAILURE", "O Agent R esta temporariamente indisponivel. Tente novamente.");
     }
 
-    const answer = (await response.text()).trim();
+    const responseText = (await response.text()).trim();
+    const responseContentType = response.headers.get("content-type")?.split(";", 1)[0]?.trim().toLowerCase() ?? "";
+    let answer = responseText;
+
+    if (responseContentType === "application/json" || responseContentType.endsWith("+json")) {
+      try {
+        const parsed = JSON.parse(responseText) as unknown;
+        if (!parsed || typeof parsed !== "object" || Array.isArray(parsed) || typeof (parsed as { answer?: unknown }).answer !== "string") {
+          throw new Error("invalid response contract");
+        }
+        answer = (parsed as { answer: string }).answer.trim();
+      } catch {
+        logFailure("agent_r_upstream_failed", requestId, "INVALID_UPSTREAM_RESPONSE", startedAt);
+        return errorResponse(requestId, 502, "INVALID_UPSTREAM_RESPONSE", "O Agent R nao conseguiu gerar uma resposta valida. Tente novamente.");
+      }
+    }
     const hasInvalidControls = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/.test(answer);
 
     if (!answer || answer.length > RESPONSE_MAX_LENGTH || hasInvalidControls) {

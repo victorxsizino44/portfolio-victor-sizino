@@ -9,16 +9,16 @@ const AGENT_R_BODY_MAX_BYTES = 4096;
 
 const originalFetch = globalThis.fetch;
 const originalAgentWebhook = process.env.MAKE_AGENT_R_WEBHOOK_URL;
-const originalAgentTimeout = process.env.AGENT_R_UPSTREAM_TIMEOUT_MS;
+const originalAgentTimeout = process.env.MAKE_AGENT_R_TIMEOUT_MS;
 const originalContactWebhook = process.env.CONTACT_WEBHOOK_URL;
-const originalContactTimeout = process.env.CONTACT_UPSTREAM_TIMEOUT_MS;
+const originalContactTimeout = process.env.CONTACT_WEBHOOK_TIMEOUT_MS;
 const originalConsoleError = console.error;
 
-function request(path: string, body: string | undefined, contentType = "application/json") {
+function request(path: string, body: string | undefined, contentType: string | null = "application/json") {
   return new Request(`http://localhost${path}`, {
     method: "POST",
-    headers: { "Content-Type": contentType },
-    ...(body === undefined ? {} : { body }),
+    ...(contentType === null ? {} : { headers: { "Content-Type": contentType } }),
+    ...(body === undefined ? {} : { body: contentType === null ? new TextEncoder().encode(body) : body }),
   });
 }
 
@@ -37,9 +37,9 @@ function assertRequestId(value: unknown) {
 
 beforeEach(() => {
   process.env.MAKE_AGENT_R_WEBHOOK_URL = "https://secret.example.invalid/agent-hook";
-  process.env.AGENT_R_UPSTREAM_TIMEOUT_MS = "1000";
+  process.env.MAKE_AGENT_R_TIMEOUT_MS = "1000";
   process.env.CONTACT_WEBHOOK_URL = "https://secret.example.invalid/contact-hook";
-  process.env.CONTACT_UPSTREAM_TIMEOUT_MS = "1000";
+  process.env.CONTACT_WEBHOOK_TIMEOUT_MS = "1000";
   console.error = () => undefined;
 });
 
@@ -49,9 +49,9 @@ afterEach(() => {
 
   for (const [name, value] of [
     ["MAKE_AGENT_R_WEBHOOK_URL", originalAgentWebhook],
-    ["AGENT_R_UPSTREAM_TIMEOUT_MS", originalAgentTimeout],
+    ["MAKE_AGENT_R_TIMEOUT_MS", originalAgentTimeout],
     ["CONTACT_WEBHOOK_URL", originalContactWebhook],
-    ["CONTACT_UPSTREAM_TIMEOUT_MS", originalContactTimeout],
+    ["CONTACT_WEBHOOK_TIMEOUT_MS", originalContactTimeout],
   ]) {
     if (value === undefined) delete process.env[name];
     else process.env[name] = value;
@@ -100,6 +100,29 @@ test("Agent R rejects unsupported content type", async () => {
   assert.equal((data.error as Record<string, unknown>).code, "INVALID_CONTENT_TYPE");
 });
 
+test("Agent R rejects a missing content type", async () => {
+  const response = await postAgentR(request("/api/agente-r", JSON.stringify({ question: "Teste" }), null));
+  assert.equal(response.status, 415);
+  assertRequestId((await payload(response)).requestId);
+});
+
+test("Agent R accepts a JSON content type with charset", async () => {
+  globalThis.fetch = async () => new Response("Resposta segura", { status: 200 });
+  const response = await postAgentR(request("/api/agente-r", JSON.stringify({ question: "Teste" }), "application/json; charset=utf-8"));
+  assert.equal(response.status, 200);
+});
+
+test("Agent R removes control characters and normalizes whitespace", async () => {
+  let forwardedBody = "";
+  globalThis.fetch = async (_input, init) => {
+    forwardedBody = String(init?.body);
+    return new Response("Resposta segura", { status: 200 });
+  };
+  const response = await postAgentR(jsonRequest("/api/agente-r", { question: "  Quem\u0000\t\n  e Victor?  " }));
+  assert.equal(response.status, 200);
+  assert.deepEqual(JSON.parse(forwardedBody), { question: "Quem e Victor?" });
+});
+
 test("Agent R rejects a question above the UI/server limit", async () => {
   const response = await postAgentR(jsonRequest("/api/agente-r", { question: "x".repeat(AGENT_R_QUESTION_MAX_LENGTH + 1) }));
   assert.equal(response.status, 400);
@@ -126,6 +149,36 @@ test("Agent R rejects an empty upstream response", async () => {
   const response = await postAgentR(jsonRequest("/api/agente-r", { question: "Teste" }));
   assert.equal(response.status, 502);
   assert.equal(((await payload(response)).error as Record<string, unknown>).code, "INVALID_UPSTREAM_RESPONSE");
+});
+
+test("Agent R rejects an excessive upstream response", async () => {
+  globalThis.fetch = async () => new Response("x".repeat(8001), { status: 200 });
+  const response = await postAgentR(jsonRequest("/api/agente-r", { question: "Teste" }));
+  assert.equal(response.status, 502);
+});
+
+test("Agent R accepts a validated JSON upstream response", async () => {
+  globalThis.fetch = async () => new Response(JSON.stringify({ answer: "Resposta JSON" }), {
+    status: 200,
+    headers: { "Content-Type": "application/json; charset=utf-8" },
+  });
+  const data = await payload(await postAgentR(jsonRequest("/api/agente-r", { question: "Teste" })));
+  assert.equal(data.answer, "Resposta JSON");
+});
+
+test("Agent R rejects malformed JSON declared by the upstream", async () => {
+  globalThis.fetch = async () => new Response("{", { status: 200, headers: { "Content-Type": "application/json" } });
+  const response = await postAgentR(jsonRequest("/api/agente-r", { question: "Teste" }));
+  assert.equal(response.status, 502);
+});
+
+test("Agent R rejects JSON without an answer string", async () => {
+  globalThis.fetch = async () => new Response(JSON.stringify({ result: "unexpected" }), {
+    status: 200,
+    headers: { "Content-Type": "application/json" },
+  });
+  const response = await postAgentR(jsonRequest("/api/agente-r", { question: "Teste" }));
+  assert.equal(response.status, 502);
 });
 
 test("Agent R rejects a malformed upstream response", async () => {
@@ -196,6 +249,33 @@ test("Contact preserves validation errors", async () => {
   const data = await payload(response);
   assert.equal(response.status, 400);
   assert.ok(Array.isArray(data.errors));
+});
+
+test("Contact rejects a missing or unsupported content type", async () => {
+  for (const contentType of [null, "text/plain"]) {
+    const response = await postContact(request("/api/contact", JSON.stringify(validContact), contentType));
+    assert.equal(response.status, 415);
+    assertRequestId((await payload(response)).requestId);
+  }
+});
+
+test("Contact rejects an oversized body", async () => {
+  const response = await postContact(jsonRequest("/api/contact", { ...validContact, message: "x".repeat(9000) }));
+  assert.equal(response.status, 413);
+  assertRequestId((await payload(response)).requestId);
+});
+
+test("Contact rejects invalid JSON safely", async () => {
+  const response = await postContact(request("/api/contact", "{"));
+  assert.equal(response.status, 400);
+  assert.equal((await payload(response)).code, "INVALID_JSON");
+});
+
+test("Contact returns a safe error when configuration is missing", async () => {
+  delete process.env.CONTACT_WEBHOOK_URL;
+  const data = await payload(await postContact(jsonRequest("/api/contact", validContact)));
+  assert.equal(data.code, "SERVICE_UNAVAILABLE");
+  assert.doesNotMatch(JSON.stringify(data), /CONTACT_WEBHOOK|secret\.example/i);
 });
 
 test("Contact maps timeout to a safe response without personal data in logs", async () => {
