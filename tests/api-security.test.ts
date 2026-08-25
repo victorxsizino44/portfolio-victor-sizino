@@ -36,6 +36,7 @@ function assertRequestId(value: unknown) {
 }
 
 beforeEach(() => {
+  globalThis.fetch = async () => { throw new Error("Unexpected fetch: tests must mock every external call"); };
   process.env.MAKE_AGENT_R_WEBHOOK_URL = "https://secret.example.invalid/agent-hook";
   process.env.MAKE_AGENT_R_TIMEOUT_MS = "1000";
   process.env.CONTACT_WEBHOOK_URL = "https://secret.example.invalid/contact-hook";
@@ -155,6 +156,22 @@ test("Agent R rejects an excessive upstream response", async () => {
   globalThis.fetch = async () => new Response("x".repeat(8001), { status: 200 });
   const response = await postAgentR(jsonRequest("/api/agente-r", { question: "Teste" }));
   assert.equal(response.status, 502);
+});
+
+test("Agent R rejects unexpected upstream media types", async () => {
+  globalThis.fetch = async () => new Response("<html>unexpected</html>", { headers: { "Content-Type": "text/html" } });
+  const response = await postAgentR(jsonRequest("/api/agente-r", { question: "Teste" }));
+  assert.equal(response.status, 502);
+  assert.equal(((await payload(response)).error as Record<string, unknown>).code, "INVALID_UPSTREAM_RESPONSE");
+});
+
+test("Agent R bounds the upstream body before JSON parsing", async () => {
+  globalThis.fetch = async () => new Response(JSON.stringify({ answer: "ok", extra: "x".repeat(32768) }), {
+    headers: { "Content-Type": "application/json" },
+  });
+  const response = await postAgentR(jsonRequest("/api/agente-r", { question: "Teste" }));
+  assert.equal(response.status, 502);
+  assert.equal(((await payload(response)).error as Record<string, unknown>).code, "INVALID_UPSTREAM_RESPONSE");
 });
 
 test("Agent R accepts a validated JSON upstream response", async () => {

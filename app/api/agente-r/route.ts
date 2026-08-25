@@ -8,6 +8,7 @@ const DEFAULT_TIMEOUT_MS = 10_000;
 const MIN_TIMEOUT_MS = 1_000;
 const MAX_TIMEOUT_MS = 30_000;
 const RESPONSE_MAX_LENGTH = 8_000;
+const RESPONSE_MAX_BYTES = 32_768;
 
 type ErrorCode =
   | "INVALID_CONTENT_TYPE"
@@ -101,6 +102,29 @@ function normalizeQuestion(value: string) {
     .trim();
 }
 
+async function readUpstreamText(response: Response): Promise<string | null> {
+  if (!response.body) return null;
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+  let bytes = 0;
+  let text = "";
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      bytes += value.byteLength;
+      if (bytes > RESPONSE_MAX_BYTES) {
+        await reader.cancel();
+        return null;
+      }
+      text += decoder.decode(value, { stream: true });
+    }
+    return text + decoder.decode();
+  } finally {
+    reader.releaseLock();
+  }
+}
+
 function logFailure(event: string, requestId: string, errorCode: ErrorCode, startedAt: number, status?: number) {
   console.error({
     event,
@@ -179,11 +203,22 @@ export async function POST(request: Request) {
       return errorResponse(requestId, 502, "UPSTREAM_FAILURE", "O Agent R esta temporariamente indisponivel. Tente novamente.");
     }
 
-    const responseText = (await response.text()).trim();
     const responseContentType = response.headers.get("content-type")?.split(";", 1)[0]?.trim().toLowerCase() ?? "";
-    let answer = responseText;
+    const isJsonResponse = responseContentType === "application/json" || /^application\/[a-z0-9!#$&^_.+-]+\+json$/.test(responseContentType);
+    if (responseContentType !== "text/plain" && !isJsonResponse) {
+      await response.body?.cancel();
+      logFailure("agent_r_upstream_failed", requestId, "INVALID_UPSTREAM_RESPONSE", startedAt);
+      return errorResponse(requestId, 502, "INVALID_UPSTREAM_RESPONSE", "O Agent R nao conseguiu gerar uma resposta valida. Tente novamente.");
+    }
 
-    if (responseContentType === "application/json" || responseContentType.endsWith("+json")) {
+    const responseText = await readUpstreamText(response);
+    if (responseText === null) {
+      logFailure("agent_r_upstream_failed", requestId, "INVALID_UPSTREAM_RESPONSE", startedAt);
+      return errorResponse(requestId, 502, "INVALID_UPSTREAM_RESPONSE", "O Agent R nao conseguiu gerar uma resposta valida. Tente novamente.");
+    }
+    let answer = responseText.trim();
+
+    if (isJsonResponse) {
       try {
         const parsed = JSON.parse(responseText) as unknown;
         if (!parsed || typeof parsed !== "object" || Array.isArray(parsed) || typeof (parsed as { answer?: unknown }).answer !== "string") {
