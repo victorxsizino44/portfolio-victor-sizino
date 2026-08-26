@@ -1,6 +1,11 @@
-import { NextResponse } from "next/server";
+import { randomUUID } from "node:crypto";
+import { NextResponse } from "next/server.js";
 
 const MESSAGE_MAX_LENGTH = 2000;
+const CONTACT_BODY_MAX_BYTES = 8192;
+const DEFAULT_TIMEOUT_MS = 10_000;
+const MIN_TIMEOUT_MS = 1_000;
+const MAX_TIMEOUT_MS = 30_000;
 
 type ContactInput = {
   name: string;
@@ -113,29 +118,65 @@ function createMakePayload(data: ContactInput): MakeContactPayload {
 }
 
 function getContactWebhookUrl() {
-  return process.env.CONTACT_WEBHOOK_URL;
+  return process.env.CONTACT_WEBHOOK_URL?.trim();
+}
+
+function getTimeoutMs() {
+  const configured = Number.parseInt(process.env.CONTACT_WEBHOOK_TIMEOUT_MS ?? "", 10);
+
+  if (!Number.isFinite(configured)) {
+    return DEFAULT_TIMEOUT_MS;
+  }
+
+  return Math.min(Math.max(configured, MIN_TIMEOUT_MS), MAX_TIMEOUT_MS);
+}
+
+function safeError(requestId: string, status: number, code: string, message: string) {
+  return NextResponse.json({ error: message, code, requestId }, { status });
 }
 
 export async function POST(request: Request) {
+  const requestId = randomUUID();
+  const startedAt = Date.now();
+  const contentType = request.headers.get("content-type")?.split(";", 1)[0]?.trim().toLowerCase() ?? "";
+
+  if (contentType !== "application/json") {
+    return safeError(requestId, 415, "INVALID_CONTENT_TYPE", "Payload invalido.");
+  }
+
+  const declaredLength = Number.parseInt(request.headers.get("content-length") ?? "", 10);
+  if (Number.isFinite(declaredLength) && declaredLength > CONTACT_BODY_MAX_BYTES) {
+    return safeError(requestId, 413, "REQUEST_TOO_LARGE", "Payload invalido.");
+  }
+
   let payload: unknown;
 
   try {
-    payload = await request.json();
+    const body = await request.text();
+    if (new TextEncoder().encode(body).byteLength > CONTACT_BODY_MAX_BYTES) {
+      return safeError(requestId, 413, "REQUEST_TOO_LARGE", "Payload invalido.");
+    }
+    payload = JSON.parse(body) as unknown;
   } catch {
-    return NextResponse.json({ error: "Payload invalido." }, { status: 400 });
+    return safeError(requestId, 400, "INVALID_JSON", "Payload invalido.");
   }
 
   const result = validateContactPayload(payload);
 
   if (!result.isValid) {
-    return NextResponse.json({ errors: result.errors }, { status: 400 });
+    return NextResponse.json({ errors: result.errors, requestId }, { status: 400 });
   }
 
   const webhookUrl = getContactWebhookUrl();
 
   if (!webhookUrl) {
-    console.error("[contact] CONTACT_WEBHOOK_URL is not configured.");
-    return NextResponse.json({ error: "Nao foi possivel enviar a mensagem." }, { status: 500 });
+    console.error({
+      event: "contact_request_failed",
+      requestId,
+      errorCode: "SERVICE_UNAVAILABLE",
+      durationMs: Date.now() - startedAt,
+    });
+    return safeError(requestId, 503, "SERVICE_UNAVAILABLE", "Nao foi possivel enviar a mensagem.");
   }
 
   try {
@@ -143,17 +184,38 @@ export async function POST(request: Request) {
       body: JSON.stringify(createMakePayload(result.data)),
       headers: {
         "Content-Type": "application/json",
+        "X-Request-Id": requestId,
       },
       method: "POST",
+      cache: "no-store",
+      signal: AbortSignal.timeout(getTimeoutMs()),
     });
 
     if (!makeResponse.ok) {
-      throw new Error(`Make webhook failed with status ${makeResponse.status}.`);
+      console.error({
+        event: "contact_upstream_failed",
+        requestId,
+        errorCode: "UPSTREAM_FAILURE",
+        status: makeResponse.status,
+        durationMs: Date.now() - startedAt,
+      });
+      return safeError(requestId, 502, "UPSTREAM_FAILURE", "Nao foi possivel enviar a mensagem.");
     }
 
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, requestId });
   } catch (error) {
-    console.error("[contact] Failed to send contact webhook:", error);
-    return NextResponse.json({ error: "Nao foi possivel enviar a mensagem." }, { status: 500 });
+    const isTimeout = error instanceof Error && (error.name === "TimeoutError" || error.name === "AbortError");
+    console.error({
+      event: "contact_request_failed",
+      requestId,
+      errorCode: isTimeout ? "UPSTREAM_TIMEOUT" : "UPSTREAM_FAILURE",
+      durationMs: Date.now() - startedAt,
+    });
+    return safeError(
+      requestId,
+      isTimeout ? 504 : 502,
+      isTimeout ? "UPSTREAM_TIMEOUT" : "UPSTREAM_FAILURE",
+      "Nao foi possivel enviar a mensagem.",
+    );
   }
 }
