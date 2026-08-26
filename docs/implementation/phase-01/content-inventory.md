@@ -1,43 +1,70 @@
 # Content Inventory
 
-## Method
+## Method and authority
 
-Inventory scope covers repository-controlled routes, TypeScript data, hardcoded component content, public assets, the public CV, agent prototypes and integration references. Classification records current evidence, not future implementation.
+This inventory covers repository-controlled routes, TypeScript data, hardcoded content, public assets, the public CV, agent prototypes and integration references. Human decisions HD-01–HD-08 supplied by Victor Sizino on 2026-08-26 resolve domain truth where stated. Current files remain evidence of existing representations, not independent authority.
 
-| Inventory ID | Domain | Current source | Classification | Verification | Owner | Notes |
+| Inventory ID | Domain | Approved canonical state | Current representation / evidence | Status and migration effect |
+| --- | --- | --- | --- | --- |
+| INV-PRO-001 | Professional profile | Career begins in 2014; roles derive from HD-01 | Home, About, Experience, CV, Agent R JSON | `Approved`; exact months `Requires Human Confirmation` |
+| INV-POS-001 | Positioning | Professional positioning derives from approved chronology and public claims | Home/About/Contact | `Approved`; reconciliation remains a migration action |
+| INV-MET-001 | Career metric | “10+ anos de experiência em tecnologia e produtos digitais” | Conflicting values across Home/About/Experience/Stack | Approved value; all other quantitative career counts `Superseded` |
+| INV-GEO-001 | Geography | Brazil professional experience; in-person Ireland experience; remote work for a US company | About/Experience/Stack/Agent R JSON | `Approved`; modalities must remain explicit |
+| INV-EXP-001 | Agência DCS | 2014–2018; Designer → Senior Front-end Developer | Experience and historical timelines | `Approved`; month precision pending |
+| INV-EXP-002 | Webbix | 2018, about eight months; UI/UX Designer | Experience, About, CV, Agent R JSON | `Approved`; frontend is responsibility only |
+| INV-EXP-003 | Carrefour Brasil | 2019–2021; Front-end Developer → Tech Lead | Experience/Home/About/CV/JSON | `Approved` |
+| INV-EXP-004 | Stefanini Group | 2021; Front-end Developer | Experience/Home/CV/JSON | `Approved`; longer periods/titles `Superseded` |
+| INV-EXP-005 | IPNET by Vivo | 2022; Front-end Developer with product-oriented responsibilities | Experience/Home/CV/JSON | `Approved`; 2023–2024 representation `Superseded` |
+| INV-EXP-006 | Reclame Aqui | 2024–2025; Technical Product Manager | Experience/Home/About/CV/JSON | `Approved`; frontend is responsibility |
+| INV-EXP-007 | HireVue | 2025–2026; public title AI Technical Product Manager | Experience/Home/About/CV/JSON | `Approved`; frontend is responsibility |
+| INV-EXP-008 | Possible additional experience | Any experience between 2022 and 2024 not listed above | Gap noted by HD-01 | `Requires Human Confirmation`; MUST NOT be inferred |
+| INV-CAS-001 | Professional cases (7) | HireVue, AGU, RA Reviews, Carrefour, HouzBuddy, SETUR and Via Varejo | `app/data/cases.ts` and case routes | `Approved`; claims require classification before migration |
+| INV-CAS-002 | Méliuz Browse In-App | Product case study, not employment/contract/launched product by Victor | Current case route and data | `Approved`; nature must be explicit |
+| INV-CAS-003 | Portal de Turismo — SETUR | Approved case name; 2022 IPNET project | Current `Porto Seguro`/SETUR representation | Approved target; Porto Seguro relationship `Requires Human Approval` |
+| INV-CLM-001 | Case claims | `Measured`, `Observed`, `Qualitative`, `Proposed`, `Unverified` | Case impact/highlight text | Quantitative publication requires evidence |
+| INV-COM-001 | Companies | Direct employers separated from clients/projects | About/Experience/Cases/assets | `Approved`; company count is not public |
+| INV-SKL-001 | Skills and competencies | Governed taxonomy required | About/Stack/CV/Agent R JSON | `Requires Human Approval` in later editorial migration |
+| INV-CER-001 | Complete certification register | Evidence-based records, separate from public selection | Stack/About/JSON and certificate images | `Approved`; evidence conditions are recorded per item |
+| INV-CER-002 | Public certification selection | Six approved editorial records | Derived from INV-CER-001 | `Approved`; evidence conditions remain |
+| INV-EDU-001 | Education | ETEC 2010–2011; Drummond 2012–2014; SEDA 2018–2019 | About/CV | `Approved`; exact months `Requires Human Confirmation` |
+| INV-LAN-001 | Languages | Portuguese native; English advanced professional self-declaration; Spanish intermediate self-declaration | CV/Agent R JSON | `Approved`; not formal CEFR certification |
+| INV-PAG-001 | Pages/routes | Preserve all current routes and eight case paths | `app/**/page.tsx` | `Verified`; no redirect authorized |
+| INV-SEO-001 | SEO metadata | Must derive from approved facts/routes | Layout/page metadata | `Requires Human Approval` during migration |
+| INV-MED-001 | Media assets | Media Asset separated from semantic usages and rights evidence | 77 public asset files | Conditional review; no mutation authorized |
+| INV-MED-002 | Asset groups 8 and 9 | Porto Seguro/SETUR and Stefanini/Via Varejo | Exact-checksum groups | `Blocked` for migration/publication due semantic conflict |
+| INV-DOC-001 | Public CV | Derived pt-BR document at stable URL | `public/victor-sizino-cv.pdf` | Current version `Deprecated`; preserve, do not replace in Phase 01 |
+| INV-SOC-001 | Public social/scheduling | Canonical LinkedIn and Cal.com | Contact/About/Footer/JSON | `Approved`; consumers are projections |
+| INV-CON-001 | Public contact | Fale Comigo and canonical email | Contact/Footer/CV | `Approved`; phone/WhatsApp not public |
+| INV-AGT-001 | Agent R definition | Public prototype with governed future knowledge boundary | Page/components/API | Runtime verified; knowledge `Requires Current Verification` |
+| INV-KNW-001 | Agent R JSON snapshot | Derived historical snapshot; never independent authority | `public/agent-r-knowledge.json` | `Requires Current Verification`; contains superseded data |
+| INV-KNW-002 | Future knowledge release | Generated from approved public canonical records | Not implemented | Approved policy; implementation/migration blocked |
+| INV-AGT-002 | Agent B | Static informational prototype | Agent B page/component/types | `Blocked` |
+| INV-INT-001 | Make integration | Temporary execution adapter | API/env contract; external scenario | `Requires Current Verification`; no configuration change authorized |
+
+## Certification reconciliation
+
+`Verified from Local Evidence` means only that a legible local file corresponds to the record. It does not prove external validity, rights or authorization to publish the certificate image.
+
+| Canonical record | Institution | Evidence year/date | Local evidence | Duplicate assessment | Public selection | Status |
 | --- | --- | --- | --- | --- | --- | --- |
-| INV-PRO-001 | Professional profile | `app/data/home.ts`, `app/data/about.ts`, pages, CV, Agent R JSON | Public / Personal | Requires Human Approval | Platform Owner | Name is consistent; titles and summaries vary. |
-| INV-POS-001 | Positioning and availability | Home/About/Contact components | Public | Requires Human Approval | Content Owner | Multiple formulations and availability claims. |
-| INV-MET-001 | Career metrics | Home/About/Experience/Stack | Public / Derived | Requires Human Approval | Content Owner | Years, projects, products and company counts conflict. |
-| INV-EXP-001 | Base experiences (5) | `app/data/experience.ts` | Public | Requires Human Approval | Content Owner | Dates, titles, responsibilities and claims. |
-| INV-EXP-002 | International experiences (2) | `app/data/experience.ts` | Public | Requires Human Approval | Content Owner | Webbix and HireVue; titles vary elsewhere. |
-| INV-TIM-001 | Career timeline | `app/data/home.ts`, `app/data/about.ts`, CV, Agent R JSON | Public / Derived | Requires Human Approval | Content Owner | Periods and role progression conflict. |
-| INV-CAS-001 | Case studies (8) | `app/data/cases.ts`, case routes | Public | Requires Human Approval | Content Owner | Current slugs are public URL aliases. |
-| INV-CLM-001 | Case outcomes and metrics | Case records, CV, Agent R JSON | Public / Derived | Requires Human Approval | Content Owner | Evidence linkage is absent. |
-| INV-COM-001 | Companies and organizations | About/Experience/Cases/assets | Public | Requires Human Approval | Content Owner | Names, roles and logos repeat across domains. |
-| INV-SKL-001 | Skills and competencies | `app/data/about.ts`, `app/data/stack.ts`, CV, Agent R JSON | Public | Requires Human Approval | Content Owner | Taxonomy and proficiency are not governed. |
-| INV-SKG-001 | Skill groups (8) | `app/data/stack.ts` | Public | Unverified | Content Owner | Presentation categories currently act as taxonomy. |
-| INV-CER-001 | Certifications (15+) | About/Stack/CV | Public / Personal | Requires Human Approval | Content Owner | Near-duplicates and date differences exist. |
-| INV-EDU-001 | Education | CV and Agent R JSON | Public / Personal | Requires Human Approval | Content Owner | Evidence and display policy not registered. |
-| INV-LAN-001 | Languages | CV and Agent R JSON | Public / Personal | Requires Human Approval | Content Owner | Level vocabulary needs normalization. |
-| INV-PAG-001 | Public pages and routes | `app/**/page.tsx` | Public | Verified | Engineering Owner | Eight page templates; dynamic cases expand to eight current URLs. |
-| INV-SEC-001 | Page sections and copy | Page/component TSX files | Public | Requires Human Approval | Content Owner | Editorial content is coupled to presentation. |
-| INV-NAV-001 | Navigation | Header/Footer/components | Public | Verified | Content Owner | Repeated navigation and contact destinations. |
-| INV-SEO-001 | SEO metadata | `app/layout.tsx`, page metadata | Public | Requires Human Approval | Content Owner | Metadata is hardcoded and canonical URLs are incomplete. |
-| INV-MED-001 | Images and logos (77 files) | `public/` | Public | Requires Human Approval | Content Owner | Exact duplicate groups and stale candidates exist. |
-| INV-DOC-001 | Public CV | `public/victor-sizino-cv.pdf` | Public / Personal | Requires Human Approval | Platform Owner | Derived snapshot; contact value conflicts with site. |
-| INV-SOC-001 | Social links | Contact/Footer/Agent R JSON | Public / Personal | Requires Human Approval | Platform Owner | Repeated direct identifiers. |
-| INV-CON-001 | Contact channels | Contact/Footer/CV | Public / Personal | Requires Human Approval | Platform Owner | Canonical email/phone policy unresolved. |
-| INV-AGT-001 | Agent R definition and UI copy | Agent R page/components/API | Public / Internal | Verified | Engineering Owner | Runtime exists; knowledge boundary is separate. |
-| INV-KNW-001 | Agent R public knowledge snapshot | `public/agent-r-knowledge.json` | Public / Derived | Requires Current Verification | Content Owner | No repository import/reference proves consumption. |
-| INV-AGT-002 | Agent B public prototype | Agent B page/component/types | Public / Internal | Verified | Engineering Owner | Static informational prototype; no operational agent. |
-| INV-INT-001 | Integration references | API routes, environment contract | Internal / Secret-reference | Requires Current Verification | Platform Owner | Make endpoints are configuration, never content authority. |
-| INV-FRM-001 | Contact and Agent R request contracts | API routes and UI forms | Public / Operational | Verified | Engineering Owner | Runtime contracts remain outside this documentation-only phase. |
+| Análise de Dados no Power BI | Fundação Bradesco — Escola Virtual | 17/03/2026 | `analise-dados-power-bi.png` | Individual course in Power BI track | Yes, track representative | `Verified from Local Evidence` |
+| Curso IA: Inteligência Artificial + 12 Ferramentas Bônus | Udemy | 04/05/2025 | `curso-ia-udemy.png` | No duplicate identified | Yes | `Verified from Local Evidence` |
+| Front End & UX/UI Design | Origamid | visible update 30/04/2025 | `front-end-ux-ui-origamid.png` | No duplicate identified | Yes | `Verified from Local Evidence` |
+| Curso Completo de Gestão de Produtos — Product Management | Udemy | 10/02/2026; 7 hours | `gestao-de-produtos-udemy.png` | Distinct certificate | Yes | `Verified from Local Evidence` |
+| Imersão Gestor do Futuro | Tetra Educação | 08–11/06/2026; issue 15/06/2026 | `imersao-gestor-do-futuro.png` | No duplicate identified | Yes | `Verified from Local Evidence` |
+| Introdução à Análise de Dados — Microsoft Power BI | Fundação Bradesco — Escola Virtual | 09/04/2026 | `introducao-analise-dados-power-bi.png` | Individual course in track | No | `Verified from Local Evidence` |
+| Microsoft Power BI — Preparando Dados para Análise | Fundação Bradesco — Escola Virtual | 09/04/2026 | `preparando-dados-power-bi.png` | Individual course in track | No | `Verified from Local Evidence` |
+| Curso Completo Gestão de Produto — Product Management | Udemy | 10/02/2026; 8 hours | `product-management-udemy.png` | Distinct certificate | Yes | `Verified from Local Evidence` |
+| React Completo | Origamid | 21/08/2023 | `react-completo-origamid.png` | No duplicate identified | No | `Verified from Local Evidence` |
+| React com TypeScript | Origamid | 26/01/2024 | `react-typescript-origamid.png` | No duplicate identified | No | `Verified from Local Evidence` |
+| Redux com React | Origamid | 04/06/2024 | `redux-react-origamid.png` | No duplicate identified | No | `Verified from Local Evidence` |
+| Agentes de IA e automação n8n | Hashtag Treinamentos per repository | 2026 per repository | Not located | Not assessed | No, until evidence | `Requires Human Confirmation` |
+| React e TypeScript: desenvolvendo um Dashboard | Udemy per repository | 2021 | Not located | Not assessed | No | `Requires Human Confirmation` |
+| Desenvolvimento de Componentes Web e Mobile com React.JS, Redux e React Native | Impacta Tecnologia per repository | 2020 | Not located | Not assessed | No | `Requires Human Confirmation` |
+| DAX | Linx Commerce per repository | 2016 | Not located | Not assessed | No | `Requires Human Confirmation` |
 
-## Route and URL inventory
+The aliases `Gestão de Produto` and `Gestão de Produtos` map to the two evidenced official Udemy records and MUST NOT create a third certification. The former 2025 date for the Power BI track is `Superseded`; evidence is individual and dated 2026.
 
-Preserve the current home, about, experience, cases index, eight case slugs, stack, contact, VS Method and agent routes. Before migration, export an exact route manifest with current status, canonical target, redirect decision and rollback mapping. No current URL is authorized for removal or redirection by this document.
+## Route, asset and privacy constraints
 
-## Asset findings
-
-Eleven exact-content duplicate groups were detected, including repeated Carrefour, HireVue, Méliuz, Houzbuddy, Porto Seguro, Stefanini/Via Varejo, AGU and Reclame Aqui assets. Filename variants such as `-v2` are only candidates until visual and usage review. Deduplication is planned, not executed.
+No current URL is authorized for removal or redirect. Exact duplicate asset groups remain inventory evidence only; groups 8 and 9 are `Blocked`. Rights cannot be inferred from repository presence. No private telephone/WhatsApp value is recorded here. The current CV and Agent R JSON remain in place as derived/deprecated snapshots, not canonical sources.

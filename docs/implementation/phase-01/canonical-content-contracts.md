@@ -2,50 +2,53 @@
 
 ## Common record envelope
 
-Every canonical entity MUST carry: `canonicalId`, `entityType`, `lifecycleStatus`, `verificationStatus`, `owner`, `classification`, `sourceReferences`, `createdAt`, `updatedAt`, `reviewedAt`, `version`, and optional `providerMappings`. Material changes require an audit event. Public projection must exclude internal, restricted and secret fields.
+Every canonical entity MUST carry `canonicalId`, `entityType`, `lifecycleStatus`, `verificationStatus`, `owner`, `classification`, `sourceReferences`, `createdAt`, `updatedAt`, `reviewedAt`, `version` and optional `providerMappings`. Material changes require an audit event.
 
-`sourceReferences` identify evidence without copying secrets or unnecessary personal data. A canonical fact records the responsible source, verification state and reviewer. Narrative may reference facts but cannot silently replace them.
+Allowed lifecycle includes `Draft`, `In Review`, `Approved`, `Published`, `Archived`, `Superseded`, `Deprecated`, `Duplicate`, `Blocked`. Verification is separate: `Verified`, `Verified from Local Evidence`, `Requires Human Approval`, `Requires Human Confirmation`, `Requires Current Verification`, `Requires Legal Validation`, `Unverified`.
+
+`Verified from Local Evidence` confirms reconciliation to a legible local artifact only. It does not prove external validity, ownership, license or permission for public display.
 
 ## Entity contracts
 
-| Entity | Required domain fields | Key relations | Canonicality rule |
+| Entity | Required domain fields | Key relations | Approved rule |
 | --- | --- | --- | --- |
-| Professional Profile | display name, approved headline, approved biography | positioning, contact channels, social links | One active public profile per locale. |
-| Positioning | label, proposition, audience, approved claims | profile, skills | Claims require provenance and review. |
-| Company | legal/display name, normalized key | experiences, cases, media | Display variants map to one canonical company. |
-| Experience | company, role title, start/end, location, summary | skills, cases, claims | Dates and titles require human approval. |
-| Case Study | title, summary, status, participation, period, public slug | company, claims, media, skills | Slug is an alias; unpublished evidence remains non-public. |
-| Claim | statement, metric/value, scope, evidence, verification | profile, experience or case | No publication when material evidence is unverified. |
-| Skill | canonical label, description | skill group, experiences, cases | Synonyms map to one skill ID. |
-| Skill Group | label, order | skills | Presentation order is not identity. |
-| Certification | title, issuer, issue date, credential reference | profile, evidence | Near-duplicates resolve before import. |
-| Education | institution, program, level, period | profile, evidence | Public projection follows approved privacy policy. |
-| Language | language, normalized proficiency | profile, evidence | Use one approved proficiency vocabulary. |
-| Page | page key, locale, route alias, lifecycle | sections, SEO metadata | Route changes require URL manifest approval. |
-| Page Section | section key, type, ordered content references | page, entities, media | Structured references preferred over copied facts. |
-| Navigation Item | label, destination, order, visibility | page | External destinations require ownership review. |
-| SEO Metadata | title, description, canonical URL, social image | page, media | Canonical URL must resolve from approved route manifest. |
-| Media Asset | asset role, alt text, rights status, checksum | pages, cases, companies | Checksum detects duplicates; rights state gates publication. |
-| Social Link | platform, public URL, label | profile | URL approval belongs to Platform Owner. |
-| Contact Channel | type, public value/reference, purpose | profile, form | Personal/public classification and display are explicit. |
-| Agent Definition | agent key, purpose, capability state, limitations | knowledge sources, integrations | Public description must match operational capability. |
-| Agent Knowledge Source | source type, authority, eligibility, version, review date | agent, evidence | Inclusion requires registered authority and classification. |
-| Agent Public Content | approved description, disclosures, CTA | agent, page | Editorial content is separate from prompts/runtime. |
-| Document Reference | document type, version, public URL, checksum | profile, evidence | Document is a snapshot, not canonical truth. |
-| Integration Reference | integration type, adapter key, configuration status | agent/form | Stores no secret value and grants no semantic authority. |
+| Professional Profile | display name, approved headline, approved biography | positioning, chronology, contacts | Uses HD-01/02 only; one active public profile per locale |
+| Positioning | proposition, audience, approved claims | profile, skills | Quantitative content requires publishable evidence |
+| Company | legal/display name, normalized key, relationship type | experiences, cases, media | Direct employer is distinct from client/project entity |
+| Experience | company, annual start/end, official titles, public title, responsibilities | cases, claims | Exact months optional and `Requires Human Confirmation`; never infer gaps/overlap |
+| Case Study | title, nature, period, relationship, role, confidentiality, public slug | company, claims, media | Méliuz nature is product case study; SETUR is separate from Porto Seguro |
+| Claim | statement, class, evidence, period, publication eligibility | profile, experience/case | Class is `Measured`, `Observed`, `Qualitative`, `Proposed` or `Unverified`; quantitative publication requires evidence |
+| Skill / Skill Group | canonical label, description, grouping | experiences, cases | Synonyms map to one provider-neutral ID |
+| Certification | official title, institution, completion date, evidence status | evidence, editorial selection | Complete register is separate from public selection; aliases cannot create records |
+| Certification Selection | locale, ordered certificate references, rationale | certifications | Contains only approved evidence-eligible records |
+| Education | institution, program, annual period, completion | evidence, profile | Months cannot be invented |
+| Language | language, public proficiency, basis | profile | Self-declaration is not formal CEFR certification |
+| Page / Page Section | page key, locale, route alias, ordered content references | SEO, entities, media | Existing route changes require manifest approval |
+| SEO Metadata | title, description, canonical URL, social image | page, approved claims | Cannot publish superseded facts |
+| Media Asset | checksum, dimensions, origin, rights owner, rights state | semantic usages, evidence | Binary identity does not imply semantic identity or rights |
+| Media Usage | role, entity, alt text, crop, active reference | media asset, page/case/company | Logo, cover, thumbnail and editorial roles remain distinct |
+| Social Link | platform, public URL, purpose, priority | profile | Single canonical record with derived consumers |
+| Contact Channel | type, public value/reference, purpose, priority, operational state | profile, form | Telephone/WhatsApp are not public; publication does not prove operation |
+| Agent Definition | purpose, capability state, limitations | knowledge releases, integration | Public description must match operational evidence |
+| Agent Knowledge Source | authority, eligible fields, classification, version, review | agent, evidence | Public availability does not establish eligibility or authority |
+| Agent Knowledge Release | release ID, version, checksum, source baseline, publication/approval, rollback ref | agent, sources | Generated only from approved public canonical records |
+| Document Reference | document ID, version, locale, checksum, source baseline, approval, stable alias | profile, evidence | CV is derived; current version is `Deprecated` |
+| Integration Reference | adapter key, configuration state, verification state | agent/form | Stores no secret and grants no semantic authority |
 
-## Identity and URL rules
+## Approved domain constraints
 
-- Generate canonical UUID/ULID before provider creation.
-- Maintain `providerMappings` as replaceable adapters.
-- Never use Sanity `_id`, Supabase row ID, Make scenario ID or URL slug as canonical identity.
-- Preserve existing slugs as aliases until a reviewed redirect manifest is approved.
-- Prevent reuse of retired canonical IDs and public slugs.
+- Public metric: only “10+ anos de experiência em tecnologia e produtos digitais”.
+- Geography: Brazil professional experience, Ireland in-person experience, remote work for a United States company.
+- Phone/WhatsApp: excluded from every public projection and Agent R™ response.
+- Certificates: two evidenced Udemy Product Management records remain distinct; translated/short aliases create no third record.
+- Power BI: individual 2026 evidence supersedes the former 2025 representation.
+- Cases: claims without evidence cannot use causal result language; no team outcome is attributed wholly to Victor.
+- CV: one current version per language, stable alias, private rollback version, no independent facts.
+- Agent R™: no inferred facts about Victor; absent approved data produces an insufficient-information response.
+- Assets: no rights inference, deletion, rename, redirect or deduplication without a later authorized manifest.
 
-## Provenance and evidence
+## Identity, provenance and resolution
 
-Evidence records include type, responsible source, classification, stable reference/checksum, related entity/fields, verification state, access eligibility, retention rule and review date. Transformations point to an input version. Generated/inferred content is labeled and cannot directly promote itself to fact.
+Generate canonical UUID/ULID values before provider creation. Provider IDs and slugs are mappings. Evidence records include source, classification, checksum/stable reference, affected fields, verification state, access eligibility, retention and review date. Transformations identify the input version.
 
-## Resolution procedure
-
-For a conflict: identify the subject; separate facts from narrative; compare authority and provenance; classify the difference; propose a canonical target; identify every representation affected; obtain human approval for material changes; then update and reconcile all projections.
+For conflicts: separate fact from narrative, compare authority/provenance, apply the Human Decision Register, mark the old representation `Superseded` or `Deprecated`, identify all projections and reconcile them only during an authorized migration. Reversal restores the prior approved version/mapping and records a new decision; it never rewrites decision history.
