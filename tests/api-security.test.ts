@@ -206,11 +206,20 @@ test("Agent R rejects a malformed upstream response", async () => {
 });
 
 test("Agent R hides upstream HTTP details", async () => {
-  globalThis.fetch = async () => new Response("provider secret details", { status: 500 });
+  const upstreamBody = "provider secret details";
+  globalThis.fetch = async () => new Response(upstreamBody, { status: 500 });
   const response = await postAgentR(jsonRequest("/api/agente-r", { question: "Teste" }));
-  const serialized = JSON.stringify(await payload(response));
+  const data = await payload(response);
+  const error = data.error as { code: string; message: string };
+  const expectedMessage = "O Agent R esta temporariamente indisponivel. Tente novamente.";
   assert.equal(response.status, 502);
-  assert.doesNotMatch(serialized, /provider|500|secret\.example/i);
+  assert.equal(error.code, "UPSTREAM_FAILURE");
+  assert.equal(data.answer, expectedMessage);
+  assert.equal(error.message, expectedMessage);
+  assert.match(data.requestId as string, /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i);
+  const publicMessage = [data.answer, error.message].join(" ");
+  assert.doesNotMatch(publicMessage, /provider|500|secret\.example|Make webhook failed/i);
+  assert.equal(JSON.stringify(data).includes(upstreamBody), false);
 });
 
 test("Agent R maps timeout cancellation to a stable safe error", async () => {
