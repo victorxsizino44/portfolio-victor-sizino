@@ -6,6 +6,7 @@ import { POST as postContact } from "../app/api/contact/route.ts";
 
 const AGENT_R_QUESTION_MAX_LENGTH = 1000;
 const AGENT_R_BODY_MAX_BYTES = 4096;
+const UPSTREAM_RESPONSE_MAX_BYTES = 8 * 1024;
 
 const originalFetch = globalThis.fetch;
 const originalAgentWebhook = process.env.MAKE_AGENT_R_WEBHOOK_URL;
@@ -113,6 +114,22 @@ test("Agent R accepts a JSON content type with charset", async () => {
   assert.equal(response.status, 200);
 });
 
+test("Agent R accepts declared plain text with charset", async () => {
+  globalThis.fetch = async () => new Response("Resposta segura", {
+    status: 200,
+    headers: { "Content-Type": "text/plain; charset=utf-8" },
+  });
+  const data = await payload(await postAgentR(jsonRequest("/api/agente-r", { question: "Teste" })));
+  assert.equal(data.answer, "Resposta segura");
+});
+
+test("Agent R accepts a safe legacy text response without content type", async () => {
+  globalThis.fetch = async () => new Response("  Resposta legada segura  ", { status: 200 });
+  const data = await payload(await postAgentR(jsonRequest("/api/agente-r", { question: "Teste" })));
+  assert.equal(data.answer, "Resposta legada segura");
+  assertRequestId(data.requestId);
+});
+
 test("Agent R removes control characters and normalizes whitespace", async () => {
   let forwardedBody = "";
   globalThis.fetch = async (_input, init) => {
@@ -153,9 +170,26 @@ test("Agent R rejects an empty upstream response", async () => {
 });
 
 test("Agent R rejects an excessive upstream response", async () => {
-  globalThis.fetch = async () => new Response("x".repeat(8001), { status: 200 });
+  globalThis.fetch = async () => new Response("x".repeat(UPSTREAM_RESPONSE_MAX_BYTES + 1), { status: 200 });
   const response = await postAgentR(jsonRequest("/api/agente-r", { question: "Teste" }));
   assert.equal(response.status, 502);
+});
+
+test("Agent R measures an undeclared upstream response in UTF-8 bytes", async () => {
+  globalThis.fetch = async () => new Response("é".repeat((UPSTREAM_RESPONSE_MAX_BYTES / 2) + 1), { status: 200 });
+  const response = await postAgentR(jsonRequest("/api/agente-r", { question: "Teste" }));
+  assert.equal(response.status, 502);
+  assert.equal(((await payload(response)).error as Record<string, unknown>).code, "INVALID_UPSTREAM_RESPONSE");
+});
+
+test("Agent R rejects an oversized declared upstream content length", async () => {
+  globalThis.fetch = async () => new Response("not read", {
+    status: 200,
+    headers: { "Content-Length": String(UPSTREAM_RESPONSE_MAX_BYTES + 1) },
+  });
+  const response = await postAgentR(jsonRequest("/api/agente-r", { question: "Teste" }));
+  assert.equal(response.status, 502);
+  assert.equal(((await payload(response)).error as Record<string, unknown>).code, "INVALID_UPSTREAM_RESPONSE");
 });
 
 test("Agent R rejects unexpected upstream media types", async () => {
@@ -165,8 +199,15 @@ test("Agent R rejects unexpected upstream media types", async () => {
   assert.equal(((await payload(response)).error as Record<string, unknown>).code, "INVALID_UPSTREAM_RESPONSE");
 });
 
+test("Agent R rejects declared binary responses", async () => {
+  globalThis.fetch = async () => new Response("binary-like content", { headers: { "Content-Type": "application/octet-stream" } });
+  const response = await postAgentR(jsonRequest("/api/agente-r", { question: "Teste" }));
+  assert.equal(response.status, 502);
+  assert.equal(((await payload(response)).error as Record<string, unknown>).code, "INVALID_UPSTREAM_RESPONSE");
+});
+
 test("Agent R bounds the upstream body before JSON parsing", async () => {
-  globalThis.fetch = async () => new Response(JSON.stringify({ answer: "ok", extra: "x".repeat(32768) }), {
+  globalThis.fetch = async () => new Response(JSON.stringify({ answer: "ok", extra: "x".repeat(UPSTREAM_RESPONSE_MAX_BYTES) }), {
     headers: { "Content-Type": "application/json" },
   });
   const response = await postAgentR(jsonRequest("/api/agente-r", { question: "Teste" }));
