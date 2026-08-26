@@ -8,7 +8,7 @@ const DEFAULT_TIMEOUT_MS = 10_000;
 const MIN_TIMEOUT_MS = 1_000;
 const MAX_TIMEOUT_MS = 30_000;
 const RESPONSE_MAX_LENGTH = 8_000;
-const RESPONSE_MAX_BYTES = 32_768;
+const RESPONSE_MAX_BYTES = 8 * 1024;
 
 type ErrorCode =
   | "INVALID_CONTENT_TYPE"
@@ -205,7 +205,8 @@ export async function POST(request: Request) {
 
     const responseContentType = response.headers.get("content-type")?.split(";", 1)[0]?.trim().toLowerCase() ?? "";
     const isJsonResponse = responseContentType === "application/json" || /^application\/[a-z0-9!#$&^_.+-]+\+json$/.test(responseContentType);
-    if (responseContentType !== "text/plain" && !isJsonResponse) {
+    const declaredLength = Number.parseInt(response.headers.get("content-length") ?? "", 10);
+    if (Number.isFinite(declaredLength) && declaredLength > RESPONSE_MAX_BYTES) {
       await response.body?.cancel();
       logFailure("agent_r_upstream_failed", requestId, "INVALID_UPSTREAM_RESPONSE", startedAt);
       return errorResponse(requestId, 502, "INVALID_UPSTREAM_RESPONSE", "O Agent R nao conseguiu gerar uma resposta valida. Tente novamente.");
@@ -216,6 +217,13 @@ export async function POST(request: Request) {
       logFailure("agent_r_upstream_failed", requestId, "INVALID_UPSTREAM_RESPONSE", startedAt);
       return errorResponse(requestId, 502, "INVALID_UPSTREAM_RESPONSE", "O Agent R nao conseguiu gerar uma resposta valida. Tente novamente.");
     }
+
+    const isLegacyTextResponse = responseContentType === "";
+    if (!isLegacyTextResponse && responseContentType !== "text/plain" && !isJsonResponse) {
+      logFailure("agent_r_upstream_failed", requestId, "INVALID_UPSTREAM_RESPONSE", startedAt);
+      return errorResponse(requestId, 502, "INVALID_UPSTREAM_RESPONSE", "O Agent R nao conseguiu gerar uma resposta valida. Tente novamente.");
+    }
+
     let answer = responseText.trim();
 
     if (isJsonResponse) {
