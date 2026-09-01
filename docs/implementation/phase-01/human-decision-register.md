@@ -146,3 +146,36 @@ No private contact value is reproduced in this documentation.
 - Make scenario, model version and active sources: `Requires Current Verification`.
 - Media rights and unresolved semantic groups: review required; groups 8 and 9 remain `Blocked`.
 - Provider pricing/regions: `Requires Current Verification`; privacy/subprocessors: `Requires Legal Validation`.
+
+## Post-Phase-01 superseding decisions — 2026-09-01
+
+Phase 01 was correctly completed using the decisions available on 2026-08-26. The later decisions below preserve that history, do not reopen Phase 01 and do not authorize implementation. Decision maker: Victor Sizino. Governing detail: [Career Positioning Review & Decision Baseline v0.1](../phase-02/career-positioning-review-decision-baseline-v0.1.md).
+
+### HDR-SUP-001 — Primary professional positioning
+
+- Superseding scope: future professional projections previously centered on AI Product Manager, Product Manager or Technical Product Manager.
+- New primary positioning: `Senior Front-End Developer | Full-Stack & AI Product Engineering`.
+- Hierarchy: Frontend Engineering; Full-Stack capabilities; AI Product Engineering; technical leadership; product/TPM; stakeholders and international experience.
+- Canonical job titles remain unchanged. Reclame Aqui and HireVue retain their approved Technical Product Manager titles.
+- Full-Stack is a complementary, demonstrable capability and does not establish backend specialization or ownership.
+- AI Product Engineering covers integration and productization of external AI capabilities, not model authorship, ML engineering or RAG.
+- Implementation state: `Not Authorized`.
+- Reversal: a later human decision must identify affected projections, rationale, evidence and restoration/rollback consequences.
+- Status: `Approved Decision Baseline`.
+
+### HDR-SUP-002 — Professional WhatsApp channel
+
+- Supersedes only the WhatsApp-specific non-public rules in HD-03 and HD-06; the original decisions remain in the historical record.
+- Decision: the currently published professional WhatsApp is a canonical public professional channel. Reference it as `Current Published Professional WhatsApp — Canonical Value Confirmed`; do not duplicate the raw value in documentation.
+- Reason: “O WhatsApp é um dos principais canais profissionais de Victor Sizino, utilizado para contato direto com recrutadores, clientes e parceiros.”
+- Authorized future surfaces: Contact, Engineering CV, AI Product / TPM CV and contextual Agent R contact responses after a governed knowledge release.
+- Prohibited handling: raw value in SEO, metadata, JSON-LD, analytics payloads or logs; unnecessary transmission to Make; uncontrolled manual duplication across components.
+- Risk accepted: spam and unsolicited messages arising from public professional exposure.
+- Operational condition: canonical-value confirmation does not verify that the link works.
+- Reversal: “A reversão da exposição pública do WhatsApp exige nova decisão humana de Victor Sizino, identificação das projeções afetadas, retirada segura do canal, atualização dos consumidores, verificação de caches e registros derivados e preservação do histórico.”
+- Implementation state: `Not Authorized`.
+- Status: `Approved`; operational verification remains open.
+
+### HDR-SUP-003 — Career Positioning Review decisions
+
+CPR-HD-01–CPR-HD-08 approve the positioning hierarchy, evidence boundaries, recent hands-on classifications, two-CV strategy, case hierarchy, Portfolio Platform as the primary authorial Full-Stack case, neutral future portrait policy and the secondary role of product, AI, agents and VS Method™. They are recorded in the Phase 02 decision baseline and authorize planning only.

@@ -83,3 +83,17 @@ The optional `content-inventory.json` remains intentionally absent to avoid a se
 - [Migration inventory](migration-inventory.md)
 - [Agent knowledge source registry](agent-knowledge-source-registry.md)
 - [Human decision register](human-decision-register.md)
+
+## Later decision baseline — historical preservation notice
+
+On 2026-09-01, Victor Sizino approved the [Career Positioning Review & Decision Baseline v0.1](../phase-02/career-positioning-review-decision-baseline-v0.1.md). It establishes a future frontend-first projection and a superseding professional-WhatsApp decision.
+
+This later baseline:
+
+- does not reopen Phase 01;
+- does not alter the fact that Phase 01 was completed correctly under the decisions available on 2026-08-26;
+- does not silently replace HD-03 or HD-06 history;
+- does not change canonical employment chronology or official titles;
+- does not authorize implementation, publication, migration, CV replacement, agent changes, asset changes, LinkedIn updates or deployment.
+
+Phase 01 remains `Completed — Approved, Merged and Production Verified`. Future projections must apply the later baseline where it expressly supersedes positioning or WhatsApp policy, while all unresolved evidence, Make, asset, legal and operational gates remain open.

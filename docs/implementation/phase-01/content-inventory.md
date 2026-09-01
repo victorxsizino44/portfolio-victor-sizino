@@ -68,3 +68,19 @@ The aliases `Gestão de Produto` and `Gestão de Produtos` map to the two eviden
 ## Route, asset and privacy constraints
 
 No current URL is authorized for removal or redirect. Exact duplicate asset groups remain inventory evidence only; groups 8 and 9 are `Blocked`. Rights cannot be inferred from repository presence. No private telephone/WhatsApp value is recorded here. The current CV and Agent R JSON remain in place as derived/deprecated snapshots, not canonical sources.
+
+## Post-Phase-01 projection addendum — 2026-09-01
+
+This later addendum does not reopen Phase 01. It records future projection policy approved in the [Career Positioning Review baseline](../phase-02/career-positioning-review-decision-baseline-v0.1.md).
+
+| Inventory ID | Domain | Superseding/current approved state | Condition and migration effect |
+| --- | --- | --- | --- |
+| INV-POS-002 | Career positioning projection | `Senior Front-End Developer | Full-Stack & AI Product Engineering` is the future primary projection | Planning approved; implementation/publication not authorized |
+| INV-EVD-001 | Engineering evidence boundary | DCS/Carrefour lead frontend evidence; AGU is `Full-Stack Contribution`; Portfolio Platform is the primary authorial engineering case | Preserve implementation/integration/contribution distinctions |
+| INV-CAS-004 | Future case hierarchy | Selected Engineering Work; Product Case Study; Building Next | Méliuz remains a study; the operations application remains frozen planning, never implementation evidence |
+| INV-DOC-002 | Future CV projections | Engineering CV primary; AI Product / TPM CV secondary; pt-BR and English eligible | Current CV remains `Deprecated`; no creation/replacement authorized |
+| INV-CON-002 | Professional WhatsApp | `Current Published Professional WhatsApp — Canonical Value Confirmed` | Supersedes the WhatsApp-only part of INV-CON-001/HD-03; link operation remains unverified; raw value is not duplicated here |
+| INV-MED-003 | Primary portrait projection | Future neutral portrait; positioning remains HTML | `victor-hero-v2.png` stays provisional and rollback-capable; rights/review required; no mutation authorized |
+| INV-AGT-003 | Agent/Method positioning | Agent R is a Portfolio Platform capability; Agent B is a static prototype; VS Method™ is an authorial methodology | Make remains `Requires Current Verification`; no runtime or commercial-result inference |
+
+The final sentence of the historical section above records the Phase 01 privacy decision as it existed on 2026-08-26. HDR-SUP-002 supersedes its WhatsApp-specific effect for future projections; other private telephone and personal-data restrictions remain.
