@@ -52,3 +52,19 @@ Allowed lifecycle includes `Draft`, `In Review`, `Approved`, `Published`, `Archi
 Generate canonical UUID/ULID values before provider creation. Provider IDs and slugs are mappings. Evidence records include source, classification, checksum/stable reference, affected fields, verification state, access eligibility, retention and review date. Transformations identify the input version.
 
 For conflicts: separate fact from narrative, compare authority/provenance, apply the Human Decision Register, mark the old representation `Superseded` or `Deprecated`, identify all projections and reconcile them only during an authorized migration. Reversal restores the prior approved version/mapping and records a new decision; it never rewrites decision history.
+
+## Post-Phase-01 contract addendum — 2026-09-01
+
+The [Career Positioning Review baseline](../phase-02/career-positioning-review-decision-baseline-v0.1.md) adds future projection constraints without changing canonical employment facts:
+
+- `Professional Profile` separates primary engineering identity from secondary AI Product / TPM projections.
+- `Positioning` records ordered capability roles: primary, complementary and differentiating; a skill or responsibility cannot become an official title.
+- `Experience` records implementation, integration, contribution, collaboration, leadership and product responsibility separately.
+- `Case Study` records evidence nature: implemented professional work, authorial work, product study or planned/frozen initiative. These states are not interchangeable.
+- `Document Reference` adds a projection key (`engineering` or `ai-product-tpm`) while retaining locale, version, checksum, source baseline, approval, stable alias and rollback.
+- `Contact Channel` may mark the confirmed current professional WhatsApp as public and canonical, with allowed surfaces, contextual disclosure, operational state and privacy restrictions. Its raw value is excluded from SEO, metadata, JSON-LD, analytics and logs.
+- `Media Asset` and `Media Usage` must keep canonical positioning outside the primary portrait bitmap. A replacement requires rights, provenance, consumer manifest, contextual alt/crop decisions and rollback.
+- `Agent Definition` distinguishes product identity from runtime capability. Agent R is an implemented integration capability; Agent B remains a static prototype.
+- `Project/Initiative State` distinguishes `In Development — Planning Stage` from implemented work and may apply the governance state `Frozen — Awaiting Portfolio and Career Repositioning Completion`.
+
+These additions are `Approved Decision Baseline — Implementation Not Authorized`. The original Phase 01 contracts remain the historical baseline and are not retroactively rewritten.

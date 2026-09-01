@@ -30,3 +30,18 @@ Resolved means the human decision establishes the canonical target; it does not 
 Groups 1–3, 5–7, 10–11 require review. Group 4 may prepare future deduplication with `images/agente-r.png` as provisional preferred active reference, but no file operation is authorized. Groups 8 and 9 remain `Blocked`. Every group requires files, checksum, dimensions, preview, references, entity, semantic role, origin, rights owner/license, current/recommended alt text, preferred asset, recommended status and future action before migration.
 
 No row authorizes public correction, asset deletion, rename, move, redirect, deduplication, CV replacement or Agent R/Make change. Reversal preserves the prior approved representation and records a new human decision.
+
+## Post-Phase-01 conflict addendum — 2026-09-01
+
+| Finding | Later conflict/decision | Approved target | Remaining condition | Status |
+| --- | --- | --- | --- | --- |
+| DCR-021 | PM-first public projection versus engineering evidence | Frontend-first positioning under CPR-HD-01/08 | Public copy and implementation plan not approved | `Approved Decision Baseline` |
+| DCR-022 | “Full-Stack” can imply backend specialization | Use only demonstrable complementary capability; AGU is contribution, Portfolio Platform authorial implementation | Professional ownership limits and technical detail | `Approved with Conditions` |
+| DCR-023 | RA/HireVue current copy conflates roles and contributions | Preserve canonical TPM roles and use CPR-HD-03 contribution classes | Specific technologies/modules may require confirmation | `Approved with Conditions` |
+| DCR-024 | Current CV conflicts with the two-projection strategy | Engineering CV primary; AI Product / TPM CV secondary | Document Operations, content, visual review and authorization | `Deprecated` current artifact |
+| DCR-025 | Historical non-public WhatsApp rule versus later public-channel decision | Preserve original HD-03/06 and apply HDR-SUP-002 to future projections | Operational link check; controlled consumers | `Superseded in Part` |
+| DCR-026 | `victor-hero-v2.png` embeds the former positioning | Future neutral portrait with positioning in HTML | Rights, provenance, crop, alt text, consumers and approval | `In Review`; existing asset provisional |
+| DCR-027 | Implemented cases, Méliuz study and frozen application could appear equivalent | Three separate groups under CPR-HD-05/06 | Final content/design authorization | `Approved Decision Baseline` |
+| DCR-028 | Agent/product terminology may overstate runtime or AI authorship | Agent R as integration capability; Agent B static; VS Method™ methodology | Make/source verification and knowledge release | `Requires Current Verification` / `Blocked` as applicable |
+
+No addendum row authorizes reconciliation in public content. The Phase 01 conflict states remain historically accurate; later decisions are additive and auditable.

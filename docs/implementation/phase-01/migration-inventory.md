@@ -41,3 +41,21 @@ Every batch records source version/checksum, mapping version, actor/time, decisi
 ## URL, asset and document preservation
 
 Capture every current route, case slug, asset path and CV alias before cutover. Existing paths remain active until an approved manifest specifies target, status and rollback. No redirect, asset deletion/rename/deduplication or CV replacement is authorized by this inventory.
+
+## Post-Phase-01 future change batches — 2026-09-01
+
+The batches below derive from the [Career Positioning Review baseline](../phase-02/career-positioning-review-decision-baseline-v0.1.md). They are planning inventory only and do not authorize migration or implementation.
+
+| Batch | Domain | Approved future source/target | Preconditions | Validation | Rollback | State |
+| --- | --- | --- | --- | --- | --- | --- |
+| MIG-20 | Positioning projections | CPR-HD-01/08 → future public surfaces | Approved copy, exact file scope and implementation authorization | Frontend-first content/SEO/visual review | Restore prior projection commit | `Not Authorized` |
+| MIG-21 | Experience evidence classes | CPR-HD-02/03 → Experience/Cases/CVs | Claim, technology and confidentiality reconciliation | Canonical role and evidence comparison | Restore prior content version | `Not Authorized` |
+| MIG-22 | Case hierarchy | CPR-HD-05/06 → Cases/Home | Separate implemented, study and frozen-planning states | Route, nature, order and label checks | Restore prior order/grouping | `Not Authorized` |
+| MIG-23 | CV projections | CPR-HD-04 → governed Engineering and AI Product / TPM documents | Document Operations, source baseline, visual approval and link plan | Checksum, aliases, links, privacy and content comparison | Restore preceding approved private document | `Not Authorized` |
+| MIG-24 | Professional WhatsApp | HDR-SUP-002 → canonical channel consumers | Operational link check, single canonical record and privacy scan | Contextual disclosure, no SEO/metadata/JSON-LD/analytics/log duplication | Approved superseding reversal procedure | `Not Authorized` |
+| MIG-25 | Primary portrait | CPR-HD-07 → governed Media Asset/usages | Rights, provenance, source, crops, alt text, consumer manifest and approval | Desktop/mobile/visual/build/performance/links | Restore preceding approved asset/mappings | `Not Authorized` |
+| MIG-26 | Agent R positioning release | CPR-HD-01/08 → future governed knowledge release | Sanitized Make inspection, release contract, evals and approval | Release metadata, content boundaries and safe operational test | Prior approved knowledge release | `Blocked` |
+| MIG-27 | LinkedIn | Approved baseline → future external projection | Separate content review and human authorization | Headline, roles, skills, links and CV consistency | Restore recorded previous projection | `Not Authorized` |
+| MIG-28 | Frozen operations application card | CPR-HD-06 → future Building Next projection | Repositioning complete, transparent copy and visual approval | No implementation/demo/result implication | Remove card and retain initiative record | `Frozen` |
+
+Phase 01 remains `Completed — Approved, Merged and Production Verified`. These future batches require their own branches, tests, rollback and human authorization.

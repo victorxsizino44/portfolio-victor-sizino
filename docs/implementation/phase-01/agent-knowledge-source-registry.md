@@ -55,3 +55,21 @@ Webhook URLs, tokens, credentials, private IDs and other secrets remain redacted
 ## Reversal and boundaries
 
 Future rollback selects the preceding approved knowledge release and records actor/time/result. The current Make scenario and Agent R JSON remain untouched in Phase 01. Agent B remains `Blocked`; no runtime, ingestion or autonomous capability is inferred from its prototype.
+
+## Post-Phase-01 positioning and contact addendum — 2026-09-01
+
+CPR-HD-01–08 approve a future frontend-first professional projection but do not authorize changing Agent R™. The future knowledge release must apply these rules:
+
+- primary identity: `Senior Front-End Developer | Full-Stack & AI Product Engineering`;
+- Full-Stack is complementary and limited to evidenced end-to-end capabilities;
+- AI Product Engineering means integration/productization of external AI capabilities, not model authorship, RAG, ML engineering or autonomy;
+- canonical job titles remain unchanged;
+- Carrefour, Stefanini, AGU, SETUR, Reclame Aqui and HireVue use the evidence classes and narrative limits defined in the Career Positioning Review baseline;
+- Portfolio Platform + Agent R™ is the primary authorial engineering case;
+- Méliuz remains a product study and the operations application remains frozen planning;
+- Agent B™ is a `Static Product and Architecture Prototype`, not a runtime;
+- VS Method™ is an authorial methodology without unverified commercial results.
+
+HDR-SUP-002 makes the current professional WhatsApp an eligible contextual public contact channel. The raw value is not duplicated here. A future Agent R release may disclose it only when the user asks how to contact Victor, and only after the channel/link is operationally verified. It must not place the value in general career answers, logs, analytics, prompts or unrelated Make payloads.
+
+The current JSON and Make content do not acquire authority from this decision. Make remains `Requires Current Verification`, and no new positioning reaches Agent R until an identifiable, approved and reversible knowledge release passes content evaluation and safe operational verification.

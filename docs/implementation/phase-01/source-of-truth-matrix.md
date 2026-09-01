@@ -35,3 +35,18 @@ This matrix incorporates HD-01–HD-08. It describes approved authority and futu
 Sanity may represent editorial state but cannot redefine approved facts. Supabase may hold operational/provenance records but not editorial semantics. The repository owns contracts and manifests, not mutable facts. Make transforms/transports data but is not authority. CV, certificates and knowledge JSON are evidence or derived projections.
 
 An approved change records affected canonical IDs and regenerates consumers. Reversal restores the previous approved version or mapping; existing URLs are preserved until a separately approved redirect/asset manifest exists.
+
+## Post-Phase-01 authority addendum — 2026-09-01
+
+| Domain | Later human authority | Future projections | Status / condition |
+| --- | --- | --- | --- |
+| Primary professional positioning | CPR-HD-01/08 | Home, About, SEO, Engineering CV, Contact, LinkedIn and Agent R release | `Approved Decision Baseline`; implementation not authorized |
+| Engineering evidence boundaries | CPR-HD-02/03 | Experience, Cases, CVs and Agent R release | Framework/module detail may remain `Requires Human Confirmation` |
+| Case hierarchy | CPR-HD-05/06 | Selected Engineering Work, Product Case Study and Building Next | Frozen/planned work cannot become implementation evidence |
+| CV projections | CPR-HD-04 | Engineering CV primary; AI Product / TPM CV secondary | Current CV `Deprecated`; Document Operations gate open |
+| Professional WhatsApp | HDR-SUP-002 / CPR-HD-04 | Contact and future CVs; contextual future Agent R | Canonical value confirmed; link `Requires Operational Verification`; prohibited in SEO/metadata/JSON-LD/analytics/logs |
+| Primary portrait | CPR-HD-07 | Home/About/Experience/Contact and derived social previews | Rights/provenance/consumer review required; no replacement authorized |
+| Agent R/Agent B/VS Method™ | CPR-HD-08 | Engineering cases and secondary project/method projections | Make `Requires Current Verification`; Agent B non-operational |
+| LinkedIn | CPR-HD-01/06/08 | Future external professional projection | Separate checkpoint and authorization required |
+
+This addendum identifies later authority; it does not make current repository, CV, Agent JSON, Make content or LinkedIn canonical. Phase 01 remains completed under its original decision date.
