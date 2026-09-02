@@ -45,3 +45,17 @@ No row authorizes public correction, asset deletion, rename, move, redirect, ded
 | DCR-028 | Agent/product terminology may overstate runtime or AI authorship | Agent R as integration capability; Agent B static; VS Method™ methodology | Make/source verification and knowledge release | `Requires Current Verification` / `Blocked` as applicable |
 
 No addendum row authorizes reconciliation in public content. The Phase 01 conflict states remain historically accurate; later decisions are additive and auditable.
+
+## HD-01-S1 conflict addendum — 2026-09-02
+
+| Finding | Prior representation | Approved target | Remaining condition / migration effect | Status |
+| --- | --- | --- | --- | --- |
+| DCR-029 | HD-01 annual-only chronology and general month gate | HD-01-S1 monthly chronology | Reconcile all consumers; preserve HD-01 history | `Superseded` |
+| DCR-030 | `Webbix`, incomplete `Webbiz`, 2018/about eight months | `Webbiz.ie`, `06/2018–11/2018`, UI/UX Designer | Update consumers/aliases without inventing a second title | `Superseded` |
+| DCR-031 | Project-based DCS consulting omitted | Separate Experience relationship `11/2018–05/2019` with DCS as contractor | Do not duplicate DCS as employer/company or promote end clients | `Approved`; implementation pending |
+| DCR-032 | DCS `2014–2018`; Carrefour `2019–2021`; Stefanini `2021`; IPNET `2022`; RA `2024–2025`; HireVue `2025–2026` | Monthly dates in HD-01-S1 | Site/CV/LinkedIn/SEO/Agent R reconciliation | `Superseded` |
+| DCR-033 | Broad missing-experience hypothesis for 2022–2024 | Stefanini through `05/2023`; IPNET from `11/2023`; preserve `06/2023–10/2023` as an unfilled interval | Never infer an experience in the interval | `Resolved` for listed relationships |
+| DCR-034 | Case years inherited from annual relationship dates | Case period independent from Experience period | AGU, SETUR, Via Varejo ADS, RA Reviews, HireVue AI Platform, Carrefour, HouzBuddy and consulting-project precision remain conditional | `Requires Human Confirmation` |
+| DCR-035 | Boundary months may appear overlapping | Treat November 2018, May 2019 and June 2021 as possible within-month transitions | Never infer concurrent employment, days or change dates to remove overlap | `Approved with Conditions` |
+
+The public-content reconciliation, including PR #25, remains blocked until separately authorized. No row changes CV, LinkedIn, SEO, Agent R™, Make or production.

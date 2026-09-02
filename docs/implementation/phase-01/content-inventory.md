@@ -6,21 +6,21 @@ This inventory covers repository-controlled routes, TypeScript data, hardcoded c
 
 | Inventory ID | Domain | Approved canonical state | Current representation / evidence | Status and migration effect |
 | --- | --- | --- | --- | --- |
-| INV-PRO-001 | Professional profile | Career begins in 2014; roles derive from HD-01 | Home, About, Experience, CV, Agent R JSON | `Approved`; exact months `Requires Human Confirmation` |
+| INV-PRO-001 | Professional profile | Monthly chronology derives from HD-01-S1; career begins `11/2014` | Home, About, Experience, CV, Agent R JSON | `Approved`; public consumers not yet reconciled |
 | INV-POS-001 | Positioning | Professional positioning derives from approved chronology and public claims | Home/About/Contact | `Approved`; reconciliation remains a migration action |
 | INV-MET-001 | Career metric | “10+ anos de experiência em tecnologia e produtos digitais” | Conflicting values across Home/About/Experience/Stack | Approved value; all other quantitative career counts `Superseded` |
 | INV-GEO-001 | Geography | Brazil professional experience; in-person Ireland experience; remote work for a US company | About/Experience/Stack/Agent R JSON | `Approved`; modalities must remain explicit |
-| INV-EXP-001 | Agência DCS | 2014–2018; Designer → Senior Front-end Developer | Experience and historical timelines | `Approved`; month precision pending |
-| INV-EXP-002 | Webbix | 2018, about eight months; UI/UX Designer | Experience, About, CV, Agent R JSON | `Approved`; frontend is responsibility only |
-| INV-EXP-003 | Carrefour Brasil | 2019–2021; Front-end Developer → Tech Lead | Experience/Home/About/CV/JSON | `Approved` |
-| INV-EXP-004 | Stefanini Group | 2021; Front-end Developer | Experience/Home/CV/JSON | `Approved`; longer periods/titles `Superseded` |
-| INV-EXP-005 | IPNET by Vivo | 2022; Front-end Developer with product-oriented responsibilities | Experience/Home/CV/JSON | `Approved`; 2023–2024 representation `Superseded` |
-| INV-EXP-006 | Reclame Aqui | 2024–2025; Technical Product Manager | Experience/Home/About/CV/JSON | `Approved`; frontend is responsibility |
-| INV-EXP-007 | HireVue | 2025–2026; public title AI Technical Product Manager | Experience/Home/About/CV/JSON | `Approved`; frontend is responsibility |
-| INV-EXP-008 | Possible additional experience | Any experience between 2022 and 2024 not listed above | Gap noted by HD-01 | `Requires Human Confirmation`; MUST NOT be inferred |
+| INV-EXP-001 | Agência DCS | `11/2014–03/2018`; Designer → Senior Front-end Developer | Experience and historical timelines | `Approved` by HD-01-S1; no inferred internal promotion months |
+| INV-EXP-002 | Webbiz.ie | `06/2018–11/2018`; UI/UX Designer; Dublin, Ireland | Experience, About, CV, Agent R JSON | `Approved`; `Webbix`, incomplete `Webbiz` and approximate eight-month duration `Superseded`; frontend is responsibility only |
+| INV-EXP-003 | Carrefour Brasil | `05/2019–06/2021`; Front-end Developer → Tech Lead | Experience/Home/About/CV/JSON | `Approved` by HD-01-S1 |
+| INV-EXP-004 | Stefanini | `06/2021–05/2023`; Front-end Developer | Experience/Home/CV/JSON | `Approved`; annual-only prior period `Superseded` |
+| INV-EXP-005 | IPNET by Vivo | `11/2023–06/2024`; Front-end Developer with product-oriented responsibilities | Experience/Home/CV/JSON | `Approved`; `2022` relationship period `Superseded`; case dates remain independent |
+| INV-EXP-006 | Reclame Aqui | `07/2024–07/2025`; Technical Product Manager | Experience/Home/About/CV/JSON | `Approved`; frontend is responsibility; case date independent |
+| INV-EXP-007 | HireVue | `10/2025–12/2025`; Technical Product Manager — AI & Intelligent Platforms | Experience/Home/About/CV/JSON | `Approved`; frontend is contribution; case date independent |
+| INV-EXP-008 | Consultoria remota por projeto — Agência DCS | `11/2018–05/2019`; Front-end Developer & Web Designer — Consultant; remote from Dublin | Future chronology/About/Experience/CV/LinkedIn/Agent R release | `Approved`; project-based DCS contracting, not second DCS employment/company or end-client employment |
 | INV-CAS-001 | Professional cases (7) | HireVue, AGU, RA Reviews, Carrefour, HouzBuddy, SETUR and Via Varejo | `app/data/cases.ts` and case routes | `Approved`; claims require classification before migration |
 | INV-CAS-002 | Méliuz Browse In-App | Product case study, not employment/contract/launched product by Victor | Current case route and data | `Approved`; nature must be explicit |
-| INV-CAS-003 | Portal de Turismo — SETUR | Approved case name; 2022 IPNET project | Current `Porto Seguro`/SETUR representation | Approved target; Porto Seguro relationship `Requires Human Approval` |
+| INV-CAS-003 | Portal de Turismo — SETUR | Approved case name; IPNET-related project with case period still conditional | Current `Porto Seguro`/SETUR representation and superseded `2022` employment-derived date | Approved target; case date `Requires Human Confirmation`; Porto Seguro relationship `Requires Human Approval` |
 | INV-CLM-001 | Case claims | `Measured`, `Observed`, `Qualitative`, `Proposed`, `Unverified` | Case impact/highlight text | Quantitative publication requires evidence |
 | INV-COM-001 | Companies | Direct employers separated from clients/projects | About/Experience/Cases/assets | `Approved`; company count is not public |
 | INV-SKL-001 | Skills and competencies | Governed taxonomy required | About/Stack/CV/Agent R JSON | `Requires Human Approval` in later editorial migration |

@@ -141,7 +141,7 @@ No private contact value is reproduced in this documentation.
 
 ## Remaining gates
 
-- Exact career/education months and any additional 2022–2024 experience: `Requires Human Confirmation`.
+- Education months remain `Requires Human Confirmation`. Career months and the broad additional-2022–2024 question for the eight listed relationships were later resolved by HD-01-S1; case-specific dates remain independent and conditional.
 - Unlocated certification evidence: `Requires Human Confirmation`.
 - Make scenario, model version and active sources: `Requires Current Verification`.
 - Media rights and unresolved semantic groups: review required; groups 8 and 9 remain `Blocked`.
@@ -179,3 +179,47 @@ Phase 01 was correctly completed using the decisions available on 2026-08-26. Th
 ### HDR-SUP-003 — Career Positioning Review decisions
 
 CPR-HD-01–CPR-HD-08 approve the positioning hierarchy, evidence boundaries, recent hands-on classifications, two-CV strategy, case hierarchy, Portfolio Platform as the primary authorial Full-Stack case, neutral future portrait policy and the secondary role of product, AI, agents and VS Method™. They are recorded in the Phase 02 decision baseline and authorize planning only.
+
+## HD-01-S1 — Canonical Monthly Career Chronology
+
+- Decision maker: Victor Sizino.
+- Effective date: 2026-09-02.
+- Status: `Approved — Superseding Decision`.
+- Implementation state: `Documentation Authorized — Public Content Not Yet Reconciled`.
+- Evidence class: `Direct Human Confirmation`.
+- Scope: professional chronology, monthly precision, `Webbiz.ie`, project-based DCS consulting, the conservative public metric and derived consumers.
+- Reason: later direct human confirmation materially corrected the annual chronology used by HD-01 and identified an omitted project-based consulting experience.
+- Historical treatment: HD-01 remains intact above as the decision available when Phase 01 was completed. This decision supersedes only the fields identified below; it does not silently rewrite Phase 01.
+
+### Approved monthly chronology
+
+| Experience | Period | Canonical/public title | Relationship and location |
+| --- | --- | --- | --- |
+| Agência DCS | `11/2014–03/2018` | `Designer → Senior Front-end Developer` | Original professional relationship; preserve only previously evidenced location/modality; no inferred internal promotion months |
+| Webbiz.ie | `06/2018–11/2018` | `UI/UX Designer` | Dublin, Ireland; frontend may be a responsibility, never a second official title |
+| Consultoria remota por projeto — Agência DCS | `11/2018–05/2019` | `Front-end Developer & Web Designer — Consultant` / `Desenvolvedor Front-end e Web Designer — Consultor` | `Independent/Project-Based Frontend Consulting`; DCS contractor; Victor in Dublin, Ireland; remote |
+| Carrefour Brasil | `05/2019–06/2021` | `Front-end Developer → Tech Lead` | Approved professional relationship |
+| Stefanini | `06/2021–05/2023` | `Front-end Developer` | Approved professional relationship |
+| IPNET by Vivo | `11/2023–06/2024` | `Front-end Developer` | Product-oriented work remains a responsibility |
+| Reclame Aqui | `07/2024–07/2025` | `Technical Product Manager` | `Frontend Hands-On with Product Responsibilities` |
+| HireVue | `10/2025–12/2025` | `Technical Product Manager — AI & Intelligent Platforms` | `Technical Product with Frontend Contribution` |
+
+The intervals `04/2018–05/2018`, `06/2023–10/2023`, `08/2025–09/2025` and the period after `12/2025` MUST NOT be filled by inference. Shared boundary months—November 2018, May 2019 and June 2021—may represent within-month transitions and MUST NOT be interpreted automatically as concurrent employment, changed to remove overlap or assigned invented days.
+
+### Project-based DCS consulting boundary
+
+The consulting experience is remote professional work on discrete projects for Agência DCS, not a second formal DCS employment record and not a separate company. Publishable scope is frontend development, interface implementation, visual adjustments, faithful layout reproduction, page development/maintenance, remote project collaboration, visual-asset preparation and web implementation from approved layouts. Approved technologies/tools are HTML, CSS, JavaScript, jQuery, Adobe Photoshop, Adobe Illustrator and pixel-perfect implementation as a technique. `Perfect Pixel` is a named tool only if separately evidenced.
+
+Publishable projects are DCS-context work related to SOS E-commerce and the Vinícola Salton website. SOS E-commerce and Vinícola Salton are end clients/projects, never direct employers or contractors. No integral project/design ownership, backend, account leadership, direct commercial relationship, commercial result, metric or full-platform maintenance is approved.
+
+### Superseded and retained fields
+
+`Superseded`: annual-only precision; DCS `2014–2018`; `Webbix`; incomplete `Webbiz`; approximate eight-month duration; Carrefour `2019–2021`; Stefanini only in `2021`; IPNET in `2022`; generic Reclame Aqui `2024–2025`; HireVue `2025–2026`; omission of the consulting experience; the general month-confirmation gate for the eight listed relationships; and the broad hypothesis of a missing 2022–2024 experience.
+
+Still valid: separation of title and responsibility; prohibition on invented experiences; Méliuz as a product study; unchanged canonical roles; claim, privacy and other HD/CPR-HD rules. Case periods remain independent and conditional, including Via Varejo ADS, AGU, SETUR, RA Reviews, HireVue AI Platform, Carrefour projects, HouzBuddy and consulting projects when greater precision is requested.
+
+The public metric `10+ anos de experiência em tecnologia e produtos digitais` remains approved as a conservative accumulated-experience threshold. It does not assert uninterrupted work, ten years in one role/technology, or an exact duration and MUST NOT auto-increment.
+
+Consumers requiring coordinated reconciliation are website content, cases, CVs, LinkedIn, SEO, Agent R™ knowledge releases and governance/migration documents. No public implementation, CV/LinkedIn/SEO update, Agent R™ release, Make change, merge or deployment is authorized by this decision.
+
+Reversal requires a new human decision, evidence, affected-consumer inventory, coordinated update, validation, rollback and preservation of both HD-01 and HD-01-S1.

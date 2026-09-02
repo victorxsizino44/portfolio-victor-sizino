@@ -73,3 +73,11 @@ CPR-HD-01–08 approve a future frontend-first professional projection but do no
 HDR-SUP-002 makes the current professional WhatsApp an eligible contextual public contact channel. The raw value is not duplicated here. A future Agent R release may disclose it only when the user asks how to contact Victor, and only after the channel/link is operationally verified. It must not place the value in general career answers, logs, analytics, prompts or unrelated Make payloads.
 
 The current JSON and Make content do not acquire authority from this decision. Make remains `Requires Current Verification`, and no new positioning reaches Agent R until an identifiable, approved and reversible knowledge release passes content evaluation and safe operational verification.
+
+## HD-01-S1 knowledge-source addendum — 2026-09-02
+
+HD-01-S1 is the eligible future authority for professional chronology. HD-01 remains historical and its annual-only dates MUST NOT enter a new public knowledge release as current facts. The eligible chronology is: DCS `11/2014–03/2018`; Webbiz.ie `06/2018–11/2018`; project-based remote DCS consulting `11/2018–05/2019`; Carrefour `05/2019–06/2021`; Stefanini `06/2021–05/2023`; IPNET `11/2023–06/2024`; Reclame Aqui `07/2024–07/2025`; HireVue `10/2025–12/2025`.
+
+The consulting record is an `Independent/Project-Based Frontend Consulting` relationship contracted by Agência DCS, not formal DCS re-employment, a second DCS company or direct SOS E-commerce/Vinícola Salton employment. Agent R™ may eventually use only the approved descriptive title, responsibilities, technologies and bounded claims after a governed release. Case dates remain independent and conditional.
+
+The metric `10+ anos de experiência em tecnologia e produtos digitais` remains eligible; exact, `11+`, `12+`, uninterrupted-tenure or single-specialty interpretations are prohibited. Current JSON, Make sources/prompts and runtime remain unchanged and `Requires Current Verification`; this addendum does not create or authorize a knowledge release.
