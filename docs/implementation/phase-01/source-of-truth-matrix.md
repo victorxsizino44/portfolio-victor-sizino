@@ -4,8 +4,8 @@ This matrix incorporates HD-01–HD-08. It describes approved authority and futu
 
 | Domain | Current evidence/projection | Canonical authority | Derived projections | Status / condition |
 | --- | --- | --- | --- | --- |
-| Profile/positioning | TS/TSX, CV, Agent R JSON | Approved canonical record; future Sanity representation | Website, CV, Agent R | HD-01/02 `Approved`; migration pending |
-| Career chronology | Home/About/Experience/CV/JSON | HD-01 annual chronology | Profile, experience pages, CV, Agent R | Months/additional 2022–2024 experience `Requires Human Confirmation` |
+| Profile/positioning | TS/TSX, CV, Agent R JSON | Approved canonical record; future Sanity representation | Website, CV, Agent R | HD-01-S1/HD-02 `Approved`; public reconciliation pending |
+| Career chronology | Home/About/Experience/CV/JSON | HD-01-S1 monthly chronology; HD-01 historical | Site, cases, CV, LinkedIn, SEO, Agent R and documents | Public consumers not reconciled; case dates independent; no inferred days/gaps/overlaps |
 | Professional metrics | Multiple conflicting UI values | HD-02 | Website, SEO, CV, Agent R | Only approved quantitative public metric is 10+ years |
 | Geography | About/Experience/Stack/JSON | HD-02 | Profile and experience projections | Brazil / in-person Ireland / remote US company kept distinct |
 | Companies | TS/TSX and assets | Future Sanity record | Experience/case views | Employer/client/project relationships require mapping |
@@ -50,3 +50,15 @@ An approved change records affected canonical IDs and regenerates consumers. Rev
 | LinkedIn | CPR-HD-01/06/08 | Future external professional projection | Separate checkpoint and authorization required |
 
 This addendum identifies later authority; it does not make current repository, CV, Agent JSON, Make content or LinkedIn canonical. Phase 01 remains completed under its original decision date.
+
+## Chronology authority addendum — 2026-09-02
+
+| Domain | Current authority | Historical/superseded representations | Consumers | Gate |
+| --- | --- | --- | --- | --- |
+| Professional chronology | HD-01-S1 monthly chronology | HD-01 annual-only dates | Site, CVs, LinkedIn, SEO, Agent R release, cases and documents | Coordinated reconciliation authorization required |
+| Company identity | `Webbiz.ie` | `Webbix`; incomplete `Webbiz` | Site, CVs, LinkedIn, Agent R and media references | Alias/history preserved; public correction pending |
+| Project-based consulting | DCS contractor relationship `11/2018–05/2019` | Omitted record | Chronology, About, Experience, future Engineering CV/LinkedIn/Agent R | Do not create second DCS employer or direct end-client employment |
+| Case periods | Separate case-specific decisions | Dates inferred from annual employment periods | Cases, CVs, SEO and Agent R | `Requires Human Confirmation` where not independently evidenced |
+| Career metric | `10+ anos de experiência em tecnologia e produtos digitais` | Exact, `11+`, `12+` or uninterrupted-duration implications | Site, CVs, LinkedIn, SEO and Agent R | Conservative metric only; no automatic increment |
+
+The former general month and broad 2022–2024 missing-experience gates are resolved for the eight listed relationships. External documentary evidence, case-specific dates and other open conditions remain separate.

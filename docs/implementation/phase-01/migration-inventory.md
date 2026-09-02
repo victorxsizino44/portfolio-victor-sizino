@@ -9,9 +9,9 @@ Every batch records source version/checksum, mapping version, actor/time, decisi
 | Batch | Domain | Approved source/target | Preconditions and open conditions | Validation | Rollback |
 | --- | --- | --- | --- | --- | --- |
 | MIG-01 | Provider-neutral contracts | Phase 01 docs → repository schemas/adapters | Separate implementation approval | Fixtures and contract review | Revert schema commit |
-| MIG-02 | Profile/positioning | HD-01/02 → future Sanity | Exact months not required for annual projection; no inferred 2022–2024 record | Approved fact comparison | Static source remains active |
-| MIG-03 | Companies/relationships | HD-01/05 → future Sanity | Employer/client/project mapping | Relationship reconciliation | Static mappings |
-| MIG-04 | Experiences/timeline | HD-01 → future Sanity | Months/additional 2022–2024 remain `Requires Human Confirmation` | Dates, titles, gaps and projection comparison | Static Experience data |
+| MIG-02 | Profile/positioning | HD-01-S1/HD-02 → future Sanity | Block annual-only consumers; no inferred dates or interval records | Approved fact comparison | Static source remains active until authorized reconciliation |
+| MIG-03 | Companies/relationships | HD-01-S1/HD-05 → future Sanity | Map employer, contractor and end client; one DCS Company record | Relationship reconciliation | Static mappings |
+| MIG-04 | Experiences/timeline | HD-01-S1 → future Sanity | Add project-based DCS consulting; preserve boundary months and unfilled intervals; case dates separate | Monthly dates, titles, relationship nature, gaps and projection comparison | Static Experience data |
 | MIG-05 | Metrics/geography | HD-02 → future Sanity | Exclude all superseded numeric counts | Static scan and projection tests | Prior static rendering only if policy-safe |
 | MIG-06 | Cases/claims | HD-05 → future Sanity | Classify every claim; Porto Seguro relationship unresolved | Eight routes, nature, role, evidence and confidentiality review | Current case routes/data |
 | MIG-07 | Skills/groups | Current sources → future Sanity | Taxonomy approval | Alias/order/reference checks | Static skill data |
@@ -59,3 +59,13 @@ The batches below derive from the [Career Positioning Review baseline](../phase-
 | MIG-28 | Frozen operations application card | CPR-HD-06 → future Building Next projection | Repositioning complete, transparent copy and visual approval | No implementation/demo/result implication | Remove card and retain initiative record | `Frozen` |
 
 Phase 01 remains `Completed — Approved, Merged and Production Verified`. These future batches require their own branches, tests, rollback and human authorization.
+
+## HD-01-S1 migration gate — 2026-09-02
+
+- Annual-only career dates MUST NOT migrate as current facts.
+- Create one Experience record for project-based DCS consulting, linked to the existing DCS Company as contractor; do not create a second employer/company.
+- `Webbiz.ie` is the canonical display name; `Webbix` and incomplete `Webbiz` remain aliases only as superseded history.
+- Block site, CV, LinkedIn, SEO, Agent R™ and case consumers still based on superseded dates until coordinated reconciliation is authorized and validated.
+- Case dates remain separate and conditional; no employment period may populate a complete case period automatically.
+- Preserve `10+ anos de experiência em tecnologia e produtos digitais`; prohibit exact/auto-incremented duration metrics.
+- Migration rollback restores the preceding approved mappings and projections while retaining both HD-01 and HD-01-S1 audit history.
