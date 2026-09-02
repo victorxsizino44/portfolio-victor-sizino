@@ -12,8 +12,7 @@ export default function ExperienceHero() {
             Mais de 10 anos transformando negócios em impacto real<span className="text-violet">.</span>
           </h1>
           <p className="mt-5 max-w-[640px] text-sm leading-6 text-muted md:text-base md:leading-7">
-            Atuei em diferentes segmentos, liderando produtos e times multidisciplinares para entregar soluções que geram
-            valor, crescem negócios e melhoram a vida de milhões de pessoas.
+            Experiência em produtos digitais, e-commerce e plataformas de tecnologia.
           </p>
           <div className="mt-7">
             <ExperienceStats />

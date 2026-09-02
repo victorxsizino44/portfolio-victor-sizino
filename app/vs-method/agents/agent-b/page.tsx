@@ -20,22 +20,22 @@ import Header from "../../../components/home/Header";
 const canonicalUrl = "https://victor-sizino.vercel.app/vs-method/agents/agent-b";
 
 export const metadata: Metadata = {
-  title: "Agent B™ — Discovery & Briefing Agent | Victor Sizino",
+  title: "Agent B™ — Discovery & Briefing Architecture Prototype | Victor Sizino",
   description:
-    "Conheça o Agent B™, agente de Discovery e Briefing do VS Method™, criado para transformar contexto, requisitos, constraints e evidências em um Briefing governado.",
+    "Conheça o Agent B™, protótipo estático de produto e arquitetura para Discovery e Briefing governados no VS Method™.",
   alternates: { canonical: canonicalUrl },
   openGraph: {
     type: "website",
     locale: "pt_BR",
     url: canonicalUrl,
-    title: "Agent B™ — Discovery & Briefing Agent | Victor Sizino",
-    description: "Transforme contexto, requisitos e evidências em um Briefing governado com o Agent B™.",
+    title: "Agent B™ — Discovery & Briefing Architecture Prototype | Victor Sizino",
+    description: "Protótipo estático de produto e arquitetura para Discovery e Briefing governados.",
     siteName: "Victor Sizino",
   },
   twitter: {
     card: "summary",
-    title: "Agent B™ — Discovery & Briefing Agent | Victor Sizino",
-    description: "Discovery estruturado, validação e governança humana antes do Briefing.",
+    title: "Agent B™ — Discovery & Briefing Architecture Prototype | Victor Sizino",
+    description: "Protótipo estático de Discovery estruturado, validação e governança humana.",
   },
 };
 
@@ -49,8 +49,8 @@ const workflow = [
 const architecture = [
   { title: "Discovery & Briefing", copy: "Lifecycle, boundaries e autoridade do agente.", icon: MessageSquareText },
   { title: "Information Model", copy: "Domains, fields, validação, confiança e dependencies.", icon: Blocks },
-  { title: "Intelligence Orchestration", copy: "Conversation, prompts, contexto e memória governados.", icon: BrainCircuit },
-  { title: "Implementation & Operations", copy: "Contratos, runtime, observability e handoffs.", icon: GitBranch },
+  { title: "Intelligence Orchestration", copy: "Modelo conceitual para conversa, prompts e contexto governados.", icon: BrainCircuit },
+  { title: "Implementation Planning", copy: "Contratos e handoffs propostos para uma etapa futura.", icon: GitBranch },
 ];
 
 const briefingFields = [
@@ -100,8 +100,8 @@ export default function AgentBPage() {
           <div className="mx-auto grid max-w-[1096px] gap-10 px-5 py-12 md:px-8 md:py-16 lg:grid-cols-[0.72fr_1.28fr]">
             <div>
               <p className="section-label text-violet">Architecture & governance</p>
-              <h2 id="agent-b-architecture" className="mt-4 text-[30px] font-black leading-tight tracking-[-0.025em] sm:text-[36px]">Um agente operável, não apenas conversacional</h2>
-              <p className="mt-5 text-sm leading-6 text-muted">Quatro Essential Artifacts preservam responsabilidades separadas e um caminho claro entre arquitetura, inteligência e operação.</p>
+              <h2 id="agent-b-architecture" className="mt-4 text-[30px] font-black leading-tight tracking-[-0.025em] sm:text-[36px]">Protótipo estático de produto e arquitetura</h2>
+              <p className="mt-5 text-sm leading-6 text-muted">Quatro Essential Artifacts propõem responsabilidades separadas e um caminho futuro entre arquitetura, inteligência e operação.</p>
             </div>
             <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
               {architecture.map(({ title, copy, icon: Icon }) => (

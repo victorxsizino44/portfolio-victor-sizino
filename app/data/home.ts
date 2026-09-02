@@ -4,7 +4,6 @@ import {
   BriefcaseBusiness,
   Code2,
   MapPin,
-  PackageCheck,
   RefreshCw,
   Search,
   Sparkles,
@@ -71,7 +70,7 @@ export const cases: CaseItem[] = [
     image: "/images/hirevue-case.png",
     description:
       "Evolucao de produtos orientados por IA para otimizar avaliacao de candidatos e apoiar decisoes de contratacao em escala.",
-    stats: ["Mais precisao", "Menos tempo", "Melhor experiencia"],
+    stats: ["Produto digital", "Colaboracao global", "IA aplicada"],
     tags: ["AI", "Product", "Platform", "Strategy"],
   },
   {
@@ -79,9 +78,9 @@ export const cases: CaseItem[] = [
     badge: "AGU",
     badgeClass: "bg-slate-700 text-white",
     image: "/images/agu-case.png",
-    description: "Plataforma com busca e sumarizacao inteligente para documentos juridicos.",
-    stats: ["70% menos tempo de busca", "Controle de acesso seguro", "Consulta inteligente"],
-    tags: ["IA", "Busca", "Produto", "Governo"],
+    description: "Aplicacao em Next.js para upload, organizacao e busca de documentos juridicos.",
+    stats: ["Interface em Next.js", "Upload de PDFs", "Integracao com Elasticsearch"],
+    tags: ["Next.js", "Busca", "Integracao", "Governo"],
   },
   {
     title: "Validacao de MVP Internacional",
@@ -112,14 +111,6 @@ export const companies: CompanyItem[] = [
     logo: "/logos/reclame-aqui-v2.png",
   },
   {
-    name: "Méliuz",
-    segment: "Fintech",
-    context: "Growth • Produto • Experimentação",
-    description:
-      "Projeto focado em otimização de conversão, análise de comportamento do usuário e melhoria da jornada digital.",
-    logo: "/logos/meliuz.png",
-  },
-  {
     name: "HireVue",
     segment: "AI & HR Tech",
     context: "AI Product • TPM • Plataforma",
@@ -132,7 +123,7 @@ export const companies: CompanyItem[] = [
     segment: "Governo Federal",
     context: "IA • Busca • Produto",
     description:
-      "Liderança na construção do Buscador Inteligente, solução de busca e sumarização de documentos utilizando tecnologia e IA.",
+      "Contribuição no desenvolvimento de interface, upload de PDFs, experiência de busca e integrações do Buscador Inteligente.",
     logo: "/logos/agu.png",
   },
   {
@@ -140,11 +131,11 @@ export const companies: CompanyItem[] = [
     segment: "Turismo & Governo",
     context: "Produto • Estratégia • Experiência Digital",
     description:
-      "Projeto desenvolvido através de licitação pública para a Secretaria de Turismo de Porto Seguro. Atuação na estruturação do produto digital, definição de escopo, alinhamento de stakeholders e desenho da experiência da plataforma voltada à promoção turística do município.",
+      "Participação no Portal de Turismo — SETUR, com foco em frontend, experiência digital, busca e integração de dados.",
     logo: "/logos/porto-seguro-v2.png",
   },
   {
-    name: "Webbix",
+    name: "Webbiz.ie",
     segment: "Tech Startup",
     context: "MVP • Produto • UX",
     description:
@@ -154,16 +145,14 @@ export const companies: CompanyItem[] = [
 ];
 
 export const timeline: TimelineItem[] = [
-  { year: "2025 - 2026", role: "AI Technical Product Manager", description: "IA, automacao e produtos digitais" },
-  {
-    year: "2024 - 2025",
-    role: "Technical Product Manager (AI & Digital Experience) / Front-end Engineer",
-    description: "Reclame Aqui",
-  },
-  { year: "2023 - 2024", role: "Technical Product Manager", description: "IPNET - AGU - SETUR" },
-  { year: "2021 - 2023", role: "Front-end Developer / Technical Product Manager", description: "ADS - Ebanx - AkzoNobel" },
-  { year: "2019 - 2021", role: "Front-End Developer & Technical Lead", description: "Carrefour" },
-  { year: "2018", role: "Product Designer", description: "Webbix - Irlanda" },
+  { year: "10/2025–12/2025", role: "Technical Product Manager — AI & Intelligent Platforms", description: "HireVue" },
+  { year: "07/2024–07/2025", role: "Technical Product Manager", description: "Reclame Aqui" },
+  { year: "11/2023–06/2024", role: "Front-end Developer", description: "IPNET by Vivo — AGU e SETUR" },
+  { year: "06/2021–05/2023", role: "Front-end Developer", description: "Stefanini" },
+  { year: "05/2019–06/2021", role: "Front-end Developer → Tech Lead", description: "Carrefour" },
+  { year: "11/2018–05/2019", role: "Desenvolvedor Front-end e Web Designer — Consultor", description: "Consultoria remota por projeto — Agência DCS" },
+  { year: "06/2018–11/2018", role: "UI/UX Designer", description: "Webbiz.ie — Irlanda" },
+  { year: "11/2014–03/2018", role: "Designer → Senior Front-end Developer", description: "Agência DCS" },
 ];
 
 export const process: ProcessItem[] = [
@@ -175,10 +164,10 @@ export const process: ProcessItem[] = [
 ];
 
 export const highlights: HighlightItem[] = [
-  { title: "10+ anos", description: "em tecnologia", icon: Boxes },
-  { title: "40+ projetos", description: "entregues", icon: PackageCheck },
-  { title: "Produto - IA - Engenharia", description: "visao multidisciplinar", icon: Code2 },
-  { title: "Experiencia", description: "ponta a ponta", icon: MapPin },
+  { title: "10+ anos", description: "em tecnologia e produtos digitais", icon: Boxes },
+  { title: "Brasil", description: "experiencia profissional", icon: MapPin },
+  { title: "Irlanda", description: "experiencia presencial", icon: MapPin },
+  { title: "Estados Unidos", description: "atuacao remota", icon: Code2 },
 ];
 
 export const stack: StackItem[] = [

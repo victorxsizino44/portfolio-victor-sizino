@@ -14,10 +14,11 @@ const metaItems = [
 
 export default function CaseMeta({ company, period, location, role, squad, projectType }: CaseMetaProps) {
   const values = { company, period, location: location ?? "Remoto", role, squad, projectType };
+  const visibleMetaItems = metaItems.filter((item) => item.key !== "period" || period?.trim());
 
   return (
     <dl className="grid gap-px overflow-hidden rounded-lg border border-line bg-line md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-      {metaItems.map((item) => {
+      {visibleMetaItems.map((item) => {
         const Icon = item.icon;
 
         return (
