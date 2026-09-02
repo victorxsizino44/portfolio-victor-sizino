@@ -75,13 +75,14 @@ export const impactMetrics: AboutMetric[] = [
 ];
 
 export const careerTimeline: AboutTimelineItem[] = [
-  { period: "2014 - 2018", role: "Designer → Senior Front-end Developer", description: "Agencia DCS." },
-  { period: "2018", role: "UI/UX Designer", description: "Webbix, em experiencia presencial na Irlanda." },
-  { period: "2019 - 2021", role: "Front-end Developer → Tech Lead", description: "Carrefour Brasil." },
-  { period: "2021", role: "Front-end Developer", description: "Stefanini." },
-  { period: "2022", role: "Front-end Developer", description: "IPNET by Vivo, com atuacao orientada a produto." },
-  { period: "2024 - 2025", role: "Technical Product Manager", description: "Reclame Aqui, com contribuicao frontend." },
-  { period: "2025 - 2026", role: "Technical Product Manager — AI & Intelligent Platforms", description: "HireVue, em atuacao remota para empresa dos Estados Unidos." },
+  { period: "11/2014–03/2018", role: "Designer → Senior Front-end Developer", description: "Agencia DCS." },
+  { period: "06/2018–11/2018", role: "UI/UX Designer", description: "Webbiz.ie, em experiencia presencial na Irlanda." },
+  { period: "11/2018–05/2019", role: "Desenvolvedor Front-end e Web Designer — Consultor", description: "Consultoria remota por projeto para a Agencia DCS, a partir de Dublin, Irlanda." },
+  { period: "05/2019–06/2021", role: "Front-end Developer → Tech Lead", description: "Carrefour Brasil." },
+  { period: "06/2021–05/2023", role: "Front-end Developer", description: "Stefanini." },
+  { period: "11/2023–06/2024", role: "Front-end Developer", description: "IPNET by Vivo, com atuacao orientada a produto." },
+  { period: "07/2024–07/2025", role: "Technical Product Manager", description: "Reclame Aqui, com contribuicao frontend." },
+  { period: "10/2025–12/2025", role: "Technical Product Manager — AI & Intelligent Platforms", description: "HireVue, em atuacao remota para empresa dos Estados Unidos." },
 ];
 
 export const workStyles: AboutWorkStyle[] = [
@@ -119,7 +120,7 @@ export const aboutCompanies: AboutCompany[] = [
   { name: "HireVue", role: "Technical Product Manager — AI & Intelligent Platforms", logo: "/logos/hirevue-logo.svg" },
   { name: "Carrefour", role: "Tech Lead", logo: "/logos/carrefour.png" },
   { name: "IPNET", role: "Front-end Developer", logo: "/logos/ipnet-v2.png" },
-  { name: "Webbix", role: "UI/UX Designer", logo: "/logos/webbix.png" },
+  { name: "Webbiz.ie", role: "UI/UX Designer", logo: "/logos/webbix.png" },
   { name: "Stefanini", role: "Front-end Developer", logo: "/logos/stefanini-logo.png" },
 ];
 

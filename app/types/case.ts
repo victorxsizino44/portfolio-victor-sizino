@@ -24,7 +24,7 @@ export type CaseStudy = {
   slug: string;
   title: string;
   company: string;
-  period: string;
+  period?: string;
   location?: string;
   category: string;
   filterCategory: string;

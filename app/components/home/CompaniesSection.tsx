@@ -13,7 +13,7 @@ const initialsByCompany: Record<string, string> = {
   HireVue: "HV",
   AGU: "AGU",
   SETUR: "ST",
-  Webbix: "WB",
+  "Webbiz.ie": "WB",
 };
 
 function getCompanyInitials(name: string) {

@@ -135,7 +135,7 @@ export const companies: CompanyItem[] = [
     logo: "/logos/porto-seguro-v2.png",
   },
   {
-    name: "Webbix",
+    name: "Webbiz.ie",
     segment: "Tech Startup",
     context: "MVP • Produto • UX",
     description:
@@ -145,13 +145,14 @@ export const companies: CompanyItem[] = [
 ];
 
 export const timeline: TimelineItem[] = [
-  { year: "2025 - 2026", role: "Technical Product Manager — AI & Intelligent Platforms", description: "HireVue" },
-  { year: "2024 - 2025", role: "Technical Product Manager", description: "Reclame Aqui" },
-  { year: "2022", role: "Front-end Developer", description: "IPNET by Vivo — AGU e SETUR" },
-  { year: "2021", role: "Front-end Developer", description: "Stefanini" },
-  { year: "2019 - 2021", role: "Front-end Developer → Tech Lead", description: "Carrefour" },
-  { year: "2018", role: "UI/UX Designer", description: "Webbix — Irlanda" },
-  { year: "2014 - 2018", role: "Designer → Senior Front-end Developer", description: "Agência DCS" },
+  { year: "10/2025–12/2025", role: "Technical Product Manager — AI & Intelligent Platforms", description: "HireVue" },
+  { year: "07/2024–07/2025", role: "Technical Product Manager", description: "Reclame Aqui" },
+  { year: "11/2023–06/2024", role: "Front-end Developer", description: "IPNET by Vivo — AGU e SETUR" },
+  { year: "06/2021–05/2023", role: "Front-end Developer", description: "Stefanini" },
+  { year: "05/2019–06/2021", role: "Front-end Developer → Tech Lead", description: "Carrefour" },
+  { year: "11/2018–05/2019", role: "Desenvolvedor Front-end e Web Designer — Consultor", description: "Consultoria remota por projeto — Agência DCS" },
+  { year: "06/2018–11/2018", role: "UI/UX Designer", description: "Webbiz.ie — Irlanda" },
+  { year: "11/2014–03/2018", role: "Designer → Senior Front-end Developer", description: "Agência DCS" },
 ];
 
 export const process: ProcessItem[] = [
