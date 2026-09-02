@@ -8,18 +8,18 @@ export default function AboutHero() {
         <div className="min-w-0 pb-5 md:pb-9">
           <p className="mb-5 text-xs font-semibold uppercase tracking-[0.16em] text-muted">Sobre</p>
           <h1 className="max-w-3xl text-[38px] font-black leading-[1.05] tracking-normal">
-            Estrategia. Tecnologia. Produto. Impacto real<span className="text-violet">.</span>
+            Engenharia Front-End. Capacidade end-to-end. Produtos digitais<span className="text-violet">.</span>
           </h1>
           <p className="mt-4 text-[20px] leading-7 text-muted md:mt-5 md:text-[24px] md:leading-8">
-            AI Product Manager | Technical Product Manager
+            Senior Front-End Developer | Full-Stack &amp; AI Product Engineering
           </p>
           <p className="mt-4 w-full max-w-full text-sm leading-6 text-muted md:mt-5 md:max-w-[500px] md:text-base md:leading-7">
-            Atuo conectando negocio, produto, design e engenharia para transformar problemas complexos em solucoes digitais
-            escalaveis.
+            Atuo com React, Next.js, TypeScript e JavaScript na construção de interfaces e produtos digitais, conectando
+            engenharia, design e necessidades de negócio.
           </p>
           <p className="mt-4 w-full max-w-full text-sm leading-6 text-muted md:max-w-[500px] md:text-base md:leading-7">
-            Com mais de 10 anos de experiencia, ja atuei em empresas privadas, governo, startups e projetos internacionais,
-            sempre com foco em gerar impacto mensuravel para usuarios e organizacoes.
+            São 10+ anos de experiência em tecnologia e produtos digitais, com capacidades full-stack, integração de IA,
+            liderança técnica, Product Management e experiência internacional.
           </p>
           <div className="mt-6 grid gap-3 sm:max-w-[360px] md:mt-7 md:max-w-none md:flex md:flex-wrap md:gap-4">
             <a

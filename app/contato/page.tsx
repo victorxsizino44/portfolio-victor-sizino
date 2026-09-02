@@ -72,33 +72,33 @@ const contactCards = [
 ];
 
 const availability = [
-  "AI Product Manager",
-  "Technical Product Manager",
-  "Product Manager",
-  "Consultorias de IA",
-  "Automação de Processos",
-  "Produtos SaaS e Plataformas Digitais",
+  "Senior Front-End Developer",
+  "Senior React Developer",
+  "Senior Next.js Developer",
+  "Front-End Tech Lead",
+  "Full-Stack Developer — Front-End Focus",
+  "Product Engineer",
 ];
 
 const expectations = [
   {
-    title: "Produto",
-    text: "Transformo problemas complexos em soluções escaláveis e que geram impacto real.",
+    title: "Front-End",
+    text: "Construo interfaces claras, responsivas e orientadas à qualidade com tecnologias web modernas.",
     icon: Search,
   },
   {
-    title: "IA",
-    text: "Uso Inteligência Artificial para acelerar descoberta, execução e geração de valor.",
+    title: "Full-Stack",
+    text: "Conecto interfaces, APIs e fluxos server-side em produtos de escopo end-to-end.",
     icon: Bot,
   },
   {
-    title: "Negócio",
-    text: "Conecto estratégia, tecnologia e resultado para impulsionar crescimento.",
+    title: "AI Product Engineering",
+    text: "Integro serviços de IA a experiências digitais com validação, tratamento de falhas e foco no usuário.",
     icon: BarChart3,
   },
   {
-    title: "Execução",
-    text: "Atuo do discovery à entrega, sempre junto aos times e com foco em resultado.",
+    title: "Liderança & Produto",
+    text: "Combino liderança técnica, visão de produto e colaboração com times e stakeholders.",
     icon: Zap,
   },
 ];
@@ -183,7 +183,8 @@ export default function ContactPage() {
                 Vamos construir algo juntos<span className="text-violet">.</span>
               </h1>
               <p className="mt-4 w-full max-w-full text-sm leading-6 text-muted md:mt-5 md:max-w-[460px] md:text-base md:leading-7">
-                Estou disponível para oportunidades, consultorias e projetos envolvendo IA, Produto e Inovação.
+                Estou disponível para oportunidades em Engenharia Front-End, posições com capacidade full-stack e
+                construção de produtos digitais com IA.
               </p>
               <div className="mt-6 grid gap-3 sm:max-w-[360px] md:mt-7 md:max-w-none md:flex md:flex-wrap md:gap-4">
                 <a

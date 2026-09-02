@@ -38,27 +38,27 @@ import type {
 export const navItems: NavItem[] = ["Inicio", "Sobre", "Cases", "Experiência", "Skill & Stack", "Contato"];
 
 export const skills: SkillItem[] = [
-  { label: "AI Product Management", icon: Sparkles },
-  { label: "Technical PM", icon: BarChart3 },
-  { label: "AI Agents", icon: Boxes },
-  { label: "Automation", icon: RefreshCw },
+  { label: "Front-End Engineering", icon: Code2 },
+  { label: "Full-Stack Capability", icon: Boxes },
+  { label: "AI Product Engineering", icon: Sparkles },
+  { label: "Technical Leadership", icon: BriefcaseBusiness },
 ];
 
 export const expertise: ExpertiseItem[] = [
   {
-    title: "Product Leadership",
-    icon: BriefcaseBusiness,
-    items: ["Roadmaps", "Discovery", "OKRs", "Growth", "Stakeholders", "Priorizacao"],
-  },
-  {
-    title: "AI & Automation",
-    icon: Sparkles,
-    items: ["AI Agents", "Prompt Engineering", "LLMs", "OpenAI", "Make", "n8n"],
-  },
-  {
-    title: "Technical Delivery",
+    title: "Front-End Engineering",
     icon: Code2,
-    items: ["Next.js", "React", "TypeScript", "APIs", "Analytics", "Architecture"],
+    items: ["React", "Next.js", "TypeScript", "JavaScript", "Interfaces", "Acessibilidade"],
+  },
+  {
+    title: "Full-Stack & AI Product Engineering",
+    icon: Sparkles,
+    items: ["APIs", "Route Handlers", "Integrações", "Validação", "AI Products", "Automação"],
+  },
+  {
+    title: "Technical Leadership & Product",
+    icon: BriefcaseBusiness,
+    items: ["Liderança técnica", "Discovery", "Roadmaps", "Delivery", "Stakeholders", "Technical PM"],
   },
 ];
 

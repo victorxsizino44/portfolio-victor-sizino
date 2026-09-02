@@ -12,7 +12,18 @@ import Header from "../components/home/Header";
 export const metadata: Metadata = {
   title: "Sobre | Victor Sizino",
   description:
-    "Conheca a trajetoria de Victor Sizino, AI Product Manager e Technical Product Manager com experiencia em Produto, Tecnologia, Design, IA e projetos digitais no Brasil e na Irlanda.",
+    "Conheça a trajetória de Victor Sizino em Engenharia Front-End, React, Next.js, TypeScript, liderança técnica, capacidades full-stack e AI Product Engineering.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "Sobre | Victor Sizino",
+    description: "Trajetória em Engenharia Front-End, liderança técnica, capacidades full-stack, AI Product Engineering e produto.",
+    url: "/about",
+  },
+  twitter: {
+    card: "summary",
+    title: "Sobre | Victor Sizino",
+    description: "Trajetória em Engenharia Front-End, liderança técnica, capacidades full-stack, AI Product Engineering e produto.",
+  },
 };
 
 export default function AboutPage() {

@@ -19,11 +19,11 @@ export default function StackContactSection() {
         <div>
           <p className="section-label">Vamos conversar?</p>
           <h2 className="contact-title">
-            Procurando alguem para liderar produtos,
+            Procurando engenharia Front-End sênior,
             <br className="hidden sm:block" />
-            iniciativas de IA ou automacoes?
+            capacidade full-stack e integração de IA?
           </h2>
-          <p className="contact-copy">Vamos transformar ideias em produtos escalaveis.</p>
+          <p className="contact-copy">Vamos transformar desafios em produtos digitais claros, robustos e escaláveis.</p>
           <a className="contact-button" href="/contato#agenda">
             Agendar conversa <ArrowRight size={17} />
           </a>

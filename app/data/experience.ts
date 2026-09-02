@@ -1,6 +1,5 @@
 ﻿import {
   BarChart3,
-  Bot,
   BrainCircuit,
   BriefcaseBusiness,
   CircleDollarSign,
@@ -13,7 +12,6 @@
   MessageSquare,
   ShieldCheck,
   ShoppingCart,
-  Sparkles,
   Target,
   Users,
 } from "lucide-react";
@@ -107,11 +105,11 @@ export const heroMetrics: ExperienceMetric[] = [
 ];
 
 export const impactHighlights: ImpactHighlight[] = [
-  { title: "Frontend", description: "Experiencia profissional em interfaces e produtos digitais", icon: BriefcaseBusiness },
-  { title: "Full-Stack", description: "Contribuicao end-to-end em escopo delimitado", icon: BrainCircuit },
-  { title: "Experiencia internacional", description: "Irlanda e atuacao remota para os Estados Unidos", icon: Globe2 },
-  { title: "Tecnologia e produto", description: "Atuacao em empresas privadas e governo", icon: Landmark },
-  { title: "Lideranca tecnica", description: "Colaboracao, mentoria e alinhamento", icon: Users },
+  { title: "Front-End", description: "Experiência profissional em interfaces e produtos digitais", icon: BriefcaseBusiness },
+  { title: "Full-Stack", description: "Capacidade end-to-end em escopo delimitado", icon: BrainCircuit },
+  { title: "Experiência internacional", description: "Irlanda e atuação remota para os Estados Unidos", icon: Globe2 },
+  { title: "Tecnologia e produto", description: "Atuação em empresas privadas e governo", icon: Landmark },
+  { title: "Liderança técnica", description: "Colaboração, mentoria e alinhamento", icon: Users },
 ];
 
 export const experiences: ProfessionalExperience[] = [
@@ -398,7 +396,7 @@ export const internationalExperiences: InternationalExperience[] = [
   },
 ];
 export const sidebarSummary = {
-  text: "Minha trajetória combina estratégia de produto, tecnologia, dados e pessoas para gerar impacto real nos negócios e na vida dos usuários.",
+  text: "Minha trajetória combina Engenharia Front-End, capacidade end-to-end, integração de IA, liderança técnica e visão de produto.",
   kpis: ["10+ anos em tecnologia e produtos digitais", "Experiência profissional no Brasil", "Experiência presencial na Irlanda", "Atuação remota para empresa dos Estados Unidos"],
 };
 
@@ -407,16 +405,20 @@ export const sidebarSections: SidebarSection[] = [
     title: "Principais competências",
     icon: Target,
     items: [
-      "Gestão de Produto",
-      "Product Strategy",
-      "Product Discovery",
-      "Roadmap",
-      "Technical Product Management",
-      "Front-end Architecture",
+      "Front-End Architecture",
+      "React & Next.js",
+      "TypeScript & JavaScript",
+      "Full-Stack Capability",
       "Solution Architecture",
+      "AI Products",
+      "Technical Leadership",
+      "Technical Product Management",
+      "Product Discovery",
+      "Product Strategy",
+      "Gestão de Produto",
+      "Roadmap",
       "Métricas & KPIs",
       "Experimentação",
-      "AI Products",
       "Automação & Agentes",
       "Stakeholder Management",
       "UX & Product Design",
@@ -467,7 +469,7 @@ export const segmentIcons = {
 };
 
 export const floatingCards = [
-  { title: "IA Generativa", description: "& Automação", icon: Bot },
-  { title: "Estratégia", description: "Tecnologia Produto Impacto", icon: Target },
-  { title: "Dados", description: "IA Pessoas", icon: Sparkles },
+  { title: "Front-End", description: "React Next.js TypeScript", icon: BriefcaseBusiness },
+  { title: "Full-Stack", description: "APIs Integrações Delivery", icon: BrainCircuit },
+  { title: "Liderança técnica", description: "Mentoria Produto Stakeholders", icon: Users },
 ];

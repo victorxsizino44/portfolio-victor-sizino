@@ -50,7 +50,7 @@ export default function StackCategoryCard({ category, compact = false, index, mo
             </span>
             <h3 className="text-base font-black uppercase leading-6 text-ink">{category.title}</h3>
           </div>
-          <LevelBadge level={category.level} />
+          {category.level ? <LevelBadge level={category.level} /> : null}
         </div>
         <div className="-ml-3">
           <SkillsContent category={category} compact={compact} />
@@ -66,7 +66,7 @@ export default function StackCategoryCard({ category, compact = false, index, mo
             {typeof index === "number" ? <span className="text-sm font-black text-violet">{index + 1}</span> : null}
             <span className="min-w-0 text-sm font-black uppercase leading-5 text-ink">{category.title}</span>
           </span>
-          <LevelBadge level={category.level} />
+          {category.level ? <LevelBadge level={category.level} /> : null}
         </summary>
         <div className="border-t border-line p-4 pt-5">
           <SkillsContent category={category} />

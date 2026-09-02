@@ -10,8 +10,8 @@ export default function StackHero() {
             Skills & Stack<span className="text-violet">.</span>
           </h1>
           <p className="mt-4 max-w-[650px] text-xs leading-6 text-muted sm:text-sm md:text-base md:leading-7">
-            A combinacao entre visao de produto, expertise tecnica e inteligencia artificial para construir produtos
-            digitais que geram impacto real.
+            React, Next.js, TypeScript e JavaScript como base de Engenharia Front-End, apoiada por capacidades full-stack,
+            qualidade, integração de IA, liderança técnica e visão de produto.
           </p>
         </div>
         <div className="relative min-h-[190px] overflow-hidden sm:min-h-[300px] lg:min-h-[390px]" aria-hidden="true">

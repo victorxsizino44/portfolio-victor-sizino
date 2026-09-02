@@ -26,19 +26,19 @@ import type {
 
 export const heroBadges: AboutHeroBadge[] = [
   {
-    title: "AI Product Manager",
-    icon: BrainCircuit,
+    title: "Front-End Engineering",
+    icon: Code2,
     position: "left-4 top-8 rotate-[-4deg] md:left-7 md:top-10",
   },
   {
-    title: "Estrategia",
-    lines: ["Tecnologia", "Usuarios", "Impacto"],
+    title: "Full-Stack",
+    lines: ["APIs", "Integrações", "Delivery"],
     icon: PenTool,
     position: "bottom-10 left-5 rotate-[-5deg] md:left-12 md:bottom-14",
   },
   {
-    title: "Produto",
-    lines: ["Dados", "IA", "Pessoas"],
+    title: "AI Product Engineering",
+    lines: ["IA", "Produto", "Pessoas"],
     icon: Sparkles,
     position: "right-3 top-28 rotate-[6deg] md:right-4 md:top-32",
   },
@@ -46,24 +46,24 @@ export const heroBadges: AboutHeroBadge[] = [
 
 export const differentials: AboutDifferential[] = [
   {
-    title: "Mentalidade de Produto",
-    description: "Foco em entender o problema, priorizar o que importa e gerar valor real para o negocio e para o usuario.",
-    icon: BrainCircuit,
-  },
-  {
-    title: "Visao Tecnica",
-    description: "Experiencia pratica em desenvolvimento que facilita a comunicacao com engenharia e acelera entregas.",
+    title: "Engenharia Front-End",
+    description: "Experiência profissional na construção de interfaces e produtos digitais com React, Next.js, TypeScript e JavaScript.",
     icon: Code2,
   },
   {
-    title: "Design & UX",
-    description: "Background em design e UX para criar experiencias intuitivas, uteis e centradas nas pessoas.",
-    icon: PenTool,
+    title: "Capacidade Full-Stack",
+    description: "Contribuição end-to-end em escopos delimitados, conectando interfaces, APIs, validação e fluxos server-side.",
+    icon: BrainCircuit,
   },
   {
-    title: "IA na Pratica",
-    description: "Aplicacao de IA, agentes e automacoes para acelerar processos, decisoes e gerar valor para pessoas e negocios.",
+    title: "AI Product Engineering",
+    description: "Integração de serviços de IA em produtos digitais, com atenção a contratos, falhas, segurança e experiência.",
     icon: WandSparkles,
+  },
+  {
+    title: "Liderança Técnica & Produto",
+    description: "Liderança técnica, colaboração com stakeholders e experiência em Product e Technical Product Management.",
+    icon: PenTool,
   },
 ];
 
@@ -87,9 +87,9 @@ export const careerTimeline: AboutTimelineItem[] = [
 
 export const workStyles: AboutWorkStyle[] = [
   {
-    title: "AI First",
-    description: "Exploro a aplicacao de IA para criar vantagens reais e eficiencia.",
-    icon: Sparkles,
+    title: "Front-End First",
+    description: "Engenharia Front-End como capacidade principal, apoiada por visão de produto.",
+    icon: Code2,
   },
   {
     title: "Data Informed",

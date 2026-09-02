@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Header from "./components/home/Header";
 import HeroSection from "./components/home/HeroSection";
 import AboutSection from "./components/home/AboutSection";
@@ -9,6 +10,22 @@ import AgentRSection from "./components/AgentRSection";
 import StackContactSection from "./components/home/StackContactSection";
 import Footer from "./components/home/Footer";
 import { getAllCases } from "./lib/cases";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "Victor Sizino | Senior Front-End Developer",
+    description:
+      "Senior Front-End Developer com capacidades full-stack e experiência na construção de produtos digitais com inteligência artificial.",
+    url: "/",
+  },
+  twitter: {
+    card: "summary",
+    title: "Victor Sizino | Senior Front-End Developer",
+    description:
+      "Senior Front-End Developer com capacidades full-stack e experiência na construção de produtos digitais com inteligência artificial.",
+  },
+};
 
 export default function Home() {
   const cases = getAllCases();

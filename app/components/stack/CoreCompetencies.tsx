@@ -1,5 +1,5 @@
 import { ChevronDown, Star } from "lucide-react";
-import { coreCompetencies } from "../../data/stack";
+import { coreCompetencies, positioningRoleLabels } from "../../data/stack";
 
 type CoreCompetenciesProps = {
   variant?: "desktop" | "mobile";
@@ -8,25 +8,19 @@ type CoreCompetenciesProps = {
 function CompetenciesList() {
   return (
     <div className="mt-5 grid gap-4">
-      {coreCompetencies.map(({ title, level }) => {
-        const fillClass = level === "Expert" ? "w-full" : "w-4/5";
-
-        return (
-          <div className="grid grid-cols-[minmax(0,1fr)_72px_78px] items-center gap-3" key={title}>
-            <p className="m-0 min-w-0 text-xs font-extrabold leading-[18px] text-white/92">{title}</p>
-            <span className="flex w-full justify-center">
-              <span className="h-1 w-14 rounded-full bg-white/10">
-                <span className={`block h-1 rounded-full bg-violet ${fillClass}`} />
-              </span>
+      <p className="m-0 text-[10px] font-bold uppercase tracking-[0.12em] text-white/55">
+        Papel no posicionamento
+      </p>
+      {coreCompetencies.map(({ title, positioningRole }) => (
+        <div className="grid grid-cols-[minmax(0,1fr)_96px] items-center gap-3" key={title}>
+          <p className="m-0 min-w-0 text-xs font-extrabold leading-[18px] text-white/92">{title}</p>
+          <span className="flex w-24 justify-center">
+            <span className="inline-flex min-h-8 w-full items-center justify-center rounded-lg border border-violet/20 bg-violet/10 px-3 text-xs font-extrabold leading-none text-violet">
+              {positioningRoleLabels[positioningRole]}
             </span>
-            <span className="flex w-[78px] justify-center">
-              <span className="inline-flex min-h-8 w-full items-center justify-center rounded-lg border border-violet/20 bg-violet/10 px-3 text-xs font-extrabold leading-none text-violet">
-                {level}
-              </span>
-            </span>
-          </div>
-        );
-      })}
+          </span>
+        </div>
+      ))}
     </div>
   );
 }

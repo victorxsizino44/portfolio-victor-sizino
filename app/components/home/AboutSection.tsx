@@ -13,19 +13,19 @@ export default function AboutSection() {
       />
       <div className="min-w-0">
         <p className="section-label">Sobre mim</p>
-        <h2 className="about-title">Construindo produtos que unem negocio, tecnologia e inteligencia artificial.</h2>
+        <h2 className="about-title">Engenharia Front-End apoiada por visão de produto e capacidade end-to-end.</h2>
         <p className="about-copy">
-          Minha trajetoria comecou em UX/UI Design, evoluiu para Engenharia Front-end e hoje atua na lideranca de
-          produtos digitais e iniciativas de Inteligencia Artificial.
+          Minha trajetória começou em Design, evoluiu para Engenharia Front-End e liderança técnica, com experiência
+          profissional em interfaces e produtos digitais.
           <br />
           <br />
-          Essa visao multidisciplinar me permite conectar usuarios, negocio e tecnologia para transformar desafios
-          complexos em solucoes escalaveis.
+          Atuo com React, Next.js, TypeScript e JavaScript, combinando capacidades full-stack e integração de serviços de
+          IA para construir experiências digitais completas, sem perder o foco em clareza, qualidade e necessidades reais.
           <br />
           <br />
           Ao longo da carreira participei de produtos, plataformas e iniciativas para empresas como Carrefour,
-          Stefanini, Reclame Aqui, HireVue, IPNET e Webbiz.ie, alem de projetos de contexto publico como AGU e SETUR, atuando desde a descoberta do problema ate a entrega e
-          evolucao da solucao.
+          Stefanini, Reclame Aqui, HireVue, IPNET e Webbiz.ie, além de projetos de contexto público como AGU e SETUR, atuando desde a descoberta do problema até a entrega e
+          evolução da solução, preservando também experiência em Product e Technical Product Management.
         </p>
       </div>
       <div className="about-highlights">
