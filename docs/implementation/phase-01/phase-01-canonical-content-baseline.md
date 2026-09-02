@@ -97,3 +97,13 @@ This later baseline:
 - does not authorize implementation, publication, migration, CV replacement, agent changes, asset changes, LinkedIn updates or deployment.
 
 Phase 01 remains `Completed — Approved, Merged and Production Verified`. Future projections must apply the later baseline where it expressly supersedes positioning or WhatsApp policy, while all unresolved evidence, Make, asset, legal and operational gates remain open.
+
+## Post-completion chronology addendum — HD-01-S1 — 2026-09-02
+
+Phase 01 remains `Completed — Approved, Merged and Production Verified`; it is not reopened. Victor Sizino subsequently approved HD-01-S1 as `Approved — Superseding Decision` through `Direct Human Confirmation`. HD-01 remains fully traceable as the historical annual baseline. The earlier preservation notice remains historically accurate for the 2026-09-01 Career Positioning Review; its statement that chronology was unchanged is superseded prospectively by this later decision.
+
+The current canonical chronology is monthly: DCS `11/2014–03/2018`; Webbiz.ie `06/2018–11/2018`; project-based remote DCS consulting `11/2018–05/2019`; Carrefour `05/2019–06/2021`; Stefanini `06/2021–05/2023`; IPNET `11/2023–06/2024`; Reclame Aqui `07/2024–07/2025`; HireVue `10/2025–12/2025`. `Webbix`, incomplete `Webbiz`, approximate eight-month duration and the former annual-only periods are `Superseded` as current facts.
+
+The DCS consulting record is a project-based contractor relationship and does not create a second DCS employer/company or direct end-client employment. Shared boundary months may be transitions; days, concurrent employment and missing intervals MUST NOT be inferred. Experience and case periods remain independent. `10+ anos de experiência em tecnologia e produtos digitais` remains the approved conservative metric.
+
+Documentation is authorized, but public content, PR #25, CVs, LinkedIn, SEO, Agent R™, Make and production are not reconciled or authorized by this addendum. Case-specific dates, external documentary evidence when required and the previously recorded technical/provider/rights conditions remain open. Reversal requires a new human decision and auditable consumer reconciliation.

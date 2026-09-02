@@ -12,10 +12,10 @@ Allowed lifecycle includes `Draft`, `In Review`, `Approved`, `Published`, `Archi
 
 | Entity | Required domain fields | Key relations | Approved rule |
 | --- | --- | --- | --- |
-| Professional Profile | display name, approved headline, approved biography | positioning, chronology, contacts | Uses HD-01/02 only; one active public profile per locale |
+| Professional Profile | display name, approved headline, approved biography | positioning, chronology, contacts | Uses HD-01-S1/HD-02 for current chronology/metrics; one active public profile per locale |
 | Positioning | proposition, audience, approved claims | profile, skills | Quantitative content requires publishable evidence |
 | Company | legal/display name, normalized key, relationship type | experiences, cases, media | Direct employer is distinct from client/project entity |
-| Experience | company, annual start/end, official titles, public title, responsibilities | cases, claims | Exact months optional and `Requires Human Confirmation`; never infer gaps/overlap |
+| Experience | company/contractor, monthly start/end when approved, relationship nature, official/descriptive public titles, responsibilities | cases, claims, end clients | HD-01-S1 supplies monthly precision for eight relationships; never infer days, gaps, overlap or employment from consulting |
 | Case Study | title, nature, period, relationship, role, confidentiality, public slug | company, claims, media | Méliuz nature is product case study; SETUR is separate from Porto Seguro |
 | Claim | statement, class, evidence, period, publication eligibility | profile, experience/case | Class is `Measured`, `Observed`, `Qualitative`, `Proposed` or `Unverified`; quantitative publication requires evidence |
 | Skill / Skill Group | canonical label, description, grouping | experiences, cases | Synonyms map to one provider-neutral ID |
@@ -52,6 +52,14 @@ Allowed lifecycle includes `Draft`, `In Review`, `Approved`, `Published`, `Archi
 Generate canonical UUID/ULID values before provider creation. Provider IDs and slugs are mappings. Evidence records include source, classification, checksum/stable reference, affected fields, verification state, access eligibility, retention and review date. Transformations identify the input version.
 
 For conflicts: separate fact from narrative, compare authority/provenance, apply the Human Decision Register, mark the old representation `Superseded` or `Deprecated`, identify all projections and reconcile them only during an authorized migration. Reversal restores the prior approved version/mapping and records a new decision; it never rewrites decision history.
+
+## Monthly chronology contract addendum — 2026-09-02
+
+HD-01-S1 is the current chronological authority; HD-01 remains historical authority. Experience periods may use `MM/YYYY`, while unknown days remain absent. Shared boundary months may be transitions and do not prove concurrent employment.
+
+Relationship roles are distinct: `employer`, `contractor` and `end client`. The `11/2018–05/2019` record is project-based remote consulting contracted by Agência DCS; it MUST NOT create a second DCS Company/employer or direct SOS E-commerce/Vinícola Salton employment. A case period is independent of its related experience period and remains conditional unless separately approved.
+
+Public consumers still using annual-only dates are stale projections and require explicit implementation authorization. `10+ anos de experiência em tecnologia e produtos digitais` remains the only approved public duration metric and MUST NOT be converted to an exact or incremented duration.
 
 ## Post-Phase-01 contract addendum — 2026-09-01
 

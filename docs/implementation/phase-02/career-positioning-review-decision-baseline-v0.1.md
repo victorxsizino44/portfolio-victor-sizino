@@ -355,8 +355,8 @@ Rollback identifies the active version, restores the preceding approved asset or
 
 ### Phase 01
 
-- exact career and education months;
-- possible additional experience between 2022 and 2024;
+- education months remain open; career months for the eight listed relationships were resolved later by HD-01-S1;
+- case-specific dates and the unfilled `06/2023–10/2023` interval remain non-inferable; the former broad additional-2022–2024 hypothesis was resolved by HD-01-S1;
 - certifications without located evidence;
 - Honor Roll documentary evidence;
 - Make scenario, prompt, sources, exact Gemini model/version and last review;
@@ -417,3 +417,26 @@ This baseline does not authorize:
 - resumption, discovery, architecture or implementation of the frozen operations application.
 
 Any future action requires its own scoped authorization. Phase 01 remains `Completed — Approved, Merged and Production Verified`; this later decision baseline does not reopen or retroactively alter its historical completion.
+
+## 18. Canonical chronology addendum — HD-01-S1 — 2026-09-02
+
+Victor Sizino approved HD-01-S1 as `Approved — Superseding Decision` through `Direct Human Confirmation`. It supersedes the annual-only career-date fields inherited from HD-01 while preserving HD-01 and CPR-HD-01–08 as historical, auditable decisions. The Career Positioning Review remains a decision baseline; public implementation remains incomplete.
+
+| Experience | Current canonical period | Role / classification |
+| --- | --- | --- |
+| Agência DCS | `11/2014–03/2018` | Designer → Senior Front-end Developer |
+| Webbiz.ie | `06/2018–11/2018` | UI/UX Designer; Dublin, Ireland |
+| Consultoria remota por projeto — Agência DCS | `11/2018–05/2019` | Front-end Developer & Web Designer — Consultant; remote from Dublin; project-based DCS contractor |
+| Carrefour Brasil | `05/2019–06/2021` | Front-end Developer → Tech Lead |
+| Stefanini | `06/2021–05/2023` | Front-end Developer |
+| IPNET by Vivo | `11/2023–06/2024` | Front-end Developer; product-oriented work is a responsibility |
+| Reclame Aqui | `07/2024–07/2025` | Technical Product Manager; Frontend Hands-On with Product Responsibilities |
+| HireVue | `10/2025–12/2025` | Technical Product Manager — AI & Intelligent Platforms; Technical Product with Frontend Contribution |
+
+`Webbix`, incomplete `Webbiz`, approximate eight-month duration and the former annual periods are `Superseded`. The intervals `04/2018–05/2018`, `06/2023–10/2023`, `08/2025–09/2025` and post-`12/2025` remain unfilled. Shared boundary months may represent transitions and do not prove simultaneous employment.
+
+The consulting experience supports bounded frontend/web-design evidence but does not establish formal DCS re-employment, a new company, direct SOS E-commerce/Vinícola Salton employment, backend, integral ownership, leadership, commercial results or metrics. It may later project to chronology, About, Experience, Engineering CV, LinkedIn and Agent R™ only through their governed checkpoints.
+
+Experience dates do not approve case dates. Via Varejo ADS, AGU, SETUR, RA Reviews, HireVue AI Platform, Carrefour projects, HouzBuddy and consulting-project precision remain conditional. The conservative `10+ anos de experiência em tecnologia e produtos digitais` metric remains approved and MUST NOT auto-increment.
+
+Impact on LOT-00: PR #25 remains `Merge Blocked Pending Documentation and LOT-00 Reconciliation`. Its public annual dates and `Webbix` projection require a separately authorized correction and complete release gate. This addendum changes no code, public content, CV, LinkedIn, SEO, Agent R™, Make, asset, frozen application or production environment.
