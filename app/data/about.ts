@@ -10,7 +10,6 @@ import {
   Rocket,
   Sparkles,
   Target,
-  Trophy,
   UserRound,
   WandSparkles,
 } from "lucide-react";
@@ -69,36 +68,20 @@ export const differentials: AboutDifferential[] = [
 ];
 
 export const impactMetrics: AboutMetric[] = [
-  { value: "10+", label: "Anos de experiencia construindo produtos digitais" },
-  { value: "20+", label: "Projetos entregues em diferentes setores e contextos" },
-  { value: "6+", label: "Empresas e projetos relevantes no Brasil e internacional" },
-  { value: "Brasil + Irlanda", label: "Experiencia internacional em projetos e empresas" },
-  { value: "Design + Tecnologia + Produto + IA", label: "Atuacao end-to-end com visao estrategica e tecnica" },
+  { value: "10+ anos", label: "Experiencia em tecnologia e produtos digitais" },
+  { value: "Brasil", label: "Experiencia profissional" },
+  { value: "Irlanda", label: "Experiencia presencial" },
+  { value: "Estados Unidos", label: "Atuacao remota para empresa internacional" },
 ];
 
 export const careerTimeline: AboutTimelineItem[] = [
-  { period: "2012 - 2014", role: "Web Designer", description: "Inicio da jornada no design grafico e identidade visual." },
-  {
-    period: "2014 - 2016",
-    role: "Front-end Developer",
-    description: "Transicao para desenvolvimento front-end e experiencias digitais.",
-  },
-  {
-    period: "2016 - 2019",
-    role: "Senior Developer",
-    description: "Atuacao em projetos complexos com foco em qualidade e performance.",
-  },
-  { period: "2019 - 2022", role: "Tech Lead", description: "Lideranca tecnica de times e projetos digitais." },
-  {
-    period: "2023 - 2024",
-    role: "Technical Product Manager",
-    description: "Conexao entre produto, tecnologia e negocio em diferentes setores.",
-  },
-  {
-    period: "2024 - Atual",
-    role: "AI Product Manager",
-    description: "Foco em produtos orientados por IA, automacao e dados para gerar impacto real e escalavel.",
-  },
+  { period: "2014 - 2018", role: "Designer → Senior Front-end Developer", description: "Agencia DCS." },
+  { period: "2018", role: "UI/UX Designer", description: "Webbix, em experiencia presencial na Irlanda." },
+  { period: "2019 - 2021", role: "Front-end Developer → Tech Lead", description: "Carrefour Brasil." },
+  { period: "2021", role: "Front-end Developer", description: "Stefanini." },
+  { period: "2022", role: "Front-end Developer", description: "IPNET by Vivo, com atuacao orientada a produto." },
+  { period: "2024 - 2025", role: "Technical Product Manager", description: "Reclame Aqui, com contribuicao frontend." },
+  { period: "2025 - 2026", role: "Technical Product Manager — AI & Intelligent Platforms", description: "HireVue, em atuacao remota para empresa dos Estados Unidos." },
 ];
 
 export const workStyles: AboutWorkStyle[] = [
@@ -129,21 +112,15 @@ export const journeyHighlights: AboutHighlight[] = [
   { title: "Promocao de Desenvolvedor Pleno para Desenvolvedor Senior", icon: LineChart },
   { title: "Promocao de Senior Developer para Tech Lead no Carrefour", icon: Target },
   { title: "Experiencia internacional na Irlanda", icon: GraduationCap },
-  {
-    title: "Honor Roll na SEDA College Dublin",
-    description: "Evolucao de Intermediate para Upper Intermediate com as melhores notas da turma.",
-    icon: Trophy,
-  },
 ];
 
 export const aboutCompanies: AboutCompany[] = [
-  { name: "Meliuz", role: "AI Product Manager", logo: "/logos/meliuz.png" },
   { name: "Reclame Aqui", role: "Technical Product Manager", logo: "/logos/reclame-aqui-v2.png" },
-  { name: "HireVue", role: "TPM AI & Platforms", logo: "/logos/hirevue-logo.svg" },
+  { name: "HireVue", role: "Technical Product Manager — AI & Intelligent Platforms", logo: "/logos/hirevue-logo.svg" },
   { name: "Carrefour", role: "Tech Lead", logo: "/logos/carrefour.png" },
-  { name: "IPNET", role: "Technical Product Manager", logo: "/logos/ipnet-v2.png" },
-  { name: "Webbix", role: "Product Designer", logo: "/logos/webbix.png" },
-  { name: "Stefanini", role: "Senior Front-end Developer", logo: "/logos/stefanini-logo.png" },
+  { name: "IPNET", role: "Front-end Developer", logo: "/logos/ipnet-v2.png" },
+  { name: "Webbix", role: "UI/UX Designer", logo: "/logos/webbix.png" },
+  { name: "Stefanini", role: "Front-end Developer", logo: "/logos/stefanini-logo.png" },
 ];
 
 export const learningGroups: AboutLearningGroup[] = [
@@ -154,7 +131,6 @@ export const learningGroups: AboutLearningGroup[] = [
   {
     category: "IA & Automacao",
     items: [
-      "Agentes de IA e Automacao n8n | Hashtag Treinamentos (2026)",
       "Curso de IA: Domine as Melhores Ferramentas de IA e Simplifique seu Trabalho | Udemy (2025)",
     ],
   },
@@ -182,7 +158,6 @@ export const learningGroups: AboutLearningGroup[] = [
       "Design Grafico Faculdade Carlos Drummond (2012 - 2014)",
       "Tecnologia da Informacao | ETEC | 2010 - 2011",
       "English Language SEDA College Dublin (2018 - 2019)",
-      "Honor Roll",
     ],
   },
 ];

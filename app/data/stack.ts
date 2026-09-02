@@ -65,10 +65,10 @@ export type ValueItem = {
 };
 
 export const stackMetrics: StackMetric[] = [
-  { title: "12+ anos", description: "Construindo produtos digitais", icon: Rocket },
-  { title: "20+ produtos", description: "Lancados ou participacoes", icon: Boxes },
-  { title: "7+ empresas", description: "Brasil e Irlanda", icon: BriefcaseBusiness },
-  { title: "Internacional", description: "Atuacao global", icon: Network },
+  { title: "10+ anos", description: "Tecnologia e produtos digitais", icon: Rocket },
+  { title: "Frontend", description: "Experiencia profissional", icon: Boxes },
+  { title: "Lideranca tecnica", description: "Colaboracao e mentoria", icon: BriefcaseBusiness },
+  { title: "Internacional", description: "Irlanda e atuacao remota para os EUA", icon: Network },
 ];
 
 export const proficiencyLegend: ProficiencyItem[] = [
@@ -262,14 +262,6 @@ export const certifications: Certification[] = [
     description:
       "Formação focada em liderança moderna, gestão estratégica, produtividade e uso de Inteligência Artificial na tomada de decisão. Aborda ferramentas, automações e práticas utilizadas por gestores de alta performance.",
     image: "/certificates/imersao-gestor-do-futuro.png",
-  },
-  {
-    id: "agentes-ia-automacao-n8n",
-    year: "2026",
-    title: "Agentes de IA e automação n8n",
-    institution: "Hashtag Treinamentos",
-    description:
-      "Capacitação prática na criação de agentes inteligentes, automações e integrações utilizando n8n, APIs e modelos de IA. Aplicação de fluxos automatizados para ganho de produtividade e eficiência operacional.",
   },
   {
     id: "preparando-dados-power-bi",

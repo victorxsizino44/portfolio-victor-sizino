@@ -64,15 +64,15 @@ export default function AgentBExperience() {
             </div>
 
             <h1 id="agent-b-title" className="mt-7 max-w-[520px] text-[34px] font-black leading-[1.08] tracking-[-0.035em] text-ink sm:text-[44px] lg:text-[48px]">
-              Transforme contexto em um Briefing governado com o <span className="text-violet">Agent B™</span>
+              Explore uma arquitetura de Briefing governado com o <span className="text-violet">Agent B™</span>
             </h1>
 
             <div className="mt-6 max-w-[560px] space-y-4 text-[14px] leading-6 text-muted sm:text-[15px]">
               <p>
-                O Agent B™ é o agente de Discovery e Briefing do ecossistema VS Method™. Ele conduz uma conversa estruturada para compreender contexto, objetivos, problemas, público, requisitos, constraints, dependencies e decisões necessárias.
+                O Agent B™ é um protótipo estático de produto e arquitetura para Discovery e Briefing no ecossistema VS Method™. A interface demonstra como uma conversa estruturada poderia organizar contexto, objetivos, problemas, público, requisitos, constraints, dependencies e decisões necessárias.
               </p>
               <p>
-                Ao longo do processo, identifica gaps, valida informações e organiza as evidências necessárias para produzir um <strong className="font-extrabold text-dark">Governed Briefing</strong>.
+                O modelo conceitual prevê a identificação de gaps, validação de informações e organização de evidências para um futuro <strong className="font-extrabold text-dark">Governed Briefing</strong>.
               </p>
             </div>
 
@@ -86,7 +86,7 @@ export default function AgentBExperience() {
             </div>
 
             <p className="mt-7 text-sm font-semibold leading-6 text-dark">
-              Comece descrevendo sua iniciativa. O Agent B™ organizará o Discovery e indicará quais informações ainda precisam ser esclarecidas.
+              Explore a interface estática para compreender como o Discovery poderá ser organizado. Nenhuma mensagem é processada nesta versão.
             </p>
 
             <div aria-label="Ações sugeridas" className="mt-4 grid gap-2">
@@ -138,7 +138,7 @@ export default function AgentBExperience() {
               <div className="max-w-[94%] rounded-2xl rounded-tl-md bg-[#f1f2f8] p-4 text-[13px] leading-5 text-dark">
                 <p className="font-extrabold text-ink">Olá, sou o Agent B™.</p>
                 <p className="mt-2">
-                  Conduzo um Discovery estruturado antes de qualquer output. Comece descrevendo a iniciativa, o contexto atual e o resultado que você espera alcançar.
+                  Esta interface demonstra um Discovery estruturado antes de qualquer output. O processamento ainda não está disponível.
                 </p>
               </div>
 
@@ -160,7 +160,7 @@ export default function AgentBExperience() {
                 <div className="flex items-start gap-3">
                   <LockKeyhole aria-hidden="true" className="mt-0.5 shrink-0 text-violet" size={17} />
                   <p>
-                    <strong className="font-extrabold">Integração em preparação.</strong> A interface está pronta; mensagens só serão enviadas quando o Discovery Engine possuir um contrato validado.
+                    <strong className="font-extrabold">Protótipo estático.</strong> A interface não possui runtime conectado e nenhuma mensagem é enviada nesta versão.
                   </p>
                 </div>
               </div>

@@ -24,7 +24,7 @@ export default function AboutSection() {
           <br />
           <br />
           Ao longo da carreira participei de produtos, plataformas e iniciativas para empresas como Carrefour,
-          Stefanini, Reclame Aqui, Meliuz, IPNET, AGU e Webbix, atuando desde a descoberta do problema ate a entrega e
+          Stefanini, Reclame Aqui, HireVue, IPNET e Webbix, alem de projetos de contexto publico como AGU e SETUR, atuando desde a descoberta do problema ate a entrega e
           evolucao da solucao.
         </p>
       </div>

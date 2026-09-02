@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { BriefcaseBusiness } from "lucide-react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { companies } from "../../data/home";
 import type { CompanyItem } from "../../types/home";
 import CompanyModal from "./CompanyModal";
@@ -10,7 +10,6 @@ import CompanyModal from "./CompanyModal";
 const initialsByCompany: Record<string, string> = {
   Carrefour: "CA",
   "Reclame Aqui": "RA",
-  Méliuz: "M",
   HireVue: "HV",
   AGU: "AGU",
   SETUR: "ST",
@@ -33,10 +32,6 @@ function getCompanyInitials(name: string) {
 function CompanyCardLogo({ company, initials }: { company: CompanyItem; initials: string }) {
   const [hasImageError, setHasImageError] = useState(false);
 
-  useEffect(() => {
-    setHasImageError(false);
-  }, [company.logo]);
-
   if (hasImageError) {
     return <span className="company-logo-fallback">{initials}</span>;
   }
@@ -57,12 +52,12 @@ export default function CompaniesSection() {
     setSelectedCompany(company);
   };
 
-  const closeCompany = useCallback(() => {
+  const closeCompany = () => {
     setSelectedCompany(null);
     window.requestAnimationFrame(() => {
       activeCardRef.current?.focus();
     });
-  }, []);
+  };
 
   return (
     <section className="companies-section mx-auto max-w-[1096px] px-5 py-12 md:px-8" id="empresas">
@@ -90,7 +85,7 @@ export default function CompaniesSection() {
               type="button"
             >
               <span className="company-logo">
-                <CompanyCardLogo company={company} initials={initials} />
+                <CompanyCardLogo company={company} initials={initials} key={company.logo} />
               </span>
               <span className="company-name">{company.name}</span>
               <span className="company-segment">{company.segment}</span>
@@ -104,7 +99,7 @@ export default function CompaniesSection() {
           <BriefcaseBusiness size={15} strokeWidth={2.4} />
         </span>
         <div>
-          <strong>40+ projetos entregues</strong>
+          <strong>10+ anos de experiência em tecnologia e produtos digitais</strong>
           <p>Experiência em empresas, startups e iniciativas digitais de diferentes segmentos.</p>
         </div>
       </div>
