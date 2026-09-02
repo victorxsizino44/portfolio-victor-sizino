@@ -9,10 +9,11 @@ export default function ExperienceHero() {
         <div className="min-w-0">
           <p className="mb-5 text-xs font-semibold uppercase tracking-[0.16em] text-muted">Experiência</p>
           <h1 className="max-w-[650px] text-[38px] font-black leading-[1.05] tracking-normal text-ink">
-            Mais de 10 anos transformando negócios em impacto real<span className="text-violet">.</span>
+            10+ anos em tecnologia e produtos digitais<span className="text-violet">.</span>
           </h1>
           <p className="mt-5 max-w-[640px] text-sm leading-6 text-muted md:text-base md:leading-7">
-            Experiência em produtos digitais, e-commerce e plataformas de tecnologia.
+            Uma trajetória de Design à Engenharia Front-End sênior e liderança técnica, ampliada por capacidades
+            full-stack, AI Product Engineering, produto e experiência internacional.
           </p>
           <div className="mt-7">
             <ExperienceStats />

@@ -14,19 +14,30 @@ import { stackCategories } from "../data/stack";
 export const metadata: Metadata = {
   title: "Stack & Skills | Victor Sizino",
   description:
-    "Conheca as principais competencias, stacks e ferramentas de Victor Sizino em AI Product Management, Technical Product Management, Produto, IA, Design e Front-End.",
+    "Stack de Victor Sizino com foco em React, Next.js, TypeScript, JavaScript e Engenharia Front-End, apoiada por capacidades full-stack, AI Product Engineering e produto.",
+  alternates: { canonical: "/stack" },
+  openGraph: {
+    title: "Stack & Skills | Victor Sizino",
+    description: "React, Next.js, TypeScript e JavaScript no centro de uma atuação que também reúne capacidades full-stack, AI Product Engineering e produto.",
+    url: "/stack",
+  },
+  twitter: {
+    card: "summary",
+    title: "Stack & Skills | Victor Sizino",
+    description: "React, Next.js, TypeScript e JavaScript no centro de uma atuação que também reúne capacidades full-stack, AI Product Engineering e produto.",
+  },
 };
 
 export default function StackPage() {
   const orderedCategoryTitles = [
-    "AI & Automacao",
-    "Product Management",
+    "Front-End Development",
+    "AI Product Engineering",
     "Technical Product Management",
+    "Product Management",
+    "Product Design",
     "Analytics & Growth",
     "Agile & Delivery",
     "Gestao de Produto",
-    "Product Design",
-    "Front-End Development",
   ];
   const orderedCategories = orderedCategoryTitles
     .map((title) => stackCategories.find((category) => category.title === title))

@@ -7,14 +7,16 @@ export default function HeroSection() {
     <section id="inicio" className="mx-auto max-w-[1096px] border-b border-line px-5 pb-8 pt-9 md:px-8 md:pt-12">
       <div className="grid items-end gap-8 lg:grid-cols-[1fr_520px]">
         <div className="min-w-0 pb-5 md:pb-9">
-          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.16em] text-muted">Ola, eu sou</p>
+          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.16em] text-muted">Olá, eu sou</p>
           <h1 className="max-w-3xl text-[40px] font-black leading-[0.98] tracking-normal sm:text-[48px] md:text-[72px]">
             Victor Sizino<span className="text-violet">.</span>
           </h1>
-          <p className="mt-4 text-[20px] leading-7 text-muted md:mt-5 md:text-[24px] md:leading-8">AI Technical Product Manager</p>
+          <p className="mt-4 text-[20px] leading-7 text-muted md:mt-5 md:text-[24px] md:leading-8">
+            Senior Front-End Developer | Full-Stack &amp; AI Product Engineering
+          </p>
           <p className="mt-4 w-full max-w-full text-sm leading-6 text-muted md:mt-5 md:max-w-[440px] md:text-base md:leading-7">
-            Transformo problemas complexos em produtos digitais escalaveis utilizando Produto, Tecnologia, Inteligencia
-            Artificial e Automacao.
+            Desenvolvo interfaces e produtos digitais com React, Next.js, TypeScript e JavaScript, combinando engenharia
+            Front-End, capacidades full-stack, integração de IA e liderança técnica.
           </p>
           <div className="mt-6 grid gap-3 sm:max-w-[360px] md:mt-7 md:max-w-none md:flex md:flex-wrap md:gap-4">
             <a

@@ -9,9 +9,20 @@ import Footer from "../components/home/Footer";
 import Header from "../components/home/Header";
 
 export const metadata: Metadata = {
-  title: "Experiência Profissional | Victor Sizino — AI Product Manager & Technical Product Manager",
+  title: "Experiência Profissional | Victor Sizino",
   description:
-    "Conheça a trajetória profissional de Victor Sizino em Product Management, Technical Product Management, Inteligência Artificial, Design Systems, produtos digitais e experiências internacionais em plataformas globais.",
+    "Trajetória profissional de Victor Sizino em Engenharia Front-End, React, Next.js, TypeScript, liderança técnica, capacidades full-stack, AI Product Engineering e produto.",
+  alternates: { canonical: "/experiencia" },
+  openGraph: {
+    title: "Experiência Profissional | Victor Sizino",
+    description: "10+ anos em tecnologia e produtos digitais, com Engenharia Front-End, liderança técnica, capacidades full-stack e experiência internacional.",
+    url: "/experiencia",
+  },
+  twitter: {
+    card: "summary",
+    title: "Experiência Profissional | Victor Sizino",
+    description: "10+ anos em tecnologia e produtos digitais, com Engenharia Front-End, liderança técnica, capacidades full-stack e experiência internacional.",
+  },
 };
 
 export default function ExperienciaPage() {

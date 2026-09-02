@@ -20,6 +20,8 @@ import type { LucideIcon } from "lucide-react";
 
 export type ProficiencyLevel = "Expert" | "Advanced" | "Intermediate" | "Basic";
 
+export type PositioningRole = "PRIMARY" | "COMPLEMENTARY" | "SUPPORTING";
+
 export type StackMetric = {
   title: string;
   description: string;
@@ -38,7 +40,7 @@ export type SkillGroup = {
 
 export type StackCategory = {
   title: string;
-  level: ProficiencyLevel;
+  level?: ProficiencyLevel;
   icon: LucideIcon;
   featured?: boolean;
   groups: SkillGroup[];
@@ -46,7 +48,13 @@ export type StackCategory = {
 
 export type CoreCompetency = {
   title: string;
-  level: ProficiencyLevel;
+  positioningRole: PositioningRole;
+};
+
+export const positioningRoleLabels: Record<PositioningRole, string> = {
+  PRIMARY: "Principal",
+  COMPLEMENTARY: "Complementar",
+  SUPPORTING: "Apoio",
 };
 
 export type Certification = {
@@ -83,8 +91,7 @@ export const proficiencyTooltipText =
 
 export const stackCategories: StackCategory[] = [
   {
-    title: "AI & Automacao",
-    level: "Expert",
+    title: "AI Product Engineering",
     icon: BrainCircuit,
     featured: true,
     groups: [
@@ -97,7 +104,6 @@ export const stackCategories: StackCategory[] = [
           "Gemini API",
           "Prompt Engineering",
           "AI Agents",
-          "RAG",
           "MCP",
           "n8n",
           "Make",
@@ -244,13 +250,15 @@ export const stackCategories: StackCategory[] = [
 ];
 
 export const coreCompetencies: CoreCompetency[] = [
-  { title: "AI PM", level: "Expert" },
-  { title: "AI Agents & Automation", level: "Advanced" },
-  { title: "PM", level: "Advanced" },
-  { title: "TPM", level: "Advanced" },
-  { title: "Product Design", level: "Advanced" },
-  { title: "Front-End", level: "Expert" },
-  { title: "Analytics & Growth", level: "Intermediate" },
+  { title: "Front-End", positioningRole: "PRIMARY" },
+  { title: "React & Next.js", positioningRole: "PRIMARY" },
+  { title: "TypeScript & JavaScript", positioningRole: "PRIMARY" },
+  { title: "Full-Stack Capability", positioningRole: "COMPLEMENTARY" },
+  { title: "AI Product Engineering", positioningRole: "COMPLEMENTARY" },
+  { title: "TPM", positioningRole: "COMPLEMENTARY" },
+  { title: "PM", positioningRole: "COMPLEMENTARY" },
+  { title: "Product Design", positioningRole: "SUPPORTING" },
+  { title: "Analytics & Growth", positioningRole: "SUPPORTING" },
 ];
 
 export const certifications: Certification[] = [

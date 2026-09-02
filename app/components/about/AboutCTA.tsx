@@ -10,9 +10,10 @@ export default function AboutCTA() {
             <Icon size={25} strokeWidth={2} />
           </span>
           <div>
-            <h2 className="text-[24px] font-black leading-8">Vamos construir o proximo grande produto?</h2>
+            <h2 className="text-[24px] font-black leading-8">Vamos construir uma experiência digital robusta?</h2>
             <p className="mt-2 max-w-[580px] text-sm leading-6 text-muted">
-              Estou aberto a oportunidades como AI Product Manager, Technical Product Manager e Product Manager.
+              Estou aberto a oportunidades como Senior Front-End Developer, Senior React Developer, Senior Next.js
+              Developer e posições de engenharia com responsabilidade end-to-end.
             </p>
           </div>
         </div>

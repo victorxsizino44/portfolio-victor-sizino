@@ -10,7 +10,18 @@ import { getAllCases, getCaseCategories, getCasesByCategory } from "../lib/cases
 export const metadata: Metadata = {
   title: "Cases | Victor Sizino",
   description:
-    "Cases de Victor Sizino em Produto, IA, Tecnologia, e-commerce, governo, analytics e experiencias digitais.",
+    "Seleção de trabalhos de Victor Sizino em Engenharia Front-End, e-commerce, plataformas digitais, integrações, AI Product Engineering e produto.",
+  alternates: { canonical: "/cases" },
+  openGraph: {
+    title: "Cases | Victor Sizino",
+    description: "Trabalhos em Engenharia Front-End, plataformas digitais, integrações, AI Product Engineering e produto.",
+    url: "/cases",
+  },
+  twitter: {
+    card: "summary",
+    title: "Cases | Victor Sizino",
+    description: "Trabalhos em Engenharia Front-End, plataformas digitais, integrações, AI Product Engineering e produto.",
+  },
 };
 
 type CasesPageProps = {
