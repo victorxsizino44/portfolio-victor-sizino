@@ -23,6 +23,7 @@ import {
 import { FormEvent, useState } from "react";
 
 const WHATSAPP_PHONE = "5511985655503";
+const WHATSAPP_DISPLAY = `+${WHATSAPP_PHONE.slice(0, 2)} ${WHATSAPP_PHONE.slice(2, 4)} ${WHATSAPP_PHONE.slice(4, 9)}-${WHATSAPP_PHONE.slice(9)}`;
 const WHATSAPP_MESSAGE = `Olá, Victor! Vim pelo seu portfólio e gostaria de conversar.
 
 Tipo de contato:
@@ -57,7 +58,7 @@ const contactCards = [
   },
   {
     title: "WhatsApp",
-    value: "+55 11 98565-5503",
+    value: WHATSAPP_DISPLAY,
     action: "Conversar agora",
     href: WHATSAPP_URL,
     icon: MessageCircle,
@@ -244,6 +245,8 @@ export default function ContactPage() {
                     </div>
                   ) : title === "E-mail" ? (
                     <button
+                      aria-atomic="true"
+                      aria-live="polite"
                       className="standard-hover mt-auto inline-flex h-11 items-center gap-3 self-start rounded-lg border border-line bg-white px-5 text-sm font-bold text-ink shadow-sm"
                       onClick={copyEmail}
                       type="button"
@@ -301,6 +304,7 @@ export default function ContactPage() {
                     Nome
                   <input
                     className="h-12 rounded-lg border border-line bg-white px-4 text-sm font-medium outline-none focus:border-violet"
+                    maxLength={160}
                     onChange={(event) => updateField("name", event.target.value)}
                     placeholder="Seu nome"
                     required
@@ -311,6 +315,7 @@ export default function ContactPage() {
                     Empresa
                     <input
                       className="h-12 rounded-lg border border-line bg-white px-4 text-sm font-medium outline-none focus:border-violet"
+                      maxLength={160}
                       onChange={(event) => updateField("company", event.target.value)}
                       placeholder="Nome da empresa"
                       value={form.company}
@@ -322,6 +327,7 @@ export default function ContactPage() {
                     E-mail
                   <input
                     className="h-12 rounded-lg border border-line bg-white px-4 text-sm font-medium outline-none focus:border-violet"
+                    maxLength={254}
                     onChange={(event) => updateField("email", event.target.value)}
                     placeholder="seu@email.com"
                     required
@@ -359,12 +365,20 @@ export default function ContactPage() {
                   />
                 </label>
                 {isSuccess ? (
-                  <p className="rounded-lg border border-violet/20 bg-violet/10 px-4 py-3 text-sm font-bold text-violet">
-                    Mensagem enviada com sucesso. Entrarei em contato em breve.
+                  <p
+                    aria-live="polite"
+                    className="rounded-lg border border-violet/20 bg-violet/10 px-4 py-3 text-sm font-bold text-violet"
+                    role="status"
+                  >
+                    Mensagem enviada com sucesso. Obrigado pelo contato.
                   </p>
                 ) : null}
                 {isError ? (
-                  <p className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm font-bold text-red-600">
+                  <p
+                    aria-live="assertive"
+                    className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm font-bold text-red-600"
+                    role="alert"
+                  >
                     Não foi possível enviar a mensagem. Tente novamente ou fale comigo pelo WhatsApp.
                   </p>
                 ) : null}
