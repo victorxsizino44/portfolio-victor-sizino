@@ -9,7 +9,7 @@ import ExperienceSection from "./components/home/ExperienceSection";
 import AgentRSection from "./components/AgentRSection";
 import StackContactSection from "./components/home/StackContactSection";
 import Footer from "./components/home/Footer";
-import { getAllCases } from "./lib/cases";
+import { getHomeFeaturedCases } from "./lib/cases";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  const cases = getAllCases();
+  const cases = getHomeFeaturedCases();
 
   return (
     <div className="min-h-screen bg-canvas text-ink">

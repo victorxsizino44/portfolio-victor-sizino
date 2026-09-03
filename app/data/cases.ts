@@ -2,8 +2,77 @@ import type { CaseStudy } from "../types/case";
 
 export const cases: CaseStudy[] = [
   {
+    slug: "case-portfolio-platform-agent-r",
+    title: "Portfolio Platform + Agent R™",
+    group: "engineering",
+    evidenceClass: "primary-authorial-engineering",
+    company: "Projeto autoral",
+    location: "Brasil",
+    category: "Front-End Development · Full-Stack & AI Product Engineering",
+    filterCategory: "Tecnologia",
+    shortDescription:
+      "Plataforma profissional em Next.js que conecta Frontend Engineering, integrações server-side e uma experiência conversacional apoiada por IA.",
+    heroDescription:
+      "Portfólio profissional desenvolvido como aplicação web em Next.js, com o Agent R™ integrado para explorar o perfil profissional por perguntas em linguagem natural.",
+    coverImage: "/images/agente-r.png",
+    coverAlt: "Agent R, experiência conversacional integrada ao Portfolio Platform.",
+    thumbnailImage: "/images/agente-r.png",
+    tags: ["Next.js", "React", "TypeScript", "Server Routes", "AI Integration"],
+    highlights: [
+      "Arquitetura e implementação frontend",
+      "Rotas server-side e integração por webhooks",
+      "Validação, normalização e limites de requests",
+      "Testes, security hardening e validação em produção",
+    ],
+    heroMetrics: [
+      { label: "Natureza", value: "Primary Authorial Engineering Case" },
+      { label: "Meu papel", value: "Front-End Development · Full-Stack & AI Product Engineering" },
+      { label: "Tipo", value: "Plataforma profissional com integração de IA" },
+    ],
+    duration: "Evolução contínua",
+    role: "Front-End Development · Full-Stack & AI Product Engineering",
+    squad: "Projeto autoral",
+    projectType: "Web Platform / AI Product",
+    context:
+      "Um portfólio tradicional organiza experiência, projetos, competências e contato. O desafio foi ir além dessa estrutura sem transformar inteligência artificial em um recurso puramente demonstrativo.",
+    problem:
+      "Construir uma plataforma profissional em que arquitetura frontend, integrações server-side e serviços externos de IA trabalhassem dentro de uma experiência real e publicamente acessível.",
+    myRole:
+      "Projetei e implementei a plataforma e a experiência do Agent R™, conectando frontend, rotas server-side e serviços externos de automação e IA.",
+    myRoleBullets: [
+      "Arquitetura e implementação frontend com Next.js, React e TypeScript",
+      "Criação de rota server-side para integração por webhook com Make e Gemini",
+      "Definição de contratos de entrada e saída, validação e normalização",
+      "Implementação de limites de payload e pergunta, timeout e cancelamento",
+      "Tratamento seguro de erros, validação de respostas externas e identificação de requests",
+      "Testes automatizados, validações técnicas, deployment e verificação em produção",
+    ],
+    process: [
+      { title: "Produto", description: "Definição da experiência profissional e do papel conversacional do Agent R™." },
+      { title: "Frontend", description: "Construção da interface responsiva e dos fluxos de interação em Next.js e React." },
+      { title: "Integração", description: "Conexão da rota server-side a workflow externo e serviço de IA por webhook." },
+      { title: "Segurança", description: "Validação de conteúdo, limites, respostas seguras, timeout e identificação de requests." },
+      { title: "Qualidade", description: "Testes automatizados e validações de TypeScript, lint e build." },
+      { title: "Produção", description: "Deployment na Vercel e validação da experiência publicamente acessível." },
+    ],
+    impact: [
+      { title: "Engenharia Front-End", description: "Experiência web completa, responsiva e orientada ao posicionamento profissional." },
+      { title: "Integração Full-Stack", description: "Fluxo entre interface, rota server-side, webhook e serviço externo de IA." },
+      { title: "AI Product Engineering", description: "IA integrada a uma jornada real de exploração do perfil profissional." },
+      { title: "Qualidade operacional", description: "Contratos, limites, erros seguros, testes e validação em produção." },
+    ],
+    tools: ["Next.js", "React", "TypeScript", "Route Handlers", "Webhooks", "Make", "Gemini", "Vercel"],
+    learnings:
+      "O projeto demonstra como Frontend Engineering, integrações Full-Stack e AI Product Engineering podem formar uma experiência pública coerente, segura e orientada a produto.",
+    quote:
+      "Uma integração de IA ganha valor quando faz parte de uma experiência clara, confiável e tecnicamente bem delimitada.",
+    featured: true,
+  },
+  {
     slug: "case-hirevue-ai-platform",
     title: "AI Platform para avaliação de candidatos",
+    group: "engineering",
+    evidenceClass: "secondary-ai-product-engineering",
     company: "HireVue",
     location: "Remoto / EUA",
     category: "AI Product + Platform",
@@ -24,7 +93,7 @@ export const cases: CaseStudy[] = [
       "Alinhamento entre produto, engenharia e stakeholders globais",
     ],
     duration: "Atuação por escopo",
-    role: "Technical Product Manager",
+    role: "Technical Product Manager — AI & Intelligent Platforms",
     squad: "Produto, Engenharia e Stakeholders Globais",
     projectType: "AI Platform / HR Tech",
     context:
@@ -32,14 +101,14 @@ export const cases: CaseStudy[] = [
     problem:
       "Produtos de recrutamento com IA exigem equilibrio entre experiencia, qualidade de avaliacao, integracao tecnica, governanca, confianca e escalabilidade da plataforma.",
     myRole:
-      "Atuei como Technical Product Manager conectando discovery, requisitos tecnicos, backlog, roadmap, engenharia e stakeholders para evoluir solucoes inteligentes orientadas por IA.",
+      "Atuei como Technical Product Manager — AI & Intelligent Platforms, conectando discovery, requisitos técnicos, backlog, roadmap, engenharia e stakeholders, com contribuição frontend na evolução do Design System utilizado pelos produtos da HireVue.",
     myRoleBullets: [
       "Lideranca de iniciativas de Product Discovery",
       "Definicao e refinamento de requisitos tecnicos",
       "Priorizacao de backlog e roadmap",
       "Alinhamento entre produto, engenharia e stakeholders",
       "Participacao em projetos com IA aplicada ao recrutamento",
-      "Apoio a evolucao de workflows, integracoes e design system",
+      "Contribuição para a evolução do Design System utilizado pelos produtos da HireVue",
     ],
     process: [
       { title: "Discovery", description: "Entendimento de necessidades de usuarios, negocio e stakeholders." },
@@ -65,6 +134,8 @@ export const cases: CaseStudy[] = [
   {
     slug: "case-agu",
     title: "Buscador Inteligente AGU",
+    group: "engineering",
+    evidenceClass: "primary-professional-fullstack-contribution",
     company: "IPNET by Vivo / AGU",
     location: "Brasil",
     category: "Full-Stack Contribution",
@@ -123,9 +194,11 @@ export const cases: CaseStudy[] = [
   {
     slug: "case-ra-reviews",
     title: "Evolução da experiência RA Reviews",
+    group: "engineering",
+    evidenceClass: "secondary-frontend-product",
     company: "Reclame Aqui",
     location: "Remoto",
-    category: "B2B SaaS + Trust",
+    category: "Frontend Hands-On · Product Responsibilities",
     filterCategory: "Plataforma",
     shortDescription:
       "Evolução de produto de reviews com foco em confiança, reputação digital, integrações e experiência do usuário.",
@@ -156,7 +229,7 @@ export const cases: CaseStudy[] = [
     problem:
       "A experiencia de reviews apresentava oportunidades de consistencia, clareza, padronizacao e integracao com plataformas externas.",
     myRole:
-      "Atuei conectando Produto, UX, QA e Engenharia para evoluir componentes, jornadas e integracoes relacionadas a coleta, exibicao e consumo de avaliacoes.",
+      "Atuei principalmente como Technical Product Manager, conectando Produto, UX, QA e Engenharia, com contribuição técnica hands-on no frontend e proximidade com a implementação de componentes, jornadas e integrações de experiência.",
     myRoleBullets: [
       "Priorizacao de melhorias em componentes de reviews",
       "Apoio na evolucao de jornadas de avaliacao",
@@ -164,6 +237,7 @@ export const cases: CaseStudy[] = [
       "Participacao em integracoes com ecossistemas de e-commerce",
       "Apoio na instrumentacao e leitura de metricas com GA4",
       "Colaboracao com QA com foco em qualidade e consistencia",
+      "Contribuição hands-on no frontend, conectando decisões de produto à experiência implementada",
     ],
     process: [
       { title: "Diagnostico", description: "Identificacao de inconsistencias em componentes, mensagens e experiencia." },
@@ -187,6 +261,8 @@ export const cases: CaseStudy[] = [
   {
     slug: "case-carrefour-ecommerce",
     title: "Evolução do e-commerce Carrefour",
+    group: "engineering",
+    evidenceClass: "primary-professional-frontend-engineering",
     company: "Carrefour",
     location: "Brasil",
     category: "E-commerce + Escala",
@@ -251,14 +327,16 @@ export const cases: CaseStudy[] = [
   {
     slug: "case-houzbuddy",
     title: "HouzBuddy — App para intercambistas",
+    group: "engineering",
+    evidenceClass: "supporting-historical-design-frontend",
     company: "Webbiz.ie",
     location: "Dublin, Irlanda",
-    category: "Product Design + MVP",
+    category: "Product Design · Frontend Contribution",
     filterCategory: "Produto",
     shortDescription:
       "MVP para estudantes internacionais com foco em moradia, convivência, organização da casa e adaptação multicultural.",
     heroDescription:
-      "Criação de MVP mobile para estudantes internacionais na Irlanda, conectando moradia, convivência, tarefas compartilhadas e apoio à rotina de quem vive em casas compartilhadas.",
+      "Contribuição histórica em Product Design e frontend para um MVP mobile voltado a estudantes internacionais na Irlanda.",
     coverImage: "/cases/case-houzbuddy-v1.png",
     coverAlt:
       "Mockup do produto HouzBuddy exibindo dashboard e fluxos de moradia, organização de tarefas, leads, mensagens e rotina compartilhada para estudantes internacionais.",
@@ -301,7 +379,7 @@ export const cases: CaseStudy[] = [
       { title: "Identidade", description: "Apoio na criacao visual do produto e consistencia da interface." },
     ],
     impact: [
-      { title: "Produto de ponta a ponta", description: "Atuacao desde problema e MVP ate interface e apoio tecnico." },
+      { title: "Design e frontend", description: "Contribuição em MVP, fluxos, interface, identidade visual e apoio técnico." },
       { title: "Visao internacional", description: "Experiencia aplicada a um contexto multicultural real." },
       { title: "Clareza de proposta", description: "Organizacao das funcionalidades essenciais para validar o produto." },
     ],
@@ -309,17 +387,19 @@ export const cases: CaseStudy[] = [
     learnings:
       "Esse case fortaleceu minha visao de produto em contexto internacional, mostrando a importancia de resolver dores reais com clareza de MVP, empatia e experiencia simples.",
     quote: "Um bom MVP nao tenta resolver tudo: ele resolve bem a dor certa.",
-    featured: true,
+    featured: false,
   },
   {
-    slug: "case-porto-seguro-setur",
+    slug: "case-portal-turismo-setur",
     title: "Portal de Turismo — SETUR",
+    group: "engineering",
+    evidenceClass: "secondary-frontend-data-integration",
     company: "IPNET by Vivo / SETUR",
     location: "Brasil",
-    category: "Governo + Plataforma",
+    category: "Frontend Engineering · Search & Data Integration",
     filterCategory: "Governo",
     shortDescription:
-      "Projeto público com foco em escopo, stakeholders, experiência digital e entrega de plataforma para turismo.",
+      "Projeto público com desenvolvimento frontend, evolução de interface, navegação, busca e integração de dados para turismo.",
     heroDescription:
       "Participacao em portal publico de turismo da SETUR, com contribuicao em frontend, experiencia digital, busca e integracao de dados.",
     coverImage: "/cases/case-setur-v1.png",
@@ -328,10 +408,10 @@ export const cases: CaseStudy[] = [
     thumbnailImage: "/cases/case-setur-v1.png",
     tags: ["Governo", "Discovery", "UX", "Stakeholders", "Next.js"],
     highlights: [
-      "Projeto público em contexto de licitação",
-      "Gestão de escopo e alinhamento com stakeholders",
-      "Estruturação da experiência digital do portal",
-      "Conexão entre produto, design e tecnologia",
+      "Desenvolvimento frontend e evolução da interface",
+      "Integração de busca, dados e apresentação de conteúdo",
+      "Tradução de requisitos em soluções frontend",
+      "Colaboração técnica com stakeholders em contexto de licitação",
     ],
     heroMetrics: [
       { label: "Empresa", value: "IPNET by Vivo / SETUR" },
@@ -343,18 +423,18 @@ export const cases: CaseStudy[] = [
     squad: "Squad multidisciplinar",
     projectType: "Portal público",
     context:
-      "O projeto envolvia a criacao de um portal publico de turismo para a SETUR, com organizacao de informacoes, experiencia acessivel e alinhamento com stakeholders.",
+      "Projeto da SETUR realizado durante minha atuação na IPNET by Vivo, contratado por licitação e com escopo previamente definido para um portal público de turismo. Durante o desenvolvimento, novas necessidades e aprendizados surgiram dentro dos limites do escopo contratado.",
     problem:
-      "Projetos publicos exigem equilibrio entre escopo contratado, necessidades reais dos usuarios, restricoes de entrega, comunicacao institucional e manutencao da qualidade da experiencia digital.",
+      "O desafio foi equilibrar a evolução do produto digital, as necessidades identificadas durante o desenvolvimento e os limites do contrato, mantendo qualidade na navegação, busca e apresentação de dados.",
     myRole:
-      "Atuei apoiando a estruturacao da entrega, organizacao de escopo, priorizacao de funcionalidades e alinhamento entre produto, design, tecnologia e stakeholders.",
+      "Atuei no desenvolvimento frontend e evolução da interface, traduzindo requisitos em soluções de navegação, busca e integração/apresentação de dados, em colaboração com o time técnico e stakeholders.",
     myRoleBullets: [
-      "Participacao em discovery e entendimento de necessidades",
-      "Apoio na organizacao de escopo e funcionalidades",
-      "Colaboracao na experiencia do usuario",
-      "Alinhamento com stakeholders",
-      "Acompanhamento de entrega tecnica",
-      "Contribuicao para clareza e consistencia da plataforma",
+      "Desenvolvimento frontend e evolução de componentes da interface",
+      "Construção de navegação clara para o conteúdo do portal",
+      "Integração da interface com busca e fontes de dados",
+      "Apresentação estruturada dos dados para os usuários",
+      "Tradução de requisitos em soluções frontend",
+      "Colaboração técnica com stakeholders e acompanhamento do delivery contratado",
     ],
     process: [
       { title: "Entendimento", description: "Leitura do contexto publico, escopo contratado e necessidades da plataforma." },
@@ -370,7 +450,7 @@ export const cases: CaseStudy[] = [
     ],
     tools: ["Next.js", "React", "Tailwind", "Design Systems", "Jira", "Discovery", "Stakeholder Management"],
     learnings:
-      "Esse case reforca minha capacidade de atuar em projetos com multiplos stakeholders e restricoes, mantendo foco em produto, escopo, experiencia e entrega.",
+      "O case gerou aprendizado sobre a relação entre engenharia, produto, contratos e delivery, especialmente ao conciliar a evolução natural de um produto digital com um escopo de licitação previamente fechado.",
     quote:
       "Projetos publicos exigem clareza, alinhamento e uma experiencia simples para transformar escopo em valor real.",
     featured: false,
@@ -378,6 +458,8 @@ export const cases: CaseStudy[] = [
   {
     slug: "case-via-varejo-ads",
     title: "Squad ADS — Produtos Patrocinados",
+    group: "engineering",
+    evidenceClass: "secondary-frontend-engineering",
     company: "Stefanini / Via Varejo",
     location: "Brasil",
     category: "Ads + Monetização",
@@ -440,6 +522,8 @@ export const cases: CaseStudy[] = [
   {
     slug: "case-meliuz-browse-in-app",
     title: "Redução de fricção no browse in-app",
+    group: "product-case-study",
+    evidenceClass: "conceptual-product-study",
     company: "Estudo conceitual sobre Méliuz",
     location: "Brasil",
     category: "Growth + Produto",
