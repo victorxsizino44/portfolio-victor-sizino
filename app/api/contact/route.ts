@@ -21,7 +21,7 @@ type MakeContactPayload = ContactInput & {
   submittedAt: string;
   metadata: {
     portfolioOwner: "Victor Sizino";
-    positioning: "AI Product Manager | Technical Product Manager";
+    positioning: "Senior Front-End Developer | Full-Stack & AI Product Engineering";
     channel: "website";
   };
 };
@@ -111,7 +111,7 @@ function createMakePayload(data: ContactInput): MakeContactPayload {
     submittedAt: new Date().toISOString(),
     metadata: {
       portfolioOwner: "Victor Sizino",
-      positioning: "AI Product Manager | Technical Product Manager",
+      positioning: "Senior Front-End Developer | Full-Stack & AI Product Engineering",
       channel: "website",
     },
   };

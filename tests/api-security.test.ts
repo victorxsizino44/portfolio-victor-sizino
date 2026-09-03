@@ -302,6 +302,12 @@ const validContact = {
 test("Contact preserves a valid submission and adds request identification", async () => {
   globalThis.fetch = async (_input, init) => {
     assert.ok(init?.signal);
+    const forwarded = JSON.parse(String(init?.body));
+    assert.equal(
+      forwarded.metadata.positioning,
+      "Senior Front-End Developer | Full-Stack & AI Product Engineering",
+    );
+    assert.notEqual(forwarded.metadata.positioning, "AI Product Manager | Technical Product Manager");
     return new Response(null, { status: 204 });
   };
   const response = await postContact(jsonRequest("/api/contact", validContact));
