@@ -214,7 +214,7 @@ export default function ContactPage() {
             <div className="relative min-h-[315px] overflow-hidden sm:min-h-[360px] lg:min-h-[430px]">
               <div className="dot-grid absolute inset-x-0 top-0 h-[280px] sm:h-[320px] lg:h-[360px]" />
               <Image
-                src="/images/victor-hero-v2.png"
+                src="/images/victor-hero-v3.png"
                 alt="Victor Sizino"
                 width={520}
                 height={505}

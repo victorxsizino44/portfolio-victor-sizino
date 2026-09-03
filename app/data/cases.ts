@@ -14,9 +14,9 @@ export const cases: CaseStudy[] = [
       "Plataforma profissional em Next.js que conecta Frontend Engineering, integrações server-side e uma experiência conversacional apoiada por IA.",
     heroDescription:
       "Portfólio profissional desenvolvido como aplicação web em Next.js, com o Agent R™ integrado para explorar o perfil profissional por perguntas em linguagem natural.",
-    coverImage: "/images/agente-r.png",
+    coverImage: "/images/case-agentr.png",
     coverAlt: "Agent R, experiência conversacional integrada ao Portfolio Platform.",
-    thumbnailImage: "/images/agente-r.png",
+    thumbnailImage: "/images/case-agentr.png",
     tags: ["Next.js", "React", "TypeScript", "Server Routes", "AI Integration"],
     highlights: [
       "Arquitetura e implementação frontend",
