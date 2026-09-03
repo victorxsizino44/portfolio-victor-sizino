@@ -183,16 +183,20 @@ export const stackCategories: StackCategory[] = [
   },
   {
     title: "Front-End Development",
-    level: "Advanced",
+    level: "Expert",
     icon: Code2,
     groups: [
       {
+        label: "Expert",
+        skills: ["React", "Next.js", "TypeScript", "JavaScript", "HTML", "CSS"],
+      },
+      {
         label: "Advanced",
-        skills: ["React", "Next.js", "TypeScript", "JavaScript", "HTML", "CSS", "Tailwind CSS"],
+        skills: ["Tailwind CSS", "Redux", "Context API", "Jest", "REST APIs"],
       },
       {
         label: "Intermediate",
-        skills: ["Firebase", "Redux", "Context API", "Jest", "Playwright", "REST APIs"],
+        skills: ["Firebase", "Playwright"],
       },
     ],
   },
@@ -240,11 +244,10 @@ export const stackCategories: StackCategory[] = [
   },
   {
     title: "Gestao de Produto",
-    level: "Expert",
+    level: "Advanced",
     icon: CheckCircle2,
     groups: [
-      { label: "Expert", skills: ["Jira", "Confluence", "Notion"] },
-      { label: "Advanced", skills: ["ClickUp", "Productboard", "FigJam"] },
+      { label: "Advanced", skills: ["Jira", "Confluence", "Notion", "ClickUp", "Productboard", "FigJam"] },
     ],
   },
 ];
@@ -264,7 +267,7 @@ export const coreCompetencies: CoreCompetency[] = [
 export const certifications: Certification[] = [
   {
     id: "imersao-gestor-do-futuro",
-    year: "2026",
+    year: "June 2026",
     title: "Imersão Gestor do Futuro",
     institution: "Tetra Educação",
     description:
@@ -291,7 +294,7 @@ export const certifications: Certification[] = [
   },
   {
     id: "analise-dados-power-bi",
-    year: "2026",
+    year: "17/03/2026",
     title: "Análise de Dados no Power BI",
     institution: "Fundação Bradesco",
     description:
@@ -300,8 +303,8 @@ export const certifications: Certification[] = [
   },
   {
     id: "gestao-de-produtos",
-    year: "2026",
-    title: "Gestão de Produtos",
+    year: "10/02/2026 • 7h",
+    title: "Curso Completo de Gestão de Produtos — Product Management",
     institution: "Udemy",
     description:
       "Capacitação em fundamentos de Product Management, incluindo discovery, priorização, roadmap, métricas, definição de requisitos e alinhamento entre objetivos de negócio e necessidades dos usuários.",
@@ -309,8 +312,8 @@ export const certifications: Certification[] = [
   },
   {
     id: "product-management",
-    year: "2026",
-    title: "Product Management",
+    year: "10/02/2026 • 8h",
+    title: "Curso Completo Gestão de Produto — Product Management",
     institution: "Udemy",
     description:
       "Formação voltada à gestão de produtos digitais, cobrindo estratégias de produto, ciclo de vida, validação de hipóteses, discovery, métricas e tomada de decisão orientada por dados.",
@@ -318,7 +321,7 @@ export const certifications: Certification[] = [
   },
   {
     id: "front-end-ux-ui-design",
-    year: "2025",
+    year: "30/04/2025",
     title: "Front End & UX/UI Design",
     institution: "Origamid",
     description:
@@ -327,8 +330,8 @@ export const certifications: Certification[] = [
   },
   {
     id: "curso-ia-ferramentas",
-    year: "2025",
-    title: "Curso de IA: Domine as Melhores Ferramentas de IA e Simplifique seu Trabalho",
+    year: "04/05/2025",
+    title: "Curso IA: Inteligência Artificial + 12 Ferramentas Bônus",
     institution: "Udemy",
     description:
       "Exploração prática das principais ferramentas de Inteligência Artificial para aumento de produtividade, automação de tarefas, criação de conteúdo, análise de informações e otimização de processos.",
