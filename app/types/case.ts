@@ -20,9 +20,24 @@ export type CaseNavigationItem = {
   thumbnailImage?: string;
 };
 
+export type CaseGroup = "engineering" | "product-case-study";
+
+export type CaseEvidenceClass =
+  | "primary-authorial-engineering"
+  | "primary-professional-frontend-engineering"
+  | "primary-professional-fullstack-contribution"
+  | "secondary-frontend-engineering"
+  | "secondary-frontend-product"
+  | "secondary-frontend-data-integration"
+  | "secondary-ai-product-engineering"
+  | "supporting-historical-design-frontend"
+  | "conceptual-product-study";
+
 export type CaseStudy = {
   slug: string;
   title: string;
+  group: CaseGroup;
+  evidenceClass: CaseEvidenceClass;
   company: string;
   period?: string;
   location?: string;
