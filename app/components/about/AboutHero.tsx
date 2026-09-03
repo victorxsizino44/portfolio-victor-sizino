@@ -42,7 +42,7 @@ export default function AboutHero() {
         <div className="relative min-h-[340px] overflow-hidden sm:min-h-[400px] lg:min-h-[520px]">
           <div className="dot-grid absolute inset-x-0 top-0 h-[300px] sm:h-[360px] lg:h-[450px]" />
           <Image
-            src="/images/victor-hero-v2.png"
+            src="/images/victor-hero-v3.png"
             alt="Victor Sizino"
             width={520}
             height={505}

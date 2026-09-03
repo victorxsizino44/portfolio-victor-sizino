@@ -22,7 +22,7 @@ export default function ExperienceHero() {
         <div className="relative min-h-[360px] overflow-hidden md:min-h-[470px]">
           <div className="dot-grid absolute inset-x-0 top-0 h-[360px] opacity-80 md:h-[440px]" />
           <Image
-            src="/images/victor-hero-v2.png"
+            src="/images/victor-hero-v3.png"
             alt="Victor Sizino em foto de perfil profissional"
             width={520}
             height={505}
