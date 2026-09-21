@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { ScheduleEmbed } from "../components/contact/ScheduleEmbed";
 import Header from "../components/home/Header";
 import Footer from "../components/home/Footer";
@@ -280,12 +281,12 @@ export default function ContactPage() {
                 <p className="mt-4 text-sm leading-6 text-muted">
                   Converse com o Agente R e conheça mais sobre minha trajetória, experiências e projetos.
                 </p>
-                <a
+                <Link
                   className="standard-hover mt-6 inline-flex h-11 items-center gap-3 rounded-lg border border-line bg-white px-5 text-sm font-bold text-ink shadow-sm"
                   href="/#agente-r"
                 >
                   Conversar com o Agente R <MessageCircle size={15} />
-                </a>
+                </Link>
               </div>
               <Image
                 src="/images/agente-r.png"

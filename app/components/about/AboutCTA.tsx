@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowRight, Mail } from "lucide-react";
 import { aboutCtaIcon as Icon } from "../../data/about";
 
@@ -18,12 +19,12 @@ export default function AboutCTA() {
           </div>
         </div>
         <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
-          <a
+          <Link
             className="violet-button-hover inline-flex h-11 items-center justify-center gap-3 rounded-lg border border-ink bg-ink px-5 text-sm font-bold text-white shadow-md"
             href="/#cases"
           >
             Ver cases <ArrowRight size={17} />
-          </a>
+          </Link>
           <a
             className="standard-hover inline-flex h-11 items-center justify-center gap-3 rounded-lg border border-line bg-white px-5 text-sm font-bold shadow-sm"
             href="/contato"

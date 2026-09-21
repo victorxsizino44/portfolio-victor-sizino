@@ -14,10 +14,6 @@ type CompanyModalProps = {
 function CompanyLogo({ company, initials }: { company: CompanyItem; initials: string }) {
   const [hasImageError, setHasImageError] = useState(false);
 
-  useEffect(() => {
-    setHasImageError(false);
-  }, [company.logo]);
-
   if (hasImageError) {
     return <span className="company-logo-fallback company-modal-logo-fallback">{initials}</span>;
   }
@@ -68,7 +64,7 @@ export default function CompanyModal({ company, initials, onClose }: CompanyModa
 
         <div className="company-modal-header">
           <div className="company-modal-logo">
-            <CompanyLogo company={company} initials={initials} />
+            <CompanyLogo key={company.logo} company={company} initials={initials} />
           </div>
           <div>
             <h3 id="company-modal-title" className="company-modal-title">

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowRight, ExternalLink, Send } from "lucide-react";
 
 export default function ExperienceCTA() {
@@ -15,12 +16,12 @@ export default function ExperienceCTA() {
         </div>
       </div>
       <div className="mt-5 grid gap-3 sm:grid-cols-2 md:mt-0 md:flex md:flex-none">
-        <a
+        <Link
           className="violet-button-hover inline-flex h-12 items-center justify-center gap-3 rounded-lg border border-ink bg-ink px-6 text-sm font-black text-white shadow-md"
           href="/cases"
         >
           Ver meus cases <ArrowRight size={16} />
-        </a>
+        </Link>
         <a
           className="standard-hover inline-flex h-12 items-center justify-center gap-3 rounded-lg border border-line bg-white px-6 text-sm font-black text-ink shadow-sm"
           href="/contato"

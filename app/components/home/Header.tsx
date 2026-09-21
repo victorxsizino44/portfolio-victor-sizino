@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -73,9 +74,9 @@ export default function Header() {
   return (
     <header className="relative mx-auto max-w-[1096px] border-b border-line px-5 py-5 md:px-8 md:py-6">
       <div className="flex max-w-full items-center justify-between">
-        <a href="/" className="text-[30px] font-black leading-none tracking-normal md:text-[32px]">
+        <Link href="/" className="text-[30px] font-black leading-none tracking-normal md:text-[32px]">
           VS<span className="text-violet">.</span>
-        </a>
+        </Link>
         <nav className="hidden items-center gap-8 text-[13px] font-semibold md:flex">
           {navItems.map((item) => (
             <a
