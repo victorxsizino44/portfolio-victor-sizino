@@ -1,0 +1,2 @@
+import type { StoredObject, FileReference, ExtractedRepresentation, EvidenceCandidate, GovernedEvidence } from "../core/evidence.ts";
+export interface EvidencePort { upload(input:{discoveryId:string; objectId:string; path:string; bytes:Uint8Array; fileType:string; createdAt:string}):Promise<StoredObject>; extract(file:StoredObject, reference:FileReference, bytes:Uint8Array):Promise<ExtractedRepresentation>; evaluate(candidate:EvidenceCandidate):Promise<GovernedEvidence>; }
