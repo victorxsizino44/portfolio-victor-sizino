@@ -26,9 +26,9 @@ test("Agent B safe errors contain only the fixed public contract", () => {
   assert.ok(Object.isFrozen(error));
 });
 
-test("Agent B B00 configuration exposes no environment or provider values", () => {
-  assert.deepEqual(getAgentBRuntimeConfig(), {});
-  assert.ok(Object.isFrozen(getAgentBRuntimeConfig()));
+test("Agent B unconfigured foundation exposes no environment or provider values", () => {
+  assert.deepEqual(getAgentBRuntimeConfig({}), {});
+  assert.ok(Object.isFrozen(getAgentBRuntimeConfig({})));
 });
 
 test("Agent B configuration rejects a browser-like environment", () => {
