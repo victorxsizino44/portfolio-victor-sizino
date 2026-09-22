@@ -1,0 +1,2 @@
+import type { DiscoveryId, RuntimeVersion, Timestamp, HumanDecisionReference } from "../core/primitives.ts"; import type { Handoff } from "../core/handoff.ts";
+export interface HandoffPort { list(input:{identityId:string;discoveryId:DiscoveryId}):Promise<readonly Handoff[]>; issue(input:{identityId:string;discoveryId:DiscoveryId;sourceRuntimeVersion:RuntimeVersion;decision:HumanDecisionReference;handoffId:string;issuedAt:Timestamp;previousHandoffId:string|null}):Promise<Handoff>; }
