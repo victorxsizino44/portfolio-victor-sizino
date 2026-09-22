@@ -14,18 +14,21 @@ export type SupabaseConfiguration = Readonly<z.infer<typeof supabaseConfiguratio
 type ConfigurationEnvironment = {
   NEXT_PUBLIC_SUPABASE_URL?: string;
   NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY?: string;
+  GEMINI_API_KEY?: string;
 };
 
 export function getAgentBRuntimeConfig(environment: ConfigurationEnvironment = {
   NEXT_PUBLIC_SUPABASE_URL: env.NEXT_PUBLIC_SUPABASE_URL,
   NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY,
-}): Readonly<{ supabase?: SupabaseConfiguration }> {
+  GEMINI_API_KEY: env.GEMINI_API_KEY,
+}): Readonly<{ supabase?: SupabaseConfiguration; gemini?: { apiKey: string } }> {
   const url = environment.NEXT_PUBLIC_SUPABASE_URL;
   const publishableKey = environment.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
   if (!url && !publishableKey) return Object.freeze({});
   const parsed = supabaseConfiguration.safeParse({ url, publishableKey });
   if (!parsed.success) throw new FoundationError("CONFIGURATION_REQUIRED");
-  return Object.freeze({ supabase: Object.freeze(parsed.data) });
+  const gemini = environment.GEMINI_API_KEY ? { apiKey: environment.GEMINI_API_KEY } : undefined;
+  return Object.freeze({ supabase: Object.freeze(parsed.data), ...(gemini ? { gemini: Object.freeze(gemini) } : {}) });
 }
 
 export function requireSupabaseConfiguration(): SupabaseConfiguration {
