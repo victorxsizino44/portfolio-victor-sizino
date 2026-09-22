@@ -7,12 +7,16 @@ export type DiscoveryRow = {
 };
 export type AccessRow = { discovery_id: string; identity_id: string; role: string };
 export type InformationRecordRow = { record_id: string; discovery_id: string; entity_version: number; payload: unknown; lineage_root_id: string; supersedes_record_id: string | null; created_at: string };
+export type RuntimeStateRow = { discovery_id: string; runtime_version: number; freshness: string; current_state: unknown; pending: unknown };
+export type SessionRow = { session_id: string; discovery_id: string; previous_session_id: string | null; lifecycle: string; created_at: string };
 export type AgentBDatabase = {
   public: {
     Tables: {
       agent_b_discoveries: { Row: DiscoveryRow; Insert: never; Update: never; Relationships: [] };
       agent_b_discovery_access: { Row: AccessRow; Insert: never; Update: never; Relationships: [] };
       agent_b_information_records: { Row: InformationRecordRow; Insert: never; Update: never; Relationships: [] };
+      agent_b_runtime_state: { Row: RuntimeStateRow; Insert: never; Update: never; Relationships: [] };
+      agent_b_sessions: { Row: SessionRow; Insert: never; Update: never; Relationships: [] };
     };
     Views: Record<string, never>;
     Functions: {
