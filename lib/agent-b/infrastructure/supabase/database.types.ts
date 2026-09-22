@@ -6,11 +6,13 @@ export type DiscoveryRow = {
   created_at: string;
 };
 export type AccessRow = { discovery_id: string; identity_id: string; role: string };
+export type InformationRecordRow = { record_id: string; discovery_id: string; entity_version: number; payload: unknown; lineage_root_id: string; supersedes_record_id: string | null; created_at: string };
 export type AgentBDatabase = {
   public: {
     Tables: {
       agent_b_discoveries: { Row: DiscoveryRow; Insert: never; Update: never; Relationships: [] };
       agent_b_discovery_access: { Row: AccessRow; Insert: never; Update: never; Relationships: [] };
+      agent_b_information_records: { Row: InformationRecordRow; Insert: never; Update: never; Relationships: [] };
     };
     Views: Record<string, never>;
     Functions: {
@@ -19,6 +21,8 @@ export type AgentBDatabase = {
         Args: { p_discovery_id: string; p_expected_identity: string; p_expected_version: number };
         Returns: DiscoveryRow[];
       };
+      agent_b_create_information_record: { Args: { p_expected_identity: string; p_record: unknown; p_created_at: string }; Returns: InformationRecordRow[] };
+      agent_b_update_information_record: { Args: { p_expected_identity: string; p_discovery_id: string; p_expected_version: number; p_record: unknown; p_created_at: string }; Returns: InformationRecordRow[] };
     };
     Enums: Record<string, never>;
     CompositeTypes: Record<string, never>;
