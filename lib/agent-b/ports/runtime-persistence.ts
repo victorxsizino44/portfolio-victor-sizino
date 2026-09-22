@@ -7,4 +7,5 @@ export interface RuntimePersistencePort {
   createSession(input: { identityId: IdentityId; discoveryId: DiscoveryId; previousSessionId: SessionId | null; sessionId: SessionId; now: Timestamp }): Promise<Session>;
   transitionSession(input: { identityId: IdentityId; discoveryId: DiscoveryId; sessionId: SessionId; lifecycle: "INTERRUPTED" | "CLOSED" }): Promise<Session>;
   listSessions(input: { identityId: IdentityId; discoveryId: DiscoveryId }): Promise<readonly Session[]>;
+  resumeAtomic(input: { identityId: IdentityId; discoveryId: DiscoveryId; operationId: string; sessionId: SessionId; expectedRuntimeVersion: RuntimeVersion; previousSessionId: SessionId | null; runtime: DiscoveryRuntime; now: Timestamp }): Promise<{ runtime: DiscoveryRuntime; session: Session }>;
 }
