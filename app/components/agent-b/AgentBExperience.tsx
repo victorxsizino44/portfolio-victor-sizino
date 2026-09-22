@@ -42,6 +42,7 @@ const capabilities = [
 
 export default function AgentBExperience() {
   const [draft, setDraft] = useState("");
+  const [status, setStatus] = useState<"idle"|"loading"|"error">("idle");
   const [announcement, setAnnouncement] = useState("");
   const composerRef = useRef<HTMLTextAreaElement>(null);
 
@@ -50,6 +51,7 @@ export default function AgentBExperience() {
     setAnnouncement(`Ação selecionada: ${label}. Complete o contexto no campo de mensagem.`);
     window.requestAnimationFrame(() => composerRef.current?.focus());
   };
+  const submit = async () => { if (!draft.trim()) return; setStatus("loading"); try { const response=await fetch("/api/agent-b/orchestrate",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({discoveryId:"prototype",runtimeVersion:0,sessionId:"prototype",hasCurrentInformation:false,unresolvedCriticalPending:false,conflictingState:false,missingFieldCount:1,informationNeed:false})}); if(!response.ok)throw new Error("request"); setStatus("idle"); setAnnouncement("Contexto recebido para avaliação governada."); } catch { setStatus("error"); setAnnouncement("Não foi possível conectar ao runtime. Tente novamente."); } };
 
   return (
     <section aria-labelledby="agent-b-title" className="mx-auto max-w-[1096px] px-5 pb-12 pt-8 md:px-8 md:pb-16 md:pt-12">
@@ -180,17 +182,17 @@ export default function AgentBExperience() {
                   value={draft}
                 />
                 <button
-                  aria-describedby="agent-b-unavailable"
-                  aria-label="Enviar mensagem — indisponível até a conexão do Discovery Engine"
-                  className="grid size-10 shrink-0 cursor-not-allowed place-items-center rounded-xl bg-violet text-white opacity-55"
-                  disabled
+                  aria-label="Enviar mensagem"
+                  className="grid size-10 shrink-0 place-items-center rounded-xl bg-violet text-white"
+                  disabled={status === "loading" || !draft.trim()}
+                  onClick={submit}
                   type="button"
                 >
                   <ArrowRight aria-hidden="true" size={19} />
                 </button>
               </div>
               <div className="mt-2 flex items-center justify-between gap-3 text-[10px] leading-4 text-muted">
-                <span id="agent-b-unavailable">Envio indisponível nesta versão</span>
+                <span id="agent-b-unavailable">{status === "error" ? "Runtime indisponível — tente novamente" : status === "loading" ? "Avaliando contexto…" : "Contexto governado"}</span>
                 <span>{draft.length}/2000</span>
               </div>
               <p aria-live="polite" className="sr-only">{announcement}</p>

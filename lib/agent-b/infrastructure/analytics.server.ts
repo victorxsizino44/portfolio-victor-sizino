@@ -1,0 +1,2 @@
+import { env } from "node:process";
+export async function trackAgentBEvent(event:string, properties:Record<string,string|number|boolean>={}) { const key=env.NEXT_PUBLIC_POSTHOG_KEY; const host=env.NEXT_PUBLIC_POSTHOG_HOST; if(!key||!host)return; await fetch(`${host}/capture/`,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({api_key:key,event,properties:{...properties,session_recording:false}}),cache:"no-store"}).catch(()=>undefined); }
