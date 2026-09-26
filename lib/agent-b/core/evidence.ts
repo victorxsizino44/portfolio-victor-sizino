@@ -1,0 +1,14 @@
+import { z } from "zod";
+import { DiscoveryIdSchema, EntityVersionSchema, InformationRecordIdSchema, SourceReferenceSchema, TimestampSchema } from "./primitives.ts";
+export const FileTypeSchema=z.enum(["PDF","DOCX","TXT","MD","CSV","XLSX","PNG","JPEG","WEBP"]); export type FileType=z.infer<typeof FileTypeSchema>;
+export const StoredObjectSchema=z.strictObject({ objectId:z.string().min(1), discoveryId:DiscoveryIdSchema, path:z.string().min(1), fileType:FileTypeSchema, byteSize:z.number().int().positive().max(10*1024*1024), sha256:z.string().regex(/^[a-f0-9]{64}$/), createdAt:TimestampSchema });
+export type StoredObject=z.infer<typeof StoredObjectSchema>;
+export const FileReferenceSchema=z.strictObject({ fileReferenceId:z.string().min(1), objectId:z.string().min(1), discoveryId:DiscoveryIdSchema, source:SourceReferenceSchema });
+export type FileReference=z.infer<typeof FileReferenceSchema>;
+export const ExtractedRepresentationSchema=z.strictObject({ representationId:z.string().min(1), fileReferenceId:z.string().min(1), status:z.enum(["EXTRACTED","UNSUPPORTED","FAILED"]), text:z.string().optional(), reason:z.string().min(1).optional(), createdAt:TimestampSchema }).superRefine((v,c)=>{if(v.status==="EXTRACTED"&&!v.text)c.addIssue({code:"custom",message:"extracted text required"});if(v.status!=="EXTRACTED"&&v.text)c.addIssue({code:"custom",message:"unsupported output cannot contain text"});});
+export type ExtractedRepresentation=z.infer<typeof ExtractedRepresentationSchema>;
+export const EvidenceCandidateSchema=z.strictObject({ candidateId:z.string().min(1), discoveryId:DiscoveryIdSchema, representationId:z.string().min(1), locator:z.string().min(1), statement:z.string().min(1), status:z.literal("CANDIDATE") });
+export type EvidenceCandidate=z.infer<typeof EvidenceCandidateSchema>;
+export const GovernedEvidenceSchema=z.strictObject({ evidenceId:z.string().min(1), discoveryId:DiscoveryIdSchema, candidateId:z.string().min(1), statement:z.string().min(1), validation:z.enum(["RECEIVED","VALIDATED","REJECTED","SUPERSEDED"]), source:SourceReferenceSchema, createdAt:TimestampSchema });
+export type GovernedEvidence=z.infer<typeof GovernedEvidenceSchema>;
+export const EvidenceInformationLinkSchema=z.strictObject({ evidenceId:z.string().min(1), informationRecordId:InformationRecordIdSchema, discoveryId:DiscoveryIdSchema, entityVersion:EntityVersionSchema, informationVersion:EntityVersionSchema });

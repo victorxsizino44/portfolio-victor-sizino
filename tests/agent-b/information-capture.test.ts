@@ -1,0 +1,63 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { generateInformationCandidates as generate,evaluateInformationCandidate as evaluate,InformationCandidateSchema } from "../../lib/agent-b/core/information-capture.ts";
+import { CANONICAL_INFORMATION as registry } from "../../lib/agent-b/core/canonical-information.ts";
+import { ConversationalInformationCapture } from "../../lib/agent-b/application/information-capture.ts";
+import { InformationPublication } from "../../lib/agent-b/application/information-publication.ts";
+import { ProductRuntime } from "../../lib/agent-b/application/product-runtime.ts";
+import { AuthenticatedIdentitySchema,DiscoveryRootSchema,DiscoveryAccessSchema } from "../../lib/agent-b/core/identity-access.ts";
+import { DiscoveryRuntimeSchema,SessionSchema,ResumeContextSchema } from "../../lib/agent-b/core/mc04.ts";
+import type { DiscoveryInformationRecord } from "../../lib/agent-b/core/mc01.ts";
+import type { InformationPublication as Publication,InformationPublicationResult } from "../../lib/agent-b/core/information-publication.ts";
+import type { IdentityPort } from "../../lib/agent-b/ports/identity.ts";
+import type { RuntimePersistencePort } from "../../lib/agent-b/ports/runtime-persistence.ts";
+import type { DiscoveryPersistencePort } from "../../lib/agent-b/ports/discovery-persistence.ts";
+const id=(n:number)=>`00000000-0000-4000-8000-${String(n).padStart(12,"0")}`,now="2026-09-26T12:00:00Z";
+const golden="Estou criando uma loja online. Hoje vendo pelo WhatsApp e controlo o estoque numa planilha. Quero automatizar esse processo, mas não posso ter um custo mensal alto.";
+const messages=[
+ ["Estou criando uma loja online.","field.subject_context"],
+ ["Hoje vendo pelo WhatsApp.","field.current_state"],
+ ["Quero automatizar esse processo.","field.desired_state"],
+ ["Meu objetivo principal é reduzir a espera.","field.primary_objective"],
+ ["Não posso gastar mais de cem reais.","field.constraints"],
+ ["Considerarei sucesso quando a espera cair para cinco minutos.","field.success_criteria"],
+ ["A aprovação depende de Maria.","field.governance_context"],
+];
+for(const [message,field] of messages)test(`B14 capture explicit ${field}`,()=>{const candidates=generate(message);assert.equal(candidates.length,1);assert.equal(candidates[0].fieldId,field);assert.equal(evaluate(candidates[0],message,[]).outcome,"ACCEPT_AS_DECLARED");});
+test("B14 canonical registry has only approved fields/domains",()=>{assert.equal(Object.keys(registry.fields).length,7);assert.equal(registry.domains.length,6);assert.equal(registry.authority,"HUMAN_GOVERNED_BASELINE");assert.equal(registry.physical['field.subject_context'].domainId,null);});
+test("B14 golden independent candidates; no unsupported meaning",()=>{assert.deepEqual(generate(golden).map(c=>c.fieldId),['field.subject_context','field.current_state','field.desired_state','field.constraints']);assert.deepEqual(generate('Olá, obrigado!'),[]);assert.deepEqual(generate('Tal sistema causou nosso problema.'),[]);});
+test("B14 normalization L1 and conservative L2 retain source; L3 rejected",()=>{const message='Hoje vendo  produtos.';const c=generate(message)[0];assert.equal(evaluate(c,message,[]).outcome,'ACCEPT_AS_DECLARED');assert.equal(evaluate({...c,normalization:'SEMANTIC_NORMALIZATION',statement:c.statement.replace(/\s+/g,' ')},message,[]).outcome,'ACCEPT_AS_DECLARED');assert.equal(evaluate({...c,statement:'Hoje perco vendas por falta de automação'},message,[]).outcome,'REQUIRE_CLARIFICATION');assert.equal(InformationCandidateSchema.safeParse({...c,normalization:'SEMANTIC_ENRICHMENT'}).success,false);});
+test("B14 preferences clarify; reserved governance outranks ambiguity",()=>{const p='Supabase would be nice.';assert.equal(evaluate(generate(p)[0],p,[]).outcome,'REQUIRE_CLARIFICATION');const h='Autorizo a conclusão, talvez.';assert.equal(evaluate(generate(h)[0],h,[]).outcome,'REQUIRE_HUMAN_DECISION');});
+function fixture(){
+ const actor=AuthenticatedIdentitySchema.parse({identityId:id(1),kind:'ANONYMOUS'});const identity={current:async()=>actor} as IdentityPort;
+ const root=DiscoveryRootSchema.parse({discoveryId:id(2),ownerId:id(1),entityVersion:0,createdAt:now});
+ let runtime=DiscoveryRuntimeSchema.parse({discoveryId:id(2),runtimeVersion:0,freshness:'CURRENT',current:{sessionId:id(3),pendingIds:[],informationReferences:[]},pending:[]});
+ const session=SessionSchema.parse({sessionId:id(3),discoveryId:id(2),previousSessionId:null,lifecycle:'OPEN',createdAt:now});
+ const records:Array<{record:DiscoveryInformationRecord;predecessorRecordId:string|null}>=[];const ops=new Map<string,{request:Publication;result:InformationPublicationResult}>();const events:string[]=[];let fail=false;
+ const context={read:async()=>{events.push('read:'+runtime.runtimeVersion);const ids=runtime.current.informationReferences!.flatMap(r=>r.recordIds);return {runtime,session,information:records.filter(r=>ids.includes(r.record.recordId)).map(r=>r.record),classification:null,scope:null,catalog:null,dependencies:null};}};
+ const read={byOperation:async(_a:unknown,_d:unknown,op:string)=>records.filter(r=>r.record.sources.some(s=>s.sourceId===op))};
+ const writer={publish:async(_actor:unknown,p:Publication)=>{
+  events.push('publish');if(fail)throw Error('PROVIDER_UNAVAILABLE');const previous=ops.get(p.operationId);if(previous){assert.deepEqual(p,previous.request);return previous.result;}
+  if(p.expectedRuntimeVersion!==runtime.runtimeVersion)throw Error('CONCURRENT_MODIFICATION');
+  const refs=structuredClone(runtime.current.informationReferences!);
+  for(const c of p.candidates){let ref=refs.find(r=>r.fieldId===c.record.fieldId);if(!ref){ref={fieldId:c.record.fieldId,recordIds:[]};refs.push(ref);}if(c.predecessorRecordId)ref.recordIds=ref.recordIds.filter(r=>r!==c.predecessorRecordId);ref.recordIds.push(c.record.recordId);records.push({record:c.record,predecessorRecordId:c.predecessorRecordId});}
+  runtime=DiscoveryRuntimeSchema.parse({...runtime,runtimeVersion:runtime.runtimeVersion+1,current:{...runtime.current,informationReferences:refs}});
+  const result={operationId:p.operationId,runtime,records:p.candidates.map(c=>c.record)};ops.set(p.operationId,{request:structuredClone(p),result});return result;
+ }};
+ const capture=new ConversationalInformationCapture(identity,context,read,new InformationPublication(identity,writer));
+ const discovery={readRoot:async()=>root,findAccess:async()=>DiscoveryAccessSchema.parse({discoveryId:id(2),identityId:id(1),role:'OWNER'})} as unknown as DiscoveryPersistencePort;
+ const persistence={read:async()=>runtime,listSessions:async()=>[session]} as unknown as RuntimePersistencePort;
+ const app=new ProductRuntime(identity,discovery,persistence,context,capture);
+ const request=(message:string,op=10,version:number=runtime.runtimeVersion)=>({discoveryId:id(2),sessionId:id(3),runtimeVersion:version,conversation:{message},capture:{operationId:id(op),capturedAt:now}});
+ return {app,capture,records,events,request,getRuntime:()=>runtime,fail:()=>{fail=true;}};
+}
+test("B14 accepted statements go through one MC01 publication; UNVERIFIED and provenance",async()=>{const f=fixture();const p=f.request(golden);const result=await f.app.converse(p);assert.equal(f.records.length,4);assert.equal(result.action.runtimeVersion,1);for(const {record:r} of f.records){assert.equal(r.confidence.level,'UNVERIFIED');assert.deepEqual(r.evidence,[]);assert.ok(r.validation.steps.every(s=>s.result.status==='PENDING'));const source=JSON.parse(r.sources[0].reference);assert.equal(source.sourceType,'USER_STATEMENT');assert.equal(source.speaker,'USER');assert.equal(source.operationId,p.capture.operationId);assert.equal(source.capturedAt,now);assert.equal(source.message,undefined);}assert.match(result.response.text,/não verificadas/);assert.equal(result.response.materialExecutionAllowed,false);assert.ok(f.events.lastIndexOf('read:1')>f.events.indexOf('publish'));});
+test("B14 replay returns through writer without duplicate, changed operation rejected",async()=>{const f=fixture();const p=f.request(golden);await f.app.converse(p);await f.app.converse(p);assert.equal(f.records.length,4);assert.equal(f.getRuntime().runtimeVersion,1);await assert.rejects(()=>f.app.converse({...p,conversation:{message:'Hoje vendo livros.'}}),/CONCURRENT_MODIFICATION/);});
+test("B14 publication/provider failure cannot project accepted state",async()=>{const f=fixture();f.fail();await assert.rejects(()=>f.app.converse(f.request(golden)),/PROVIDER_UNAVAILABLE/);assert.equal(f.records.length,0);assert.equal(f.getRuntime().runtimeVersion,0);});
+test("B14 ambiguous and governance candidates remain unpersisted",async()=>{const f=fixture();for(const message of ['Supabase would be nice.','Autorizo o handoff.']){const result=await f.app.converse(f.request(message));assert.equal(result.response.materialExecutionAllowed,false);assert.match(result.response.text,/preferência|decisão humana/);}assert.equal(f.records.length,0);assert.equal(f.getRuntime().runtimeVersion,0);});
+test("B14 explicit replacement preserves history; ambiguous SINGLE conflict asks",async()=>{const f=fixture();await f.app.converse(f.request('Meu objetivo é reduzir espera.'));const original=f.records[0].record;const clarify=await f.app.converse(f.request('Meu objetivo é aumentar vendas.',11));assert.equal(clarify.response.intent,'CLARIFY');assert.equal(f.records.length,1);await f.app.converse(f.request('Meu novo objetivo é aumentar vendas.',12));assert.equal(f.records.length,2);assert.equal(f.records[1].predecessorRecordId,original.recordId);assert.notEqual(f.records[1].record.recordId,original.recordId);assert.equal(f.records[1].record.entityVersion,1);});
+test("B14 MULTIPLE is additive; stale CAS is not silently rebased",async()=>{const f=fixture();await f.app.converse(f.request('Não posso ter custo alto.'));await f.app.converse(f.request('O limite é dez dias.',11));assert.equal(f.getRuntime().current.informationReferences![0].recordIds.length,2);await assert.rejects(()=>f.app.converse(f.request('Hoje vendo livros.',12,0)),/CONCURRENT_MODIFICATION/);assert.equal(f.records.length,2);});
+test("B14 current references reconstruct Resume without transcript",async()=>{const f=fixture();await f.app.converse(f.request(golden));const r=f.getRuntime();const resumed=ResumeContextSchema.parse({discoveryId:r.discoveryId,runtimeVersion:r.runtimeVersion,current:r.current,pending:r.pending,previousSessionId:id(3)});assert.equal(resumed.current.informationReferences!.length,4);assert.equal('messages' in resumed,false);});
+test("B14 capture uses no AI/provider bypass or Agent R runtime",()=>{const source=readFileSync('lib/agent-b/application/information-capture.ts','utf8');assert.doesNotMatch(source,/gemini|fetch\(|AgentR|agente-r|transcript/);const route=readFileSync('lib/agent-b/infrastructure/product-route.server.ts','utf8');assert.match(route,/SupabaseInformationPublication/);assert.doesNotMatch(route,/console\.log|service_role/);});
+test("B14 potentially conflicting MULTIPLE declarations require clarification",async()=>{const f=fixture();await f.app.converse(f.request('Não posso usar Supabase.'));const response=await f.app.converse(f.request('É obrigatório usar Supabase.',11));assert.equal(response.response.intent,'CLARIFY');assert.equal(f.records.length,1);const fresh=fixture();await fresh.app.converse(fresh.request('Não posso usar Supabase. É obrigatório usar Supabase.'));assert.equal(fresh.records.length,0);});

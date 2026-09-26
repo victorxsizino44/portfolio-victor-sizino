@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { BriefcaseBusiness, ChevronDown, Download, ExternalLink, Globe2, MapPin, Send } from "lucide-react";
 import { useState } from "react";
 import type { ReactNode } from "react";
@@ -178,12 +179,12 @@ function SideCTA() {
       <p className="mt-3 text-xs leading-5 text-muted">
         Estou sempre aberto a novos desafios e oportunidades que geram impacto real.
       </p>
-      <a
+      <Link
         className="violet-button-hover mt-5 inline-flex h-12 w-full items-center justify-center rounded-lg border border-ink bg-ink px-5 text-sm font-black text-white shadow-md"
         href="/cases"
       >
         Ver meus cases
-      </a>
+      </Link>
       <a
         className="standard-hover mt-3 inline-flex h-11 w-full items-center justify-center gap-2 rounded-lg border border-line bg-white px-5 text-sm font-black text-ink shadow-sm"
         href="/contato"

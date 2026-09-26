@@ -1,0 +1,8 @@
+import assert from "node:assert/strict"; import test from "node:test";
+import { GovernedAiFoundation } from "../../lib/agent-b/application/ai-foundation.ts"; import { GeminiAiAdapter } from "../../lib/agent-b/infrastructure/gemini.server.ts"; import { AiInputSchema, CandidateSchema } from "../../lib/agent-b/core/ai.ts";
+const input=AiInputSchema.parse({operation:"CLASSIFY_DEMAND",discoveryId:"d",entityVersion:0,context:"synthetic",config:{promptVersion:"b05-v1",model:"gemini-3.7-flash",maxContextChars:100}});
+const candidate=(discoveryId="d")=>CandidateSchema.parse({operation:"CLASSIFY_DEMAND",discoveryId,entityVersion:0,candidates:[{label:"candidate",rationale:"synthetic",confidence:"MEDIUM"}]});
+test("B05 validates candidate output at the governed boundary",async()=>{const f=new GovernedAiFoundation({generate:async()=>candidate()});const c=await f.evaluate(input);assert.equal(c.candidates.length,1);});
+test("B05 rejects candidate identity/version mismatch",async()=>{const f=new GovernedAiFoundation({generate:async()=>candidate("other")});await assert.rejects(()=>f.evaluate(input));});
+test("B05 bounds minimum-sufficient context",async()=>{let received="";const f=new GovernedAiFoundation({generate:async(i)=>{received=i.context;return candidate()}});await f.evaluate({...input,context:"x".repeat(1000),config:{...input.config,maxContextChars:10}});assert.equal(received.length,10);});
+test("B05 Gemini retries once only for eligible provider failure",async()=>{let calls=0;const adapter=new GeminiAiAdapter("synthetic-key",async()=>{calls++;return new Response("{}",{status:503})});await assert.rejects(()=>adapter.generate(input));assert.equal(calls,2);});

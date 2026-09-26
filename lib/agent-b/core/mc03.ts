@@ -1,0 +1,14 @@
+import { z } from "zod";
+import { DiscoveryIdSchema, RuntimeVersionSchema, SessionIdSchema } from "./primitives.ts";
+export const InteractionActionSchema = z.enum(["EXPLORE","DEEPEN","CLARIFY","CONFIRM","REQUEST_EVIDENCE","ESCALATE","CLOSE"]);
+export const NavigationActionSchema = z.enum(["TRANSITION","RETURN"]);
+export const ProgressionEffectSchema = z.enum(["CONTINUE","DEFER","PAUSE","RESUME","BLOCK"]);
+export const InformationNeedSchema = z.enum(["MISSING_REQUIRED_INFORMATION", "UNRESOLVED_DEPENDENCY", "CLARIFICATION_REQUIRED", "EVIDENCE_REQUIRED", "CONFLICT_REQUIRES_RESOLUTION", "NONE", "UNKNOWN"]);
+export const OrchestrationContextSchema = z.strictObject({ discoveryId: DiscoveryIdSchema, runtimeVersion: RuntimeVersionSchema, sessionId: SessionIdSchema, hasCurrentInformation: z.boolean(), unresolvedCriticalPending: z.enum(["TRUE", "FALSE", "UNKNOWN"]), conflictingState: z.boolean(), missingFieldCount: z.number().int().nonnegative().nullable(), informationNeed: InformationNeedSchema, sufficientGovernedContext: z.boolean() });
+export type OrchestrationContext = z.infer<typeof OrchestrationContextSchema>;
+export const SubstantiveActionCandidateSchema = z.strictObject({ kind: z.literal("SUBSTANTIVE"), discoveryId: DiscoveryIdSchema, runtimeVersion: RuntimeVersionSchema, interaction: InteractionActionSchema, navigation: NavigationActionSchema, progression: ProgressionEffectSchema, rationale: z.string().min(1).max(500), requiresHumanDecision: z.boolean() });
+export const AbstentionActionCandidateSchema = z.strictObject({ kind: z.literal("ABSTAIN"), discoveryId: DiscoveryIdSchema, runtimeVersion: RuntimeVersionSchema, reason: z.enum(["UNKNOWN_INFORMATION_NEED", "UNKNOWN_MISSING_FIELD_COUNT", "UNKNOWN_CRITICAL_PENDING", "INSUFFICIENT_GOVERNED_CONTEXT"]), resolution: z.enum(["CLARIFY", "REQUEST_EVIDENCE", "ESCALATE", "BLOCK"]) });
+export const ActionCandidateSchema = z.discriminatedUnion("kind", [SubstantiveActionCandidateSchema, AbstentionActionCandidateSchema]);
+export type SubstantiveActionCandidate = z.infer<typeof SubstantiveActionCandidateSchema>;
+export type AbstentionActionCandidate = z.infer<typeof AbstentionActionCandidateSchema>;
+export type ActionCandidate = z.infer<typeof ActionCandidateSchema>;
