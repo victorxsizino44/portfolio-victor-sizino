@@ -1,9 +1,9 @@
 import assert from "node:assert/strict"; import test from "node:test";
 import { GovernedOrchestration } from "../../lib/agent-b/application/orchestration.ts";
-const base={discoveryId:"d",runtimeVersion:0,sessionId:"s",hasCurrentInformation:true,unresolvedCriticalPending:false,conflictingState:false,missingFieldCount:0,informationNeed:false};
-test("B06 conflict blocks and returns for clarification",()=>{const x=new GovernedOrchestration().evaluate({...base,conflictingState:true});assert.equal(x.interaction,"CLARIFY");assert.equal(x.progression,"BLOCK");});
-test("B06 critical pending defers without completion",()=>{const x=new GovernedOrchestration().evaluate({...base,unresolvedCriticalPending:true});assert.equal(x.interaction,"REQUEST_EVIDENCE");assert.equal(x.progression,"DEFER");});
-test("B06 missing field is not automatically an information need",()=>{const x=new GovernedOrchestration().evaluate({...base,hasCurrentInformation:false,missingFieldCount:1});assert.equal(x.interaction,"EXPLORE");});
-test("B06 information need deepens",()=>{const x=new GovernedOrchestration().evaluate({...base,informationNeed:true});assert.equal(x.interaction,"DEEPEN");});
-test("B06 does not declare completion",()=>{const x=new GovernedOrchestration().evaluate(base);assert.notEqual(x.interaction,"CLOSE");assert.equal(x.requiresHumanDecision,true);});
+const base={discoveryId:"d",runtimeVersion:0,sessionId:"s",hasCurrentInformation:true,unresolvedCriticalPending:"FALSE",conflictingState:false,missingFieldCount:0,informationNeed:"NONE",sufficientGovernedContext:true};
+test("B06 conflict blocks and returns for clarification",()=>{const x=new GovernedOrchestration().evaluate({...base,conflictingState:true});assert.equal(x.kind,"SUBSTANTIVE");if(x.kind==="SUBSTANTIVE"){assert.equal(x.interaction,"CLARIFY");assert.equal(x.progression,"BLOCK");}});
+test("B06 critical pending defers without completion",()=>{const x=new GovernedOrchestration().evaluate({...base,unresolvedCriticalPending:"TRUE"});assert.equal(x.kind,"SUBSTANTIVE");if(x.kind==="SUBSTANTIVE"){assert.equal(x.interaction,"REQUEST_EVIDENCE");assert.equal(x.progression,"DEFER");}});
+test("B06 missing field is not automatically an information need",()=>{const x=new GovernedOrchestration().evaluate({...base,hasCurrentInformation:false,missingFieldCount:1});assert.equal(x.kind,"SUBSTANTIVE");if(x.kind==="SUBSTANTIVE")assert.equal(x.interaction,"EXPLORE");});
+test("B06 information need deepens",()=>{const x=new GovernedOrchestration().evaluate({...base,informationNeed:"UNRESOLVED_DEPENDENCY"});assert.equal(x.kind,"SUBSTANTIVE");if(x.kind==="SUBSTANTIVE")assert.equal(x.interaction,"DEEPEN");});
+test("B06 does not declare completion",()=>{const x=new GovernedOrchestration().evaluate(base);assert.equal(x.kind,"SUBSTANTIVE");if(x.kind==="SUBSTANTIVE"){assert.notEqual(x.interaction,"CLOSE");assert.equal(x.requiresHumanDecision,true);}});
 test("B06 invalid context cannot produce action",()=>{assert.throws(()=>new GovernedOrchestration().evaluate({...base,runtimeVersion:-1}));});

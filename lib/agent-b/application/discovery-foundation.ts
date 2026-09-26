@@ -13,10 +13,11 @@ export class DiscoveryFoundation {
     this.persistence = persistence;
   }
 
-  async createOwnedDiscovery() {
+  async createOwnedDiscovery(operationId?: string) {
+    if (operationId !== undefined && !z.string().uuid().safeParse(operationId).success) throw new FoundationError("INVALID_INPUT");
     const current = await this.identity.current();
     if (!current) throw new FoundationError("AUTHENTICATION_REQUIRED");
-    const root = await this.persistence.createOwnedRoot(current.identityId);
+    const root = await this.persistence.createOwnedRoot(current.identityId, operationId);
     if (root.ownerId !== current.identityId) throw new FoundationError("ACCESS_DENIED");
     return root;
   }

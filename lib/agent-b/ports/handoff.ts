@@ -1,2 +1,9 @@
-import type { DiscoveryId, RuntimeVersion, Timestamp, HumanDecisionReference } from "../core/primitives.ts"; import type { Handoff } from "../core/handoff.ts";
-export interface HandoffPort { list(input:{identityId:string;discoveryId:DiscoveryId}):Promise<readonly Handoff[]>; issue(input:{identityId:string;discoveryId:DiscoveryId;sourceRuntimeVersion:RuntimeVersion;decision:HumanDecisionReference;handoffId:string;issuedAt:Timestamp;previousHandoffId:string|null}):Promise<Handoff>; }
+import type { DiscoveryId } from "../core/primitives.ts";
+import type { Handoff } from "../core/handoff.ts";
+import type { HandoffMutation } from "../core/handoff-lifecycle.ts";
+export interface HandoffPort {
+  current(identityId: string, discoveryId: DiscoveryId): Promise<Handoff | null>;
+  list(identityId: string, discoveryId: DiscoveryId): Promise<readonly Handoff[]>;
+  // Access, decision validation, CAS, lineage and replay are ONE transaction.
+  mutate(identityId: string, input: HandoffMutation): Promise<Handoff>;
+}

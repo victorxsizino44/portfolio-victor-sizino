@@ -20,22 +20,22 @@ import Header from "../../../components/home/Header";
 const canonicalUrl = "https://victor-sizino.vercel.app/vs-method/agents/agent-b";
 
 export const metadata: Metadata = {
-  title: "Agent B™ — Discovery & Briefing Architecture Prototype | Victor Sizino",
+  title: "Agent B™ — Briefing & Discovery Agent | Victor Sizino",
   description:
-    "Conheça o Agent B™, protótipo estático de produto e arquitetura para Discovery e Briefing governados no VS Method™.",
+    "Conheça o Agent B™, Briefing & Discovery Agent do VS Method™, e explore sua iniciativa em uma conversa governada.",
   alternates: { canonical: canonicalUrl },
   openGraph: {
     type: "website",
     locale: "pt_BR",
     url: canonicalUrl,
-    title: "Agent B™ — Discovery & Briefing Architecture Prototype | Victor Sizino",
-    description: "Protótipo estático de produto e arquitetura para Discovery e Briefing governados.",
+    title: "Agent B™ — Briefing & Discovery Agent | Victor Sizino",
+    description: "Conheça o Agent B™, Briefing & Discovery Agent do VS Method™, e explore sua iniciativa em uma conversa governada.",
     siteName: "Victor Sizino",
   },
   twitter: {
     card: "summary",
-    title: "Agent B™ — Discovery & Briefing Architecture Prototype | Victor Sizino",
-    description: "Protótipo estático de Discovery estruturado, validação e governança humana.",
+    title: "Agent B™ — Briefing & Discovery Agent | Victor Sizino",
+    description: "Conheça o Agent B™, Briefing & Discovery Agent do VS Method™, e explore sua iniciativa em uma conversa governada.",
   },
 };
 

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { bindingOf } from "../../core/domain-binding.ts";
 import { DiscoveryInformationRecordSchema } from "../../core/mc01.ts";
 import { InformationRecordIdSchema, TimestampSchema } from "../../core/primitives.ts";
 import type { IdentityId } from "../../core/identity-access.ts";
@@ -10,11 +11,17 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 const rowSchema = z.strictObject({ record_id: z.string(), discovery_id: z.string(), entity_version: z.number().int().nonnegative(), payload: z.unknown(), lineage_root_id: z.string(), supersedes_record_id: z.string().nullable(), created_at: z.string() });
 function map(row: unknown): PersistedInformationRecord {
   const parsed = rowSchema.parse(row);
-  return { record: DiscoveryInformationRecordSchema.parse(parsed.payload), lineageRootId: InformationRecordIdSchema.parse(parsed.lineage_root_id), supersedesRecordId: parsed.supersedes_record_id ? InformationRecordIdSchema.parse(parsed.supersedes_record_id) : null, createdAt: TimestampSchema.parse(parsed.created_at) };
+  const record = DiscoveryInformationRecordSchema.parse(parsed.payload);
+  if (record.recordId !== parsed.record_id || record.discoveryId !== parsed.discovery_id || record.entityVersion !== parsed.entity_version) throw new FoundationError("PROVIDER_UNAVAILABLE");
+  const { domainId: _legacy, ...canonical } = record;
+  return { record: { ...canonical, domainBinding: bindingOf(record) }, lineageRootId: InformationRecordIdSchema.parse(parsed.lineage_root_id), supersedesRecordId: parsed.supersedes_record_id ? InformationRecordIdSchema.parse(parsed.supersedes_record_id) : null, createdAt: TimestampSchema.parse(parsed.created_at) };
 }
-function fail(error: { code?: string } | null): void { if (!error) return; if (error.code === "42501") throw new FoundationError("ACCESS_DENIED"); if (error.code === "40001") throw new FoundationError("CONCURRENT_MODIFICATION"); throw new FoundationError("PROVIDER_UNAVAILABLE"); }
+function fail(error: { code?: string } | null): void { if (!error) return; if (error.code === "42501") throw new FoundationError("ACCESS_DENIED"); if (error.code === "40001" || error.code === "23505") throw new FoundationError("CONCURRENT_MODIFICATION"); if (error.code === "22023") throw new FoundationError("INVALID_INPUT"); throw new FoundationError("PROVIDER_UNAVAILABLE"); }
 
 export class SupabaseMc01Persistence implements Mc01PersistencePort {
+  // Legacy write signatures cannot supply runtime CAS/idempotency/predecessor.
+  // Migration 011 revokes them; use SupabaseInformationPublication for writes.
+  // Reads and historical lineage retain this adapter.
   private readonly client: SupabaseClient<AgentBDatabase>;
   constructor(client: SupabaseClient<AgentBDatabase>) { this.client = client; }
   async create(input: { identityId: IdentityId; record: import("../../core/mc01.ts").DiscoveryInformationRecord; now: import("../../core/primitives.ts").Timestamp }) { const { data, error } = await this.client.rpc("agent_b_create_information_record", { p_expected_identity: input.identityId, p_record: input.record, p_created_at: input.now }).single(); fail(error); return map(data); }

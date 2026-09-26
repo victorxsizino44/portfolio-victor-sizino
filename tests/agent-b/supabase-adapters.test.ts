@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { AuthSessionMissingError, createClient, type User } from "@supabase/supabase-js";
+import { AuthApiError, AuthSessionMissingError, createClient, type User } from "@supabase/supabase-js";
 import { SupabaseIdentityAdapter } from "../../lib/agent-b/infrastructure/supabase/identity.server.ts";
 import { SupabaseDiscoveryPersistence } from "../../lib/agent-b/infrastructure/supabase/discovery-persistence.server.ts";
 import type { AgentBDatabase } from "../../lib/agent-b/infrastructure/supabase/database.types.ts";
@@ -95,6 +95,24 @@ test("B02 Supabase provider failures never expose raw provider messages", async 
     assert.equal("cause" in error, false);
     return true;
   });
+});
+
+test("R08-12 expired or invalid OTP maps to safe verification failure", async () => {
+  const f = authFixture();
+  f.auth.verifyOtp = async () => ({ data: { user: null, session: null }, error: new AuthApiError("sensitive provider detail", 403, "otp_expired") });
+  await assert.rejects(f.adapter.verifyEmailUpgrade(actor, "person@example.invalid", "123456"), errorCode("EMAIL_VERIFICATION_REQUIRED"));
+  assert.equal((await f.adapter.current())?.kind, "ANONYMOUS");
+});
+
+test("R08-12 verify response cannot replace trusted getUser confirmation", async () => {
+  const f = authFixture();
+  f.auth.verifyOtp = async () => ({ data: { user: user(userId, false), session: null }, error: null });
+  await assert.rejects(f.adapter.verifyEmailUpgrade(actor, "person@example.invalid", "123456"), errorCode("EMAIL_VERIFICATION_REQUIRED"));
+});
+
+test("R08-12 confirmed email must match requested email", async () => {
+  const f = authFixture();
+  await assert.rejects(f.adapter.verifyEmailUpgrade(actor, "different@example.invalid", "123456"), errorCode("EMAIL_VERIFICATION_REQUIRED"));
 });
 
 // All SDK traffic below is intercepted. No real key, service or database is used.

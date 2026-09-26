@@ -1,3 +1,4 @@
+import { domainBoundShape, validDomainBinding } from "./domain-binding.ts";
 import { z } from "zod";
 import {
   DependencyIdSchema, DiscoveryIdSchema, DomainIdSchema, EntityVersionSchema,
@@ -115,7 +116,7 @@ export const InformationContentSchema = z.discriminatedUnion("kind", [
 export const DiscoveryInformationRecordSchema = z.strictObject({
   recordId: InformationRecordIdSchema,
   discoveryId: DiscoveryIdSchema,
-  domainId: DomainIdSchema,
+  ...domainBoundShape,
   fieldId: FieldIdSchema,
   entityVersion: EntityVersionSchema,
   content: InformationContentSchema,
@@ -123,16 +124,16 @@ export const DiscoveryInformationRecordSchema = z.strictObject({
   evidence: z.array(EvidenceReferenceSchema),
   validation: ValidationContractSchema,
   confidence: ConfidenceContractSchema,
-});
+}).refine(validDomainBinding, "Explicit Domain binding required");
 export type DiscoveryInformationRecord = z.infer<typeof DiscoveryInformationRecordSchema>;
 
 export const FieldContractSchema = z.strictObject({
   fieldId: FieldIdSchema,
-  domainId: DomainIdSchema,
+  ...domainBoundShape,
   entityVersion: EntityVersionSchema,
   informationRecordIds: z.array(InformationRecordIdSchema),
   completion: CompletionContractSchema.refine((value) => value.level === "FIELD", "Expected field completion."),
-});
+}).refine(validDomainBinding, "Explicit Domain binding required");
 export type FieldContract = z.infer<typeof FieldContractSchema>;
 export const DomainContractSchema = z.strictObject({
   domainId: DomainIdSchema,

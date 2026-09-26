@@ -1,8 +1,9 @@
+import { InformationReferencesSchema } from "./current-information.ts";
 import { z } from "zod";
 import { DiscoveryIdSchema, EntityVersionSchema, RuntimeVersionSchema, SessionIdSchema, TimestampSchema } from "./primitives.ts";
 import { RuntimeFreshnessSchema, SessionLifecycleSchema, PendingLifecycleSchema } from "./runtime-primitives.ts";
-export const PendingItemSchema = z.strictObject({ pendingId: z.string().min(1), state: PendingLifecycleSchema, reference: z.string().min(1) });
-export const CurrentStateReferenceSchema = z.strictObject({ informationRecordId: z.string().min(1).optional(), classificationVersion: EntityVersionSchema.optional(), scopeVersion: EntityVersionSchema.optional(), specializationVersion: EntityVersionSchema.optional(), pendingIds: z.array(z.string().min(1)), sessionId: SessionIdSchema.optional() });
+export const PendingItemSchema = z.strictObject({ pendingId: z.string().min(1), state: PendingLifecycleSchema, reference: z.string().min(1), dependencyId: z.string().min(1).optional() });
+export const CurrentStateReferenceSchema = z.strictObject({ informationRecordId: z.string().min(1).optional(), informationReferences: InformationReferencesSchema.optional(), classificationVersion: EntityVersionSchema.optional(), scopeVersion: EntityVersionSchema.optional(), specializationVersion: EntityVersionSchema.optional(), pendingIds: z.array(z.string().min(1)), sessionId: SessionIdSchema.optional() });
 export const DiscoveryRuntimeSchema = z.strictObject({ discoveryId: DiscoveryIdSchema, runtimeVersion: RuntimeVersionSchema, freshness: RuntimeFreshnessSchema, current: CurrentStateReferenceSchema, pending: z.array(PendingItemSchema) });
 export type DiscoveryRuntime = z.infer<typeof DiscoveryRuntimeSchema>;
 export const SessionSchema = z.strictObject({ sessionId: SessionIdSchema, discoveryId: DiscoveryIdSchema, previousSessionId: SessionIdSchema.nullable(), lifecycle: SessionLifecycleSchema, createdAt: TimestampSchema });

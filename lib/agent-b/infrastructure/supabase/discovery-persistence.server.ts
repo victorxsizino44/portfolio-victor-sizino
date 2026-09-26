@@ -30,6 +30,15 @@ export class SupabaseDiscoveryPersistence implements DiscoveryPersistencePort {
   private readonly client: SupabaseClient<AgentBDatabase>;
   constructor(client: SupabaseClient<AgentBDatabase>) { this.client = client; }
 
+  listOwned(identityId: IdentityId) {
+    return safe(async () => {
+      const {data,error}=await this.client.from("agent_b_discoveries")
+        .select("discovery_id,owner_id,entity_version,created_at").eq("owner_id",identityId).order("created_at");
+      fail(error);
+      return (data??[]).map(rootFromUnknown);
+    });
+  }
+
   findAccess(discoveryId: DiscoveryId, identityId: IdentityId) {
     return safe(async () => {
       const { data, error } = await this.client.from("agent_b_discovery_access")
@@ -50,9 +59,11 @@ export class SupabaseDiscoveryPersistence implements DiscoveryPersistencePort {
     });
   }
 
-  createOwnedRoot(identityId: IdentityId) {
+  createOwnedRoot(identityId: IdentityId, operationId?: string) {
     return safe(async () => {
-      const { data, error } = await this.client.rpc("agent_b_create_owned_discovery", { p_expected_identity: identityId }).single();
+      const { data, error } = operationId
+        ? await this.client.rpc("agent_b_create_owned_discovery_once", { p_expected_identity: identityId, p_operation_id: operationId }).single()
+        : await this.client.rpc("agent_b_create_owned_discovery", { p_expected_identity: identityId }).single();
       fail(error);
       return rootFromUnknown(data);
     });

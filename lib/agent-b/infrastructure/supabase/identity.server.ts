@@ -76,10 +76,15 @@ export class SupabaseIdentityAdapter implements IdentityPort {
     await this.requireSameIdentity(identityId);
     try {
       const { data, error } = await this.auth.verifyOtp({ email, token, type: "email_change" });
+      if (error && (error.code === "otp_expired" || error.code === "otp_disabled" || error.code === "validation_failed"))
+        throw new FoundationError("EMAIL_VERIFICATION_REQUIRED");
       if (error || !data.user) throw new FoundationError("PROVIDER_UNAVAILABLE");
       if (data.user.id !== identityId) return await this.rejectChangedIdentity();
-      const verified = await this.current();
-      if (!verified || verified.identityId !== identityId) return await this.rejectChangedIdentity();
+      const trusted = await this.auth.getUser();
+      if (trusted.error) throw new FoundationError("PROVIDER_UNAVAILABLE");
+      if (!trusted.data.user || trusted.data.user.id !== identityId) return await this.rejectChangedIdentity();
+      const verified = mapIdentity(trusted.data.user);
+      if (trusted.data.user.email?.toLowerCase() !== email.toLowerCase()) throw new FoundationError("EMAIL_VERIFICATION_REQUIRED");
       if (verified.kind !== "EMAIL_VERIFIED") throw new FoundationError("EMAIL_VERIFICATION_REQUIRED");
       return verified;
     } catch (error) {
