@@ -36,14 +36,17 @@ test("R08-13 golden input and unrelated open initiatives safely continue ABSTAIN
     assert.equal(abstain.kind,"ABSTAIN");
   }
 });
-test("GF-003 unknown critical pending escalation stays in human review",()=>{
+test("GF-004 unknown critical pending stays fail-closed without human-review wording",()=>{
   const before=JSON.stringify(criticalEscalation);
-  const result=projectConversation(criticalEscalation,{message:"A resposta sobre a mudança desejada",previousPrompt:"DESIRED_CHANGE"});
-  assert.equal(result.intent,"HUMAN_REVIEW");
-  assert.match(result.text,/decisão humana/);
-  assert.doesNotMatch(result.text,/Que problema você quer resolver/);
+  const result=projectConversation(criticalEscalation,{message:"A resposta sobre a mudança desejada",previousPrompt:"HUMAN_REVIEW"});
+  assert.equal(result.intent,"CLARIFY");
+  assert.match(result.text,/Não é possível determinar.*se existe uma dependência crítica pendente/);
+  assert.doesNotMatch(result.text,/decisão humana|Este ponto precisa de uma decisão humana|Que problema você quer resolver/);
   assert.equal(result.materialExecutionAllowed,false);
   assert.equal(JSON.stringify(criticalEscalation),before);
+  const repeated=projectConversation(criticalEscalation,{message:"Ainda não consigo confirmar.",previousPrompt:result.intent});
+  assert.equal(repeated.intent,"CLARIFY");
+  assert.doesNotMatch(repeated.text,/decisão humana|Este ponto precisa de uma decisão humana/);
 });
 test("R08-13 conflict clarification asks about alternatives without inventing them",()=>{
   const result=projectConversation(action("CLARIFY",{progression:"BLOCK",requiresHumanDecision:true}));
@@ -53,8 +56,11 @@ test("R08-13 conflict clarification asks about alternatives without inventing th
   assert.equal(result.materialExecutionAllowed,false);
 });
 test("R08-13 ESCALATE and requiresHumanDecision request input but never decide",()=>{
-  for(const candidate of [action("ESCALATE"),action("CONFIRM",{requiresHumanDecision:true})]){
+  const unmodeled=projectConversation(action("ESCALATE"));
+  assert.equal(unmodeled.intent,"CLARIFY");
+  for(const candidate of [action("ESCALATE",{requiresHumanDecision:true}),action("CONFIRM",{requiresHumanDecision:true})]){
     const result=projectConversation(candidate);
+    assert.equal(result.intent,"HUMAN_REVIEW");
     assert.match(result.text,/decisão humana/);
     assert.equal(result.materialExecutionAllowed,false);
   }
