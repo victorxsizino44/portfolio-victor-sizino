@@ -73,7 +73,9 @@ export class ProductRuntime {
       response.intent=pending.outcome==="REQUIRE_HUMAN_DECISION"?"HUMAN_REVIEW":"CLARIFY";
       response.text=pending.question!;
     }else if(captureResult?.accepted&&response.conversationEligible){
-      response.text="As declarações elegíveis foram registradas como não verificadas. "+response.text;
+      response.text=action.kind==="ABSTAIN"&&action.reason==="UNKNOWN_CRITICAL_PENDING"
+        ? "A nova informação foi registrada como não verificada, mas ainda não permite determinar se existe uma dependência crítica pendente. Que condição necessária para avaliar as dependências da operação ainda precisa ser esclarecida? Se isso não for conhecido, diga que permanece desconhecido."
+        : "As declarações elegíveis foram registradas como não verificadas. "+response.text;
     }
     return ProductConversationResultSchema.parse({action,response});
   }
