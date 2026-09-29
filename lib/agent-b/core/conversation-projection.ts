@@ -28,7 +28,9 @@ export function evaluateConversationEligibility(input: unknown) {
   const action = parsed.data;
   let intent: ConversationResponse["intent"];
   if (action.kind === "ABSTAIN") {
-    intent = action.reason === "INSUFFICIENT_GOVERNED_CONTEXT" ? "BLOCKER" : "OPEN_CONTEXT";
+    intent = action.reason === "INSUFFICIENT_GOVERNED_CONTEXT" ? "BLOCKER"
+      : action.reason === "UNKNOWN_CRITICAL_PENDING" && action.resolution === "ESCALATE" ? "HUMAN_REVIEW"
+      : "OPEN_CONTEXT";
   } else {
     const intents = {
       EXPLORE: "OPEN_CONTEXT", DEEPEN: "DEEPEN", CLARIFY: "CLARIFY",

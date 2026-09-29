@@ -6,7 +6,8 @@ import { ProductConversationRequestSchema } from "../../lib/agent-b/core/product
 import { parseProductPersistenceInput } from "../../lib/agent-b/infrastructure/product-input.server.ts";
 
 const base={discoveryId:"00000000-0000-4000-8000-000000000001",runtimeVersion:0};
-const abstain={...base,kind:"ABSTAIN",reason:"UNKNOWN_CRITICAL_PENDING",resolution:"ESCALATE"};
+const abstain={...base,kind:"ABSTAIN",reason:"UNKNOWN_INFORMATION_NEED",resolution:"CLARIFY"};
+const criticalEscalation={...base,kind:"ABSTAIN",reason:"UNKNOWN_CRITICAL_PENDING",resolution:"ESCALATE"};
 const action=(interaction:string,patch:Record<string,unknown>={})=>({...base,kind:"SUBSTANTIVE",interaction,navigation:"TRANSITION",progression:"CONTINUE",requiresHumanDecision:false,...patch});
 
 test("R08-13 deterministic eligibility is not material acceptance",()=>{
@@ -34,6 +35,15 @@ test("R08-13 golden input and unrelated open initiatives safely continue ABSTAIN
     assert.equal(result.intent,"OPEN_CONTEXT");
     assert.equal(abstain.kind,"ABSTAIN");
   }
+});
+test("GF-003 unknown critical pending escalation stays in human review",()=>{
+  const before=JSON.stringify(criticalEscalation);
+  const result=projectConversation(criticalEscalation,{message:"A resposta sobre a mudança desejada",previousPrompt:"DESIRED_CHANGE"});
+  assert.equal(result.intent,"HUMAN_REVIEW");
+  assert.match(result.text,/decisão humana/);
+  assert.doesNotMatch(result.text,/Que problema você quer resolver/);
+  assert.equal(result.materialExecutionAllowed,false);
+  assert.equal(JSON.stringify(criticalEscalation),before);
 });
 test("R08-13 conflict clarification asks about alternatives without inventing them",()=>{
   const result=projectConversation(action("CLARIFY",{progression:"BLOCK",requiresHumanDecision:true}));
