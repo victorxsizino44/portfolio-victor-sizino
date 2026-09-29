@@ -14,7 +14,7 @@ export class GovernedOrchestration {
     // These known facts determine the action independently of unknown catalog data.
     if (c.conflictingState || c.informationNeed === "CONFLICT_REQUIRES_RESOLUTION") return act("CLARIFY", "RETURN", "BLOCK", "Conflito governado requer clarificação.", true);
     if (c.unresolvedCriticalPending === "TRUE") return act("REQUEST_EVIDENCE", "TRANSITION", "DEFER", "Dependência crítica permanece pendente.", false);
-    if (c.unresolvedCriticalPending === "UNKNOWN") return abstain("UNKNOWN_CRITICAL_PENDING", "ESCALATE");
+    if (c.unresolvedCriticalPending === "UNKNOWN") return abstain("UNKNOWN_CRITICAL_PENDING", "CLARIFY");
     if (c.informationNeed === "CLARIFICATION_REQUIRED") return act("CLARIFY", "RETURN", "CONTINUE", "Contexto governado requer clarificação.", false);
     if (c.informationNeed === "EVIDENCE_REQUIRED") return act("REQUEST_EVIDENCE", "TRANSITION", "DEFER", "Necessidade governada de evidência permanece.", false);
     if (c.informationNeed === "UNRESOLVED_DEPENDENCY" || c.informationNeed === "MISSING_REQUIRED_INFORMATION") return act("DEEPEN", "TRANSITION", "CONTINUE", "Necessidade governada de informação requer aprofundamento.", false);

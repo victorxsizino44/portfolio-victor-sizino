@@ -58,9 +58,25 @@ function withDependency(s:GovernedContextSnapshot,critical=true) {
 test("CTX critical pending TRUE/FALSE/UNKNOWN requires reliable linkage and applicability",()=>{
   const s=fixture();assert.equal(derive(s).unresolvedCriticalPending,"FALSE");
   withDependency(s);assert.equal(derive(s).unresolvedCriticalPending,"TRUE");
+  const known=new GovernedOrchestration().evaluate(derive(s));
+  assert.equal(known.kind,"SUBSTANTIVE");if(known.kind==="SUBSTANTIVE"){assert.equal(known.interaction,"REQUEST_EVIDENCE");assert.equal(known.requiresHumanDecision,false);}
   s.dependencies![0].contract.critical=false;assert.equal(derive(s).unresolvedCriticalPending,"FALSE");
   s.dependencies=null;assert.equal(derive(s).unresolvedCriticalPending,"UNKNOWN");
+  const unknown=new GovernedOrchestration().evaluate(derive(s));
+  assert.deepEqual(unknown,{kind:"ABSTAIN",discoveryId:"d",runtimeVersion:7,reason:"UNKNOWN_CRITICAL_PENDING",resolution:"CLARIFY"});
   withDependency(s);s.dependencies![0].applicability="UNRESOLVED";assert.equal(derive(s).unresolvedCriticalPending,"UNKNOWN");
+});
+test("GF-004 empty runtime and absent dependency catalog remain UNKNOWN and fail closed",()=>{
+  const snapshot=GovernedContextSnapshotSchema.parse({
+    runtime:{discoveryId:"d",runtimeVersion:0,freshness:"CURRENT",current:{sessionId:"s",pendingIds:[]},pending:[]},
+    session:{sessionId:"s",discoveryId:"d",previousSessionId:null,lifecycle:"OPEN",createdAt:stamp},
+    information:[],classification:null,scope:null,catalog:null,dependencies:null,
+  });
+  const context=derive(snapshot);
+  assert.equal(context.runtimeVersion,0);
+  assert.equal(context.unresolvedCriticalPending,"UNKNOWN");
+  const action=new GovernedOrchestration().evaluate(context);
+  assert.deepEqual(action,{kind:"ABSTAIN",discoveryId:"d",runtimeVersion:0,reason:"UNKNOWN_CRITICAL_PENDING",resolution:"CLARIFY"});
 });
 test("CTX missing linkage cannot be repaired by parsing reference text",()=>{
   const s=fixture();withDependency(s);delete s.runtime!.pending[0].dependencyId;
@@ -79,7 +95,7 @@ test("CTX deterministic needs derive from governed conflict, ambiguity, failed e
 for(const [patch,reason,resolution] of [
   [{informationNeed:"UNKNOWN"},"UNKNOWN_INFORMATION_NEED","CLARIFY"],
   [{missingFieldCount:null},"UNKNOWN_MISSING_FIELD_COUNT","REQUEST_EVIDENCE"],
-  [{unresolvedCriticalPending:"UNKNOWN"},"UNKNOWN_CRITICAL_PENDING","ESCALATE"],
+  [{unresolvedCriticalPending:"UNKNOWN"},"UNKNOWN_CRITICAL_PENDING","CLARIFY"],
   [{sufficientGovernedContext:false},"INSUFFICIENT_GOVERNED_CONTEXT","BLOCK"],
 ] as const) test("CTX material unknown abstains: "+reason,()=>{
   const c={...derive(fixture()),...patch};const before=JSON.stringify(c);

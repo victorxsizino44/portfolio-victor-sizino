@@ -29,13 +29,15 @@ export function evaluateConversationEligibility(input: unknown) {
   let intent: ConversationResponse["intent"];
   if (action.kind === "ABSTAIN") {
     intent = action.reason === "INSUFFICIENT_GOVERNED_CONTEXT" ? "BLOCKER"
-      : action.reason === "UNKNOWN_CRITICAL_PENDING" && action.resolution === "ESCALATE" ? "HUMAN_REVIEW"
+      : action.reason === "UNKNOWN_CRITICAL_PENDING" ? "CLARIFY"
       : "OPEN_CONTEXT";
+  } else if (action.requiresHumanDecision) {
+    intent = "HUMAN_REVIEW";
   } else {
     const intents = {
       EXPLORE: "OPEN_CONTEXT", DEEPEN: "DEEPEN", CLARIFY: "CLARIFY",
       CONFIRM: "CONFIRM", REQUEST_EVIDENCE: "REQUEST_EVIDENCE",
-      ESCALATE: "HUMAN_REVIEW", CLOSE: "REVIEW_READINESS",
+      ESCALATE: "CLARIFY", CLOSE: "REVIEW_READINESS",
     } as const;
     intent = intents[action.interaction];
   }
@@ -45,6 +47,7 @@ export function evaluateConversationEligibility(input: unknown) {
     intent,
     blocked: action.kind === "SUBSTANTIVE" && action.progression === "BLOCK",
     humanDecisionRequired: action.kind === "SUBSTANTIVE" && action.requiresHumanDecision,
+    unknownCriticalPending: action.kind === "ABSTAIN" && action.reason === "UNKNOWN_CRITICAL_PENDING",
     abstaining: action.kind === "ABSTAIN",
   });
 }
@@ -64,12 +67,16 @@ export function projectConversation(candidate: unknown, input?: unknown): Conver
     CONCRETE_EXAMPLE: "Pode dar um exemplo concreto da situação que você descreveu e de como ela é enfrentada hoje?",
     DESIRED_CHANGE: "O que precisaria mudar nessa situação para você considerar a iniciativa útil?",
     DEEPEN: "Sobre o contexto que você trouxe, pode detalhar um exemplo, suas limitações e o resultado que espera alcançar?",
-    CLARIFY: eligibility.blocked
-      ? "Há interpretações em conflito na definição da iniciativa. Quais são as alternativas e o que precisa ser esclarecido entre elas?"
-      : "Qual ponto da informação em discussão admite mais de uma interpretação? Pode explicar o significado pretendido e o que ainda está incerto?",
+    CLARIFY: eligibility.unknownCriticalPending
+      ? "Não é possível determinar, com o contexto governado disponível, se existe uma dependência crítica pendente. Que informações sobre as dependências da operação podem esclarecer esse estado?"
+      : eligibility.blocked
+        ? "Há interpretações em conflito na definição da iniciativa. Quais são as alternativas e o que precisa ser esclarecido entre elas?"
+        : "Qual ponto da informação em discussão admite mais de uma interpretação? Pode explicar o significado pretendido e o que ainda está incerto?",
     CONFIRM: "O entendimento em discussão corresponde ao que você pretende? Indique explicitamente o que confirma e o que precisa corrigir; sua resposta aqui não formaliza uma decisão.",
     REQUEST_EVIDENCE: "Qual afirmação ou dependência precisa de comprovação? Se você tiver uma fonte que a sustente, descreva qual é e o que ela permite verificar. Não vou presumir que essa evidência existe ou está validada.",
-    HUMAN_REVIEW: "Este ponto precisa de uma decisão humana antes de avançar. O que precisa ser decidido e quais alternativas devem ser consideradas?",
+    HUMAN_REVIEW: eligibility.blocked
+      ? "Há interpretações em conflito na definição da iniciativa. Quais são as alternativas e o que precisa ser esclarecido na decisão humana?"
+      : "Este ponto precisa de uma decisão humana antes de avançar. O que precisa ser decidido e quais alternativas devem ser consideradas?",
     REVIEW_READINESS: "Podemos discutir a revisão do que está disponível. O que você deseja revisar antes de solicitar um encerramento formal? Isso não declara o Discovery completo.",
     BLOCKER: "Ainda não consigo confirmar o contexto necessário para orientar o próximo passo. Precisamos revisar o acesso e o estado deste Discovery antes de continuar.",
   };
