@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 import { conversationText, finishTurn, type ConversationTurn } from "../../app/components/agent-b/conversation-view.ts";
 import { projectConversation } from "../../lib/agent-b/core/conversation-projection.ts";
 
-const candidate={kind:"ABSTAIN",discoveryId:"test-discovery",runtimeVersion:0,reason:"UNKNOWN_CRITICAL_PENDING",resolution:"ESCALATE"};
+const candidate={kind:"ABSTAIN",discoveryId:"test-discovery",runtimeVersion:0,reason:"UNKNOWN_INFORMATION_NEED",resolution:"CLARIFY"};
 test("B14-A golden interaction preserves both user/agent turns in order",()=>{
   const first="Quero estruturar um novo produto digital.";
   const second="Quero criar uma plataforma para pequenos lojistas controlarem estoque e vendas sem precisar usar planilhas.";

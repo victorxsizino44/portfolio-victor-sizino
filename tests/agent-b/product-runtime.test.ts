@@ -61,7 +61,8 @@ test("R08-13 authorized conversation uses MC03 unchanged; replay has zero materi
   const request={...handle,conversation:{message:"Quero estruturar um novo produto digital."}};
   const first=await f.service.converse(request);
   assert.deepEqual(first.action,candidate);
-  assert.match(first.response.text,/problema.*para quem/);
+  assert.equal(first.response.intent,"HUMAN_REVIEW");
+  assert.match(first.response.text,/decisão humana/);
   assert.deepEqual(await f.service.converse(request),first);
   assert.equal(f.counts.create,1);assert.equal(f.counts.initialize,1);
   assert.deepEqual(await f.service.initialize({...input(),discoveryId:handle.discoveryId}),handle);
@@ -83,7 +84,8 @@ test("R08-13 browser/application multi-turn uses disposable input without state 
   const send=(async(_path:unknown,init?:RequestInit)=>Response.json({ok:true,...await f.service.converse(JSON.parse(String(init?.body)))})) as typeof fetch;
   const first=await evaluateProductConversation(handle,{message:"Uma iniciativa nova"},send);
   const second=await evaluateProductConversation(handle,{message:"Quero reduzir a espera",previousPrompt:first.response.intent},send);
-  assert.notEqual(first.response.text,second.response.text);
+  assert.equal(first.response.intent,"HUMAN_REVIEW");
+  assert.equal(first.response.text,second.response.text);
   assert.deepEqual(first.action,second.action);
   assert.equal(f.counts.create,1);assert.equal(f.counts.initialize,1);
   assert.equal(second.response.materialExecutionAllowed,false);
