@@ -76,6 +76,9 @@ export class ProductRuntime {
       response.text=action.kind==="ABSTAIN"&&action.reason==="UNKNOWN_CRITICAL_PENDING"
         ? "A nova informação foi registrada como não verificada, mas ainda não permite determinar se existe uma dependência crítica pendente. Que condição necessária para avaliar as dependências da operação ainda precisa ser esclarecida? Se isso não for conhecido, diga que permanece desconhecido."
         : "As declarações elegíveis foram registradas como não verificadas. "+response.text;
+    }else if(captureResult?.accepted===0&&captureResult.evaluations.length===0&&action.kind==="ABSTAIN"&&
+      action.reason==="UNKNOWN_CRITICAL_PENDING"&&conversation?.previousPrompt==="CLARIFY"){
+      response.text="Entendi. O estado governado continua sem determinar se existe uma dependência crítica pendente. Se houver uma definição ou referência aprovada sobre essas condições, informe-a; se ainda não for conhecida, podemos manter esse ponto em aberto sem presumir resolução.";
     }
     return ProductConversationResultSchema.parse({action,response});
   }
