@@ -10,9 +10,11 @@ import {
   SearchCheck,
   ShieldCheck,
 } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useReducer, useRef, useState } from "react";
 import { evaluateProductConversation, ProductRequestError, type ProductUIState } from "./runtime-client";
 import type { ConversationResponse } from "../../../lib/agent-b/core/conversation-projection";
+import { conversationStateReducer, readStoredConversationalState, writeStoredConversationalState } from "./conversation-state-client";
+import type { ConversationalState } from "../../../lib/agent-b/core/conversational-state";
 
 import { conversationText, finishTurn, type ConversationTurn } from "./conversation-view";
 
@@ -53,6 +55,7 @@ export default function AgentBExperience() {
   const [active,setActive]=useState<ProductHandle|null>(null);
   const [humanStatus,setHumanStatus]=useState<HumanStatus|null>(null);
   const [continuation,setContinuation]=useState("");
+  const [conversationalState,dispatchConversationalState]=useReducer(conversationStateReducer,null);
   useEffect(()=>{
     let mounted=true;
     readContinuity().then(items=>{if(mounted)setChoices(items);})
@@ -87,6 +90,9 @@ export default function AgentBExperience() {
     try{
       const result=await enterDiscovery(window.sessionStorage,choice);
       setActive(result.runtime);setHumanStatus(result.status);setContinuation(result.continuation);
+      let restored:ConversationalState|null=null;
+      try{restored=readStoredConversationalState(window.sessionStorage,result.runtime);}catch{restored=null;}
+      dispatchConversationalState({type:"replace",state:restored});
       setTurns([]);setDraft("");previousPrompt.current=undefined;setStatus("ready");
     }catch(error){
       const state=error instanceof ProductRequestError?error.state:"error";setStatus(state);
@@ -102,8 +108,10 @@ export default function AgentBExperience() {
     try {
       const handle = active;
       setStatus("loading");
-      const {action,response} = await evaluateProductConversation(handle,{message:turn.message,previousPrompt:previousPrompt.current},fetch,{operationId:turn.id,capturedAt:turn.capturedAt!});
+      const {action,response,conversationalState:nextConversationalState} = await evaluateProductConversation(handle,{message:turn.message,previousPrompt:previousPrompt.current},fetch,{operationId:turn.id,capturedAt:turn.capturedAt!},conversationalState);
       setActive({...handle,runtimeVersion:action.runtimeVersion});
+      dispatchConversationalState({type:"replace",state:nextConversationalState});
+      try{writeStoredConversationalState(window.sessionStorage,nextConversationalState);}catch{ /* React state remains available for this mounted session. */ }
       if (action.kind === "ABSTAIN") setStatus("abstain");
       else setStatus("substantive");
       setTurns(current => finishTurn(current,turn.id,{answer:conversationText(response)}));

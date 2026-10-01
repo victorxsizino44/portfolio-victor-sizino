@@ -13,6 +13,7 @@ import type { GovernedContextReadPort } from "../ports/governed-context.ts";
 import type { DiscoveryId } from "../core/primitives.ts";
 import { ProductConversationRequestSchema, ProductConversationResultSchema } from "../core/product-conversation.ts";
 import { projectConversation } from "../core/conversation-projection.ts";
+import { agendaTopic, createConversationalState, parseBoundConversationalState, transitionConversationalState } from "../core/conversational-state.ts";
 
 export class ProductRuntime {
   private readonly capture?: ConversationalInformationCapture;
@@ -56,7 +57,7 @@ export class ProductRuntime {
   async converse(input:unknown) {
     const p=ProductConversationRequestSchema.safeParse(input);
     if(!p.success)throw new FoundationError("INVALID_INPUT");
-    const {conversation,capture,...handle}=p.data;
+    const {conversation,capture,conversationalState:priorConversationState,...handle}=p.data;
     let captureResult;
     if(capture){
       if(!conversation||!this.capture)throw new FoundationError("INVALID_INPUT");
@@ -68,19 +69,43 @@ export class ProductRuntime {
     if(!refreshed||refreshed.sessionId!==handle.sessionId)throw new FoundationError("CONCURRENT_MODIFICATION");
     const action=await this.evaluate(refreshed);
     const response=projectConversation(action,conversation);
+    const conversationProgress=conversation
+      ? transitionConversationalState({prior:priorConversationState,discoveryId:handle.discoveryId,
+        sessionId:handle.sessionId,action,message:conversation.message,acceptedCapture:captureResult?.accepted??0,
+        evaluations:captureResult?.evaluations??[]})
+      : {state:parseBoundConversationalState(priorConversationState,handle.discoveryId,handle.sessionId)??
+        createConversationalState(handle.discoveryId,handle.sessionId,action.kind==="ABSTAIN"&&action.reason==="UNKNOWN_CRITICAL_PENDING"),progression:"NO_TURN" as const};
     const pending=captureResult?.evaluations.find(e=>e.outcome==="REQUIRE_HUMAN_DECISION")??captureResult?.evaluations.find(e=>e.outcome==="REQUIRE_CLARIFICATION");
     if(pending&&response.conversationEligible&&!(action.kind==="SUBSTANTIVE"&&(action.progression==="BLOCK"||action.requiresHumanDecision))){
       response.intent=pending.outcome==="REQUIRE_HUMAN_DECISION"?"HUMAN_REVIEW":"CLARIFY";
       response.text=pending.question!;
-    }else if(captureResult?.accepted&&response.conversationEligible){
+    }else if(conversationProgress.progression==="DEFERRED"||conversationProgress.progression==="AGENDA_CONTINUATION"){
+      const topic=agendaTopic(conversationProgress.state.nextAgendaTopicId);
+      response.intent=topic?"DEEPEN":"CLARIFY";
+      const open="Esse ponto continua em aberto; nenhuma resolução foi presumida.";
+      const recorded=captureResult?.accepted?" A nova informação foi registrada como não verificada.":"";
+      response.text=topic
+        ? `${open}${recorded} Podemos continuar a Discovery por outro tópico: ${topic.prompt}`
+        : `${open}${recorded} Não há outro tópico disponível na agenda inicial desta sessão; você pode trazer outro aspecto da Discovery ou retomar essa questão depois.`;
+    }else if(conversationProgress.progression==="USER_STATED_UNKNOWN"){
+      response.intent="CLARIFY";
+      const recorded=captureResult?.accepted?" A declaração foi registrada somente como não verificada.":"";
+      response.text=(conversationProgress.state.unknownDeclarationCount>1
+        ? "Entendi que essa informação continua desconhecida. O estado governado permanece em aberto. Se quiser explorar outro aspecto agora, peça explicitamente para manter este ponto em aberto e continuar a Discovery."
+        : "Entendi que essa informação ainda não é conhecida. O estado governado permanece em aberto. Você pode fornecer uma definição ou referência aprovada, ou pedir explicitamente para manter este ponto em aberto e continuar a Discovery.")+recorded;
+    }else if(conversationProgress.progression==="ACCEPTED_CAPTURE"&&response.conversationEligible){
       response.text=action.kind==="ABSTAIN"&&action.reason==="UNKNOWN_CRITICAL_PENDING"
         ? "A nova informação foi registrada como não verificada, mas ainda não permite determinar se existe uma dependência crítica pendente. Que condição necessária para avaliar as dependências da operação ainda precisa ser esclarecida? Se isso não for conhecido, diga que permanece desconhecido."
         : "As declarações elegíveis foram registradas como não verificadas. "+response.text;
-    }else if(captureResult?.accepted===0&&captureResult.evaluations.length===0&&action.kind==="ABSTAIN"&&
-      action.reason==="UNKNOWN_CRITICAL_PENDING"&&conversation?.previousPrompt==="CLARIFY"){
-      response.text="Entendi. O estado governado continua sem determinar se existe uma dependência crítica pendente. Se houver uma definição ou referência aprovada sobre essas condições, informe-a; se ainda não for conhecida, podemos manter esse ponto em aberto sem presumir resolução.";
+    }else if(conversationProgress.progression==="NONPERSISTED_FOLLOW_UP"||conversationProgress.progression==="FOLLOW_UP"){
+      response.intent="CLARIFY";
+      response.text=conversationProgress.state.clarificationAttempt>1
+        ? "Ainda não é possível determinar se existe uma dependência crítica pendente. Que definição operacional ou referência aprovada poderia esclarecer esse ponto? Se isso continua desconhecido, diga se deseja mantê-lo em aberto e explorar outro tópico."
+        : "Essa resposta ainda não permite determinar se existe uma dependência crítica pendente. Que condição operacional ou referência aprovada poderia esclarecer esse estado? Se ainda não for conhecida, você pode dizê-lo explicitamente.";
+    }else if(captureResult?.accepted&&response.conversationEligible){
+      response.text="As declarações elegíveis foram registradas como não verificadas. "+response.text;
     }
-    return ProductConversationResultSchema.parse({action,response});
+    return ProductConversationResultSchema.parse({action,response,conversationalState:conversationProgress.state});
   }
   async evaluate(input:unknown) {
     const p=ProductHandleSchema.safeParse(input);

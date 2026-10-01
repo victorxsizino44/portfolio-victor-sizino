@@ -11,6 +11,7 @@ import type {DiscoveryPersistencePort} from "../../lib/agent-b/ports/discovery-p
 import type {RuntimePersistencePort} from "../../lib/agent-b/ports/runtime-persistence.ts";
 import {productFailure,readProductInput} from "../../lib/agent-b/transport/product.ts";
 import {initializeProduct,evaluateProduct,evaluateProductConversation,ProductRequestError} from "../../app/components/agent-b/runtime-client.ts";
+import {createConversationalState,transitionConversationalState} from "../../lib/agent-b/core/conversational-state.ts";
 const uuid=(n:number)=>`00000000-0000-4000-8000-${String(n).padStart(12,"0")}`;
 const now="2026-09-23T12:00:00Z";
 const input=()=>({operationId:uuid(1),sessionId:uuid(2),now});
@@ -79,6 +80,15 @@ test("R08-13 conversation preserves authorization, CAS and strict input boundari
   f.advance();await assert.rejects(()=>f.service.converse({...handle,conversation:{message:"ok"}}),/CONCURRENT_MODIFICATION/);
   f.deny();await assert.rejects(()=>f.service.converse({...handle,conversation:{message:"ok"}}),/ACCESS_DENIED/);
   assert.equal(f.counts.context,0);assert.equal(f.counts.initialize,1);
+});
+test("GF-007 evaluate-only request preserves but does not advance conversational state",async()=>{
+  const f=fixture();const handle=await f.service.initialize(input());
+  const state=transitionConversationalState({prior:createConversationalState(handle.discoveryId,handle.sessionId),discoveryId:handle.discoveryId,sessionId:handle.sessionId,
+    action:{kind:"ABSTAIN",reason:"UNKNOWN_CRITICAL_PENDING"},message:"Não sabemos. Vamos manter em aberto e continuar a Discovery.",acceptedCapture:0,evaluations:[]}).state;
+  const result=await f.service.converse({...handle,conversationalState:state});
+  assert.deepEqual(result.action,await f.service.evaluate(handle));
+  assert.deepEqual(result.conversationalState,state);
+  assert.equal(f.counts.initialize,1);
 });
 test("R08-13 browser/application multi-turn uses disposable input without state writes",async()=>{
   const f=fixture();const handle=await f.service.initialize(input());
