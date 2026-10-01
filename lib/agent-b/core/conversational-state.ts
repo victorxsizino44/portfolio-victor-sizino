@@ -73,7 +73,7 @@ const unknownPatterns = [
   /^(?:(?:neste momento|atualmente|por enquanto)\s+)?(?:essas definições|essas condições|essas dependências)\s+ainda não são conhecidas\b/u,
 ];
 const deferPatterns = [
-  /^(?:vamos\s+)?(?:manter|deixar)\s+(?:(?:esse|este|o)\s+)?(?:ponto\s+)?em\s+aberto\b/u,
+  /^(?:(?:vamos|podemos)\s+)?(?:manter|deixar)\s+(?:(?:esse|este|o|essa)\s+)?(?:ponto|questão)?\s*em\s+aberto\b/u,
   /^(?:vamos\s+)?(?:seguir|continuar)\s+(?:(?:a|com a)\s+)?discovery\b/u,
   /^(?:vamos\s+)?(?:seguir|continuar)\s+(?:(?:com|levantando)\s+)?(?:as\s+)?(?:demais|outras)\s+informações\b/u,
   /^(?:vamos\s+)?voltar\s+(?:(?:a|para)\s+(?:isso|esse ponto)|nisso)\s+(?:depois|mais tarde)\b/u,
@@ -148,7 +148,7 @@ export function transitionConversationalState(input: {
       clarificationPhase: "DEFERRED",
       deferredClarificationIds: [UNKNOWN_PENDING_CLARIFICATION],
       clarificationAttempt: 0,
-      unknownDeclarationCount: Math.min(5, state.unknownDeclarationCount + 1),
+      unknownDeclarationCount: Math.min(5, state.unknownDeclarationCount + (signals.unknown ? 1 : 0)),
     });
     return selectAgendaTopic(deferred, "DEFERRED");
   }
