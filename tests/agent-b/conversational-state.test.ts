@@ -34,6 +34,7 @@ test("GF-007 explicit unknown and explicit deferral are distinct bounded signals
   assert.deepEqual(classifyExplicitUnknown("Ainda não sabemos. Vamos manter em aberto e continuar a Discovery."),{unknown:true,defer:true});
   assert.deepEqual(classifyExplicitUnknown("Não temos essa informação. Vamos seguir com outras informações."),{unknown:true,defer:true});
   assert.deepEqual(classifyExplicitUnknown("Isso ainda não foi definido. Vamos voltar nisso depois."),{unknown:true,defer:true});
+  assert.deepEqual(classifyExplicitUnknown("Podemos deixar essa questão em aberto por enquanto e continuar a Discovery."),{unknown:false,defer:true});
   assert.deepEqual(classifyExplicitUnknown("Vamos manter esse ponto em aberto e continuar levantando as demais informações."),{unknown:false,defer:true});
   assert.deepEqual(classifyExplicitUnknown("Ainda não sabemos essa definição. Vamos manter esse ponto em aberto e continuar a Discovery."),{unknown:true,defer:true});
 });
@@ -41,6 +42,7 @@ test("GF-007 explicit unknown and explicit deferral are distinct bounded signals
 test("GF-007 quoted or hypothetical unknown wording is not classified as a user declaration",()=>{
   assert.deepEqual(classifyExplicitUnknown("Ela escreveu: ‘Ainda não sabemos se isso se aplica.’"),{unknown:false,defer:false});
   assert.deepEqual(classifyExplicitUnknown("Se ainda não sabemos, talvez devêssemos esperar."),{unknown:false,defer:false});
+  assert.deepEqual(classifyExplicitUnknown("Não quero deixar isso em aberto."),{unknown:false,defer:false});
   assert.deepEqual(classifyExplicitUnknown("Não sabemos onde a peça está."),{unknown:true,defer:false});
 });
 
@@ -87,6 +89,10 @@ test("GF-007 explicit defer signal on the active clarification is sufficient, un
   assert.equal(deferred.state.clarificationPhase,"DEFERRED");
   assert.equal(deferred.state.activeClarificationId,null);
   assert.equal(deferred.state.deferredClarificationIds[0],"UNKNOWN_CRITICAL_PENDING");
+  assert.equal(deferred.state.unknownDeclarationCount,1);
+  const deferOnly=transition({prior:initial.state,message:"Vamos manter em aberto e seguir com outras informações."});
+  assert.equal(deferOnly.state.clarificationPhase,"DEFERRED");
+  assert.equal(deferOnly.state.unknownDeclarationCount,0);
 });
 
 test("GF-007 repeated unknown stays bounded and deferred agenda skips already asked topics",()=>{
