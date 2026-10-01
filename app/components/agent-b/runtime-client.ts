@@ -1,6 +1,7 @@
 import { ProductActionSchema, ProductHandleSchema, ProductInitializeSchema, type ProductHandle } from "../../../lib/agent-b/core/product-runtime.ts";
 import { ProductConversationRequestSchema, ProductConversationResultSchema } from "../../../lib/agent-b/core/product-conversation.ts";
 import type { ConversationInput } from "../../../lib/agent-b/core/conversation-projection.ts";
+import type { ConversationalState } from "../../../lib/agent-b/core/conversational-state.ts";
 export type ProductUIState="idle"|"initializing"|"loading"|"ready"|"substantive"|"abstain"|"unauthorized"|"conflict"|"error";
 export class ProductRequestError extends Error {
   readonly state:"unauthorized"|"conflict"|"error";
@@ -37,11 +38,13 @@ export async function evaluateProduct(handle:ProductHandle,send:typeof fetch=fet
     throw new ProductRequestError(503);
   return result.data;
 }
-export async function evaluateProductConversation(handle:ProductHandle,conversation:ConversationInput,send:typeof fetch=fetch,capture?:{operationId:string;capturedAt:string}) {
-  const input=ProductConversationRequestSchema.parse({...handle,conversation,...(capture?{capture}:{})});
+export async function evaluateProductConversation(handle:ProductHandle,conversation:ConversationInput,send:typeof fetch=fetch,capture?:{operationId:string;capturedAt:string},conversationalState?:ConversationalState|null) {
+  const input=ProductConversationRequestSchema.parse({...handle,conversation,...(capture?{capture}:{}),...(conversationalState?{conversationalState}:{})});
   const body=await productRequest("/api/agent-b/orchestrate",input,send);
-  const result=ProductConversationResultSchema.safeParse({action:body?.action,response:body?.response});
+  const result=ProductConversationResultSchema.safeParse({action:body?.action,response:body?.response,conversationalState:body?.conversationalState});
   if(body?.ok!==true||!result.success||result.data.action.discoveryId!==handle.discoveryId||(capture?result.data.action.runtimeVersion<handle.runtimeVersion:result.data.action.runtimeVersion!==handle.runtimeVersion))
+    throw new ProductRequestError(503);
+  if(result.data.conversationalState.discoveryId!==handle.discoveryId||result.data.conversationalState.sessionId!==handle.sessionId)
     throw new ProductRequestError(503);
   return result.data;
 }
