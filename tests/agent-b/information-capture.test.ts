@@ -8,6 +8,7 @@ import { InformationPublication } from "../../lib/agent-b/application/informatio
 import { ProductRuntime } from "../../lib/agent-b/application/product-runtime.ts";
 import { AuthenticatedIdentitySchema,DiscoveryRootSchema,DiscoveryAccessSchema } from "../../lib/agent-b/core/identity-access.ts";
 import { DiscoveryRuntimeSchema,SessionSchema,ResumeContextSchema } from "../../lib/agent-b/core/mc04.ts";
+import { ConversationalStateSchema,createConversationalState } from "../../lib/agent-b/core/conversational-state.ts";
 import type { DiscoveryInformationRecord } from "../../lib/agent-b/core/mc01.ts";
 import type { InformationPublication as Publication,InformationPublicationResult } from "../../lib/agent-b/core/information-publication.ts";
 import type { IdentityPort } from "../../lib/agent-b/ports/identity.ts";
@@ -16,6 +17,7 @@ import type { DiscoveryPersistencePort } from "../../lib/agent-b/ports/discovery
 const id=(n:number)=>`00000000-0000-4000-8000-${String(n).padStart(12,"0")}`,now="2026-09-26T12:00:00Z";
 const golden="Estou criando uma loja online. Hoje vendo pelo WhatsApp e controlo o estoque numa planilha. Quero automatizar esse processo, mas não posso ter um custo mensal alto.";
 const desiredChange="Para mim, seria útil conseguir ter uma visão mais confiável do estoque disponível e reduzir o risco de vender uma peça sem saber corretamente se ela ainda está disponível.";
+const mixedKnownLimits="Hoje temos alguns limites conhecidos: o estoque está dividido fisicamente entre Rio de Janeiro e São Paulo, temos poucas unidades de cada produto e a operação ainda é pequena e manual. Também precisamos manter a primeira versão simples, com baixo custo operacional, sem depender de uma estrutura complexa para funcionar. Algumas regras, como reserva temporária, confirmação de estoque e origem do envio, ainda não estão totalmente definidas.";
 const clarificationUnknown="Ainda não sabemos exatamente quais condições ou dependências precisam ser definidas para estruturar essa operação. Sabemos que o estoque está dividido entre Rio de Janeiro e São Paulo e que precisamos controlar a localização e disponibilidade de cada peça, mas as regras operacionais para reserva, confirmação de estoque e origem do envio ainda precisam ser definidas.";
 const messages=[
  ["Estou criando uma loja online.","field.subject_context"],
@@ -30,6 +32,20 @@ for(const [message,field] of messages)test(`B14 capture explicit ${field}`,()=>{
 test("B14 canonical registry has only approved fields/domains",()=>{assert.equal(Object.keys(registry.fields).length,7);assert.equal(registry.domains.length,6);assert.equal(registry.authority,"HUMAN_GOVERNED_BASELINE");assert.equal(registry.physical['field.subject_context'].domainId,null);});
 test("B14 golden independent candidates; no unsupported meaning",()=>{assert.deepEqual(generate(golden).map(c=>c.fieldId),['field.subject_context','field.current_state','field.desired_state','field.constraints']);assert.deepEqual(generate('Olá, obrigado!'),[]);assert.deepEqual(generate('Tal sistema causou nosso problema.'),[]);});
 test("B15 desired-change preference is captured verbatim as an eligible desired state",()=>{const candidates=generate(desiredChange);assert.equal(candidates.length,1);assert.equal(candidates[0].fieldId,'field.desired_state');assert.equal(candidates[0].statement,desiredChange);assert.equal(candidates[0].sourceText,desiredChange);assert.equal(evaluate(candidates[0],desiredChange,[]).outcome,'ACCEPT_AS_DECLARED');});
+test("GF-008 agenda topic disambiguates only explicitly matched known-limit wording",()=>{
+ const withoutTopic=generate(mixedKnownLimits);assert.equal(withoutTopic.length,1);assert.equal(withoutTopic[0].fieldId,'field.current_state');
+ const withConstraintsTopic=generate(mixedKnownLimits,'topic.constraints');assert.equal(withConstraintsTopic.length,1);assert.equal(withConstraintsTopic[0].fieldId,'field.constraints');
+ assert.equal(withConstraintsTopic[0].statement,mixedKnownLimits.split('. ')[0]);
+ assert.equal(generate(mixedKnownLimits,'topic.primary_objective')[0].fieldId,'field.current_state');
+ assert.equal(generate(mixedKnownLimits,'invalid-topic' as never)[0].fieldId,'field.current_state');
+ assert.equal(generate('Hoje o estoque fica dividido entre duas cidades.','topic.constraints')[0].fieldId,'field.current_state');
+ assert.deepEqual(generate('Olá, ainda não há uma declaração de limites.','topic.constraints'),[]);
+ const existing=[{fieldId:'field.current_state',content:{value:'Prior stock state'}}] as unknown as DiscoveryInformationRecord[];
+ assert.equal(evaluate(withoutTopic[0],mixedKnownLimits,existing).outcome,'REQUIRE_CLARIFICATION');
+ assert.match(evaluate(withoutTopic[0],mixedKnownLimits,existing).question!,/nova informação/);
+ assert.doesNotMatch(evaluate(withoutTopic[0],mixedKnownLimits,existing).question!,/novo objetivo/);
+ assert.equal(evaluate(withConstraintsTopic[0],mixedKnownLimits,existing,'topic.constraints').outcome,'ACCEPT_AS_DECLARED');
+});
 test("B14 normalization L1 and conservative L2 retain source; L3 rejected",()=>{const message='Hoje vendo  produtos.';const c=generate(message)[0];assert.equal(evaluate(c,message,[]).outcome,'ACCEPT_AS_DECLARED');assert.equal(evaluate({...c,normalization:'SEMANTIC_NORMALIZATION',statement:c.statement.replace(/\s+/g,' ')},message,[]).outcome,'ACCEPT_AS_DECLARED');assert.equal(evaluate({...c,statement:'Hoje perco vendas por falta de automação'},message,[]).outcome,'REQUIRE_CLARIFICATION');assert.equal(InformationCandidateSchema.safeParse({...c,normalization:'SEMANTIC_ENRICHMENT'}).success,false);});
 test("B14 preferences clarify; reserved governance outranks ambiguity",()=>{const p='Supabase would be nice.';assert.equal(evaluate(generate(p)[0],p,[]).outcome,'REQUIRE_CLARIFICATION');const h='Autorizo a conclusão, talvez.';assert.equal(evaluate(generate(h)[0],h,[]).outcome,'REQUIRE_HUMAN_DECISION');});
 function fixture(){
@@ -58,6 +74,30 @@ function fixture(){
 test("B14 accepted statements go through one MC01 publication; UNVERIFIED and provenance",async()=>{const f=fixture();const p=f.request(golden);const result=await f.app.converse(p);assert.equal(f.records.length,4);assert.equal(result.action.runtimeVersion,1);for(const {record:r} of f.records){assert.equal(r.confidence.level,'UNVERIFIED');assert.deepEqual(r.evidence,[]);assert.ok(r.validation.steps.every(s=>s.result.status==='PENDING'));const source=JSON.parse(r.sources[0].reference);assert.equal(source.sourceType,'USER_STATEMENT');assert.equal(source.speaker,'USER');assert.equal(source.operationId,p.capture.operationId);assert.equal(source.capturedAt,now);assert.equal(source.message,undefined);}assert.match(result.response.text,/não verificada/);assert.equal(result.response.materialExecutionAllowed,false);assert.ok(f.events.lastIndexOf('read:1')>f.events.indexOf('publish'));});
 test("B15 desired-change publication advances runtime once and replay does not duplicate it",async()=>{const f=fixture();const p=f.request(desiredChange);const result=await f.app.converse(p);assert.equal(result.action.runtimeVersion,1);assert.equal(f.events.filter(e=>e==='publish').length,1);assert.equal(f.records.length,1);assert.equal(f.getRuntime().runtimeVersion,1);const record=f.records[0].record;assert.equal(record.content.value,desiredChange);assert.equal(record.confidence.level,'UNVERIFIED');const source=JSON.parse(record.sources[0].reference);assert.equal(source.sourceType,'USER_STATEMENT');assert.equal(source.speaker,'USER');assert.equal(source.operationId,p.capture.operationId);assert.equal(source.capturedAt,p.capture.capturedAt);await f.app.converse(p);assert.equal(f.events.filter(e=>e==='publish').length,2);assert.equal(f.records.length,1);assert.equal(f.getRuntime().runtimeVersion,1);});
 test("GF-005 accepted current-state capture with UNKNOWN asks a targeted follow-up on replay",async()=>{const f=fixture();const message="Hoje o estoque fica dividido entre duas pessoas e duas localidades: parte está no Rio e parte em São Paulo. O controle é feito manualmente.";const p={...f.request(message),conversation:{message,previousPrompt:"CLARIFY" as const}};const result=await f.app.converse(p);assert.equal(result.action.kind,"ABSTAIN");assert.equal(result.action.reason,"UNKNOWN_CRITICAL_PENDING");assert.equal(result.action.resolution,"CLARIFY");assert.equal(result.action.runtimeVersion,1);assert.equal(result.response.intent,"CLARIFY");assert.match(result.response.text,/registrada como não verificada/);assert.match(result.response.text,/não permite determinar se existe uma dependência crítica pendente/);assert.doesNotMatch(result.response.text,/Que informações sobre as dependências da operação podem esclarecer esse estado\?/);assert.equal(f.records.length,1);assert.equal(f.records[0].record.fieldId,"field.current_state");assert.equal(f.records[0].record.confidence.level,"UNVERIFIED");assert.ok(f.events.lastIndexOf('read:1')>f.events.indexOf('publish'));const replay=await f.app.converse(p);assert.equal(replay.action.runtimeVersion,1);assert.deepEqual(replay.action,result.action);assert.equal(replay.response.text,result.response.text);assert.equal(f.records.length,1);assert.equal(f.getRuntime().runtimeVersion,1);});
+test("GF-008 agenda hint disambiguates supported limits without replacing current state",async()=>{
+ const initialMessage="Hoje o estoque da Sallma fica dividido entre Rio de Janeiro e São Paulo.";
+ const noHint=fixture();await noHint.app.converse(noHint.request(initialMessage,40));const existingRecord=noHint.records[0].record;
+ const noHintRequest={...noHint.request(mixedKnownLimits,41,1),conversation:{message:mixedKnownLimits,previousPrompt:"CLARIFY" as const}};
+ const collision=await noHint.app.converse(noHintRequest);
+ assert.equal(collision.action.runtimeVersion,1);assert.equal(collision.response.intent,"CLARIFY");
+ assert.match(collision.response.text,/Já existe uma declaração atual/);assert.doesNotMatch(collision.response.text,/novo objetivo/);
+ assert.equal(noHint.records.length,1);assert.equal(noHint.records[0].record.recordId,existingRecord.recordId);assert.equal(noHint.getRuntime().runtimeVersion,1);
+ const mismatched=await noHint.app.converse({...noHintRequest,capture:{operationId:id(42),capturedAt:now},conversationalState:{schemaVersion:1,agendaVersion:1,discoveryId:id(99),sessionId:id(3),activeClarificationId:null,clarificationPhase:"DEFERRED",deferredClarificationIds:["UNKNOWN_CRITICAL_PENDING"],askedTopicIds:["topic.constraints"],nextAgendaTopicId:"topic.constraints",clarificationAttempt:0,unknownDeclarationCount:0}});
+ assert.equal(mismatched.action.runtimeVersion,1);assert.equal(mismatched.response.intent,"CLARIFY");assert.equal(noHint.records.length,1);
+
+ const guided=fixture();await guided.app.converse(guided.request(initialMessage,50));const guidedExistingRecord=guided.records[0].record;
+ const base=createConversationalState(id(2),id(3),false);
+ const state=ConversationalStateSchema.parse({...base,clarificationPhase:"DEFERRED",deferredClarificationIds:["UNKNOWN_CRITICAL_PENDING"],
+     askedTopicIds:["topic.primary_objective","topic.desired_state","topic.success_criteria","topic.subject_context","topic.constraints"],nextAgendaTopicId:"topic.constraints"});
+ const request={...guided.request(mixedKnownLimits,51,1),conversation:{message:mixedKnownLimits,previousPrompt:"CLARIFY" as const},conversationalState:state};
+ const result=await guided.app.converse(request);
+ assert.equal(result.action.kind,"ABSTAIN");assert.equal(result.action.reason,"UNKNOWN_CRITICAL_PENDING");assert.equal(result.action.runtimeVersion,2);
+ assert.equal(result.response.intent,"DEEPEN");assert.match(result.response.text,/continua em aberto; nenhuma resolução foi presumida/);
+ assert.equal(guided.records.length,2);assert.equal(guided.records[0].record.recordId,guidedExistingRecord.recordId);
+ assert.equal(guided.records[1].record.fieldId,"field.constraints");assert.equal(guided.records[1].record.content.value,mixedKnownLimits.split(". ")[0]);
+ assert.equal(guided.records[1].record.confidence.level,"UNVERIFIED");assert.deepEqual(guided.records[1].record.evidence,[]);
+ assert.equal(guided.getRuntime().runtimeVersion,2);assert.equal(guided.events.filter(event=>event==="publish").length,2);
+});
 test("GF-007 full Golden Case defers the unknown axis and continues the bounded agenda",async()=>{
  const f=fixture();
  const firstMessage="Quero estruturar uma operação de estoque para a Sallma.";

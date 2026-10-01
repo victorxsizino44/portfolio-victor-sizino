@@ -6,13 +6,14 @@ import { VALIDATION_PIPELINE } from "../core/mc01.ts";
 import { ProductHandleSchema } from "../core/product-runtime.ts";
 import { FoundationError } from "../core/identity-access.ts";
 import { resolveInformationReferences } from "../core/current-information.ts";
+import { AgendaTopicIdSchema } from "../core/conversational-state.ts";
 import { GovernedContextSnapshotSchema } from "../ports/governed-context.ts";
 import type { GovernedContextReadPort } from "../ports/governed-context.ts";
 import type { CapturedInformationReadPort } from "../ports/information-capture.ts";
 import type { IdentityPort } from "../ports/identity.ts";
 import type { InformationPublication } from "./information-publication.ts";
 
-const RequestSchema=ProductHandleSchema.extend({message:z.string().trim().min(1).max(2000),capture:CaptureMetadataSchema});
+const RequestSchema=ProductHandleSchema.extend({message:z.string().trim().min(1).max(2000),capture:CaptureMetadataSchema,agendaTopicId:AgendaTopicIdSchema.optional()});
 const provenanceSchema=z.strictObject({sourceType:z.literal("USER_STATEMENT"),speaker:z.literal("USER"),operationId:z.uuid(),capturedAt:z.iso.datetime({offset:true}),requestHash:z.string(),candidateId:z.uuid(),index:z.int().nonnegative(),registry:z.literal("R08-10/v1.0")});
 async function hash(s:string){const bytes=new Uint8Array(await crypto.subtle.digest("SHA-256",new TextEncoder().encode(s)));return Array.from(bytes,b=>b.toString(16).padStart(2,"0")).join("");}
 async function candidateId(op:string,index:number){const h=await hash(op+":"+index);return `${h.slice(0,8)}-${h.slice(8,12)}-4${h.slice(13,16)}-8${h.slice(17,20)}-${h.slice(20,32)}`;}
@@ -40,7 +41,7 @@ export class ConversationalInformationCapture {
     if(snapshot.runtime.runtimeVersion!==p.runtimeVersion)throw new FoundationError("CONCURRENT_MODIFICATION");
     const ids=resolveInformationReferences(snapshot.runtime.current,snapshot.information,p.discoveryId).flatMap(r=>r.recordIds);
     const current=snapshot.information.filter(r=>ids.includes(r.recordId));
-    const evaluations=generateInformationCandidates(p.message).map(c=>evaluateInformationCandidate(c,p.message,current));
+    const evaluations=generateInformationCandidates(p.message,p.agendaTopicId).map(c=>evaluateInformationCandidate(c,p.message,current,p.agendaTopicId));
     for(const e of evaluations)if(e.outcome==="ACCEPT_AS_DECLARED"&&CANONICAL_INFORMATION.physical[e.candidate.fieldId].cardinality==="SINGLE"&&evaluations.filter(x=>x.candidate.fieldId===e.candidate.fieldId).length>1){e.outcome="REQUIRE_CLARIFICATION";e.question="Há mais de uma declaração para o mesmo ponto. Qual delas deve representar a informação atual?";}
     for(const e of evaluations)if(e.outcome==="ACCEPT_AS_DECLARED"&&CANONICAL_INFORMATION.physical[e.candidate.fieldId].cardinality==="MULTIPLE"&&evaluations.some(other=>other!==e&&other.candidate.fieldId===e.candidate.fieldId&&!independentlyAdditive(e.candidate.fieldId,e.candidate.statement,other.candidate.statement))){e.outcome="REQUIRE_CLARIFICATION";e.question="Essas declarações representam limites independentes ou uma correção? Precisamos esclarecer a relação antes de registrar.";}
     const candidateIds=await Promise.all(evaluations.map((_,index)=>candidateId(p.capture.operationId,index)));
