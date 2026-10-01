@@ -58,11 +58,13 @@ export class ProductRuntime {
     const p=ProductConversationRequestSchema.safeParse(input);
     if(!p.success)throw new FoundationError("INVALID_INPUT");
     const {conversation,capture,conversationalState:priorConversationState,...handle}=p.data;
+    const validatedConversationState=parseBoundConversationalState(priorConversationState,handle.discoveryId,handle.sessionId);
     let captureResult;
     if(capture){
       if(!conversation||!this.capture)throw new FoundationError("INVALID_INPUT");
       await this.open(handle.discoveryId); // Server-side ownership and OPEN Session checks.
-      captureResult=await this.capture.execute({...handle,message:conversation.message,capture});
+      captureResult=await this.capture.execute({...handle,message:conversation.message,capture,
+        ...(validatedConversationState?.nextAgendaTopicId?{agendaTopicId:validatedConversationState.nextAgendaTopicId}:{})});
     }
     // Always resolve again after publication/replay. Never evaluate the old projection.
     const refreshed=capture?await this.open(handle.discoveryId):handle;
@@ -70,10 +72,10 @@ export class ProductRuntime {
     const action=await this.evaluate(refreshed);
     const response=projectConversation(action,conversation);
     const conversationProgress=conversation
-      ? transitionConversationalState({prior:priorConversationState,discoveryId:handle.discoveryId,
+      ? transitionConversationalState({prior:validatedConversationState,discoveryId:handle.discoveryId,
         sessionId:handle.sessionId,action,message:conversation.message,acceptedCapture:captureResult?.accepted??0,
         evaluations:captureResult?.evaluations??[]})
-      : {state:parseBoundConversationalState(priorConversationState,handle.discoveryId,handle.sessionId)??
+      : {state:validatedConversationState??
         createConversationalState(handle.discoveryId,handle.sessionId,action.kind==="ABSTAIN"&&action.reason==="UNKNOWN_CRITICAL_PENDING"),progression:"NO_TURN" as const};
     const pending=captureResult?.evaluations.find(e=>e.outcome==="REQUIRE_HUMAN_DECISION")??captureResult?.evaluations.find(e=>e.outcome==="REQUIRE_CLARIFICATION");
     if(pending&&response.conversationEligible&&!(action.kind==="SUBSTANTIVE"&&(action.progression==="BLOCK"||action.requiresHumanDecision))){
