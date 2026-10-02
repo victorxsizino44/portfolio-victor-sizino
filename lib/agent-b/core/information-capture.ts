@@ -61,6 +61,6 @@ export function evaluateInformationCandidate(input:unknown,message:string,curren
   if(CANONICAL_INFORMATION.physical[candidate.fieldId].cardinality==="MULTIPLE"&&existing.some(r=>!independentlyAdditive(candidate.fieldId,String(r.content.value),candidate.statement)))
     return {candidate,outcome:"REQUIRE_CLARIFICATION",question:"Como essa declaração se relaciona com a informação atual: é um limite independente ou uma correção? Precisamos esclarecer possíveis conflitos antes de registrar."};
   if(CANONICAL_INFORMATION.physical[candidate.fieldId].cardinality==="SINGLE"&&existing.length&&!candidate.replacement)
-    return {candidate,outcome:"REQUIRE_CLARIFICATION",question:"Já existe uma declaração atual para esse ponto. Se a intenção for substituí-la, declare explicitamente a nova informação."};
+    return {candidate,outcome:"REQUIRE_CLARIFICATION",question:"Já existe uma declaração atual para esse ponto. Esta nova informação complementa a declaração existente ou pretende corrigi-la/substituí-la?"};
   return {candidate,outcome:"ACCEPT_AS_DECLARED",predecessor:candidate.replacement?existing[0]:undefined};
 }
