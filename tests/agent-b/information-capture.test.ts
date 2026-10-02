@@ -71,6 +71,34 @@ function fixture(){
  const request=(message:string,op=10,version:number=runtime.runtimeVersion)=>({discoveryId:id(2),sessionId:id(3),runtimeVersion:version,conversation:{message},capture:{operationId:id(op),capturedAt:now}});
  return {app,capture,records,events,request,getRuntime:()=>runtime,fail:()=>{fail=true;}};
 }
+test("GF-009 occupied SINGLE Fields clarify complement versus correction without accepting replacement",()=>{
+ for(const [message,field] of messages.filter(([,field])=>registry.physical[field as keyof typeof registry.physical].cardinality==='SINGLE')){
+  const candidate=generate(message)[0];
+  const existing=[{fieldId:field,content:{value:'Existing declaration'}}] as unknown as DiscoveryInformationRecord[];
+  const result=evaluate(candidate,message,existing);
+  assert.equal(candidate.replacement,false);assert.equal(result.outcome,'REQUIRE_CLARIFICATION');
+  assert.match(result.question!,/complementa.*corrigi-la\/substituí-la/);assert.equal(result.predecessor,undefined);
+ }
+});
+
+test("GF-009 current-state agenda preserves blocked governance and zero publication for an occupied Field",async()=>{
+ const message="Hoje o controle é feito manualmente. Isabella e Bianca mantêm as informações de estoque e precisam acompanhar quais produtos estão com cada uma, as quantidades disponíveis e as movimentações conforme as peças são vendidas ou reservadas.";
+ const state=ConversationalStateSchema.parse({...createConversationalState(id(2),id(3),false),clarificationPhase:'DEFERRED',deferredClarificationIds:['UNKNOWN_CRITICAL_PENDING'],askedTopicIds:['topic.primary_objective','topic.desired_state','topic.success_criteria','topic.subject_context','topic.constraints','topic.current_state'],nextAgendaTopicId:'topic.current_state'});
+ const f=fixture();await f.app.converse(f.request('Hoje o estoque está dividido entre duas localidades.',80));
+ const before=structuredClone(f.getRuntime()),recordsBefore=structuredClone(f.records),publications=f.events.filter(e=>e==='publish').length;
+ const request={...f.request(message,81),conversation:{message,previousPrompt:'DEEPEN' as const},conversationalState:state};
+ const result=await f.app.converse(request);
+ assert.equal(result.action.kind,'ABSTAIN');assert.equal(result.action.reason,'UNKNOWN_CRITICAL_PENDING');assert.equal(result.action.resolution,'CLARIFY');
+ assert.equal(result.response.intent,'CLARIFY');assert.equal(result.response.materialExecutionAllowed,false);
+ assert.match(result.response.text,/complementa.*corrigi-la\/substituí-la/);
+ assert.equal(result.conversationalState.clarificationPhase,'DEFERRED');assert.equal(result.conversationalState.nextAgendaTopicId,'topic.current_state');
+ assert.deepEqual(f.getRuntime(),before);assert.deepEqual(f.records,recordsBefore);assert.equal(f.events.filter(e=>e==='publish').length,publications);
+ const replay=await f.app.converse(request);assert.deepEqual(replay,result);assert.deepEqual(f.records,recordsBefore);assert.deepEqual(f.getRuntime(),before);
+ const empty=fixture();const accepted=await empty.app.converse({...empty.request(message,82),conversation:{message,previousPrompt:'DEEPEN' as const},conversationalState:state});
+ assert.equal(empty.records.length,1);assert.equal(empty.records[0].record.fieldId,'field.current_state');assert.equal(empty.records[0].record.content.value,'Hoje o controle é feito manualmente');
+ assert.equal(empty.records[0].record.confidence.level,'UNVERIFIED');assert.equal(accepted.action.runtimeVersion,1);assert.equal(accepted.action.kind,'ABSTAIN');assert.equal(accepted.action.reason,'UNKNOWN_CRITICAL_PENDING');assert.equal(accepted.response.materialExecutionAllowed,false);
+});
+
 test("B14 accepted statements go through one MC01 publication; UNVERIFIED and provenance",async()=>{const f=fixture();const p=f.request(golden);const result=await f.app.converse(p);assert.equal(f.records.length,4);assert.equal(result.action.runtimeVersion,1);for(const {record:r} of f.records){assert.equal(r.confidence.level,'UNVERIFIED');assert.deepEqual(r.evidence,[]);assert.ok(r.validation.steps.every(s=>s.result.status==='PENDING'));const source=JSON.parse(r.sources[0].reference);assert.equal(source.sourceType,'USER_STATEMENT');assert.equal(source.speaker,'USER');assert.equal(source.operationId,p.capture.operationId);assert.equal(source.capturedAt,now);assert.equal(source.message,undefined);}assert.match(result.response.text,/não verificada/);assert.equal(result.response.materialExecutionAllowed,false);assert.ok(f.events.lastIndexOf('read:1')>f.events.indexOf('publish'));});
 test("B15 desired-change publication advances runtime once and replay does not duplicate it",async()=>{const f=fixture();const p=f.request(desiredChange);const result=await f.app.converse(p);assert.equal(result.action.runtimeVersion,1);assert.equal(f.events.filter(e=>e==='publish').length,1);assert.equal(f.records.length,1);assert.equal(f.getRuntime().runtimeVersion,1);const record=f.records[0].record;assert.equal(record.content.value,desiredChange);assert.equal(record.confidence.level,'UNVERIFIED');const source=JSON.parse(record.sources[0].reference);assert.equal(source.sourceType,'USER_STATEMENT');assert.equal(source.speaker,'USER');assert.equal(source.operationId,p.capture.operationId);assert.equal(source.capturedAt,p.capture.capturedAt);await f.app.converse(p);assert.equal(f.events.filter(e=>e==='publish').length,2);assert.equal(f.records.length,1);assert.equal(f.getRuntime().runtimeVersion,1);});
 test("GF-005 accepted current-state capture with UNKNOWN asks a targeted follow-up on replay",async()=>{const f=fixture();const message="Hoje o estoque fica dividido entre duas pessoas e duas localidades: parte está no Rio e parte em São Paulo. O controle é feito manualmente.";const p={...f.request(message),conversation:{message,previousPrompt:"CLARIFY" as const}};const result=await f.app.converse(p);assert.equal(result.action.kind,"ABSTAIN");assert.equal(result.action.reason,"UNKNOWN_CRITICAL_PENDING");assert.equal(result.action.resolution,"CLARIFY");assert.equal(result.action.runtimeVersion,1);assert.equal(result.response.intent,"CLARIFY");assert.match(result.response.text,/registrada como não verificada/);assert.match(result.response.text,/não permite determinar se existe uma dependência crítica pendente/);assert.doesNotMatch(result.response.text,/Que informações sobre as dependências da operação podem esclarecer esse estado\?/);assert.equal(f.records.length,1);assert.equal(f.records[0].record.fieldId,"field.current_state");assert.equal(f.records[0].record.confidence.level,"UNVERIFIED");assert.ok(f.events.lastIndexOf('read:1')>f.events.indexOf('publish'));const replay=await f.app.converse(p);assert.equal(replay.action.runtimeVersion,1);assert.deepEqual(replay.action,result.action);assert.equal(replay.response.text,result.response.text);assert.equal(f.records.length,1);assert.equal(f.getRuntime().runtimeVersion,1);});
