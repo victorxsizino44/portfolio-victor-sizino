@@ -1,5 +1,14 @@
 ﻿/** @type {import('next').NextConfig} */
+const mold3Delivery = require("./app/data/mold3-cloudinary.json");
 const nextConfig = {
+  images: {
+    remotePatterns: [{
+      protocol: "https",
+      hostname: "res.cloudinary.com",
+      pathname: `/${mold3Delivery.cloudName}/image/upload/**`,
+      search: "",
+    }],
+  },
   async redirects() {
     return [
       {

@@ -22,8 +22,8 @@ import {
   Zap,
 } from "lucide-react";
 import { FormEvent, useState } from "react";
+import { WHATSAPP_PHONE, whatsappUrl } from "../data/contact";
 
-const WHATSAPP_PHONE = "5511985655503";
 const WHATSAPP_DISPLAY = `+${WHATSAPP_PHONE.slice(0, 2)} ${WHATSAPP_PHONE.slice(2, 4)} ${WHATSAPP_PHONE.slice(4, 9)}-${WHATSAPP_PHONE.slice(9)}`;
 const WHATSAPP_MESSAGE = `Olá, Victor! Vim pelo seu portfólio e gostaria de conversar.
 
@@ -38,7 +38,7 @@ Contexto:
 
 Prazo ou urgência:
 [Quando gostaria de conversar?]`;
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+const WHATSAPP_URL = whatsappUrl(WHATSAPP_MESSAGE);
 
 const contactCards = [
   {
