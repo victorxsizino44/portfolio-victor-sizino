@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Search, Palette, MessageCircle } from "lucide-react";
 import { MOLD3_PRICE_NOTE, type Mold3Product, type Mold3Color } from "../../data/mold3";
 import { whatsappUrl } from "../../data/contact";
 import { formatMold3Price, mold3InterestMessage } from "../../lib/mold3";
@@ -18,7 +19,18 @@ export default function ProductDetail({ product }: { product: Mold3Product }) {
 
   return (
     <div className="mold3-product-layout">
-      <ProductGallery images={images} active={active} onImageChange={setActive} />
+      <div className="mold3-product-gallery">
+        <ProductGallery images={images} active={active} onImageChange={setActive} />
+        <section className="mold3-how-to-buy" aria-labelledby="mold3-how-to-buy-title">
+          <h2 id="mold3-how-to-buy-title">Como comprar</h2>
+          <ol>
+            <li><Search aria-hidden="true" size={20} /><div><h3>Explore</h3><p>Escolha sua peça no catálogo.</p></div></li>
+            <li><Palette aria-hidden="true" size={20} /><div><h3>Personalize</h3><p>Confira as cores disponíveis.</p></div></li>
+            <li><MessageCircle aria-hidden="true" size={20} /><div><h3>Finalize</h3><p>Combine o pedido e o pagamento pelo WhatsApp.</p></div></li>
+          </ol>
+          <p className="mold3-how-to-buy-note">O atendimento, a confirmação dos detalhes e o pagamento são feitos diretamente pelo WhatsApp.</p>
+        </section>
+      </div>
       <div className="mold3-product-copy">
         <p className="section-label">{product.category}</p>
         <h1>{product.name}</h1>

@@ -53,7 +53,15 @@
 .mold3-detail { padding-block: 32px 64px; }
 .mold3-back { display: inline-flex; align-items: center; min-height: 44px; margin-bottom: 24px; font-weight: 700; }
 .mold3-product-layout { display: grid; gap: 32px; }
-.mold3-product-copy { min-width: 0; }
+.mold3-product-copy, .mold3-product-gallery { min-width: 0; }
+.mold3-how-to-buy { margin-top: 24px; padding: 24px; border: 1px solid var(--color-line); border-radius: 8px; background: #f5f6ff; }
+.mold3-how-to-buy h2 { font-size: 20px; }
+.mold3-how-to-buy ol { display: grid; gap: 20px; list-style: none; margin: 20px 0; padding: 0; }
+.mold3-how-to-buy li { display: flex; align-items: flex-start; gap: 12px; }
+.mold3-how-to-buy li svg { flex: 0 0 20px; margin-top: 2px; color: #4f46e5; }
+.mold3-how-to-buy h3 { font-size: 14px; font-weight: 700; line-height: 1.6; }
+.mold3-how-to-buy li p { margin-top: 4px; color: #4b5563; font-size: 14px; line-height: 1.6; }
+.mold3-how-to-buy .mold3-how-to-buy-note { padding-top: 16px; border-top: 1px solid var(--color-line); color: #4b5563; font-size: 12px; line-height: 1.7; }
 .mold3-product-copy h1 { font-size: clamp(32px, 5vw, 48px); font-weight: 800; line-height: 1.15; overflow-wrap: anywhere; }
 .mold3-description { margin-top: 24px !important; white-space: pre-line; color: #4b5563; line-height: 1.8; }
 .mold3-product-copy dl { display: grid; gap: 16px; margin-block: 28px; border-block: 1px solid var(--color-line); padding-block: 24px; }
